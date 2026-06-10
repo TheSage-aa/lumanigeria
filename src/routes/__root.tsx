@@ -11,7 +11,6 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
-// @ts-expect-error - JSX module
 import { ThemeProvider, LumaShell } from "@/components/LumaApp";
 
 function NotFoundComponent() {
