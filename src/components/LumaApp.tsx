@@ -328,7 +328,7 @@ const Footer = ({ t, setPage }) => {
             <Logo color={t.ivory} size={26} />
             <p style={{ color: "rgba(247,243,236,0.6)", fontSize: 14, fontFamily: "'DM Sans',sans-serif", lineHeight: 1.6, marginTop: 12, maxWidth: 240 }}>Closing HIV information gaps in Nigerian universities. Built by youth, for youth.</p>
           </div>
-          {col("Navigate", [["About LUMA", () => setPage("about")], ["Our Work", () => setPage("work")], ["Campus Truth Series", () => setPage("truth")], ["The Peer Circle", () => setPage("circle")], ["Advocacy", () => setPage("advocacy")], ["Resources", () => setPage("resources")], ["Games", () => setPage("games")]]})
+          {col("Navigate", [["About LUMA", () => setPage("about")], ["Our Work", () => setPage("work")], ["Campus Truth Series", () => setPage("truth")], ["The Peer Circle", () => setPage("circle")], ["Advocacy", () => setPage("advocacy")], ["Resources", () => setPage("resources")], ["Games", () => setPage("games")]])}
           {col("Get Involved", [["Join The Peer Circle", () => setPage("circle")], ["Become an Ambassador", () => setPage("involve")], ["Volunteer", () => setPage("involve")], ["Partner with LUMA", () => setPage("contact")]])}
           {col("Connect", [["Instagram", () => window.open("https://instagram.com/luma_ng", "_blank")], ["X (Twitter)", () => window.open("https://twitter.com/luma_ng", "_blank")], ["LinkedIn", () => window.open("https://linkedin.com/company/luma_ng", "_blank")], ["hello@luma.org.ng", () => window.location.href = "mailto:hello@luma.org.ng"]])}
         </div>
