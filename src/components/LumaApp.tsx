@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 
 // ─── STORY DATA ───────────────────────────────────────────────────────────────
 
-const STORIES = [
+export const STORIES = [
   {
     id: "classroom-myth",
     tag: "MYTH vs FACT",
@@ -1316,7 +1316,7 @@ import { createContext, useContext } from "react";
 import { Outlet, useRouter, useRouterState } from "@tanstack/react-router";
 
 const ThemeCtx: any = createContext(null);
-export const useLumaTheme = () => useContext(ThemeCtx);
+export const useLumaTheme = (): any => useContext(ThemeCtx);
 
 const PAGE_TO_ROUTE = {
   home: "/", about: "/about", work: "/work", truth: "/truth",
