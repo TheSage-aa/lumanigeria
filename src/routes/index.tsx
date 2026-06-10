@@ -1,5 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-// @ts-expect-error - JSX component without explicit types
 import LumaApp from "@/components/LumaApp";
 
 export const Route = createFileRoute("/")({
