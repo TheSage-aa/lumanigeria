@@ -11,6 +11,7 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { ThemeProvider, LumaShell } from "@/components/LumaApp";
 
 function NotFoundComponent() {
   return (
@@ -77,14 +78,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "LUMA — HIV Education & Advocacy for Nigerian Universities" },
+      { name: "description", content: "Youth-led organisation closing HIV information gaps in Nigerian universities — education, advocacy, and community." },
+      { name: "author", content: "LUMA" },
+      { property: "og:title", content: "LUMA" },
+      { property: "og:description", content: "Status-neutral HIV education and advocacy for Nigerian university students." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
       {
@@ -118,8 +118,11 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <ThemeProvider>
+        <LumaShell>
+          <Outlet />
+        </LumaShell>
+      </ThemeProvider>
     </QueryClientProvider>
   );
 }

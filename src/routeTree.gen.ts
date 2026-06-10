@@ -9,38 +9,234 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as WorkRouteImport } from './routes/work'
+import { Route as TruthRouteImport } from './routes/truth'
+import { Route as ResourcesRouteImport } from './routes/resources'
+import { Route as InvolveRouteImport } from './routes/involve'
+import { Route as GamesRouteImport } from './routes/games'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CircleRouteImport } from './routes/circle'
+import { Route as AdvocacyRouteImport } from './routes/advocacy'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as TruthStoryIdRouteImport } from './routes/truth.$storyId'
 
+const WorkRoute = WorkRouteImport.update({
+  id: '/work',
+  path: '/work',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TruthRoute = TruthRouteImport.update({
+  id: '/truth',
+  path: '/truth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResourcesRoute = ResourcesRouteImport.update({
+  id: '/resources',
+  path: '/resources',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InvolveRoute = InvolveRouteImport.update({
+  id: '/involve',
+  path: '/involve',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GamesRoute = GamesRouteImport.update({
+  id: '/games',
+  path: '/games',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CircleRoute = CircleRouteImport.update({
+  id: '/circle',
+  path: '/circle',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdvocacyRoute = AdvocacyRouteImport.update({
+  id: '/advocacy',
+  path: '/advocacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TruthStoryIdRoute = TruthStoryIdRouteImport.update({
+  id: '/$storyId',
+  path: '/$storyId',
+  getParentRoute: () => TruthRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/advocacy': typeof AdvocacyRoute
+  '/circle': typeof CircleRoute
+  '/contact': typeof ContactRoute
+  '/games': typeof GamesRoute
+  '/involve': typeof InvolveRoute
+  '/resources': typeof ResourcesRoute
+  '/truth': typeof TruthRouteWithChildren
+  '/work': typeof WorkRoute
+  '/truth/$storyId': typeof TruthStoryIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/advocacy': typeof AdvocacyRoute
+  '/circle': typeof CircleRoute
+  '/contact': typeof ContactRoute
+  '/games': typeof GamesRoute
+  '/involve': typeof InvolveRoute
+  '/resources': typeof ResourcesRoute
+  '/truth': typeof TruthRouteWithChildren
+  '/work': typeof WorkRoute
+  '/truth/$storyId': typeof TruthStoryIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/advocacy': typeof AdvocacyRoute
+  '/circle': typeof CircleRoute
+  '/contact': typeof ContactRoute
+  '/games': typeof GamesRoute
+  '/involve': typeof InvolveRoute
+  '/resources': typeof ResourcesRoute
+  '/truth': typeof TruthRouteWithChildren
+  '/work': typeof WorkRoute
+  '/truth/$storyId': typeof TruthStoryIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/advocacy'
+    | '/circle'
+    | '/contact'
+    | '/games'
+    | '/involve'
+    | '/resources'
+    | '/truth'
+    | '/work'
+    | '/truth/$storyId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/advocacy'
+    | '/circle'
+    | '/contact'
+    | '/games'
+    | '/involve'
+    | '/resources'
+    | '/truth'
+    | '/work'
+    | '/truth/$storyId'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/advocacy'
+    | '/circle'
+    | '/contact'
+    | '/games'
+    | '/involve'
+    | '/resources'
+    | '/truth'
+    | '/work'
+    | '/truth/$storyId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  AdvocacyRoute: typeof AdvocacyRoute
+  CircleRoute: typeof CircleRoute
+  ContactRoute: typeof ContactRoute
+  GamesRoute: typeof GamesRoute
+  InvolveRoute: typeof InvolveRoute
+  ResourcesRoute: typeof ResourcesRoute
+  TruthRoute: typeof TruthRouteWithChildren
+  WorkRoute: typeof WorkRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/work': {
+      id: '/work'
+      path: '/work'
+      fullPath: '/work'
+      preLoaderRoute: typeof WorkRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/truth': {
+      id: '/truth'
+      path: '/truth'
+      fullPath: '/truth'
+      preLoaderRoute: typeof TruthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/resources': {
+      id: '/resources'
+      path: '/resources'
+      fullPath: '/resources'
+      preLoaderRoute: typeof ResourcesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/involve': {
+      id: '/involve'
+      path: '/involve'
+      fullPath: '/involve'
+      preLoaderRoute: typeof InvolveRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/games': {
+      id: '/games'
+      path: '/games'
+      fullPath: '/games'
+      preLoaderRoute: typeof GamesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/circle': {
+      id: '/circle'
+      path: '/circle'
+      fullPath: '/circle'
+      preLoaderRoute: typeof CircleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/advocacy': {
+      id: '/advocacy'
+      path: '/advocacy'
+      fullPath: '/advocacy'
+      preLoaderRoute: typeof AdvocacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +244,37 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/truth/$storyId': {
+      id: '/truth/$storyId'
+      path: '/$storyId'
+      fullPath: '/truth/$storyId'
+      preLoaderRoute: typeof TruthStoryIdRouteImport
+      parentRoute: typeof TruthRoute
+    }
   }
 }
 
+interface TruthRouteChildren {
+  TruthStoryIdRoute: typeof TruthStoryIdRoute
+}
+
+const TruthRouteChildren: TruthRouteChildren = {
+  TruthStoryIdRoute: TruthStoryIdRoute,
+}
+
+const TruthRouteWithChildren = TruthRoute._addFileChildren(TruthRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  AdvocacyRoute: AdvocacyRoute,
+  CircleRoute: CircleRoute,
+  ContactRoute: ContactRoute,
+  GamesRoute: GamesRoute,
+  InvolveRoute: InvolveRoute,
+  ResourcesRoute: ResourcesRoute,
+  TruthRoute: TruthRouteWithChildren,
+  WorkRoute: WorkRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

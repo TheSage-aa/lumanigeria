@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 
 // ─── STORY DATA ───────────────────────────────────────────────────────────────
 
-const STORIES = [
+export const STORIES = [
   {
     id: "classroom-myth",
     tag: "MYTH vs FACT",
@@ -232,7 +232,7 @@ const FormSuccess = ({ t, message }) => (
 
 // ─── NAV ─────────────────────────────────────────────────────────────────────
 
-const Nav = ({ t, colorId, setColorId, isDark, setIsDark, page, setPage }) => {
+export const Nav = ({ t, colorId, setColorId, isDark, setIsDark, page, setPage }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const links = [["About", "about"], ["Our Work", "work"], ["Resources", "resources"], ["Get Involved", "involve"], ["Games", "games"]];
 
@@ -270,19 +270,22 @@ const Nav = ({ t, colorId, setColorId, isDark, setIsDark, page, setPage }) => {
         </div>
 
         <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 8, paddingRight: 14, borderRight: "1px solid rgba(255,255,255,0.12)" }}>
-            {Object.keys(COLOR_THEMES).map(id => (
-              <div key={id} style={dot(id)} onClick={() => setColorId(id)} title={COLOR_THEMES[id].name} />
-            ))}
-          </div>
-          <button style={darkToggle} onClick={() => setIsDark(!isDark)} title={isDark ? "Light mode" : "Dark mode"} aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}>
-            <div style={{ width: 15, height: 15, borderRadius: "50%", background: t.ivory, display: "flex", alignItems: "center", justifyContent: "center", transition: "all 0.2s" }}>
-              {isDark ? <MoonIcon color={t.primary} /> : <SunIcon color={t.primary} />}
+          <div className="desktop-theme-controls" style={{ display: "flex", alignItems: "center", gap: 14 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 8, paddingRight: 14, borderRight: "1px solid rgba(255,255,255,0.12)" }}>
+              {Object.keys(COLOR_THEMES).map(id => (
+                <div key={id} style={dot(id)} onClick={() => setColorId(id)} title={COLOR_THEMES[id].name} />
+              ))}
             </div>
-          </button>
+            <button type="button" style={darkToggle} onClick={() => setIsDark(!isDark)} title={isDark ? "Light mode" : "Dark mode"} aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}>
+              <div style={{ width: 15, height: 15, borderRadius: "50%", background: t.ivory, display: "flex", alignItems: "center", justifyContent: "center", transition: "all 0.2s" }}>
+                {isDark ? <MoonIcon color={t.primary} /> : <SunIcon color={t.primary} />}
+              </div>
+            </button>
+          </div>
           <button onClick={() => setPage("involve")} style={{ background: t.ivory, color: t.primary, border: "none", padding: "9px 20px", borderRadius: 100, fontSize: 13, fontWeight: 700, fontFamily: "'Space Grotesk',sans-serif", cursor: "pointer", letterSpacing: "0.5px", whiteSpace: "nowrap" }}>Join LUMA</button>
           <button onClick={() => setMenuOpen(true)} style={{ background: "none", border: "none", cursor: "pointer", display: "none" }} className="mobile-menu-btn"><MenuIcon color={t.ivory} /></button>
         </div>
+
       </nav>
 
       {menuOpen && (
@@ -310,7 +313,7 @@ const Nav = ({ t, colorId, setColorId, isDark, setIsDark, page, setPage }) => {
 
 // ─── FOOTER ──────────────────────────────────────────────────────────────────
 
-const Footer = ({ t, setPage }) => {
+export const Footer = ({ t, setPage }) => {
   const col = (heading, links) => (
     <div>
       <p style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: "1.5px", color: t.accent, marginBottom: 16, textTransform: "uppercase" }}>{heading}</p>
@@ -344,7 +347,7 @@ const Footer = ({ t, setPage }) => {
 
 // ─── STORY DETAIL PAGE ───────────────────────────────────────────────────────
 
-const StoryPage = ({ t, story, setPage, setStoryId }) => {
+export const StoryPage = ({ t, story, setPage, setStoryId }) => {
   const related = STORIES.filter(s => story.related.includes(s.id));
   const s = {
     hero: { background: t.primary, padding: "100px 32px 60px" },
@@ -422,7 +425,7 @@ const StoryPage = ({ t, story, setPage, setStoryId }) => {
 
 // ─── HOME PAGE ────────────────────────────────────────────────────────────────
 
-const HomePage = ({ t, setPage, setStoryId }) => {
+export const HomePage = ({ t, setPage, setStoryId }) => {
   const s = {
     hero: { background: t.primary, minHeight: "92vh", display: "flex", alignItems: "center", padding: "80px 32px", position: "relative", overflow: "hidden" },
     h1: { fontFamily: "'Space Grotesk',sans-serif", fontSize: "clamp(40px,6vw,76px)", fontWeight: 800, color: t.ivory, lineHeight: 1.06, marginTop: 20, marginBottom: 24, letterSpacing: "-1px" },
@@ -555,7 +558,7 @@ const HomePage = ({ t, setPage, setStoryId }) => {
 
 // ─── ABOUT PAGE ───────────────────────────────────────────────────────────────
 
-const AboutPage = ({ t }) => {
+export const AboutPage = ({ t }) => {
   const s = {
     hero: { background: t.primary, padding: "120px 32px 80px" },
     inner: { maxWidth: 1100, margin: "0 auto" },
@@ -643,7 +646,7 @@ const AboutPage = ({ t }) => {
 
 // ─── CAMPUS TRUTH PAGE ────────────────────────────────────────────────────────
 
-const TruthPage = ({ t, setPage, setStoryId }) => (
+export const TruthPage = ({ t, setPage, setStoryId }) => (
   <div>
     <div style={{ background: t.primary, padding: "120px 32px 80px" }}>
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>
@@ -682,7 +685,7 @@ const TruthPage = ({ t, setPage, setStoryId }) => (
 
 // ─── PEER CIRCLE PAGE ─────────────────────────────────────────────────────────
 
-const CirclePage = ({ t }) => {
+export const CirclePage = ({ t }) => {
   const [form, setForm] = useState({ username: "", email: "", password: "" });
   const [submitted, setSubmitted] = useState(false);
 
@@ -773,7 +776,7 @@ const CirclePage = ({ t }) => {
 
 // ─── OUR WORK PAGE ────────────────────────────────────────────────────────────
 
-const WorkPage = ({ t, setPage }) => {
+export const WorkPage = ({ t, setPage }) => {
   const pillars = [
     { num: "01", label: "Inform", title: "Because ignorance is not neutral.", body: "HIV myths do not stay in classrooms. They spread in hostels, lecture halls, and WhatsApp groups. LUMA delivers status neutral HIV education built specifically for Nigerian campuses. No separation. Everyone learns together.", programs: ["Campus Truth Series", "The Status Neutral Campus Guide"], page: "truth", dark: false },
     { num: "02", label: "Advocate", title: "Policy does not change by itself.", body: "Nigerian universities have no anti-discrimination policies for students living with HIV. No integration of HIV into campus health services. LUMA is changing that, one campus at a time, grounded in evidence.", programs: ["Campus Policy Push", "National Prevention Plan Engagement", "Research to Advocacy Pipeline"], page: "advocacy", dark: true },
@@ -810,7 +813,7 @@ const WorkPage = ({ t, setPage }) => {
 
 // ─── ADVOCACY PAGE ───────────────────────────────────────────────────────────
 
-const AdvocacyPage = ({ t }) => (
+export const AdvocacyPage = ({ t }) => (
   <div>
     <div style={{ background: t.primary, padding: "120px 32px 80px" }}>
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>
@@ -851,7 +854,7 @@ const AdvocacyPage = ({ t }) => (
 
 // ─── RESOURCES PAGE ───────────────────────────────────────────────────────────
 
-const ResourcesPage = ({ t }) => (
+export const ResourcesPage = ({ t }) => (
   <div>
     <div style={{ background: t.primary, padding: "120px 32px 80px" }}>
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>
@@ -889,7 +892,7 @@ const ResourcesPage = ({ t }) => (
 
 // ─── GET INVOLVED PAGE ────────────────────────────────────────────────────────
 
-const InvolvePage = ({ t, setPage }) => {
+export const InvolvePage = ({ t, setPage }) => {
   const [ambForm, setAmbForm] = useState({ name: "", email: "", university: "", why: "" });
   const [ambSent, setAmbSent] = useState(false);
 
@@ -955,7 +958,7 @@ const InvolvePage = ({ t, setPage }) => {
 
 // ─── CONTACT PAGE ────────────────────────────────────────────────────────────
 
-const ContactPage = ({ t, preSubject = "" }) => {
+export const ContactPage = ({ t, preSubject = "" }) => {
   const [form, setForm] = useState({ name: "", email: "", subject: preSubject || "General Enquiry", message: "" });
   const [anonForm, setAnonForm] = useState({ subject: "General Enquiry", message: "" });
   const [sent, setSent] = useState(false);
@@ -1232,7 +1235,7 @@ const ScenarioGame = ({ t }) => {
 
 // ─── GAMES PAGE ───────────────────────────────────────────────────────────────
 
-const GamesPage = ({ t, setPage }) => {
+export const GamesPage = ({ t, setPage }) => {
   const [activeGame, setActiveGame] = useState(null);
   const games = [
     { id: "myth", title: "Myth Buster", tag: "HIV EDUCATION", description: "10 cards. Each one is a statement about HIV. You decide: Myth or Fact. The truth might surprise you.", time: "5 min", difficulty: "Beginner friendly", component: <MythBusterGame t={t} /> },
@@ -1307,32 +1310,58 @@ const GamesPage = ({ t, setPage }) => {
 };
 
 
-// ─── APP ROOT ─────────────────────────────────────────────────────────────────
+// ─── THEME CONTEXT + SHELL ────────────────────────────────────────────────────
 
-export default function App() {
+import { createContext, useContext } from "react";
+import { Outlet, useRouter, useRouterState } from "@tanstack/react-router";
+
+const ThemeCtx: any = createContext(null);
+export const useLumaTheme = (): any => useContext(ThemeCtx);
+
+const PAGE_TO_ROUTE = {
+  home: "/", about: "/about", work: "/work", truth: "/truth",
+  circle: "/circle", advocacy: "/advocacy", resources: "/resources",
+  involve: "/involve", contact: "/contact", games: "/games",
+};
+const ROUTE_TO_PAGE = Object.fromEntries(Object.entries(PAGE_TO_ROUTE).map(([k, v]) => [v, k]));
+
+export const useNavToPage = () => {
+  const router = useRouter();
+  return (id) => {
+    if (id === "story") return;
+    const to = PAGE_TO_ROUTE[id];
+    if (!to) return;
+    router.navigate({ to });
+    try { window.scrollTo({ top: 0, behavior: "smooth" }); } catch (e) {}
+  };
+};
+
+export const useNavToStory = () => {
+  const router = useRouter();
+  return (storyId) => {
+    router.navigate({ to: "/truth/$storyId", params: { storyId } });
+    try { window.scrollTo({ top: 0, behavior: "smooth" }); } catch (e) {}
+  };
+};
+
+export function ThemeProvider({ children }) {
   const [colorId, setColorId] = useState("watcher");
   const [isDark, setIsDark] = useState(false);
-  const [page, setPage] = useState("home");
-  const [storyId, setStoryId] = useState(null);
   const t = getTheme(colorId, isDark);
+  return (
+    <ThemeCtx.Provider value={{ t, colorId, setColorId, isDark, setIsDark }}>
+      {children}
+    </ThemeCtx.Provider>
+  );
+}
 
-  const currentStory = STORIES.find(s => s.id === storyId);
-
-  const handleSetPage = (p) => { setPage(p); try { window.scrollTo({ top: 0, behavior: "smooth" }); } catch(e) {} };
-
-  const pages = {
-    home:      <HomePage     t={t} setPage={handleSetPage} setStoryId={setStoryId} />,
-    about:     <AboutPage    t={t} setPage={handleSetPage} />,
-    work:      <WorkPage     t={t} setPage={handleSetPage} />,
-    truth:     <TruthPage    t={t} setPage={handleSetPage} setStoryId={setStoryId} />,
-    story:     currentStory ? <StoryPage t={t} story={currentStory} setPage={handleSetPage} setStoryId={setStoryId} /> : <TruthPage t={t} setPage={handleSetPage} setStoryId={setStoryId} />,
-    circle:    <CirclePage   t={t} setPage={handleSetPage} />,
-    advocacy:  <AdvocacyPage t={t} setPage={handleSetPage} />,
-    resources: <ResourcesPage t={t} setPage={handleSetPage} />,
-    involve:   <InvolvePage  t={t} setPage={handleSetPage} />,
-    contact:   <ContactPage  t={t} />,
-    games:     <GamesPage    t={t} setPage={handleSetPage} />,
-  };
+export function LumaShell({ children }) {
+  const { t, colorId, setColorId, isDark, setIsDark } = useLumaTheme();
+  const setPage = useNavToPage();
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  // derive `page` for nav active-state
+  let page = ROUTE_TO_PAGE[pathname] || "home";
+  if (pathname.startsWith("/truth")) page = "truth";
 
   return (
     <div style={{ fontFamily: "'Space Grotesk',sans-serif", background: t.bg, minHeight: "100vh", transition: "background 0.3s ease" }}>
@@ -1350,11 +1379,13 @@ export default function App() {
         @media(max-width:768px){
           .desktop-nav{display:none !important;}
           .mobile-menu-btn{display:flex !important;}
+          .desktop-theme-controls{display:none !important;}
         }
       `}</style>
-      <Nav t={t} colorId={colorId} setColorId={setColorId} isDark={isDark} setIsDark={setIsDark} page={page} setPage={handleSetPage} />
-      <main>{pages[page]}</main>
-      <Footer t={t} setPage={handleSetPage} />
+      <Nav t={t} colorId={colorId} setColorId={setColorId} isDark={isDark} setIsDark={setIsDark} page={page} setPage={setPage} />
+      <main>{children}</main>
+      <Footer t={t} setPage={setPage} />
     </div>
   );
 }
+
