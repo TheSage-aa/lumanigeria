@@ -1315,7 +1315,7 @@ export const GamesPage = ({ t, setPage }) => {
 import { createContext, useContext } from "react";
 import { Outlet, useRouter, useRouterState } from "@tanstack/react-router";
 
-const ThemeCtx = createContext(null);
+const ThemeCtx: any = createContext(null);
 export const useLumaTheme = () => useContext(ThemeCtx);
 
 const PAGE_TO_ROUTE = {
