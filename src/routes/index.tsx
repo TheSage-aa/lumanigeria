@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import LumaApp from "@/components/LumaApp";
+import { HomePage, useLumaTheme, useNavToPage, useNavToStory } from "@/components/LumaApp";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -10,5 +10,12 @@ export const Route = createFileRoute("/")({
       { property: "og:description", content: "Status-neutral HIV education, campus health policy advocacy, and a peer community for Nigerian university students." },
     ],
   }),
-  component: LumaApp,
+  component: HomeRoute,
 });
+
+function HomeRoute() {
+  const { t } = useLumaTheme();
+  const setPage = useNavToPage();
+  const goStory = useNavToStory();
+  return <HomePage t={t} setPage={setPage} setStoryId={goStory} />;
+}
