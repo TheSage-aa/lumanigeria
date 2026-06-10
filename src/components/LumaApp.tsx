@@ -270,19 +270,22 @@ export const Nav = ({ t, colorId, setColorId, isDark, setIsDark, page, setPage }
         </div>
 
         <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 8, paddingRight: 14, borderRight: "1px solid rgba(255,255,255,0.12)" }}>
-            {Object.keys(COLOR_THEMES).map(id => (
-              <div key={id} style={dot(id)} onClick={() => setColorId(id)} title={COLOR_THEMES[id].name} />
-            ))}
-          </div>
-          <button style={darkToggle} onClick={() => setIsDark(!isDark)} title={isDark ? "Light mode" : "Dark mode"} aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}>
-            <div style={{ width: 15, height: 15, borderRadius: "50%", background: t.ivory, display: "flex", alignItems: "center", justifyContent: "center", transition: "all 0.2s" }}>
-              {isDark ? <MoonIcon color={t.primary} /> : <SunIcon color={t.primary} />}
+          <div className="desktop-theme-controls" style={{ display: "flex", alignItems: "center", gap: 14 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 8, paddingRight: 14, borderRight: "1px solid rgba(255,255,255,0.12)" }}>
+              {Object.keys(COLOR_THEMES).map(id => (
+                <div key={id} style={dot(id)} onClick={() => setColorId(id)} title={COLOR_THEMES[id].name} />
+              ))}
             </div>
-          </button>
+            <button type="button" style={darkToggle} onClick={() => setIsDark(!isDark)} title={isDark ? "Light mode" : "Dark mode"} aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}>
+              <div style={{ width: 15, height: 15, borderRadius: "50%", background: t.ivory, display: "flex", alignItems: "center", justifyContent: "center", transition: "all 0.2s" }}>
+                {isDark ? <MoonIcon color={t.primary} /> : <SunIcon color={t.primary} />}
+              </div>
+            </button>
+          </div>
           <button onClick={() => setPage("involve")} style={{ background: t.ivory, color: t.primary, border: "none", padding: "9px 20px", borderRadius: 100, fontSize: 13, fontWeight: 700, fontFamily: "'Space Grotesk',sans-serif", cursor: "pointer", letterSpacing: "0.5px", whiteSpace: "nowrap" }}>Join LUMA</button>
           <button onClick={() => setMenuOpen(true)} style={{ background: "none", border: "none", cursor: "pointer", display: "none" }} className="mobile-menu-btn"><MenuIcon color={t.ivory} /></button>
         </div>
+
       </nav>
 
       {menuOpen && (
