@@ -202,8 +202,8 @@ const SectionLabel = ({ t, children, light }) => (
   <p style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: "2px", color: light ? t.accent : t.accent, textTransform: "uppercase", marginBottom: 12 }}>{children}</p>
 );
 
-const Card = ({ t, children, style: ex = {} }) => (
-  <div style={{ background: t.card, border: `1px solid ${t.borderColor}`, borderRadius: 16, padding: 32, ...ex }}>{children}</div>
+const Card = ({ t, children, style: ex = {}, ...rest }) => (
+  <div {...rest} style={{ background: t.card, border: `1px solid ${t.borderColor}`, borderRadius: 16, padding: 32, ...ex }}>{children}</div>
 );
 
 const Input = ({ t, placeholder, type = "text", value, onChange, style: ex = {} }) => (
