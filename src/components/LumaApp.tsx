@@ -1307,32 +1307,58 @@ export const GamesPage = ({ t, setPage }) => {
 };
 
 
-// ─── APP ROOT ─────────────────────────────────────────────────────────────────
+// ─── THEME CONTEXT + SHELL ────────────────────────────────────────────────────
 
-export default function App() {
+import { createContext, useContext } from "react";
+import { Outlet, useRouter, useRouterState } from "@tanstack/react-router";
+
+const ThemeCtx = createContext(null);
+export const useLumaTheme = () => useContext(ThemeCtx);
+
+const PAGE_TO_ROUTE = {
+  home: "/", about: "/about", work: "/work", truth: "/truth",
+  circle: "/circle", advocacy: "/advocacy", resources: "/resources",
+  involve: "/involve", contact: "/contact", games: "/games",
+};
+const ROUTE_TO_PAGE = Object.fromEntries(Object.entries(PAGE_TO_ROUTE).map(([k, v]) => [v, k]));
+
+export const useNavToPage = () => {
+  const router = useRouter();
+  return (id) => {
+    if (id === "story") return;
+    const to = PAGE_TO_ROUTE[id];
+    if (!to) return;
+    router.navigate({ to });
+    try { window.scrollTo({ top: 0, behavior: "smooth" }); } catch (e) {}
+  };
+};
+
+export const useNavToStory = () => {
+  const router = useRouter();
+  return (storyId) => {
+    router.navigate({ to: "/truth/$storyId", params: { storyId } });
+    try { window.scrollTo({ top: 0, behavior: "smooth" }); } catch (e) {}
+  };
+};
+
+export function ThemeProvider({ children }) {
   const [colorId, setColorId] = useState("watcher");
   const [isDark, setIsDark] = useState(false);
-  const [page, setPage] = useState("home");
-  const [storyId, setStoryId] = useState(null);
   const t = getTheme(colorId, isDark);
+  return (
+    <ThemeCtx.Provider value={{ t, colorId, setColorId, isDark, setIsDark }}>
+      {children}
+    </ThemeCtx.Provider>
+  );
+}
 
-  const currentStory = STORIES.find(s => s.id === storyId);
-
-  const handleSetPage = (p) => { setPage(p); try { window.scrollTo({ top: 0, behavior: "smooth" }); } catch(e) {} };
-
-  const pages = {
-    home:      <HomePage     t={t} setPage={handleSetPage} setStoryId={setStoryId} />,
-    about:     <AboutPage    t={t} setPage={handleSetPage} />,
-    work:      <WorkPage     t={t} setPage={handleSetPage} />,
-    truth:     <TruthPage    t={t} setPage={handleSetPage} setStoryId={setStoryId} />,
-    story:     currentStory ? <StoryPage t={t} story={currentStory} setPage={handleSetPage} setStoryId={setStoryId} /> : <TruthPage t={t} setPage={handleSetPage} setStoryId={setStoryId} />,
-    circle:    <CirclePage   t={t} setPage={handleSetPage} />,
-    advocacy:  <AdvocacyPage t={t} setPage={handleSetPage} />,
-    resources: <ResourcesPage t={t} setPage={handleSetPage} />,
-    involve:   <InvolvePage  t={t} setPage={handleSetPage} />,
-    contact:   <ContactPage  t={t} />,
-    games:     <GamesPage    t={t} setPage={handleSetPage} />,
-  };
+export function LumaShell({ children }) {
+  const { t, colorId, setColorId, isDark, setIsDark } = useLumaTheme();
+  const setPage = useNavToPage();
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  // derive `page` for nav active-state
+  let page = ROUTE_TO_PAGE[pathname] || "home";
+  if (pathname.startsWith("/truth")) page = "truth";
 
   return (
     <div style={{ fontFamily: "'Space Grotesk',sans-serif", background: t.bg, minHeight: "100vh", transition: "background 0.3s ease" }}>
@@ -1350,11 +1376,13 @@ export default function App() {
         @media(max-width:768px){
           .desktop-nav{display:none !important;}
           .mobile-menu-btn{display:flex !important;}
+          .desktop-theme-controls{display:none !important;}
         }
       `}</style>
-      <Nav t={t} colorId={colorId} setColorId={setColorId} isDark={isDark} setIsDark={setIsDark} page={page} setPage={handleSetPage} />
-      <main>{pages[page]}</main>
-      <Footer t={t} setPage={handleSetPage} />
+      <Nav t={t} colorId={colorId} setColorId={setColorId} isDark={isDark} setIsDark={setIsDark} page={page} setPage={setPage} />
+      <main>{children}</main>
+      <Footer t={t} setPage={setPage} />
     </div>
   );
 }
+
