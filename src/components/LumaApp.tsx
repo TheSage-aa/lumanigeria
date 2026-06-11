@@ -1,6 +1,7 @@
 // @ts-nocheck
 import { useState, useEffect } from "react";
-import lumaLogo from "@/assets/luma-logo.png.asset.json";
+import lumaLogoColor from "@/assets/luma-logo-color.png.asset.json";
+import lumaLogoLight from "@/assets/luma-logo-light.png.asset.json";
 
 // ─── STORY DATA ───────────────────────────────────────────────────────────────
 
@@ -168,8 +169,13 @@ const getTheme = (colorId, isDark) => {
 
 // ─── ICONS ───────────────────────────────────────────────────────────────────
 
-const Logo = ({ size = 32 }: { color?: string; size?: number }) => (
-  <img src={lumaLogo.url} alt="LUMA" height={size} style={{ height: size, width: "auto", display: "block" }} />
+const Logo = ({ size = 32, variant = "color" }: { color?: string; size?: number; variant?: "color" | "light" }) => (
+  <img
+    src={variant === "light" ? lumaLogoLight.url : lumaLogoColor.url}
+    alt="LUMA — Luminating Africa"
+    height={size}
+    style={{ height: size, width: "auto", display: "block" }}
+  />
 );
 const ArrowRight = ({ color, size = 16 }) => (<svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2.5" strokeLinecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>);
 const ArrowLeft  = ({ color, size = 16 }) => (<svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2.5" strokeLinecap="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>);
@@ -452,7 +458,7 @@ export const HomePage = ({ t, setPage, setStoryId }) => {
       <section style={s.hero}>
         <svg style={{ position: "absolute", right: -80, top: "50%", transform: "translateY(-50%)", opacity: 0.05, pointerEvents: "none" }} width="700" height="700" viewBox="0 0 700 700"><path d="M100 600 Q350 50 600 600" stroke="white" strokeWidth="130" fill="none" strokeLinecap="round"/></svg>
         <div style={{ maxWidth: 640, position: "relative", zIndex: 2 }}>
-          <Tag t={t} light>Luminating Understanding, Moving Advocacy</Tag>
+          <Tag t={t} light>Luminating Africa</Tag>
           <h1 style={s.h1}>No student should navigate HIV on campus alone.</h1>
           <p style={s.heroSub}>LUMA is a youth-led organisation closing HIV information gaps in Nigerian universities, fighting for campus health policy change, and building community for students who need it most.</p>
           <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
@@ -1049,7 +1055,7 @@ const QUIZ_QUESTIONS = [
   { question: "How effective is PrEP at preventing HIV when taken consistently?", options: ["About 50%", "About 70%", "About 85%", "Up to 99%"], correct: 3 },
   { question: "What does the status neutral approach mean?", options: ["Keeping HIV status secret", "Treating everyone the same regardless of HIV status", "Only serving HIV negative people", "Separating positive and negative services"], correct: 1 },
   { question: "How long does it typically take to reach an undetectable viral load on ART?", options: ["1 to 2 weeks", "3 to 6 months", "2 to 3 years", "It is immediate"], correct: 1 },
-  { question: "What does LUMA stand for?", options: ["African Voices for Rights Advancement", "Advancing Voices, Reclaiming Agency", "Luminating Understanding, Moving Advocacy", "Active Voices for Real Advocacy"], correct: 2 },
+  { question: "What does LUMA stand for?", options: ["Lifting Up Marginalised Africans", "Learning, Understanding, Movement, Action", "Luminating Africa", "Leading Universal Medical Advocacy"], correct: 2 },
 ];
 
 const SCENARIOS = [
