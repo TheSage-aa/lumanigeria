@@ -1,6 +1,7 @@
 // @ts-nocheck
 import { useState, useEffect } from "react";
-import lumaLogo from "@/assets/luma-logo.png.asset.json";
+import lumaLogoColor from "@/assets/luma-logo-color.png.asset.json";
+import lumaLogoLight from "@/assets/luma-logo-light.png.asset.json";
 
 // ─── STORY DATA ───────────────────────────────────────────────────────────────
 
@@ -168,8 +169,13 @@ const getTheme = (colorId, isDark) => {
 
 // ─── ICONS ───────────────────────────────────────────────────────────────────
 
-const Logo = ({ size = 32 }: { color?: string; size?: number }) => (
-  <img src={lumaLogo.url} alt="LUMA" height={size} style={{ height: size, width: "auto", display: "block" }} />
+const Logo = ({ size = 32, variant = "color" }: { color?: string; size?: number; variant?: "color" | "light" }) => (
+  <img
+    src={variant === "light" ? lumaLogoLight.url : lumaLogoColor.url}
+    alt="LUMA — Luminating Africa"
+    height={size}
+    style={{ height: size, width: "auto", display: "block" }}
+  />
 );
 const ArrowRight = ({ color, size = 16 }) => (<svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2.5" strokeLinecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>);
 const ArrowLeft  = ({ color, size = 16 }) => (<svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2.5" strokeLinecap="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>);
@@ -257,7 +263,7 @@ export const Nav = ({ t, colorId, setColorId, isDark, setIsDark, page, setPage }
   return (
     <>
       <nav style={{ background: t.navBg, padding: "0 32px", height: 68, display: "flex", alignItems: "center", justifyContent: "space-between", position: "sticky", top: 0, zIndex: 100, transition: "background 0.3s", borderBottom: "1px solid rgba(255,255,255,0.07)" }}>
-        <button onClick={() => setPage("home")} style={{ background: "none", border: "none", cursor: "pointer", padding: 0 }}><Logo color={t.ivory} size={26} /></button>
+        <button onClick={() => setPage("home")} aria-label="LUMA home" style={{ background: "none", border: "none", cursor: "pointer", padding: 0 }}><Logo variant="light" size={36} /></button>
 
         <div style={{ display: "flex", gap: 28, alignItems: "center" }} className="desktop-nav">
           {links.map(([label, id]) => (
@@ -289,7 +295,7 @@ export const Nav = ({ t, colorId, setColorId, isDark, setIsDark, page, setPage }
       {menuOpen && (
         <div style={{ position: "fixed", inset: 0, background: t.navBg, zIndex: 200, display: "flex", flexDirection: "column", padding: 32, overflowY: "auto" }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 48 }}>
-            <Logo color={t.ivory} size={28} />
+            <Logo variant="light" size={40} />
             <button style={{ background: "none", border: "none", cursor: "pointer" }} onClick={() => setMenuOpen(false)}><CloseIcon color={t.ivory} /></button>
           </div>
           {links.map(([label, id]) => (
@@ -327,7 +333,7 @@ export const Footer = ({ t, setPage }) => {
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(180px,1fr))", gap: 48, marginBottom: 48 }}>
           <div>
-            <Logo color={t.ivory} size={26} />
+            <Logo variant="light" size={32} />
             <p style={{ color: "rgba(247,243,236,0.6)", fontSize: 14, fontFamily: "'DM Sans',sans-serif", lineHeight: 1.6, marginTop: 12, maxWidth: 240 }}>Closing HIV information gaps in Nigerian universities. Built by youth, for youth.</p>
           </div>
           {col("Navigate", [["About LUMA", () => setPage("about")], ["Our Work", () => setPage("work")], ["Campus Truth Series", () => setPage("truth")], ["The Peer Circle", () => setPage("circle")], ["Advocacy", () => setPage("advocacy")], ["Resources", () => setPage("resources")], ["Games", () => setPage("games")]])}
@@ -452,7 +458,7 @@ export const HomePage = ({ t, setPage, setStoryId }) => {
       <section style={s.hero}>
         <svg style={{ position: "absolute", right: -80, top: "50%", transform: "translateY(-50%)", opacity: 0.05, pointerEvents: "none" }} width="700" height="700" viewBox="0 0 700 700"><path d="M100 600 Q350 50 600 600" stroke="white" strokeWidth="130" fill="none" strokeLinecap="round"/></svg>
         <div style={{ maxWidth: 640, position: "relative", zIndex: 2 }}>
-          <Tag t={t} light>Luminating Understanding, Moving Advocacy</Tag>
+          <Tag t={t} light>Luminating Africa</Tag>
           <h1 style={s.h1}>No student should navigate HIV on campus alone.</h1>
           <p style={s.heroSub}>LUMA is a youth-led organisation closing HIV information gaps in Nigerian universities, fighting for campus health policy change, and building community for students who need it most.</p>
           <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
@@ -1049,7 +1055,7 @@ const QUIZ_QUESTIONS = [
   { question: "How effective is PrEP at preventing HIV when taken consistently?", options: ["About 50%", "About 70%", "About 85%", "Up to 99%"], correct: 3 },
   { question: "What does the status neutral approach mean?", options: ["Keeping HIV status secret", "Treating everyone the same regardless of HIV status", "Only serving HIV negative people", "Separating positive and negative services"], correct: 1 },
   { question: "How long does it typically take to reach an undetectable viral load on ART?", options: ["1 to 2 weeks", "3 to 6 months", "2 to 3 years", "It is immediate"], correct: 1 },
-  { question: "What does LUMA stand for?", options: ["African Voices for Rights Advancement", "Advancing Voices, Reclaiming Agency", "Luminating Understanding, Moving Advocacy", "Active Voices for Real Advocacy"], correct: 2 },
+  { question: "What does LUMA stand for?", options: ["Lifting Up Marginalised Africans", "Learning, Understanding, Movement, Action", "Luminating Africa", "Leading Universal Medical Advocacy"], correct: 2 },
 ];
 
 const SCENARIOS = [
