@@ -247,8 +247,8 @@ export const Nav = ({ t, colorId, setColorId, isDark, setIsDark, page, setPage }
   });
 
   const dot = (id) => ({
-    width: 18, height: 18, borderRadius: "50%", background: COLOR_THEMES[id].primary,
-    cursor: "pointer", flexShrink: 0, transition: "all 0.2s",
+    width: 22, height: 22, borderRadius: "50%", background: COLOR_THEMES[id].primary,
+    cursor: "pointer", flexShrink: 0, transition: "all 0.2s", padding: 0,
     boxShadow: colorId === id ? `0 0 0 2px ${t.isDark ? "#222" : t.ivory}, 0 0 0 4px ${COLOR_THEMES[id].accent}` : "none",
     border: id === "plum" && colorId !== id ? "1px solid rgba(255,255,255,0.2)" : "none",
   });
@@ -267,9 +267,9 @@ export const Nav = ({ t, colorId, setColorId, isDark, setIsDark, page, setPage }
 
         <div style={{ display: "flex", gap: 28, alignItems: "center" }} className="desktop-nav">
           {links.map(([label, id]) => (
-            <span key={id} style={navLink(label, id)} onClick={() => setPage(id)}
-              onMouseEnter={e => e.target.style.color = t.ivory}
-              onMouseLeave={e => e.target.style.color = page === id ? t.ivory : "rgba(247,243,236,0.72)"}>{label}</span>
+            <button key={id} type="button" style={{ ...navLink(label, id), background: "none", border: "none" }} onClick={() => setPage(id)}
+              onMouseEnter={e => e.currentTarget.style.color = t.ivory}
+              onMouseLeave={e => e.currentTarget.style.color = page === id ? t.ivory : "rgba(247,243,236,0.72)"}>{label}</button>
           ))}
         </div>
 
@@ -277,7 +277,7 @@ export const Nav = ({ t, colorId, setColorId, isDark, setIsDark, page, setPage }
           <div className="desktop-theme-controls" style={{ display: "flex", alignItems: "center", gap: 14 }}>
             <div style={{ display: "flex", alignItems: "center", gap: 8, paddingRight: 14, borderRight: "1px solid rgba(255,255,255,0.12)" }}>
               {Object.keys(COLOR_THEMES).map(id => (
-                <div key={id} style={dot(id)} onClick={() => setColorId(id)} title={COLOR_THEMES[id].name} />
+                <button key={id} type="button" style={dot(id)} onClick={() => setColorId(id)} aria-label={`${COLOR_THEMES[id].name} theme`} aria-pressed={colorId === id} title={COLOR_THEMES[id].name} />
               ))}
             </div>
             <button type="button" style={darkToggle} onClick={() => setIsDark(!isDark)} title={isDark ? "Light mode" : "Dark mode"} aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}>
@@ -299,13 +299,16 @@ export const Nav = ({ t, colorId, setColorId, isDark, setIsDark, page, setPage }
             <button style={{ background: "none", border: "none", cursor: "pointer" }} onClick={() => setMenuOpen(false)}><CloseIcon color={t.ivory} /></button>
           </div>
           {links.map(([label, id]) => (
-            <span key={id} style={{ color: t.ivory, fontSize: 32, fontWeight: 700, fontFamily: "'Space Grotesk',sans-serif", cursor: "pointer", padding: "14px 0", borderBottom: "1px solid rgba(247,243,236,0.1)" }}
-              onClick={() => { setPage(id); setMenuOpen(false); }}>{label}</span>
+            <button key={id} type="button"
+              style={{ background: "none", border: "none", textAlign: "left", color: t.ivory, fontSize: 32, fontWeight: 700, fontFamily: "'Space Grotesk',sans-serif", cursor: "pointer", padding: "14px 0", borderBottom: "1px solid rgba(247,243,236,0.1)", width: "100%" }}
+              onClick={() => { setPage(id); setMenuOpen(false); }}>{label}</button>
           ))}
-          <div style={{ marginTop: 40, display: "flex", gap: 12, alignItems: "center" }}>
-            {Object.keys(COLOR_THEMES).map(id => (<div key={id} style={{ ...dot(id), width: 28, height: 28 }} onClick={() => setColorId(id)} />))}
-            <button style={{ ...darkToggle, marginLeft: 8, width: 44, height: 26 }} onClick={() => setIsDark(!isDark)}>
-              <div style={{ width: 18, height: 18, borderRadius: "50%", background: t.ivory, display: "flex", alignItems: "center", justifyContent: "center" }}>{isDark ? <MoonIcon color={t.primary} /> : <SunIcon color={t.primary} />}</div>
+          <div style={{ marginTop: 40, display: "flex", gap: 14, alignItems: "center", flexWrap: "wrap" }}>
+            {Object.keys(COLOR_THEMES).map(id => (
+              <button key={id} type="button" aria-label={`${COLOR_THEMES[id].name} theme`} aria-pressed={colorId === id} style={{ ...dot(id), width: 36, height: 36 }} onClick={() => setColorId(id)} />
+            ))}
+            <button type="button" aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"} style={{ ...darkToggle, marginLeft: 8, width: 52, height: 30 }} onClick={() => setIsDark(!isDark)}>
+              <div style={{ width: 22, height: 22, borderRadius: "50%", background: t.ivory, display: "flex", alignItems: "center", justifyContent: "center" }}>{isDark ? <MoonIcon color={t.primary} /> : <SunIcon color={t.primary} />}</div>
             </button>
           </div>
           <button onClick={() => { setPage("involve"); setMenuOpen(false); }} style={{ marginTop: 32, background: t.ivory, color: t.primary, border: "none", padding: "16px 32px", borderRadius: 100, fontSize: 16, fontWeight: 700, fontFamily: "'Space Grotesk',sans-serif", cursor: "pointer" }}>Join LUMA</button>
@@ -322,9 +325,9 @@ export const Footer = ({ t, setPage }) => {
     <div>
       <p style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: "1.5px", color: t.accent, marginBottom: 16, textTransform: "uppercase" }}>{heading}</p>
       {links.map(([label, action]) => (
-        <span key={label} onClick={action} style={{ color: "rgba(247,243,236,0.65)", fontSize: 14, fontFamily: "'DM Sans',sans-serif", cursor: "pointer", display: "block", marginBottom: 10, transition: "color 0.2s" }}
-          onMouseEnter={e => e.target.style.color = t.ivory}
-          onMouseLeave={e => e.target.style.color = "rgba(247,243,236,0.65)"}>{label}</span>
+        <button key={label} type="button" onClick={action} style={{ background: "none", border: "none", textAlign: "left", color: "rgba(247,243,236,0.65)", fontSize: 14, fontFamily: "'DM Sans',sans-serif", cursor: "pointer", display: "block", marginBottom: 10, transition: "color 0.2s", padding: 0 }}
+          onMouseEnter={e => e.currentTarget.style.color = t.ivory}
+          onMouseLeave={e => e.currentTarget.style.color = "rgba(247,243,236,0.65)"}>{label}</button>
       ))}
     </div>
   );
