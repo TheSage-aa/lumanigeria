@@ -81,10 +81,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { title: "LUMA — HIV Education & Advocacy for Nigerian Universities" },
       { name: "description", content: "Youth-led organisation closing HIV information gaps in Nigerian universities — education, advocacy, and community." },
       { name: "author", content: "LUMA" },
-      { property: "og:title", content: "LUMA" },
-      { property: "og:description", content: "Status-neutral HIV education and advocacy for Nigerian university students." },
+      { property: "og:title", content: "LUMA — HIV Education & Advocacy for Nigerian Universities" },
+      { property: "og:description", content: "Youth-led organisation closing HIV information gaps in Nigerian universities — education, advocacy, and community." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
+      { name: "twitter:title", content: "LUMA — HIV Education & Advocacy for Nigerian Universities" },
+      { name: "twitter:description", content: "Youth-led organisation closing HIV information gaps in Nigerian universities — education, advocacy, and community." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/iAebafGi93aVzTK22hvFlQXMoUJ3/social-images/social-1781145956754-439507.webp" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/iAebafGi93aVzTK22hvFlQXMoUJ3/social-images/social-1781145956754-439507.webp" },
     ],
     links: [
       {
