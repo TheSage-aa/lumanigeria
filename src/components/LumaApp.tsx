@@ -167,12 +167,18 @@ const getTheme = (colorId, isDark) => {
 
 // ─── ICONS ───────────────────────────────────────────────────────────────────
 
-const Logo = ({ color = "#F7F3EC", size = 32 }) => (
-  <svg width={size * 2.2} height={size} viewBox="0 0 88 36" fill="none">
-    <path d="M22 16 Q30 4 38 16" stroke={color} strokeWidth="4.5" strokeLinecap="round" fill="none"/>
-    <text x="0" y="34" fontFamily="'Space Grotesk',sans-serif" fontSize="20" fontWeight="700" fill={color} letterSpacing="4">LUMA</text>
-  </svg>
-);
+const Logo = ({ color = "#F7F3EC", size = 32 }: { color?: string; size?: number }) => {
+  // On dark backgrounds invert the logo so the black wordmark reads as ivory
+  const isLight = color && color.toUpperCase() !== "#1A3329" && color !== "#000" && !color.startsWith("#0") && !color.startsWith("#1") && !color.startsWith("#2") && !color.startsWith("#3");
+  return (
+    <img
+      src={lumaLogo.url}
+      alt="LUMA"
+      height={size}
+      style={{ height: size, width: "auto", display: "block", filter: isLight ? "brightness(0) invert(1)" : "none" }}
+    />
+  );
+};
 const ArrowRight = ({ color, size = 16 }) => (<svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2.5" strokeLinecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>);
 const ArrowLeft  = ({ color, size = 16 }) => (<svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2.5" strokeLinecap="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>);
 const SunIcon    = ({ color }) => (<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>);
