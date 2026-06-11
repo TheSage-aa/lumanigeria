@@ -1,5 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from "react";
+import lumaLogo from "@/assets/luma-logo.png.asset.json";
 
 // ─── STORY DATA ───────────────────────────────────────────────────────────────
 
@@ -167,11 +168,8 @@ const getTheme = (colorId, isDark) => {
 
 // ─── ICONS ───────────────────────────────────────────────────────────────────
 
-const Logo = ({ color = "#F7F3EC", size = 32 }) => (
-  <svg width={size * 2.2} height={size} viewBox="0 0 88 36" fill="none">
-    <path d="M22 16 Q30 4 38 16" stroke={color} strokeWidth="4.5" strokeLinecap="round" fill="none"/>
-    <text x="0" y="34" fontFamily="'Space Grotesk',sans-serif" fontSize="20" fontWeight="700" fill={color} letterSpacing="4">LUMA</text>
-  </svg>
+const Logo = ({ size = 32 }: { color?: string; size?: number }) => (
+  <img src={lumaLogo.url} alt="LUMA" height={size} style={{ height: size, width: "auto", display: "block" }} />
 );
 const ArrowRight = ({ color, size = 16 }) => (<svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2.5" strokeLinecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>);
 const ArrowLeft  = ({ color, size = 16 }) => (<svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2.5" strokeLinecap="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>);
