@@ -1,5 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from "react";
+import lumaLogo from "@/assets/luma-logo.png.asset.json";
 
 // ─── STORY DATA ───────────────────────────────────────────────────────────────
 
