@@ -263,7 +263,7 @@ export const Nav = ({ t, colorId, setColorId, isDark, setIsDark, page, setPage }
   return (
     <>
       <nav style={{ background: t.navBg, padding: "0 32px", height: 68, display: "flex", alignItems: "center", justifyContent: "space-between", position: "sticky", top: 0, zIndex: 100, transition: "background 0.3s", borderBottom: "1px solid rgba(255,255,255,0.07)" }}>
-        <button onClick={() => setPage("home")} style={{ background: "none", border: "none", cursor: "pointer", padding: 0 }}><Logo variant="light" size={26} /></button>
+        <button onClick={() => setPage("home")} aria-label="LUMA home" style={{ background: "none", border: "none", cursor: "pointer", padding: 0 }}><Logo variant="light" size={36} /></button>
 
         <div style={{ display: "flex", gap: 28, alignItems: "center" }} className="desktop-nav">
           {links.map(([label, id]) => (
@@ -295,7 +295,7 @@ export const Nav = ({ t, colorId, setColorId, isDark, setIsDark, page, setPage }
       {menuOpen && (
         <div style={{ position: "fixed", inset: 0, background: t.navBg, zIndex: 200, display: "flex", flexDirection: "column", padding: 32, overflowY: "auto" }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 48 }}>
-            <Logo variant="light" size={28} />
+            <Logo variant="light" size={40} />
             <button style={{ background: "none", border: "none", cursor: "pointer" }} onClick={() => setMenuOpen(false)}><CloseIcon color={t.ivory} /></button>
           </div>
           {links.map(([label, id]) => (
@@ -333,7 +333,7 @@ export const Footer = ({ t, setPage }) => {
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(180px,1fr))", gap: 48, marginBottom: 48 }}>
           <div>
-            <Logo variant="light" size={26} />
+            <Logo variant="light" size={32} />
             <p style={{ color: "rgba(247,243,236,0.6)", fontSize: 14, fontFamily: "'DM Sans',sans-serif", lineHeight: 1.6, marginTop: 12, maxWidth: 240 }}>Closing HIV information gaps in Nigerian universities. Built by youth, for youth.</p>
           </div>
           {col("Navigate", [["About LUMA", () => setPage("about")], ["Our Work", () => setPage("work")], ["Campus Truth Series", () => setPage("truth")], ["The Peer Circle", () => setPage("circle")], ["Advocacy", () => setPage("advocacy")], ["Resources", () => setPage("resources")], ["Games", () => setPage("games")]])}
