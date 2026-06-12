@@ -724,19 +724,45 @@ export const TruthPage = ({ t, setPage, setStoryId }) => (
 
 // ─── PEER CIRCLE PAGE ─────────────────────────────────────────────────────────
 
+const YEAR_OPTIONS = ["100 Level / First Year", "200 Level / Second Year", "300 Level / Third Year", "400 Level / Fourth Year", "500 Level / Fifth Year", "Final Year (other)", "Postgraduate", "Prefer not to say"];
+
 export const CirclePage = ({ t }) => {
-  const [form, setForm] = useState({ username: "", email: "", password: "" });
+  const [form, setForm] = useState({ displayName: "", email: "", university: "", year: "", notes: "" });
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+
+  // Story submission state
+  const [story, setStory] = useState({ identification: "Anonymous — my name will not appear anywhere on the story", chosenName: "", email: "", university: "", story: "", instructions: "" });
+  const [storySent, setStorySent] = useState(false);
+  const [storySending, setStorySending] = useState(false);
 
   const handleSubmit = async () => {
-    if (!form.username || !form.email) return;
-    try {
-      await fetch("https://formspree.io/f/xpwzqkgd", {
-        method: "POST", headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ _subject: "New Peer Circle Application", ...form })
-      });
-    } catch {}
+    if (!form.displayName || !form.email || !form.university || !form.year) return;
+    setSending(true);
+    await submitToEmail("Peer Circle Application", {
+      "Display Name": form.displayName,
+      "Email (for recovery)": form.email,
+      "University": form.university,
+      "Year": form.year,
+      "Notes": form.notes || "(none)",
+    });
+    setSending(false);
     setSubmitted(true);
+  };
+
+  const handleStory = async () => {
+    if (!story.email || !story.story) return;
+    setStorySending(true);
+    await submitToEmail("Voices From Campus — Story Submission", {
+      "Identification": story.identification,
+      "Name / Chosen Name": story.chosenName || "(not provided)",
+      "Email": story.email,
+      "University": story.university || "(not provided)",
+      "Story": story.story,
+      "Handling Instructions": story.instructions || "(none)",
+    });
+    setStorySending(false);
+    setStorySent(true);
   };
 
   const s = {
@@ -746,6 +772,8 @@ export const CirclePage = ({ t }) => {
     sectionAlt: { padding: "80px 32px", background: t.isDark ? t.surface : t.accentLight },
     h2: { fontFamily: "'Space Grotesk',sans-serif", fontSize: "clamp(26px,3.5vw,42px)", fontWeight: 800, color: t.text, lineHeight: 1.2, marginBottom: 20 },
     body: { fontFamily: "'DM Sans',sans-serif", fontSize: 17, color: t.textMuted, lineHeight: 1.8, marginBottom: 16 },
+    darkInput: { background: "rgba(255,255,255,0.08)", color: t.ivory, borderColor: "rgba(247,243,236,0.2)" },
+    darkLabel: { fontFamily: "'DM Sans',sans-serif", fontSize: 13, color: "rgba(247,243,236,0.7)", marginBottom: 6, display: "block" },
   };
 
   return (
@@ -789,22 +817,60 @@ export const CirclePage = ({ t }) => {
         </div>
       </section>
 
+      {/* APPLY TO JOIN */}
       <section style={{ background: t.primary, padding: "80px 32px" }}>
-        <div style={{ maxWidth: 540, margin: "0 auto" }}>
+        <div style={{ maxWidth: 600, margin: "0 auto" }}>
           <SectionLabel t={t}>Apply to Join</SectionLabel>
           <h2 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: "clamp(26px,4vw,40px)", fontWeight: 800, color: t.ivory, marginBottom: 12 }}>Ready to join The Peer Circle?</h2>
-          <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 15, color: "rgba(247,243,236,0.65)", lineHeight: 1.7, marginBottom: 32 }}>Your identity will not be shared. We only ask for an email for account recovery. You choose your display name.</p>
+          <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 15, color: "rgba(247,243,236,0.65)", lineHeight: 1.7, marginBottom: 32 }}>Your identity will not be shared with anyone. We only ask for an email address for account recovery. You choose your own display name and we will never ask you to reveal your real name. All applications are reviewed personally by the LUMA team.</p>
           {submitted ? (
             <div style={{ background: "rgba(247,243,236,0.12)", border: "1px solid rgba(247,243,236,0.25)", borderRadius: 12, padding: "24px 28px" }}>
               <p style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 16, color: t.ivory, fontWeight: 600 }}>Application received.</p>
-              <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 15, color: "rgba(247,243,236,0.7)", marginTop: 8, lineHeight: 1.6 }}>We will be in touch within 48 hours. Welcome to LUMA.</p>
+              <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 15, color: "rgba(247,243,236,0.7)", marginTop: 8, lineHeight: 1.6 }}>We will review it personally and be in touch within 48 hours. You do not need to do anything else. Welcome to LUMA.</p>
             </div>
           ) : (
             <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
-              <Input t={{ ...t, surface: "rgba(255,255,255,0.1)", borderColor: "rgba(247,243,236,0.2)" }} placeholder="Choose a display name (not your real name)" value={form.username} onChange={e => setForm({...form, username: e.target.value})} style={{ background: "rgba(255,255,255,0.08)", color: t.ivory, borderColor: "rgba(247,243,236,0.2)" }} />
-              <Input t={t} placeholder="Email (for account recovery only, never displayed)" type="email" value={form.email} onChange={e => setForm({...form, email: e.target.value})} style={{ background: "rgba(255,255,255,0.08)", color: t.ivory, borderColor: "rgba(247,243,236,0.2)" }} />
-              <Input t={t} placeholder="Choose a password" type="password" value={form.password} onChange={e => setForm({...form, password: e.target.value})} style={{ background: "rgba(255,255,255,0.08)", color: t.ivory, borderColor: "rgba(247,243,236,0.2)" }} />
-              <Btn t={t} variant="light" onClick={handleSubmit} style={{ width: "100%", textAlign: "center" }}>Apply to Join</Btn>
+              <Input t={t} placeholder="Pick a name for the community (not your real name)" value={form.displayName} onChange={e => setForm({...form, displayName: e.target.value})} style={s.darkInput} />
+              <Input t={t} type="email" placeholder="your@email.com" value={form.email} onChange={e => setForm({...form, email: e.target.value})} style={s.darkInput} />
+              <Input t={t} placeholder="Name of your university" value={form.university} onChange={e => setForm({...form, university: e.target.value})} style={s.darkInput} />
+              <select value={form.year} onChange={e => setForm({...form, year: e.target.value})} style={{ width: "100%", padding: "13px 16px", borderRadius: 10, border: "1.5px solid rgba(247,243,236,0.2)", background: "rgba(255,255,255,0.08)", color: form.year ? t.ivory : "rgba(247,243,236,0.5)", fontFamily: "'DM Sans',sans-serif", fontSize: 15, outline: "none", boxSizing: "border-box", cursor: "pointer" }}>
+                <option value="" style={{ color: "#222" }}>Select your year...</option>
+                {YEAR_OPTIONS.map(y => <option key={y} value={y} style={{ color: "#222" }}>{y}</option>)}
+              </select>
+              <textarea placeholder="Is there anything you would like us to know before you join? This is completely optional. Share as much or as little as you want." value={form.notes} onChange={e => setForm({...form, notes: e.target.value})} rows={4} style={{ width: "100%", padding: "13px 16px", borderRadius: 10, border: "1.5px solid rgba(247,243,236,0.2)", background: "rgba(255,255,255,0.08)", color: t.ivory, fontFamily: "'DM Sans',sans-serif", fontSize: 15, outline: "none", boxSizing: "border-box", resize: "vertical" }} />
+              <Btn t={t} variant="light" onClick={handleSubmit} style={{ width: "100%", textAlign: "center", opacity: sending ? 0.6 : 1 }}>{sending ? "Sending..." : "Apply to Join"}</Btn>
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* VOICES FROM CAMPUS — STORY SUBMISSION */}
+      <section style={{ background: t.bg, padding: "80px 32px" }}>
+        <div style={{ maxWidth: 700, margin: "0 auto" }}>
+          <SectionLabel t={t}>Voices From Campus</SectionLabel>
+          <h2 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: "clamp(26px,4vw,40px)", fontWeight: 800, color: t.text, marginBottom: 12 }}>Share your story</h2>
+          <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 16, color: t.textMuted, lineHeight: 1.75, marginBottom: 28 }}>Your story belongs to you. We will never publish it without sending it back to you first. You can share anonymously or with your name. You can share as much or as little as you want. There is no wrong way to do this.</p>
+          {storySent ? (
+            <FormSuccess t={t} message="Story received. Thank you for trusting LUMA with this. We will read it carefully and send you a review copy before anything is published. You will have the final say on everything." />
+          ) : (
+            <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+              <div>
+                <label style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 13, color: t.textMuted, marginBottom: 10, display: "block", fontWeight: 600 }}>How would you like to be identified?</label>
+                {["Anonymous — my name will not appear anywhere on the story", "Use a chosen name — I will pick a name that is not my real name", "Use my real name — I am happy for my name to appear on the story"].map(opt => (
+                  <label key={opt} style={{ display: "flex", alignItems: "flex-start", gap: 10, padding: "10px 12px", marginBottom: 6, borderRadius: 8, border: `1px solid ${story.identification === opt ? t.accent : t.borderColor}`, background: story.identification === opt ? t.accentLight : "transparent", cursor: "pointer", fontFamily: "'DM Sans',sans-serif", fontSize: 14, color: t.text, lineHeight: 1.5 }}>
+                    <input type="radio" name="story-id" checked={story.identification === opt} onChange={() => setStory({...story, identification: opt})} style={{ marginTop: 3 }} />
+                    <span>{opt}</span>
+                  </label>
+                ))}
+              </div>
+              {story.identification.startsWith("Use") && (
+                <Input t={t} placeholder="The name you want to appear on your story" value={story.chosenName} onChange={e => setStory({...story, chosenName: e.target.value})} />
+              )}
+              <Input t={t} type="email" placeholder="your@email.com (so we can send the review copy)" value={story.email} onChange={e => setStory({...story, email: e.target.value})} />
+              <Input t={t} placeholder="Your university (optional)" value={story.university} onChange={e => setStory({...story, university: e.target.value})} />
+              <Textarea t={t} placeholder="Write as much or as little as you want. There is no minimum or maximum." value={story.story} onChange={e => setStory({...story, story: e.target.value})} rows={8} />
+              <Textarea t={t} placeholder="Any instructions or requests you have for the LUMA team... (optional)" value={story.instructions} onChange={e => setStory({...story, instructions: e.target.value})} rows={3} />
+              <Btn t={t} variant="primary" onClick={handleStory} style={{ opacity: storySending ? 0.6 : 1 }}>{storySending ? "Sending..." : "Submit My Story"}</Btn>
             </div>
           )}
         </div>
@@ -812,6 +878,7 @@ export const CirclePage = ({ t }) => {
     </div>
   );
 };
+
 
 // ─── OUR WORK PAGE ────────────────────────────────────────────────────────────
 
