@@ -3,6 +3,38 @@ import { useState, useEffect } from "react";
 import lumaLogoColor from "@/assets/luma-logo-color.png.asset.json";
 import lumaLogoLight from "@/assets/luma-logo-light.png.asset.json";
 
+// ─── EMAIL / FORM DELIVERY ────────────────────────────────────────────────────
+// All form submissions are delivered to this address via formsubmit.co (no signup needed).
+// The very first submission will trigger a one-time confirmation email — open it and click
+// "Confirm" so future submissions land directly in the inbox.
+export const LUMA_EMAIL = "luma.nigeria@gmail.com";
+
+export const submitToEmail = async (formType, data) => {
+  try {
+    const fd = new FormData();
+    fd.append("_subject", `[LUMA Website] ${formType}`);
+    fd.append("_template", "table");
+    fd.append("_captcha", "false");
+    fd.append("Form Type", formType);
+    fd.append("Submitted At", new Date().toLocaleString());
+    Object.entries(data).forEach(([k, v]) => {
+      if (v !== undefined && v !== null && String(v).trim() !== "") {
+        fd.append(k, String(v));
+      }
+    });
+    const res = await fetch(`https://formsubmit.co/ajax/${LUMA_EMAIL}`, {
+      method: "POST",
+      headers: { Accept: "application/json" },
+      body: fd,
+    });
+    return res.ok;
+  } catch (e) {
+    console.error("LUMA form submission failed", e);
+    return false;
+  }
+};
+
+
 // ─── STORY DATA ───────────────────────────────────────────────────────────────
 
 export const STORIES = [
@@ -341,7 +373,7 @@ export const Footer = ({ t, setPage }) => {
           </div>
           {col("Navigate", [["About LUMA", () => setPage("about")], ["Our Work", () => setPage("work")], ["Campus Truth Series", () => setPage("truth")], ["The Peer Circle", () => setPage("circle")], ["Advocacy", () => setPage("advocacy")], ["Resources", () => setPage("resources")], ["Games", () => setPage("games")]])}
           {col("Get Involved", [["Join The Peer Circle", () => setPage("circle")], ["Become an Ambassador", () => setPage("involve")], ["Volunteer", () => setPage("involve")], ["Partner with LUMA", () => setPage("contact")]])}
-          {col("Connect", [["Instagram", () => window.open("https://instagram.com/luma_ng", "_blank")], ["X (Twitter)", () => window.open("https://twitter.com/luma_ng", "_blank")], ["LinkedIn", () => window.open("https://linkedin.com/company/luma_ng", "_blank")], ["hello@luma.org.ng", () => window.location.href = "mailto:hello@luma.org.ng"]])}
+          {col("Connect", [["Instagram", () => window.open("https://instagram.com/luma_ng", "_blank")], ["X (Twitter)", () => window.open("https://twitter.com/luma_ng", "_blank")], ["LinkedIn", () => window.open("https://linkedin.com/company/luma_ng", "_blank")], [LUMA_EMAIL, () => window.location.href = `mailto:${LUMA_EMAIL}`]])}
         </div>
         <div style={{ borderTop: "1px solid rgba(247,243,236,0.1)", paddingTop: 24, display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: 12 }}>
           <span style={{ color: "rgba(247,243,236,0.4)", fontSize: 12, fontFamily: "'DM Sans',sans-serif" }}>© 2026 LUMA. A youth-led digital organisation registered in Nigeria.</span>
@@ -692,19 +724,45 @@ export const TruthPage = ({ t, setPage, setStoryId }) => (
 
 // ─── PEER CIRCLE PAGE ─────────────────────────────────────────────────────────
 
+const YEAR_OPTIONS = ["100 Level / First Year", "200 Level / Second Year", "300 Level / Third Year", "400 Level / Fourth Year", "500 Level / Fifth Year", "Final Year (other)", "Postgraduate", "Prefer not to say"];
+
 export const CirclePage = ({ t }) => {
-  const [form, setForm] = useState({ username: "", email: "", password: "" });
+  const [form, setForm] = useState({ displayName: "", email: "", university: "", year: "", notes: "" });
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+
+  // Story submission state
+  const [story, setStory] = useState({ identification: "Anonymous — my name will not appear anywhere on the story", chosenName: "", email: "", university: "", story: "", instructions: "" });
+  const [storySent, setStorySent] = useState(false);
+  const [storySending, setStorySending] = useState(false);
 
   const handleSubmit = async () => {
-    if (!form.username || !form.email) return;
-    try {
-      await fetch("https://formspree.io/f/xpwzqkgd", {
-        method: "POST", headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ _subject: "New Peer Circle Application", ...form })
-      });
-    } catch {}
+    if (!form.displayName || !form.email || !form.university || !form.year) return;
+    setSending(true);
+    await submitToEmail("Peer Circle Application", {
+      "Display Name": form.displayName,
+      "Email (for recovery)": form.email,
+      "University": form.university,
+      "Year": form.year,
+      "Notes": form.notes || "(none)",
+    });
+    setSending(false);
     setSubmitted(true);
+  };
+
+  const handleStory = async () => {
+    if (!story.email || !story.story) return;
+    setStorySending(true);
+    await submitToEmail("Voices From Campus — Story Submission", {
+      "Identification": story.identification,
+      "Name / Chosen Name": story.chosenName || "(not provided)",
+      "Email": story.email,
+      "University": story.university || "(not provided)",
+      "Story": story.story,
+      "Handling Instructions": story.instructions || "(none)",
+    });
+    setStorySending(false);
+    setStorySent(true);
   };
 
   const s = {
@@ -714,6 +772,8 @@ export const CirclePage = ({ t }) => {
     sectionAlt: { padding: "80px 32px", background: t.isDark ? t.surface : t.accentLight },
     h2: { fontFamily: "'Space Grotesk',sans-serif", fontSize: "clamp(26px,3.5vw,42px)", fontWeight: 800, color: t.text, lineHeight: 1.2, marginBottom: 20 },
     body: { fontFamily: "'DM Sans',sans-serif", fontSize: 17, color: t.textMuted, lineHeight: 1.8, marginBottom: 16 },
+    darkInput: { background: "rgba(255,255,255,0.08)", color: t.ivory, borderColor: "rgba(247,243,236,0.2)" },
+    darkLabel: { fontFamily: "'DM Sans',sans-serif", fontSize: 13, color: "rgba(247,243,236,0.7)", marginBottom: 6, display: "block" },
   };
 
   return (
@@ -757,22 +817,60 @@ export const CirclePage = ({ t }) => {
         </div>
       </section>
 
+      {/* APPLY TO JOIN */}
       <section style={{ background: t.primary, padding: "80px 32px" }}>
-        <div style={{ maxWidth: 540, margin: "0 auto" }}>
+        <div style={{ maxWidth: 600, margin: "0 auto" }}>
           <SectionLabel t={t}>Apply to Join</SectionLabel>
           <h2 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: "clamp(26px,4vw,40px)", fontWeight: 800, color: t.ivory, marginBottom: 12 }}>Ready to join The Peer Circle?</h2>
-          <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 15, color: "rgba(247,243,236,0.65)", lineHeight: 1.7, marginBottom: 32 }}>Your identity will not be shared. We only ask for an email for account recovery. You choose your display name.</p>
+          <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 15, color: "rgba(247,243,236,0.65)", lineHeight: 1.7, marginBottom: 32 }}>Your identity will not be shared with anyone. We only ask for an email address for account recovery. You choose your own display name and we will never ask you to reveal your real name. All applications are reviewed personally by the LUMA team.</p>
           {submitted ? (
             <div style={{ background: "rgba(247,243,236,0.12)", border: "1px solid rgba(247,243,236,0.25)", borderRadius: 12, padding: "24px 28px" }}>
               <p style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 16, color: t.ivory, fontWeight: 600 }}>Application received.</p>
-              <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 15, color: "rgba(247,243,236,0.7)", marginTop: 8, lineHeight: 1.6 }}>We will be in touch within 48 hours. Welcome to LUMA.</p>
+              <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 15, color: "rgba(247,243,236,0.7)", marginTop: 8, lineHeight: 1.6 }}>We will review it personally and be in touch within 48 hours. You do not need to do anything else. Welcome to LUMA.</p>
             </div>
           ) : (
             <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
-              <Input t={{ ...t, surface: "rgba(255,255,255,0.1)", borderColor: "rgba(247,243,236,0.2)" }} placeholder="Choose a display name (not your real name)" value={form.username} onChange={e => setForm({...form, username: e.target.value})} style={{ background: "rgba(255,255,255,0.08)", color: t.ivory, borderColor: "rgba(247,243,236,0.2)" }} />
-              <Input t={t} placeholder="Email (for account recovery only, never displayed)" type="email" value={form.email} onChange={e => setForm({...form, email: e.target.value})} style={{ background: "rgba(255,255,255,0.08)", color: t.ivory, borderColor: "rgba(247,243,236,0.2)" }} />
-              <Input t={t} placeholder="Choose a password" type="password" value={form.password} onChange={e => setForm({...form, password: e.target.value})} style={{ background: "rgba(255,255,255,0.08)", color: t.ivory, borderColor: "rgba(247,243,236,0.2)" }} />
-              <Btn t={t} variant="light" onClick={handleSubmit} style={{ width: "100%", textAlign: "center" }}>Apply to Join</Btn>
+              <Input t={t} placeholder="Pick a name for the community (not your real name)" value={form.displayName} onChange={e => setForm({...form, displayName: e.target.value})} style={s.darkInput} />
+              <Input t={t} type="email" placeholder="your@email.com" value={form.email} onChange={e => setForm({...form, email: e.target.value})} style={s.darkInput} />
+              <Input t={t} placeholder="Name of your university" value={form.university} onChange={e => setForm({...form, university: e.target.value})} style={s.darkInput} />
+              <select value={form.year} onChange={e => setForm({...form, year: e.target.value})} style={{ width: "100%", padding: "13px 16px", borderRadius: 10, border: "1.5px solid rgba(247,243,236,0.2)", background: "rgba(255,255,255,0.08)", color: form.year ? t.ivory : "rgba(247,243,236,0.5)", fontFamily: "'DM Sans',sans-serif", fontSize: 15, outline: "none", boxSizing: "border-box", cursor: "pointer" }}>
+                <option value="" style={{ color: "#222" }}>Select your year...</option>
+                {YEAR_OPTIONS.map(y => <option key={y} value={y} style={{ color: "#222" }}>{y}</option>)}
+              </select>
+              <textarea placeholder="Is there anything you would like us to know before you join? This is completely optional. Share as much or as little as you want." value={form.notes} onChange={e => setForm({...form, notes: e.target.value})} rows={4} style={{ width: "100%", padding: "13px 16px", borderRadius: 10, border: "1.5px solid rgba(247,243,236,0.2)", background: "rgba(255,255,255,0.08)", color: t.ivory, fontFamily: "'DM Sans',sans-serif", fontSize: 15, outline: "none", boxSizing: "border-box", resize: "vertical" }} />
+              <Btn t={t} variant="light" onClick={handleSubmit} style={{ width: "100%", textAlign: "center", opacity: sending ? 0.6 : 1 }}>{sending ? "Sending..." : "Apply to Join"}</Btn>
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* VOICES FROM CAMPUS — STORY SUBMISSION */}
+      <section style={{ background: t.bg, padding: "80px 32px" }}>
+        <div style={{ maxWidth: 700, margin: "0 auto" }}>
+          <SectionLabel t={t}>Voices From Campus</SectionLabel>
+          <h2 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: "clamp(26px,4vw,40px)", fontWeight: 800, color: t.text, marginBottom: 12 }}>Share your story</h2>
+          <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 16, color: t.textMuted, lineHeight: 1.75, marginBottom: 28 }}>Your story belongs to you. We will never publish it without sending it back to you first. You can share anonymously or with your name. You can share as much or as little as you want. There is no wrong way to do this.</p>
+          {storySent ? (
+            <FormSuccess t={t} message="Story received. Thank you for trusting LUMA with this. We will read it carefully and send you a review copy before anything is published. You will have the final say on everything." />
+          ) : (
+            <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+              <div>
+                <label style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 13, color: t.textMuted, marginBottom: 10, display: "block", fontWeight: 600 }}>How would you like to be identified?</label>
+                {["Anonymous — my name will not appear anywhere on the story", "Use a chosen name — I will pick a name that is not my real name", "Use my real name — I am happy for my name to appear on the story"].map(opt => (
+                  <label key={opt} style={{ display: "flex", alignItems: "flex-start", gap: 10, padding: "10px 12px", marginBottom: 6, borderRadius: 8, border: `1px solid ${story.identification === opt ? t.accent : t.borderColor}`, background: story.identification === opt ? t.accentLight : "transparent", cursor: "pointer", fontFamily: "'DM Sans',sans-serif", fontSize: 14, color: t.text, lineHeight: 1.5 }}>
+                    <input type="radio" name="story-id" checked={story.identification === opt} onChange={() => setStory({...story, identification: opt})} style={{ marginTop: 3 }} />
+                    <span>{opt}</span>
+                  </label>
+                ))}
+              </div>
+              {story.identification.startsWith("Use") && (
+                <Input t={t} placeholder="The name you want to appear on your story" value={story.chosenName} onChange={e => setStory({...story, chosenName: e.target.value})} />
+              )}
+              <Input t={t} type="email" placeholder="your@email.com (so we can send the review copy)" value={story.email} onChange={e => setStory({...story, email: e.target.value})} />
+              <Input t={t} placeholder="Your university (optional)" value={story.university} onChange={e => setStory({...story, university: e.target.value})} />
+              <Textarea t={t} placeholder="Write as much or as little as you want. There is no minimum or maximum." value={story.story} onChange={e => setStory({...story, story: e.target.value})} rows={8} />
+              <Textarea t={t} placeholder="Any instructions or requests you have for the LUMA team... (optional)" value={story.instructions} onChange={e => setStory({...story, instructions: e.target.value})} rows={3} />
+              <Btn t={t} variant="primary" onClick={handleStory} style={{ opacity: storySending ? 0.6 : 1 }}>{storySending ? "Sending..." : "Submit My Story"}</Btn>
             </div>
           )}
         </div>
@@ -780,6 +878,7 @@ export const CirclePage = ({ t }) => {
     </div>
   );
 };
+
 
 // ─── OUR WORK PAGE ────────────────────────────────────────────────────────────
 
@@ -900,17 +999,25 @@ export const ResourcesPage = ({ t }) => (
 // ─── GET INVOLVED PAGE ────────────────────────────────────────────────────────
 
 export const InvolvePage = ({ t, setPage }) => {
-  const [ambForm, setAmbForm] = useState({ name: "", email: "", university: "", why: "" });
+  const [ambForm, setAmbForm] = useState({ name: "", email: "", phone: "", university: "", year: "", course: "", why: "", firstMonth: "", experience: "" });
   const [ambSent, setAmbSent] = useState(false);
+  const [ambSending, setAmbSending] = useState(false);
 
   const handleAmb = async () => {
-    if (!ambForm.name || !ambForm.email) return;
-    try {
-      await fetch("https://formspree.io/f/xpwzqkgd", {
-        method: "POST", headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ _subject: "Ambassador Application", ...ambForm })
-      });
-    } catch {}
+    if (!ambForm.name || !ambForm.email || !ambForm.university || !ambForm.year || !ambForm.why || !ambForm.firstMonth) return;
+    setAmbSending(true);
+    await submitToEmail("Campus Ambassador Application", {
+      "Full Name": ambForm.name,
+      "Email": ambForm.email,
+      "Phone (WhatsApp)": ambForm.phone || "(not provided)",
+      "University": ambForm.university,
+      "Year": ambForm.year,
+      "Course of Study": ambForm.course || "(not provided)",
+      "Why be a LUMA ambassador": ambForm.why,
+      "First month plan": ambForm.firstMonth,
+      "Prior experience": ambForm.experience || "(none stated)",
+    });
+    setAmbSending(false);
     setAmbSent(true);
   };
 
@@ -946,14 +1053,28 @@ export const InvolvePage = ({ t, setPage }) => {
           <div id="amb-form" style={{ marginTop: 80 }}>
             <SectionLabel t={t}>Ambassador Programme</SectionLabel>
             <h2 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: "clamp(26px,3.5vw,42px)", fontWeight: 800, color: t.text, marginBottom: 16 }}>Be the first LUMA presence on your campus</h2>
-            <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 17, color: t.textMuted, lineHeight: 1.8, maxWidth: 640, marginBottom: 40 }}>LUMA's Campus Ambassador Programme is looking for undergraduate and postgraduate students across Nigerian universities who want to be the bridge between LUMA and their campus community. No prior HIV advocacy experience required.</p>
-            {ambSent ? <FormSuccess t={t} message="Application received. We will be in touch within five working days. Thank you." /> : (
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: 16, maxWidth: 700 }}>
+            <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 17, color: t.textMuted, lineHeight: 1.8, maxWidth: 640, marginBottom: 40 }}>No prior HIV advocacy experience required. Just a belief that every student deserves better information, better policy, and better community. Tell us about yourself and why you want to bring LUMA to your campus.</p>
+            {ambSent ? <FormSuccess t={t} message="Application received. We are excited that you want to bring LUMA to your campus. We will review your application and be in touch within five working days." /> : (
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: 16, maxWidth: 760 }}>
                 <Input t={t} placeholder="Your full name" value={ambForm.name} onChange={e => setAmbForm({...ambForm, name: e.target.value})} />
-                <Input t={t} placeholder="Your email" type="email" value={ambForm.email} onChange={e => setAmbForm({...ambForm, email: e.target.value})} />
-                <Input t={t} placeholder="Your university" value={ambForm.university} onChange={e => setAmbForm({...ambForm, university: e.target.value})} style={{ gridColumn: "1 / -1" }} />
-                <Textarea t={t} placeholder="Why do you want to be a LUMA campus ambassador? (2 to 3 sentences)" value={ambForm.why} onChange={e => setAmbForm({...ambForm, why: e.target.value})} rows={4} />
-                <div style={{ gridColumn: "1 / -1" }}><Btn t={t} variant="primary" onClick={handleAmb}>Submit Application</Btn></div>
+                <Input t={t} type="email" placeholder="your@email.com" value={ambForm.email} onChange={e => setAmbForm({...ambForm, email: e.target.value})} />
+                <Input t={t} placeholder="Your WhatsApp number (optional)" value={ambForm.phone} onChange={e => setAmbForm({...ambForm, phone: e.target.value})} />
+                <Input t={t} placeholder="Name of your university" value={ambForm.university} onChange={e => setAmbForm({...ambForm, university: e.target.value})} />
+                <Select t={t} value={ambForm.year} onChange={e => setAmbForm({...ambForm, year: e.target.value})}>
+                  <option value="">Select your year...</option>
+                  {YEAR_OPTIONS.filter(y => y !== "Prefer not to say").map(y => <option key={y} value={y}>{y}</option>)}
+                </Select>
+                <Input t={t} placeholder="e.g. Medicine, Computer Science, Law... (optional)" value={ambForm.course} onChange={e => setAmbForm({...ambForm, course: e.target.value})} />
+                <div style={{ gridColumn: "1 / -1" }}>
+                  <Textarea t={t} placeholder="Why do you want to be a LUMA campus ambassador? Tell us in 2 to 4 sentences why this matters to you..." value={ambForm.why} onChange={e => setAmbForm({...ambForm, why: e.target.value})} rows={4} />
+                </div>
+                <div style={{ gridColumn: "1 / -1" }}>
+                  <Textarea t={t} placeholder="What would you do in your first month as a LUMA ambassador on your campus? Describe one or two concrete things you would do..." value={ambForm.firstMonth} onChange={e => setAmbForm({...ambForm, firstMonth: e.target.value})} rows={4} />
+                </div>
+                <div style={{ gridColumn: "1 / -1" }}>
+                  <Textarea t={t} placeholder="Do you have any experience with student activism, health advocacy, or community organising? Share anything relevant. No experience is also a valid answer. (optional)" value={ambForm.experience} onChange={e => setAmbForm({...ambForm, experience: e.target.value})} rows={3} />
+                </div>
+                <div style={{ gridColumn: "1 / -1" }}><Btn t={t} variant="primary" onClick={handleAmb} style={{ opacity: ambSending ? 0.6 : 1 }}>{ambSending ? "Sending..." : "Submit Application"}</Btn></div>
               </div>
             )}
           </div>
@@ -966,24 +1087,39 @@ export const InvolvePage = ({ t, setPage }) => {
 // ─── CONTACT PAGE ────────────────────────────────────────────────────────────
 
 export const ContactPage = ({ t, preSubject = "" }) => {
-  const [form, setForm] = useState({ name: "", email: "", subject: preSubject || "General Enquiry", message: "" });
-  const [anonForm, setAnonForm] = useState({ subject: "General Enquiry", message: "" });
+  const subjects = ["General Enquiry", "Partnership Enquiry", "Submit a Myth", "Campus Ambassador Application", "Media and Press", "Research Collaboration", "Donor or Funding Enquiry", "Other"];
+  const anonSubjects = ["General Question", "Submit a Myth", "Peer Circle Enquiry", "Campus Situation", "Research or Data", "Other"];
+
+  const [form, setForm] = useState({ name: "", email: "", subject: preSubject || subjects[0], message: "" });
+  const [anonForm, setAnonForm] = useState({ subject: anonSubjects[0], message: "" });
   const [sent, setSent] = useState(false);
   const [anonSent, setAnonSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [anonSending, setAnonSending] = useState(false);
 
   const handleSend = async () => {
-    if (!form.email || !form.message) return;
-    try { await fetch("https://formspree.io/f/xpwzqkgd", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ _subject: form.subject, ...form }) }); } catch {}
+    if (!form.email || !form.message || form.message.trim().length < 20) return;
+    setSending(true);
+    await submitToEmail(`Contact — ${form.subject}`, {
+      "Name": form.name || "(not provided)",
+      "Email": form.email,
+      "Subject": form.subject,
+      "Message": form.message,
+    });
+    setSending(false);
     setSent(true);
   };
 
   const handleAnon = async () => {
-    if (!anonForm.message) return;
-    try { await fetch("https://formspree.io/f/xpwzqkgd", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ _subject: "[ANONYMOUS] " + anonForm.subject, message: anonForm.message }) }); } catch {}
+    if (!anonForm.message || anonForm.message.trim().length < 10) return;
+    setAnonSending(true);
+    await submitToEmail(`ANONYMOUS — ${anonForm.subject}`, {
+      "Subject": anonForm.subject,
+      "Message": anonForm.message,
+    });
+    setAnonSending(false);
     setAnonSent(true);
   };
-
-  const subjects = ["General Enquiry", "Partnership Enquiry", "Submit a Myth", "Campus Ambassador Application", "Media and Press", "Research Collaboration", "Other"];
 
   return (
     <div>
@@ -991,7 +1127,7 @@ export const ContactPage = ({ t, preSubject = "" }) => {
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
           <Tag t={t} light>Contact</Tag>
           <h1 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: "clamp(36px,5vw,64px)", fontWeight: 800, color: t.ivory, lineHeight: 1.1, marginTop: 16 }}>We are here. Talk to us.</h1>
-          <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 18, color: "rgba(247,243,236,0.7)", lineHeight: 1.7, maxWidth: 520, marginTop: 16 }}>Whether you have a question, a collaboration idea, a myth to submit, or just need to reach someone who gets it.</p>
+          <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 18, color: "rgba(247,243,236,0.7)", lineHeight: 1.7, maxWidth: 560, marginTop: 16 }}>Whether you have a question, a collaboration idea, a myth to submit, or just need to reach someone who gets it, we want to hear from you. We read every message and respond to everything. Give us up to 48 hours.</p>
         </div>
       </div>
       <section style={{ padding: "80px 32px", background: t.bg }}>
@@ -999,30 +1135,30 @@ export const ContactPage = ({ t, preSubject = "" }) => {
           <div>
             <SectionLabel t={t}>Send a Message</SectionLabel>
             <h2 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 26, fontWeight: 700, color: t.text, marginBottom: 28 }}>General contact</h2>
-            {sent ? <FormSuccess t={t} message="Message sent. We read everything and respond within 48 hours." /> : (
+            {sent ? <FormSuccess t={t} message="Message sent. We read everything and we will be in touch within 48 hours. Thank you for reaching out to LUMA." /> : (
               <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
                 <Input t={t} placeholder="Your name (optional)" value={form.name} onChange={e => setForm({...form, name: e.target.value})} />
-                <Input t={t} placeholder="Your email" type="email" value={form.email} onChange={e => setForm({...form, email: e.target.value})} />
-                <Select t={t} value={form.subject} onChange={e => setForm({...form, subject: e.target.value})}>{subjects.map(s => <option key={s}>{s}</option>)}</Select>
-                <Textarea t={t} placeholder="Your message" value={form.message} onChange={e => setForm({...form, message: e.target.value})} />
-                <Btn t={t} variant="primary" onClick={handleSend}>Send Message</Btn>
+                <Input t={t} type="email" placeholder="your@email.com" value={form.email} onChange={e => setForm({...form, email: e.target.value})} />
+                <Select t={t} value={form.subject} onChange={e => setForm({...form, subject: e.target.value})}>{subjects.map(s => <option key={s} value={s}>{s}</option>)}</Select>
+                <Textarea t={t} placeholder="Tell us what is on your mind... (minimum 20 characters)" value={form.message} onChange={e => setForm({...form, message: e.target.value})} />
+                <Btn t={t} variant="primary" onClick={handleSend} style={{ opacity: sending ? 0.6 : 1 }}>{sending ? "Sending..." : "Send Message"}</Btn>
               </div>
             )}
           </div>
           <div>
             <SectionLabel t={t}>Stay Anonymous</SectionLabel>
             <h2 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 26, fontWeight: 700, color: t.text, marginBottom: 16 }}>Anonymous message</h2>
-            <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 15, color: t.textMuted, lineHeight: 1.7, marginBottom: 24 }}>Your identity will not be recorded. Use this if you need to reach us without identifying yourself.</p>
-            {anonSent ? <FormSuccess t={t} message="Anonymous message received. Thank you for reaching out." /> : (
+            <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 15, color: t.textMuted, lineHeight: 1.7, marginBottom: 24 }}>Your identity will not be recorded. Use this form if you need to reach us without identifying yourself. No name. No email. Just your message.</p>
+            {anonSent ? <FormSuccess t={t} message="Anonymous message received. Thank you for trusting us with this. We will read it carefully." /> : (
               <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
-                <Select t={t} value={anonForm.subject} onChange={e => setAnonForm({...anonForm, subject: e.target.value})}>{subjects.map(s => <option key={s}>{s}</option>)}</Select>
-                <Textarea t={t} placeholder="Your message" value={anonForm.message} onChange={e => setAnonForm({...anonForm, message: e.target.value})} />
-                <Btn t={t} variant="secondary" onClick={handleAnon}>Send Anonymously</Btn>
+                <Select t={t} value={anonForm.subject} onChange={e => setAnonForm({...anonForm, subject: e.target.value})}>{anonSubjects.map(s => <option key={s} value={s}>{s}</option>)}</Select>
+                <Textarea t={t} placeholder="Type your message here. You do not need to identify yourself. (minimum 10 characters)" value={anonForm.message} onChange={e => setAnonForm({...anonForm, message: e.target.value})} />
+                <Btn t={t} variant="secondary" onClick={handleAnon} style={{ opacity: anonSending ? 0.6 : 1 }}>{anonSending ? "Sending..." : "Send Anonymously"}</Btn>
               </div>
             )}
             <div style={{ marginTop: 40, paddingTop: 32, borderTop: `1px solid ${t.borderColor}` }}>
               <p style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 11, fontWeight: 700, color: t.accent, letterSpacing: "1px", textTransform: "uppercase", marginBottom: 12 }}>Direct Contact</p>
-              <a href="mailto:hello@luma.org.ng" style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 16, color: t.text, display: "block", marginBottom: 8 }}>hello@luma.org.ng</a>
+              <a href={`mailto:${LUMA_EMAIL}`} style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 16, color: t.text, display: "block", marginBottom: 8 }}>{LUMA_EMAIL}</a>
               <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 14, color: t.textMuted, lineHeight: 1.7 }}>We read every message and respond to everything. Give us up to 48 hours.</p>
             </div>
           </div>
@@ -1031,6 +1167,7 @@ export const ContactPage = ({ t, preSubject = "" }) => {
     </div>
   );
 };
+
 
 
 // ─── GAME DATA ────────────────────────────────────────────────────────────────
