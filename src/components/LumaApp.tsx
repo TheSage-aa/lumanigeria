@@ -3,6 +3,38 @@ import { useState, useEffect } from "react";
 import lumaLogoColor from "@/assets/luma-logo-color.png.asset.json";
 import lumaLogoLight from "@/assets/luma-logo-light.png.asset.json";
 
+// ─── EMAIL / FORM DELIVERY ────────────────────────────────────────────────────
+// All form submissions are delivered to this address via formsubmit.co (no signup needed).
+// The very first submission will trigger a one-time confirmation email — open it and click
+// "Confirm" so future submissions land directly in the inbox.
+export const LUMA_EMAIL = "luma.nigeria@gmail.com";
+
+export const submitToEmail = async (formType, data) => {
+  try {
+    const fd = new FormData();
+    fd.append("_subject", `[LUMA Website] ${formType}`);
+    fd.append("_template", "table");
+    fd.append("_captcha", "false");
+    fd.append("Form Type", formType);
+    fd.append("Submitted At", new Date().toLocaleString());
+    Object.entries(data).forEach(([k, v]) => {
+      if (v !== undefined && v !== null && String(v).trim() !== "") {
+        fd.append(k, String(v));
+      }
+    });
+    const res = await fetch(`https://formsubmit.co/ajax/${LUMA_EMAIL}`, {
+      method: "POST",
+      headers: { Accept: "application/json" },
+      body: fd,
+    });
+    return res.ok;
+  } catch (e) {
+    console.error("LUMA form submission failed", e);
+    return false;
+  }
+};
+
+
 // ─── STORY DATA ───────────────────────────────────────────────────────────────
 
 export const STORIES = [
@@ -341,7 +373,7 @@ export const Footer = ({ t, setPage }) => {
           </div>
           {col("Navigate", [["About LUMA", () => setPage("about")], ["Our Work", () => setPage("work")], ["Campus Truth Series", () => setPage("truth")], ["The Peer Circle", () => setPage("circle")], ["Advocacy", () => setPage("advocacy")], ["Resources", () => setPage("resources")], ["Games", () => setPage("games")]])}
           {col("Get Involved", [["Join The Peer Circle", () => setPage("circle")], ["Become an Ambassador", () => setPage("involve")], ["Volunteer", () => setPage("involve")], ["Partner with LUMA", () => setPage("contact")]])}
-          {col("Connect", [["Instagram", () => window.open("https://instagram.com/luma_ng", "_blank")], ["X (Twitter)", () => window.open("https://twitter.com/luma_ng", "_blank")], ["LinkedIn", () => window.open("https://linkedin.com/company/luma_ng", "_blank")], ["hello@luma.org.ng", () => window.location.href = "mailto:hello@luma.org.ng"]])}
+          {col("Connect", [["Instagram", () => window.open("https://instagram.com/luma_ng", "_blank")], ["X (Twitter)", () => window.open("https://twitter.com/luma_ng", "_blank")], ["LinkedIn", () => window.open("https://linkedin.com/company/luma_ng", "_blank")], [LUMA_EMAIL, () => window.location.href = `mailto:${LUMA_EMAIL}`]])}
         </div>
         <div style={{ borderTop: "1px solid rgba(247,243,236,0.1)", paddingTop: 24, display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: 12 }}>
           <span style={{ color: "rgba(247,243,236,0.4)", fontSize: 12, fontFamily: "'DM Sans',sans-serif" }}>© 2026 LUMA. A youth-led digital organisation registered in Nigeria.</span>
