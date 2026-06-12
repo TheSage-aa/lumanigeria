@@ -999,17 +999,25 @@ export const ResourcesPage = ({ t }) => (
 // ─── GET INVOLVED PAGE ────────────────────────────────────────────────────────
 
 export const InvolvePage = ({ t, setPage }) => {
-  const [ambForm, setAmbForm] = useState({ name: "", email: "", university: "", why: "" });
+  const [ambForm, setAmbForm] = useState({ name: "", email: "", phone: "", university: "", year: "", course: "", why: "", firstMonth: "", experience: "" });
   const [ambSent, setAmbSent] = useState(false);
+  const [ambSending, setAmbSending] = useState(false);
 
   const handleAmb = async () => {
-    if (!ambForm.name || !ambForm.email) return;
-    try {
-      await fetch("https://formspree.io/f/xpwzqkgd", {
-        method: "POST", headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ _subject: "Ambassador Application", ...ambForm })
-      });
-    } catch {}
+    if (!ambForm.name || !ambForm.email || !ambForm.university || !ambForm.year || !ambForm.why || !ambForm.firstMonth) return;
+    setAmbSending(true);
+    await submitToEmail("Campus Ambassador Application", {
+      "Full Name": ambForm.name,
+      "Email": ambForm.email,
+      "Phone (WhatsApp)": ambForm.phone || "(not provided)",
+      "University": ambForm.university,
+      "Year": ambForm.year,
+      "Course of Study": ambForm.course || "(not provided)",
+      "Why be a LUMA ambassador": ambForm.why,
+      "First month plan": ambForm.firstMonth,
+      "Prior experience": ambForm.experience || "(none stated)",
+    });
+    setAmbSending(false);
     setAmbSent(true);
   };
 
@@ -1045,14 +1053,28 @@ export const InvolvePage = ({ t, setPage }) => {
           <div id="amb-form" style={{ marginTop: 80 }}>
             <SectionLabel t={t}>Ambassador Programme</SectionLabel>
             <h2 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: "clamp(26px,3.5vw,42px)", fontWeight: 800, color: t.text, marginBottom: 16 }}>Be the first LUMA presence on your campus</h2>
-            <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 17, color: t.textMuted, lineHeight: 1.8, maxWidth: 640, marginBottom: 40 }}>LUMA's Campus Ambassador Programme is looking for undergraduate and postgraduate students across Nigerian universities who want to be the bridge between LUMA and their campus community. No prior HIV advocacy experience required.</p>
-            {ambSent ? <FormSuccess t={t} message="Application received. We will be in touch within five working days. Thank you." /> : (
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: 16, maxWidth: 700 }}>
+            <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 17, color: t.textMuted, lineHeight: 1.8, maxWidth: 640, marginBottom: 40 }}>No prior HIV advocacy experience required. Just a belief that every student deserves better information, better policy, and better community. Tell us about yourself and why you want to bring LUMA to your campus.</p>
+            {ambSent ? <FormSuccess t={t} message="Application received. We are excited that you want to bring LUMA to your campus. We will review your application and be in touch within five working days." /> : (
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: 16, maxWidth: 760 }}>
                 <Input t={t} placeholder="Your full name" value={ambForm.name} onChange={e => setAmbForm({...ambForm, name: e.target.value})} />
-                <Input t={t} placeholder="Your email" type="email" value={ambForm.email} onChange={e => setAmbForm({...ambForm, email: e.target.value})} />
-                <Input t={t} placeholder="Your university" value={ambForm.university} onChange={e => setAmbForm({...ambForm, university: e.target.value})} style={{ gridColumn: "1 / -1" }} />
-                <Textarea t={t} placeholder="Why do you want to be a LUMA campus ambassador? (2 to 3 sentences)" value={ambForm.why} onChange={e => setAmbForm({...ambForm, why: e.target.value})} rows={4} />
-                <div style={{ gridColumn: "1 / -1" }}><Btn t={t} variant="primary" onClick={handleAmb}>Submit Application</Btn></div>
+                <Input t={t} type="email" placeholder="your@email.com" value={ambForm.email} onChange={e => setAmbForm({...ambForm, email: e.target.value})} />
+                <Input t={t} placeholder="Your WhatsApp number (optional)" value={ambForm.phone} onChange={e => setAmbForm({...ambForm, phone: e.target.value})} />
+                <Input t={t} placeholder="Name of your university" value={ambForm.university} onChange={e => setAmbForm({...ambForm, university: e.target.value})} />
+                <Select t={t} value={ambForm.year} onChange={e => setAmbForm({...ambForm, year: e.target.value})}>
+                  <option value="">Select your year...</option>
+                  {YEAR_OPTIONS.filter(y => y !== "Prefer not to say").map(y => <option key={y} value={y}>{y}</option>)}
+                </Select>
+                <Input t={t} placeholder="e.g. Medicine, Computer Science, Law... (optional)" value={ambForm.course} onChange={e => setAmbForm({...ambForm, course: e.target.value})} />
+                <div style={{ gridColumn: "1 / -1" }}>
+                  <Textarea t={t} placeholder="Why do you want to be a LUMA campus ambassador? Tell us in 2 to 4 sentences why this matters to you..." value={ambForm.why} onChange={e => setAmbForm({...ambForm, why: e.target.value})} rows={4} />
+                </div>
+                <div style={{ gridColumn: "1 / -1" }}>
+                  <Textarea t={t} placeholder="What would you do in your first month as a LUMA ambassador on your campus? Describe one or two concrete things you would do..." value={ambForm.firstMonth} onChange={e => setAmbForm({...ambForm, firstMonth: e.target.value})} rows={4} />
+                </div>
+                <div style={{ gridColumn: "1 / -1" }}>
+                  <Textarea t={t} placeholder="Do you have any experience with student activism, health advocacy, or community organising? Share anything relevant. No experience is also a valid answer. (optional)" value={ambForm.experience} onChange={e => setAmbForm({...ambForm, experience: e.target.value})} rows={3} />
+                </div>
+                <div style={{ gridColumn: "1 / -1" }}><Btn t={t} variant="primary" onClick={handleAmb} style={{ opacity: ambSending ? 0.6 : 1 }}>{ambSending ? "Sending..." : "Submit Application"}</Btn></div>
               </div>
             )}
           </div>
@@ -1065,24 +1087,39 @@ export const InvolvePage = ({ t, setPage }) => {
 // ─── CONTACT PAGE ────────────────────────────────────────────────────────────
 
 export const ContactPage = ({ t, preSubject = "" }) => {
-  const [form, setForm] = useState({ name: "", email: "", subject: preSubject || "General Enquiry", message: "" });
-  const [anonForm, setAnonForm] = useState({ subject: "General Enquiry", message: "" });
+  const subjects = ["General Enquiry", "Partnership Enquiry", "Submit a Myth", "Campus Ambassador Application", "Media and Press", "Research Collaboration", "Donor or Funding Enquiry", "Other"];
+  const anonSubjects = ["General Question", "Submit a Myth", "Peer Circle Enquiry", "Campus Situation", "Research or Data", "Other"];
+
+  const [form, setForm] = useState({ name: "", email: "", subject: preSubject || subjects[0], message: "" });
+  const [anonForm, setAnonForm] = useState({ subject: anonSubjects[0], message: "" });
   const [sent, setSent] = useState(false);
   const [anonSent, setAnonSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [anonSending, setAnonSending] = useState(false);
 
   const handleSend = async () => {
-    if (!form.email || !form.message) return;
-    try { await fetch("https://formspree.io/f/xpwzqkgd", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ _subject: form.subject, ...form }) }); } catch {}
+    if (!form.email || !form.message || form.message.trim().length < 20) return;
+    setSending(true);
+    await submitToEmail(`Contact — ${form.subject}`, {
+      "Name": form.name || "(not provided)",
+      "Email": form.email,
+      "Subject": form.subject,
+      "Message": form.message,
+    });
+    setSending(false);
     setSent(true);
   };
 
   const handleAnon = async () => {
-    if (!anonForm.message) return;
-    try { await fetch("https://formspree.io/f/xpwzqkgd", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ _subject: "[ANONYMOUS] " + anonForm.subject, message: anonForm.message }) }); } catch {}
+    if (!anonForm.message || anonForm.message.trim().length < 10) return;
+    setAnonSending(true);
+    await submitToEmail(`ANONYMOUS — ${anonForm.subject}`, {
+      "Subject": anonForm.subject,
+      "Message": anonForm.message,
+    });
+    setAnonSending(false);
     setAnonSent(true);
   };
-
-  const subjects = ["General Enquiry", "Partnership Enquiry", "Submit a Myth", "Campus Ambassador Application", "Media and Press", "Research Collaboration", "Other"];
 
   return (
     <div>
@@ -1090,7 +1127,7 @@ export const ContactPage = ({ t, preSubject = "" }) => {
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
           <Tag t={t} light>Contact</Tag>
           <h1 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: "clamp(36px,5vw,64px)", fontWeight: 800, color: t.ivory, lineHeight: 1.1, marginTop: 16 }}>We are here. Talk to us.</h1>
-          <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 18, color: "rgba(247,243,236,0.7)", lineHeight: 1.7, maxWidth: 520, marginTop: 16 }}>Whether you have a question, a collaboration idea, a myth to submit, or just need to reach someone who gets it.</p>
+          <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 18, color: "rgba(247,243,236,0.7)", lineHeight: 1.7, maxWidth: 560, marginTop: 16 }}>Whether you have a question, a collaboration idea, a myth to submit, or just need to reach someone who gets it, we want to hear from you. We read every message and respond to everything. Give us up to 48 hours.</p>
         </div>
       </div>
       <section style={{ padding: "80px 32px", background: t.bg }}>
@@ -1098,30 +1135,30 @@ export const ContactPage = ({ t, preSubject = "" }) => {
           <div>
             <SectionLabel t={t}>Send a Message</SectionLabel>
             <h2 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 26, fontWeight: 700, color: t.text, marginBottom: 28 }}>General contact</h2>
-            {sent ? <FormSuccess t={t} message="Message sent. We read everything and respond within 48 hours." /> : (
+            {sent ? <FormSuccess t={t} message="Message sent. We read everything and we will be in touch within 48 hours. Thank you for reaching out to LUMA." /> : (
               <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
                 <Input t={t} placeholder="Your name (optional)" value={form.name} onChange={e => setForm({...form, name: e.target.value})} />
-                <Input t={t} placeholder="Your email" type="email" value={form.email} onChange={e => setForm({...form, email: e.target.value})} />
-                <Select t={t} value={form.subject} onChange={e => setForm({...form, subject: e.target.value})}>{subjects.map(s => <option key={s}>{s}</option>)}</Select>
-                <Textarea t={t} placeholder="Your message" value={form.message} onChange={e => setForm({...form, message: e.target.value})} />
-                <Btn t={t} variant="primary" onClick={handleSend}>Send Message</Btn>
+                <Input t={t} type="email" placeholder="your@email.com" value={form.email} onChange={e => setForm({...form, email: e.target.value})} />
+                <Select t={t} value={form.subject} onChange={e => setForm({...form, subject: e.target.value})}>{subjects.map(s => <option key={s} value={s}>{s}</option>)}</Select>
+                <Textarea t={t} placeholder="Tell us what is on your mind... (minimum 20 characters)" value={form.message} onChange={e => setForm({...form, message: e.target.value})} />
+                <Btn t={t} variant="primary" onClick={handleSend} style={{ opacity: sending ? 0.6 : 1 }}>{sending ? "Sending..." : "Send Message"}</Btn>
               </div>
             )}
           </div>
           <div>
             <SectionLabel t={t}>Stay Anonymous</SectionLabel>
             <h2 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 26, fontWeight: 700, color: t.text, marginBottom: 16 }}>Anonymous message</h2>
-            <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 15, color: t.textMuted, lineHeight: 1.7, marginBottom: 24 }}>Your identity will not be recorded. Use this if you need to reach us without identifying yourself.</p>
-            {anonSent ? <FormSuccess t={t} message="Anonymous message received. Thank you for reaching out." /> : (
+            <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 15, color: t.textMuted, lineHeight: 1.7, marginBottom: 24 }}>Your identity will not be recorded. Use this form if you need to reach us without identifying yourself. No name. No email. Just your message.</p>
+            {anonSent ? <FormSuccess t={t} message="Anonymous message received. Thank you for trusting us with this. We will read it carefully." /> : (
               <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
-                <Select t={t} value={anonForm.subject} onChange={e => setAnonForm({...anonForm, subject: e.target.value})}>{subjects.map(s => <option key={s}>{s}</option>)}</Select>
-                <Textarea t={t} placeholder="Your message" value={anonForm.message} onChange={e => setAnonForm({...anonForm, message: e.target.value})} />
-                <Btn t={t} variant="secondary" onClick={handleAnon}>Send Anonymously</Btn>
+                <Select t={t} value={anonForm.subject} onChange={e => setAnonForm({...anonForm, subject: e.target.value})}>{anonSubjects.map(s => <option key={s} value={s}>{s}</option>)}</Select>
+                <Textarea t={t} placeholder="Type your message here. You do not need to identify yourself. (minimum 10 characters)" value={anonForm.message} onChange={e => setAnonForm({...anonForm, message: e.target.value})} />
+                <Btn t={t} variant="secondary" onClick={handleAnon} style={{ opacity: anonSending ? 0.6 : 1 }}>{anonSending ? "Sending..." : "Send Anonymously"}</Btn>
               </div>
             )}
             <div style={{ marginTop: 40, paddingTop: 32, borderTop: `1px solid ${t.borderColor}` }}>
               <p style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 11, fontWeight: 700, color: t.accent, letterSpacing: "1px", textTransform: "uppercase", marginBottom: 12 }}>Direct Contact</p>
-              <a href="mailto:hello@luma.org.ng" style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 16, color: t.text, display: "block", marginBottom: 8 }}>hello@luma.org.ng</a>
+              <a href={`mailto:${LUMA_EMAIL}`} style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 16, color: t.text, display: "block", marginBottom: 8 }}>{LUMA_EMAIL}</a>
               <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 14, color: t.textMuted, lineHeight: 1.7 }}>We read every message and respond to everything. Give us up to 48 hours.</p>
             </div>
           </div>
@@ -1130,6 +1167,7 @@ export const ContactPage = ({ t, preSubject = "" }) => {
     </div>
   );
 };
+
 
 
 // ─── GAME DATA ────────────────────────────────────────────────────────────────
