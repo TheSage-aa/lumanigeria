@@ -536,8 +536,21 @@ export const HomePage = ({ t, setPage, setStoryId }) => {
         <div style={{ ...s.inner, textAlign: "center" }}>
           <SectionLabel t={t}>The Status Neutral Promise</SectionLabel>
           <p style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: "clamp(22px,3.5vw,44px)", fontWeight: 700, color: t.ivory, lineHeight: 1.3, maxWidth: 780, margin: "24px auto" }}>We do not separate the positive from the negative. We build one community.</p>
-          <p style={{ ...s.bodyLight, maxWidth: 640, margin: "0 auto 40px" }}>LUMA operates on the status neutral approach: the same information, the same care, and the same community for every student regardless of HIV status.</p>
+          <p style={{ ...s.bodyLight, maxWidth: 640, margin: "0 auto 16px" }}>LUMA operates on the status neutral approach: the same information, the same care, and the same community for every student regardless of HIV status.</p>
+          <p style={{ ...s.bodyLight, maxWidth: 640, margin: "0 auto 40px" }}>Whether you are accessing PrEP for prevention or adhering to ART for viral suppression, you are a crucial stakeholder of the exact same unified support circle.</p>
           <Btn t={t} variant="ghost" onClick={() => setPage("about")}>Read More About Our Approach</Btn>
+        </div>
+      </section>
+
+      <section style={s.sectionAlt}>
+        <div style={s.inner}>
+          <div style={{ maxWidth: 820, margin: "0 auto" }}>
+            <SectionLabel t={t}>Impact Study Highlight</SectionLabel>
+            <blockquote style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: "clamp(22px,3vw,36px)", fontWeight: 600, color: t.text, lineHeight: 1.35, margin: "24px 0 20px", borderLeft: `4px solid ${t.accent}`, paddingLeft: 24 }}>
+              "96.85% of university students show high knowledge of HIV facts, yet only 55.52% hold positive, non-stigmatising attitudes toward their peers."
+            </blockquote>
+            <p style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 12, fontWeight: 700, letterSpacing: "1.5px", color: t.accent, paddingLeft: 28 }}>SOURCE: CAMPUS TRUTH STIGMA POLL (JUNE 2026)</p>
+          </div>
         </div>
       </section>
 
