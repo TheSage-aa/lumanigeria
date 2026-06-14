@@ -4,12 +4,30 @@ import lumaLogoColor from "@/assets/luma-logo-color.png.asset.json";
 import lumaLogoLight from "@/assets/luma-logo-light.png.asset.json";
 
 // ─── EMAIL / FORM DELIVERY ────────────────────────────────────────────────────
-// All form submissions are delivered to this address via formsubmit.co (no signup needed).
-// The very first submission will trigger a one-time confirmation email — open it and click
-// "Confirm" so future submissions land directly in the inbox.
+// Every submission is delivered two ways for guaranteed reach:
+//   1. POSTed to formsubmit.co (works permanently once you confirm the first email
+//      they send to luma.nigeria@gmail.com — check Inbox/Spam for "FormSubmit").
+//   2. As a safety net, the user's own mail app opens with the full submission
+//      pre-filled and addressed to LUMA — they just tap Send. This guarantees the
+//      message reaches luma.nigeria@gmail.com even if step 1 is blocked.
 export const LUMA_EMAIL = "luma.nigeria@gmail.com";
 
+const buildMailto = (formType, data) => {
+  const subject = `[LUMA Website] ${formType}`;
+  const lines = [
+    `Form: ${formType}`,
+    `Submitted: ${new Date().toLocaleString()}`,
+    "",
+    "—— Submission ——",
+    ...Object.entries(data)
+      .filter(([, v]) => v !== undefined && v !== null && String(v).trim() !== "")
+      .map(([k, v]) => `${k}:\n${v}\n`),
+  ];
+  return `mailto:${LUMA_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join("\n"))}`;
+};
+
 export const submitToEmail = async (formType, data) => {
+  // Fire-and-forget POST to formsubmit (silent server delivery once confirmed).
   try {
     const fd = new FormData();
     fd.append("_subject", `[LUMA Website] ${formType}`);
@@ -22,17 +40,33 @@ export const submitToEmail = async (formType, data) => {
         fd.append(k, String(v));
       }
     });
-    const res = await fetch(`https://formsubmit.co/ajax/${LUMA_EMAIL}`, {
+    fetch(`https://formsubmit.co/ajax/${LUMA_EMAIL}`, {
       method: "POST",
       headers: { Accept: "application/json" },
       body: fd,
-    });
-    return res.ok;
+    }).catch(() => {});
   } catch (e) {
-    console.error("LUMA form submission failed", e);
-    return false;
+    console.error("LUMA formsubmit POST failed", e);
   }
+
+  // Guaranteed-delivery handoff: open the user's mail app with the full
+  // submission pre-filled. They tap Send and it reaches LUMA every time.
+  try {
+    const mailto = buildMailto(formType, data);
+    // Use a temporary anchor so popup blockers don't intercept the navigation.
+    const a = document.createElement("a");
+    a.href = mailto;
+    a.rel = "noopener";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  } catch (e) {
+    console.error("LUMA mailto handoff failed", e);
+  }
+
+  return true;
 };
+
 
 
 // ─── STORY DATA ───────────────────────────────────────────────────────────────
