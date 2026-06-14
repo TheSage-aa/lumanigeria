@@ -1006,6 +1006,63 @@ export const ResourcesPage = ({ t }) => (
         </div>
       </div>
     </section>
+
+    {/* POLICY SHIELD — Student Rights Handout */}
+    <section style={{ padding: "80px 32px", background: t.isDark ? t.surface : t.accentLight }}>
+      <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+        <SectionLabel t={t}>Policy Shield</SectionLabel>
+        <h2 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: "clamp(26px,3.5vw,42px)", fontWeight: 800, color: t.text, marginTop: 8, marginBottom: 12 }}>Student Rights Handout</h2>
+        <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 16, color: t.textMuted, lineHeight: 1.7, maxWidth: 640, marginBottom: 40 }}>What every Nigerian higher institution student is legally entitled to, summarised for quick reference.</p>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: 20 }}>
+          {[
+            ["1. Admission & Retention", "No higher institution in Nigeria (Federal, State, or Private) can deny you entry, suspend, or expel you because of a positive HIV classification. Retaliatory expulsions are unlawful under Section 21 of the HIV/AIDS Anti-Discrimination Act of 2014."],
+            ["2. Medical Confidentiality", "Your campus clinical records are strictly protected. Doctors, nurses, and lab scientists at your campus clinic are legally required to guard your diagnostic details. Leakages to lecturers, hostel wardens, or colleagues can result in licensing termination."],
+            ["3. Exam & Project Extensions", "If physical fatigue, clinical onboarding side-effects, or mental stress impact your exam schedules, you are entitled to seek official medical course extensions or temporary deferment through your department without disclosing private diagnoses publicly."],
+            ["4. Free Care Integration", "Under the 2026 National Health Guidelines, public and federal clinics must serve as cost-free distribution centres for antiretroviral therapy (ART), PrEP regimes, and standard viral count reviews. Any illegal levy demands should be logged with support groups."],
+          ].map(([title, body], i) => (
+            <Card key={i} t={t} style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+              <h3 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 18, fontWeight: 700, color: t.primary }}>{title}</h3>
+              <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 14, color: t.textMuted, lineHeight: 1.7 }}>{body}</p>
+            </Card>
+          ))}
+        </div>
+
+        <div style={{ marginTop: 40, padding: 32, background: t.card, border: `1px solid ${t.borderColor}`, borderLeft: `4px solid ${t.accent}`, borderRadius: "0 12px 12px 0" }}>
+          <h3 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 20, fontWeight: 700, color: t.text, marginBottom: 10 }}>How to Document Violations</h3>
+          <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 15, color: t.textMuted, lineHeight: 1.7, marginBottom: 16 }}>If you experience discrimination on campus, have had your medical privacy breached by health centre personnel, or have been threatened with disciplinary action due to status details, please compile:</p>
+          <ul style={{ paddingLeft: 20, marginBottom: 16, color: t.text, fontFamily: "'DM Sans',sans-serif", fontSize: 15, lineHeight: 1.9 }}>
+            <li><strong>Timestamps:</strong> The exact date, hour, and academic semester the exchange occurred.</li>
+            <li><strong>Witnesses:</strong> Students or coordinators who observed the discriminatory conversation.</li>
+            <li><strong>Written materials:</strong> Letters, text messages, status verification demands, or emails from administrative channels.</li>
+          </ul>
+          <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 13, color: t.textMuted }}>Submit confidentially to <strong style={{ color: t.accent }}>luma.nigeria@gmail.com</strong> to coordinate with the Legal Shield network.</p>
+        </div>
+      </div>
+    </section>
+
+    {/* HEALTH DIRECTORY */}
+    <section style={{ padding: "80px 32px", background: t.bg }}>
+      <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+        <SectionLabel t={t}>Find Care Near You</SectionLabel>
+        <h2 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: "clamp(26px,3.5vw,42px)", fontWeight: 800, color: t.text, marginTop: 8, marginBottom: 12 }}>National Health Directory</h2>
+        <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 16, color: t.textMuted, lineHeight: 1.7, maxWidth: 720, marginBottom: 40 }}>Registered and PEPFAR-funded medical institutions offering anonymous diagnostics, counselling, free antiretroviral therapy (ART) distribution, and PrEP prescriptions near major Nigerian university campuses.</p>
+        <div style={{ display: "grid", gap: 20 }}>
+          {[
+            { region: "KWARA STATE REGION (Near KWASU & UNILORIN)", name: "Kwara State University Health Centre & Referral Network", loc: "Malete, Kwara State", desc: "Confidential pre/post-test sessions and quick referral channels to General Hospital Ilorin for continuous antiretroviral regimen collection.", contact: "Care Desk Referral" },
+            { region: "LAGOS REGION (Near UNILAG & LASU)", name: "Lagos University Teaching Hospital (LUTH) — AIDS Care Unit", loc: "Idi-Araba, Surulere, Lagos", desc: "Primary regional resource with full viral load tracking equipment, status-neutral counselling circles, and PEP/PrEP medication reserves.", contact: "Special Care Desk A6" },
+            { region: "SOUTH-EAST REGION (Near EBSU, UNN & FUTO)", name: "Ebonyi State University Clinical Health Centre", loc: "Abakaliki Campus, Ebonyi State", desc: "Peer health initiatives and rapid screening tests. Directly integrated with PEPFAR advocacy pathways to support newly diagnosed young students.", contact: "Student Counsellor Unit" },
+          ].map((c, i) => (
+            <Card key={i} t={t} style={{ padding: 28 }}>
+              <p style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: "1.5px", color: t.accent, textTransform: "uppercase", marginBottom: 8 }}>{c.region}</p>
+              <h3 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 20, fontWeight: 700, color: t.text, marginBottom: 4 }}>{c.name}</h3>
+              <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 13, color: t.textMuted, marginBottom: 12 }}>{c.loc}</p>
+              <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 15, color: t.text, lineHeight: 1.7, marginBottom: 12 }}>{c.desc}</p>
+              <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 13, color: t.textMuted }}>Contact: <strong style={{ color: t.text }}>{c.contact}</strong></p>
+            </Card>
+          ))}
+        </div>
+      </div>
+    </section>
   </div>
 );
 
