@@ -19,7 +19,7 @@ import { Route as CircleRouteImport } from './routes/circle'
 import { Route as AdvocacyRouteImport } from './routes/advocacy'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as TruthStoryIdRouteImport } from './routes/truth.$storyId'
+import { Route as TruthStoryIdRouteImport } from './routes/truth_.$storyId'
 
 const WorkRoute = WorkRouteImport.update({
   id: '/work',
@@ -72,9 +72,9 @@ const IndexRoute = IndexRouteImport.update({
   getParentRoute: () => rootRouteImport,
 } as any)
 const TruthStoryIdRoute = TruthStoryIdRouteImport.update({
-  id: '/$storyId',
-  path: '/$storyId',
-  getParentRoute: () => TruthRoute,
+  id: '/truth_/$storyId',
+  path: '/truth/$storyId',
+  getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
@@ -86,7 +86,7 @@ export interface FileRoutesByFullPath {
   '/games': typeof GamesRoute
   '/involve': typeof InvolveRoute
   '/resources': typeof ResourcesRoute
-  '/truth': typeof TruthRouteWithChildren
+  '/truth': typeof TruthRoute
   '/work': typeof WorkRoute
   '/truth/$storyId': typeof TruthStoryIdRoute
 }
@@ -99,7 +99,7 @@ export interface FileRoutesByTo {
   '/games': typeof GamesRoute
   '/involve': typeof InvolveRoute
   '/resources': typeof ResourcesRoute
-  '/truth': typeof TruthRouteWithChildren
+  '/truth': typeof TruthRoute
   '/work': typeof WorkRoute
   '/truth/$storyId': typeof TruthStoryIdRoute
 }
@@ -113,9 +113,9 @@ export interface FileRoutesById {
   '/games': typeof GamesRoute
   '/involve': typeof InvolveRoute
   '/resources': typeof ResourcesRoute
-  '/truth': typeof TruthRouteWithChildren
+  '/truth': typeof TruthRoute
   '/work': typeof WorkRoute
-  '/truth/$storyId': typeof TruthStoryIdRoute
+  '/truth_/$storyId': typeof TruthStoryIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -156,7 +156,7 @@ export interface FileRouteTypes {
     | '/resources'
     | '/truth'
     | '/work'
-    | '/truth/$storyId'
+    | '/truth_/$storyId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -168,8 +168,9 @@ export interface RootRouteChildren {
   GamesRoute: typeof GamesRoute
   InvolveRoute: typeof InvolveRoute
   ResourcesRoute: typeof ResourcesRoute
-  TruthRoute: typeof TruthRouteWithChildren
+  TruthRoute: typeof TruthRoute
   WorkRoute: typeof WorkRoute
+  TruthStoryIdRoute: typeof TruthStoryIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -244,25 +245,15 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/truth/$storyId': {
-      id: '/truth/$storyId'
-      path: '/$storyId'
+    '/truth_/$storyId': {
+      id: '/truth_/$storyId'
+      path: '/truth/$storyId'
       fullPath: '/truth/$storyId'
       preLoaderRoute: typeof TruthStoryIdRouteImport
-      parentRoute: typeof TruthRoute
+      parentRoute: typeof rootRouteImport
     }
   }
 }
-
-interface TruthRouteChildren {
-  TruthStoryIdRoute: typeof TruthStoryIdRoute
-}
-
-const TruthRouteChildren: TruthRouteChildren = {
-  TruthStoryIdRoute: TruthStoryIdRoute,
-}
-
-const TruthRouteWithChildren = TruthRoute._addFileChildren(TruthRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
@@ -273,19 +264,10 @@ const rootRouteChildren: RootRouteChildren = {
   GamesRoute: GamesRoute,
   InvolveRoute: InvolveRoute,
   ResourcesRoute: ResourcesRoute,
-  TruthRoute: TruthRouteWithChildren,
+  TruthRoute: TruthRoute,
   WorkRoute: WorkRoute,
+  TruthStoryIdRoute: TruthStoryIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
