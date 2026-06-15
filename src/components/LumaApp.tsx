@@ -851,22 +851,37 @@ export const CirclePage = ({ t }) => {
         <div style={{ maxWidth: 600, margin: "0 auto" }}>
           <SectionLabel t={t}>Apply to Join</SectionLabel>
           <h2 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: "clamp(26px,4vw,40px)", fontWeight: 800, color: t.ivory, marginBottom: 12 }}>Ready to join The Peer Circle?</h2>
-          <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 15, color: "rgba(247,243,236,0.65)", lineHeight: 1.7, marginBottom: 32 }}>Your identity will not be shared with anyone. We only ask for an email address for account recovery. You choose your own display name and we will never ask you to reveal your real name. All applications are reviewed personally by the LUMA team.</p>
+          <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 14, fontStyle: "italic", color: "rgba(247,243,236,0.75)", lineHeight: 1.7, marginBottom: 32, padding: "12px 16px", background: "rgba(247,243,236,0.08)", borderLeft: `3px solid ${t.accent}`, borderRadius: "0 8px 8px 0" }}>Your identity will never be shared. No real name required. This form is seen only by the LUMA team.</p>
           {submitted ? (
             <div style={{ background: "rgba(247,243,236,0.12)", border: "1px solid rgba(247,243,236,0.25)", borderRadius: 12, padding: "24px 28px" }}>
               <p style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 16, color: t.ivory, fontWeight: 600 }}>Application received.</p>
-              <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 15, color: "rgba(247,243,236,0.7)", marginTop: 8, lineHeight: 1.6 }}>We will review it personally and be in touch within 48 hours. You do not need to do anything else. Welcome to LUMA.</p>
+              <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 15, color: "rgba(247,243,236,0.7)", marginTop: 8, lineHeight: 1.6 }}>We will be in touch within 48 hours. Welcome to LUMA.</p>
             </div>
           ) : (
             <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
-              <Input t={t} placeholder="Pick a name for the community (not your real name)" value={form.displayName} onChange={e => setForm({...form, displayName: e.target.value})} style={s.darkInput} />
-              <Input t={t} type="email" placeholder="your@email.com" value={form.email} onChange={e => setForm({...form, email: e.target.value})} style={s.darkInput} />
-              <Input t={t} placeholder="Name of your university" value={form.university} onChange={e => setForm({...form, university: e.target.value})} style={s.darkInput} />
-              <select value={form.year} onChange={e => setForm({...form, year: e.target.value})} style={{ width: "100%", padding: "13px 16px", borderRadius: 10, border: "1.5px solid rgba(247,243,236,0.2)", background: "rgba(255,255,255,0.08)", color: form.year ? t.ivory : "rgba(247,243,236,0.5)", fontFamily: "'DM Sans',sans-serif", fontSize: 15, outline: "none", boxSizing: "border-box", cursor: "pointer" }}>
-                <option value="" style={{ color: "#222" }}>Select your year...</option>
-                {YEAR_OPTIONS.map(y => <option key={y} value={y} style={{ color: "#222" }}>{y}</option>)}
-              </select>
-              <textarea placeholder="Is there anything you would like us to know before you join? This is completely optional. Share as much or as little as you want." value={form.notes} onChange={e => setForm({...form, notes: e.target.value})} rows={4} style={{ width: "100%", padding: "13px 16px", borderRadius: 10, border: "1.5px solid rgba(247,243,236,0.2)", background: "rgba(255,255,255,0.08)", color: t.ivory, fontFamily: "'DM Sans',sans-serif", fontSize: 15, outline: "none", boxSizing: "border-box", resize: "vertical" }} />
+              <div>
+                <label style={s.darkLabel}>1. What name would you like to go by in the Peer Circle? (Display name — not your real name.)</label>
+                <Input t={t} placeholder="Your chosen display name" value={form.displayName} onChange={e => setForm({...form, displayName: e.target.value})} style={s.darkInput} />
+              </div>
+              <div>
+                <label style={s.darkLabel}>2. Your email address (For account access only. Never shown to other members.)</label>
+                <Input t={t} type="email" placeholder="your@email.com" value={form.email} onChange={e => setForm({...form, email: e.target.value})} style={s.darkInput} />
+              </div>
+              <div>
+                <label style={s.darkLabel}>3. Which university are you currently attending?</label>
+                <Input t={t} placeholder="Name of your university" value={form.university} onChange={e => setForm({...form, university: e.target.value})} style={s.darkInput} />
+              </div>
+              <div>
+                <label style={s.darkLabel}>4. What year are you in?</label>
+                <select value={form.year} onChange={e => setForm({...form, year: e.target.value})} style={{ width: "100%", padding: "13px 16px", borderRadius: 10, border: "1.5px solid rgba(247,243,236,0.2)", background: "rgba(255,255,255,0.08)", color: form.year ? t.ivory : "rgba(247,243,236,0.5)", fontFamily: "'DM Sans',sans-serif", fontSize: 15, outline: "none", boxSizing: "border-box", cursor: "pointer" }}>
+                  <option value="" style={{ color: "#222" }}>Select your year...</option>
+                  {YEAR_OPTIONS.map(y => <option key={y} value={y} style={{ color: "#222" }}>{y}</option>)}
+                </select>
+              </div>
+              <div>
+                <label style={s.darkLabel}>5. Is there anything you would like us to know before you join? (Optional.)</label>
+                <textarea placeholder="Share as much or as little as you want." value={form.notes} onChange={e => setForm({...form, notes: e.target.value})} rows={4} style={{ width: "100%", padding: "13px 16px", borderRadius: 10, border: "1.5px solid rgba(247,243,236,0.2)", background: "rgba(255,255,255,0.08)", color: t.ivory, fontFamily: "'DM Sans',sans-serif", fontSize: 15, outline: "none", boxSizing: "border-box", resize: "vertical" }} />
+              </div>
               <Btn t={t} variant="light" onClick={handleSubmit} style={{ width: "100%", textAlign: "center", opacity: sending ? 0.6 : 1 }}>{sending ? "Sending..." : "Apply to Join"}</Btn>
             </div>
           )}
