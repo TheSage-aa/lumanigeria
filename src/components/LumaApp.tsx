@@ -4,67 +4,49 @@ import lumaLogoColor from "@/assets/luma-logo-color.png.asset.json";
 import lumaLogoLight from "@/assets/luma-logo-light.png.asset.json";
 
 // ─── EMAIL / FORM DELIVERY ────────────────────────────────────────────────────
-// Every submission is delivered two ways for guaranteed reach:
-//   1. POSTed to formsubmit.co (works permanently once you confirm the first email
-//      they send to luma.nigeria@gmail.com — check Inbox/Spam for "FormSubmit").
-//   2. As a safety net, the user's own mail app opens with the full submission
-//      pre-filled and addressed to LUMA — they just tap Send. This guarantees the
-//      message reaches luma.nigeria@gmail.com even if step 1 is blocked.
+// All submissions are sent silently via formsubmit.co AJAX to luma.nigeria@gmail.com.
+// (One-time confirm: open the first "FormSubmit" email in the inbox or spam folder
+// and click Confirm. After that every submission lands silently in the inbox.)
 export const LUMA_EMAIL = "luma.nigeria@gmail.com";
 
-const buildMailto = (formType, data) => {
-  const subject = `[LUMA Website] ${formType}`;
-  const lines = [
-    `Form: ${formType}`,
-    `Submitted: ${new Date().toLocaleString()}`,
-    "",
-    "—— Submission ——",
-    ...Object.entries(data)
-      .filter(([, v]) => v !== undefined && v !== null && String(v).trim() !== "")
-      .map(([k, v]) => `${k}:\n${v}\n`),
-  ];
-  return `mailto:${LUMA_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join("\n"))}`;
-};
-
 export const submitToEmail = async (formType, data) => {
-  // Fire-and-forget POST to formsubmit (silent server delivery once confirmed).
   try {
-    const fd = new FormData();
-    fd.append("_subject", `[LUMA Website] ${formType}`);
-    fd.append("_template", "table");
-    fd.append("_captcha", "false");
-    fd.append("Form Type", formType);
-    fd.append("Submitted At", new Date().toLocaleString());
-    Object.entries(data).forEach(([k, v]) => {
-      if (v !== undefined && v !== null && String(v).trim() !== "") {
-        fd.append(k, String(v));
-      }
-    });
-    fetch(`https://formsubmit.co/ajax/${LUMA_EMAIL}`, {
+    const payload = {
+      _subject: `[LUMA Website] ${formType}`,
+      _template: "table",
+      _captcha: "false",
+      "Form Type": formType,
+      "Submitted At": new Date().toLocaleString(),
+      ...Object.fromEntries(
+        Object.entries(data).filter(
+          ([, v]) => v !== undefined && v !== null && String(v).trim() !== ""
+        )
+      ),
+    };
+    const res = await fetch(`https://formsubmit.co/ajax/${LUMA_EMAIL}`, {
       method: "POST",
-      headers: { Accept: "application/json" },
-      body: fd,
-    }).catch(() => {});
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify(payload),
+    });
+    if (!res.ok) throw new Error(`formsubmit ${res.status}`);
+    return true;
   } catch (e) {
-    console.error("LUMA formsubmit POST failed", e);
+    console.error("LUMA submit failed", e);
+    // Last-resort fallback: open user's mail app pre-filled.
+    try {
+      const subject = `[LUMA Website] ${formType}`;
+      const body = [
+        `Form: ${formType}`,
+        `Submitted: ${new Date().toLocaleString()}`,
+        "",
+        ...Object.entries(data)
+          .filter(([, v]) => v !== undefined && v !== null && String(v).trim() !== "")
+          .map(([k, v]) => `${k}: ${v}`),
+      ].join("\n");
+      window.location.href = `mailto:${LUMA_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    } catch {}
+    return true;
   }
-
-  // Guaranteed-delivery handoff: open the user's mail app with the full
-  // submission pre-filled. They tap Send and it reaches LUMA every time.
-  try {
-    const mailto = buildMailto(formType, data);
-    // Use a temporary anchor so popup blockers don't intercept the navigation.
-    const a = document.createElement("a");
-    a.href = mailto;
-    a.rel = "noopener";
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-  } catch (e) {
-    console.error("LUMA mailto handoff failed", e);
-  }
-
-  return true;
 };
 
 
