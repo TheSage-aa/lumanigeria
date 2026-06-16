@@ -360,7 +360,7 @@ export const Nav = ({ t, colorId, setColorId, isDark, setIsDark, page, setPage }
               </div>
             </button>
           </div>
-          <button onClick={() => setPage("involve")} style={{ background: t.ivory, color: t.primary, border: "none", padding: "9px 20px", borderRadius: 100, fontSize: 13, fontWeight: 700, fontFamily: "'Space Grotesk',sans-serif", cursor: "pointer", letterSpacing: "0.5px", whiteSpace: "nowrap" }}>Join LUMA</button>
+          <button onClick={() => setPage("involve")} style={{ background: t.ivory, color: t.primary, border: "none", padding: "9px 20px", borderRadius: 100, fontSize: 13, fontWeight: 700, fontFamily: "'Space Grotesk',sans-serif", cursor: "pointer", letterSpacing: "0.5px", whiteSpace: "nowrap" }}>{tr("Join LUMA", "Rejoindre LUMA")}</button>
           <button onClick={() => setMenuOpen(true)} style={{ background: "none", border: "none", cursor: "pointer", display: "none" }} className="mobile-menu-btn"><MenuIcon color={t.ivory} /></button>
         </div>
 
@@ -385,7 +385,21 @@ export const Nav = ({ t, colorId, setColorId, isDark, setIsDark, page, setPage }
               <div style={{ width: 22, height: 22, borderRadius: "50%", background: t.ivory, display: "flex", alignItems: "center", justifyContent: "center" }}>{isDark ? <MoonIcon color={t.primary} /> : <SunIcon color={t.primary} />}</div>
             </button>
           </div>
-          <button onClick={() => { setPage("involve"); setMenuOpen(false); }} style={{ marginTop: 32, background: t.ivory, color: t.primary, border: "none", padding: "16px 32px", borderRadius: 100, fontSize: 16, fontWeight: 700, fontFamily: "'Space Grotesk',sans-serif", cursor: "pointer" }}>Join LUMA</button>
+
+          {/* LANGUAGE TOGGLE (mobile sandwich menu) */}
+          <div style={{ marginTop: 28 }}>
+            <p style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: "1.5px", color: "rgba(247,243,236,0.55)", textTransform: "uppercase", marginBottom: 12 }}>{tr("Language", "Langue")}</p>
+            <div style={{ display: "inline-flex", background: "rgba(255,255,255,0.1)", borderRadius: 100, padding: 4 }}>
+              {[["en", "English"], ["fr", "Français"]].map(([code, label]) => (
+                <button key={code} type="button" onClick={() => setLang(code)}
+                  style={{ background: lang === code ? t.ivory : "transparent", color: lang === code ? t.primary : t.ivory, border: "none", padding: "8px 18px", borderRadius: 100, fontFamily: "'Space Grotesk',sans-serif", fontSize: 13, fontWeight: 700, cursor: "pointer" }}>
+                  {label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <button onClick={() => { setPage("involve"); setMenuOpen(false); }} style={{ marginTop: 32, background: t.ivory, color: t.primary, border: "none", padding: "16px 32px", borderRadius: 100, fontSize: 16, fontWeight: 700, fontFamily: "'Space Grotesk',sans-serif", cursor: "pointer" }}>{tr("Join LUMA", "Rejoindre LUMA")}</button>
         </div>
       )}
     </>
