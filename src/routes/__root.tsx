@@ -12,6 +12,7 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { ThemeProvider, LumaShell } from "@/components/LumaApp";
+import { LanguageProvider } from "@/lib/i18n";
 
 function NotFoundComponent() {
   return (
@@ -122,11 +123,13 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <ThemeProvider>
-        <LumaShell>
-          <Outlet />
-        </LumaShell>
-      </ThemeProvider>
+      <LanguageProvider>
+        <ThemeProvider>
+          <LumaShell>
+            <Outlet />
+          </LumaShell>
+        </ThemeProvider>
+      </LanguageProvider>
     </QueryClientProvider>
   );
 }
