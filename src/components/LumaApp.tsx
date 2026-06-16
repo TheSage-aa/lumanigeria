@@ -1,7 +1,25 @@
 // @ts-nocheck
 import { useState, useEffect } from "react";
+import { Link } from "@tanstack/react-router";
 import lumaLogoColor from "@/assets/luma-logo-color.png.asset.json";
 import lumaLogoLight from "@/assets/luma-logo-light.png.asset.json";
+import { useLang } from "@/lib/i18n";
+import guide1 from "@/assets/guides/LUMA_Guide1_HIV_Basics.pdf.asset.json";
+import guide2 from "@/assets/guides/LUMA_Guide2_PrEP_and_Prevention.pdf.asset.json";
+import guide3 from "@/assets/guides/LUMA_Guide3_Testing_and_Treatment.pdf.asset.json";
+import guide4 from "@/assets/guides/LUMA_Guide4_Your_Rights_on_Campus.pdf.asset.json";
+import guide5 from "@/assets/guides/LUMA_Guide5_Mental_Health_and_HIV.pdf.asset.json";
+import guide6 from "@/assets/guides/LUMA_Guide6_For_Allies.pdf.asset.json";
+
+export const GUIDES = {
+  "hiv-basics":        { asset: guide1, title: "HIV Basics",            titleFr: "Bases du VIH",                 body: "What HIV is, how it works, and what it absolutely does not do. Plain language, no jargon.", bodyFr: "Ce qu'est le VIH, comment il agit, et ce qu'il ne fait absolument pas. Langage clair, sans jargon." },
+  "prep-prevention":   { asset: guide2, title: "PrEP and Prevention",   titleFr: "PrEP et Prévention",           body: "What PrEP is, how to access it in Nigeria, and why every student should know about it.", bodyFr: "Ce qu'est la PrEP, comment y accéder au Nigéria, et pourquoi chaque étudiant devrait la connaître." },
+  "testing-treatment": { asset: guide3, title: "Testing and Treatment", titleFr: "Dépistage et Traitement",      body: "Where to get tested, what treatment looks like, and what undetectable means for your life.", bodyFr: "Où se faire dépister, à quoi ressemble le traitement, et ce que signifie être indétectable." },
+  "your-rights":       { asset: guide4, title: "Your Rights on Campus", titleFr: "Vos droits sur le campus",     body: "Anti-discrimination law, medical confidentiality, and what your university legally owes you.", bodyFr: "Loi anti-discrimination, confidentialité médicale, et ce que votre université vous doit légalement." },
+  "mental-health":     { asset: guide5, title: "Mental Health and HIV", titleFr: "Santé mentale et VIH",         body: "Resources for students navigating the emotional weight of an HIV diagnosis on campus.", bodyFr: "Ressources pour les étudiants confrontés au poids émotionnel d'un diagnostic VIH sur le campus." },
+  "for-allies":        { asset: guide6, title: "For Allies",            titleFr: "Pour les alliés",              body: "How non-positive students can actively support, advocate, and break stigma on their campuses.", bodyFr: "Comment les étudiants séronégatifs peuvent soutenir, défendre et briser la stigmatisation." },
+};
+
 
 // ─── EMAIL / FORM DELIVERY ────────────────────────────────────────────────────
 // All submissions are sent silently via formsubmit.co AJAX to luma.nigeria@gmail.com.
