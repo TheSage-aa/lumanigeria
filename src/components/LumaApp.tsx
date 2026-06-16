@@ -304,7 +304,15 @@ const FormSuccess = ({ t, message }) => (
 
 export const Nav = ({ t, colorId, setColorId, isDark, setIsDark, page, setPage }) => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const links = [["About", "about"], ["Our Work", "work"], ["Resources", "resources"], ["Get Involved", "involve"], ["Games", "games"]];
+  const { lang, setLang, tr } = useLang();
+  const links = [
+    [tr("About", "À propos"), "about"],
+    [tr("Our Work", "Notre Travail"), "work"],
+    [tr("Resources", "Ressources"), "resources"],
+    [tr("Get Involved", "S'impliquer"), "involve"],
+    [tr("Games", "Jeux"), "games"],
+  ];
+
 
   const navLink = (label, id) => ({
     color: page === id ? t.ivory : "rgba(247,243,236,0.72)",
