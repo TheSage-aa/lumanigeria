@@ -1,7 +1,25 @@
 // @ts-nocheck
 import { useState, useEffect } from "react";
+import { Link } from "@tanstack/react-router";
 import lumaLogoColor from "@/assets/luma-logo-color.png.asset.json";
 import lumaLogoLight from "@/assets/luma-logo-light.png.asset.json";
+import { useLang } from "@/lib/i18n";
+import guide1 from "@/assets/guides/LUMA_Guide1_HIV_Basics.pdf.asset.json";
+import guide2 from "@/assets/guides/LUMA_Guide2_PrEP_and_Prevention.pdf.asset.json";
+import guide3 from "@/assets/guides/LUMA_Guide3_Testing_and_Treatment.pdf.asset.json";
+import guide4 from "@/assets/guides/LUMA_Guide4_Your_Rights_on_Campus.pdf.asset.json";
+import guide5 from "@/assets/guides/LUMA_Guide5_Mental_Health_and_HIV.pdf.asset.json";
+import guide6 from "@/assets/guides/LUMA_Guide6_For_Allies.pdf.asset.json";
+
+export const GUIDES = {
+  "hiv-basics":        { asset: guide1, title: "HIV Basics",            titleFr: "Bases du VIH",                 body: "What HIV is, how it works, and what it absolutely does not do. Plain language, no jargon.", bodyFr: "Ce qu'est le VIH, comment il agit, et ce qu'il ne fait absolument pas. Langage clair, sans jargon." },
+  "prep-prevention":   { asset: guide2, title: "PrEP and Prevention",   titleFr: "PrEP et Prévention",           body: "What PrEP is, how to access it in Nigeria, and why every student should know about it.", bodyFr: "Ce qu'est la PrEP, comment y accéder au Nigéria, et pourquoi chaque étudiant devrait la connaître." },
+  "testing-treatment": { asset: guide3, title: "Testing and Treatment", titleFr: "Dépistage et Traitement",      body: "Where to get tested, what treatment looks like, and what undetectable means for your life.", bodyFr: "Où se faire dépister, à quoi ressemble le traitement, et ce que signifie être indétectable." },
+  "your-rights":       { asset: guide4, title: "Your Rights on Campus", titleFr: "Vos droits sur le campus",     body: "Anti-discrimination law, medical confidentiality, and what your university legally owes you.", bodyFr: "Loi anti-discrimination, confidentialité médicale, et ce que votre université vous doit légalement." },
+  "mental-health":     { asset: guide5, title: "Mental Health and HIV", titleFr: "Santé mentale et VIH",         body: "Resources for students navigating the emotional weight of an HIV diagnosis on campus.", bodyFr: "Ressources pour les étudiants confrontés au poids émotionnel d'un diagnostic VIH sur le campus." },
+  "for-allies":        { asset: guide6, title: "For Allies",            titleFr: "Pour les alliés",              body: "How non-positive students can actively support, advocate, and break stigma on their campuses.", bodyFr: "Comment les étudiants séronégatifs peuvent soutenir, défendre et briser la stigmatisation." },
+};
+
 
 // ─── EMAIL / FORM DELIVERY ────────────────────────────────────────────────────
 // All submissions are sent silently via formsubmit.co AJAX to luma.nigeria@gmail.com.
@@ -286,7 +304,15 @@ const FormSuccess = ({ t, message }) => (
 
 export const Nav = ({ t, colorId, setColorId, isDark, setIsDark, page, setPage }) => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const links = [["About", "about"], ["Our Work", "work"], ["Resources", "resources"], ["Get Involved", "involve"], ["Games", "games"]];
+  const { lang, setLang, tr } = useLang();
+  const links = [
+    [tr("About", "À propos"), "about"],
+    [tr("Our Work", "Notre Travail"), "work"],
+    [tr("Resources", "Ressources"), "resources"],
+    [tr("Get Involved", "S'impliquer"), "involve"],
+    [tr("Games", "Jeux"), "games"],
+  ];
+
 
   const navLink = (label, id) => ({
     color: page === id ? t.ivory : "rgba(247,243,236,0.72)",
@@ -334,7 +360,7 @@ export const Nav = ({ t, colorId, setColorId, isDark, setIsDark, page, setPage }
               </div>
             </button>
           </div>
-          <button onClick={() => setPage("involve")} style={{ background: t.ivory, color: t.primary, border: "none", padding: "9px 20px", borderRadius: 100, fontSize: 13, fontWeight: 700, fontFamily: "'Space Grotesk',sans-serif", cursor: "pointer", letterSpacing: "0.5px", whiteSpace: "nowrap" }}>Join LUMA</button>
+          <button onClick={() => setPage("involve")} style={{ background: t.ivory, color: t.primary, border: "none", padding: "9px 20px", borderRadius: 100, fontSize: 13, fontWeight: 700, fontFamily: "'Space Grotesk',sans-serif", cursor: "pointer", letterSpacing: "0.5px", whiteSpace: "nowrap" }}>{tr("Join LUMA", "Rejoindre LUMA")}</button>
           <button onClick={() => setMenuOpen(true)} style={{ background: "none", border: "none", cursor: "pointer", display: "none" }} className="mobile-menu-btn"><MenuIcon color={t.ivory} /></button>
         </div>
 
@@ -359,7 +385,21 @@ export const Nav = ({ t, colorId, setColorId, isDark, setIsDark, page, setPage }
               <div style={{ width: 22, height: 22, borderRadius: "50%", background: t.ivory, display: "flex", alignItems: "center", justifyContent: "center" }}>{isDark ? <MoonIcon color={t.primary} /> : <SunIcon color={t.primary} />}</div>
             </button>
           </div>
-          <button onClick={() => { setPage("involve"); setMenuOpen(false); }} style={{ marginTop: 32, background: t.ivory, color: t.primary, border: "none", padding: "16px 32px", borderRadius: 100, fontSize: 16, fontWeight: 700, fontFamily: "'Space Grotesk',sans-serif", cursor: "pointer" }}>Join LUMA</button>
+
+          {/* LANGUAGE TOGGLE (mobile sandwich menu) */}
+          <div style={{ marginTop: 28 }}>
+            <p style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: "1.5px", color: "rgba(247,243,236,0.55)", textTransform: "uppercase", marginBottom: 12 }}>{tr("Language", "Langue")}</p>
+            <div style={{ display: "inline-flex", background: "rgba(255,255,255,0.1)", borderRadius: 100, padding: 4 }}>
+              {[["en", "English"], ["fr", "Français"]].map(([code, label]) => (
+                <button key={code} type="button" onClick={() => setLang(code)}
+                  style={{ background: lang === code ? t.ivory : "transparent", color: lang === code ? t.primary : t.ivory, border: "none", padding: "8px 18px", borderRadius: 100, fontFamily: "'Space Grotesk',sans-serif", fontSize: 13, fontWeight: 700, cursor: "pointer" }}>
+                  {label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <button onClick={() => { setPage("involve"); setMenuOpen(false); }} style={{ marginTop: 32, background: t.ivory, color: t.primary, border: "none", padding: "16px 32px", borderRadius: 100, fontSize: 16, fontWeight: 700, fontFamily: "'Space Grotesk',sans-serif", cursor: "pointer" }}>{tr("Join LUMA", "Rejoindre LUMA")}</button>
         </div>
       )}
     </>
@@ -1004,39 +1044,40 @@ export const AdvocacyPage = ({ t }) => (
 
 // ─── RESOURCES PAGE ───────────────────────────────────────────────────────────
 
-export const ResourcesPage = ({ t }) => (
+export const ResourcesPage = ({ t }) => {
+  const { lang, tr } = useLang();
+  const setPage = useNavToPage();
+  return (
   <div>
     <div style={{ background: t.primary, padding: "120px 32px 80px" }}>
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-        <Tag t={t} light>Resources</Tag>
-        <h1 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: "clamp(36px,5vw,64px)", fontWeight: 800, color: t.ivory, lineHeight: 1.1, marginTop: 16 }}>Everything you need to know.<br />In one place.</h1>
-        <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 18, color: "rgba(247,243,236,0.7)", lineHeight: 1.7, maxWidth: 540, marginTop: 16 }}>LUMA's resource hub is built specifically for Nigerian university students. No jargon. No gatekeeping.</p>
+        <Tag t={t} light>{tr("Resources", "Ressources")}</Tag>
+        <h1 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: "clamp(36px,5vw,64px)", fontWeight: 800, color: t.ivory, lineHeight: 1.1, marginTop: 16 }}>{tr("Everything you need to know.", "Tout ce que vous devez savoir.")}<br />{tr("In one place.", "En un seul endroit.")}</h1>
+        <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 18, color: "rgba(247,243,236,0.7)", lineHeight: 1.7, maxWidth: 540, marginTop: 16 }}>{tr("LUMA's resource hub is built specifically for Nigerian university students. No jargon. No gatekeeping.", "Le centre de ressources LUMA est conçu pour les étudiants universitaires nigérians. Sans jargon. Sans barrières.")}</p>
       </div>
     </div>
     <section style={{ padding: "80px 32px", background: t.bg }}>
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: 24 }}>
-          {[
-            ["HIV Basics", "What HIV is, how it works, and what it absolutely does not do. Plain language, no jargon.", "Download Guide"],
-            ["PrEP and Prevention", "What PrEP is, how to access it in Nigeria, and why every student should know about it.", "Read More"],
-            ["Testing and Treatment", "Where to get tested, what treatment looks like, and what undetectable means for your life.", "Read More"],
-            ["Your Rights on Campus", "Anti-discrimination law, medical confidentiality, and what your university legally owes you.", "Read More"],
-            ["Mental Health and HIV", "Resources for students navigating the emotional weight of an HIV diagnosis on campus.", "Read More"],
-            ["For Allies", "How non-positive students can actively support, advocate, and break stigma on their campuses.", "Read More"],
-          ].map(([title, body, cta], i) => (
-            <Card key={i} t={t} style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", cursor: "pointer", transition: "transform 0.2s" }}
+          {Object.entries(GUIDES).map(([id, g]) => (
+            <Card key={id} t={t} style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", cursor: "pointer", transition: "transform 0.2s" }}
+              onClick={() => setPage("guide:" + id)}
               onMouseEnter={e => e.currentTarget.style.transform = "translateY(-4px)"}
               onMouseLeave={e => e.currentTarget.style.transform = "translateY(0)"}>
               <div>
-                <h3 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 19, fontWeight: 700, color: t.text, marginBottom: 12 }}>{title}</h3>
-                <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 15, color: t.textMuted, lineHeight: 1.7, marginBottom: 20 }}>{body}</p>
+                <h3 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 19, fontWeight: 700, color: t.text, marginBottom: 12 }}>{lang === "fr" ? g.titleFr : g.title}</h3>
+                <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 15, color: t.textMuted, lineHeight: 1.7, marginBottom: 20 }}>{lang === "fr" ? g.bodyFr : g.body}</p>
               </div>
-              <span style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 13, fontWeight: 700, color: t.accent, display: "flex", alignItems: "center", gap: 6 }}>{cta} <ArrowRight color={t.accent} size={12} /></span>
+              <div style={{ display: "flex", gap: 14, alignItems: "center", flexWrap: "wrap" }}>
+                <span style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 13, fontWeight: 700, color: t.accent, display: "flex", alignItems: "center", gap: 6 }}>{tr("Read Guide", "Lire le Guide")} <ArrowRight color={t.accent} size={12} /></span>
+                <a href={g.asset.url} download={g.asset.original_filename} onClick={e => e.stopPropagation()} style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 13, fontWeight: 700, color: t.textMuted }}>{tr("Download", "Télécharger")} ↓</a>
+              </div>
             </Card>
           ))}
         </div>
       </div>
     </section>
+
 
     {/* POLICY SHIELD — Student Rights Handout */}
     <section style={{ padding: "80px 32px", background: t.isDark ? t.surface : t.accentLight }}>
@@ -1095,105 +1136,27 @@ export const ResourcesPage = ({ t }) => (
       </div>
     </section>
   </div>
-);
+  );
+};
 
 // ─── GET INVOLVED PAGE ────────────────────────────────────────────────────────
 
 export const InvolvePage = ({ t, setPage }) => {
-  const [ambForm, setAmbForm] = useState({ name: "", email: "", phone: "", university: "", year: "", course: "", why: "", firstMonth: "", experience: "" });
-  const [ambSent, setAmbSent] = useState(false);
-  const [ambSending, setAmbSending] = useState(false);
-
-  const [volForm, setVolForm] = useState({ name: "", email: "", phone: "", institution: "", skill: "", experience: "", hours: "", interest: "" });
-  const [volSent, setVolSent] = useState(false);
-  const [volSending, setVolSending] = useState(false);
-
-  const [partForm, setPartForm] = useState({ name: "", role: "", org: "", email: "", link: "", orgType: "", country: "", partnership: "", about: "", project: "" });
-  const [partSent, setPartSent] = useState(false);
-  const [partSending, setPartSending] = useState(false);
-
-  const VOL_SKILLS = ["Content Writing", "Graphic Design", "Research", "Social Media", "Translation", "Video or Photography", "Web Development", "Mental Health Support", "Other"];
-  const ORG_TYPES = ["University or Academic Institution", "Health Organisation", "NGO or Civil Society", "Research Institution", "Government Agency", "Corporate or Private Sector", "Media or Communications", "Other"];
-  const PARTNERSHIP_TYPES = ["Research Collaboration", "Programme Partnership", "Campus Outreach", "Funding or Sponsorship", "Media or Communications", "Content or Knowledge Sharing", "Other"];
-
-  const handleAmb = async () => {
-    if (!ambForm.name || !ambForm.email || !ambForm.university || !ambForm.year || !ambForm.course || !ambForm.why || !ambForm.firstMonth) return;
-    setAmbSending(true);
-    await submitToEmail("Campus Ambassador Application", {
-      "Full Name": ambForm.name,
-      "Email": ambForm.email,
-      "WhatsApp Number": ambForm.phone || "(not provided)",
-      "University": ambForm.university,
-      "Year": ambForm.year,
-      "Course of Study": ambForm.course,
-      "Why be a LUMA ambassador": ambForm.why,
-      "First month plan": ambForm.firstMonth,
-      "Prior experience": ambForm.experience || "(none stated)",
-    });
-    setAmbSending(false);
-    setAmbSent(true);
-  };
-
-  const handleVol = async () => {
-    if (!volForm.name || !volForm.email || !volForm.skill || !volForm.experience || !volForm.hours) return;
-    setVolSending(true);
-    await submitToEmail("Volunteer Application", {
-      "Full Name": volForm.name,
-      "Email": volForm.email,
-      "WhatsApp Number": volForm.phone || "(not provided)",
-      "University or Institution": volForm.institution || "(not applicable)",
-      "Skill / Area": volForm.skill,
-      "Experience": volForm.experience,
-      "Hours per week": volForm.hours,
-      "Specific interest": volForm.interest || "(none)",
-    });
-    setVolSending(false);
-    setVolSent(true);
-  };
-
-  const handlePart = async () => {
-    if (!partForm.name || !partForm.role || !partForm.org || !partForm.email || !partForm.orgType || !partForm.country || !partForm.partnership || !partForm.about) return;
-    setPartSending(true);
-    await submitToEmail("Partnership Enquiry", {
-      "Full Name": partForm.name,
-      "Role / Title": partForm.role,
-      "Organisation": partForm.org,
-      "Organisation Email": partForm.email,
-      "Website / Social Link": partForm.link || "(not provided)",
-      "Organisation Type": partForm.orgType,
-      "Country": partForm.country,
-      "Partnership Interest": partForm.partnership,
-      "About / Why partner": partForm.about,
-      "Specific project": partForm.project || "(none)",
-    });
-    setPartSending(false);
-    setPartSent(true);
-  };
-
+  const { tr } = useLang();
   const ways = [
-    { title: "Join The Peer Circle", body: "For Nigerian university students living with HIV who want peer community and support.", cta: "Apply to Join", action: () => setPage("circle") },
-    { title: "Campus Ambassador", body: "Be the first LUMA presence on your campus. No prior HIV advocacy experience required.", cta: "Apply as Ambassador", target: "amb-form" },
-    { title: "Volunteer", body: "Content, research, design, translation, social media. Bring a skill to LUMA.", cta: "Get In Touch", target: "vol-form" },
-    { title: "Partner With LUMA", body: "Organisations, research institutions, or campus health programmes that share our values.", cta: "Start a Conversation", target: "part-form" },
+    { title: tr("Join The Peer Circle", "Rejoindre le Cercle de Pairs"), body: tr("For Nigerian university students living with HIV who want peer community and support.", "Pour les étudiants universitaires nigérians vivant avec le VIH qui souhaitent une communauté et un soutien entre pairs."), cta: tr("Apply to Join", "Postuler"), target: "circle" },
+    { title: tr("Campus Ambassador", "Ambassadeur de Campus"), body: tr("Be the first LUMA presence on your campus. No prior HIV advocacy experience required.", "Soyez la première présence LUMA sur votre campus. Aucune expérience préalable requise."), cta: tr("Apply as Ambassador", "Postuler comme Ambassadeur"), target: "ambassador" },
+    { title: tr("Volunteer", "Bénévole"), body: tr("Content, research, design, translation, social media. Bring a skill to LUMA.", "Contenu, recherche, design, traduction, réseaux sociaux. Apportez une compétence à LUMA."), cta: tr("Get In Touch", "Contactez-nous"), target: "volunteer" },
+    { title: tr("Partner With LUMA", "Devenir Partenaire"), body: tr("Organisations, research institutions, or campus health programmes that share our values.", "Organisations, institutions de recherche ou programmes de santé partageant nos valeurs."), cta: tr("Start a Conversation", "Démarrer une conversation"), target: "partner" },
   ];
-
-  const noteStyle = { fontFamily: "'DM Sans',sans-serif", fontSize: 14, fontStyle: "italic", color: t.textMuted, lineHeight: 1.7, marginBottom: 28, padding: "12px 16px", background: t.isDark ? t.card : t.accentLight, borderLeft: `3px solid ${t.accent}`, borderRadius: "0 8px 8px 0", maxWidth: 640 };
-  const labelStyle = { fontFamily: "'DM Sans',sans-serif", fontSize: 13, fontWeight: 600, color: t.text, marginBottom: 6, display: "block" };
-  const scrollTo = id => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-
-  const Field = ({ label, children, full }) => (
-    <div style={full ? { gridColumn: "1 / -1" } : undefined}>
-      <label style={labelStyle}>{label}</label>
-      {children}
-    </div>
-  );
 
   return (
     <div>
       <div style={{ background: t.primary, padding: "120px 32px 80px" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-          <Tag t={t} light>Get Involved</Tag>
-          <h1 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: "clamp(36px,5vw,64px)", fontWeight: 800, color: t.ivory, lineHeight: 1.1, marginTop: 16 }}>LUMA works because people like you decide to show up.</h1>
+          <Tag t={t} light>{tr("Get Involved", "S'impliquer")}</Tag>
+          <h1 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: "clamp(36px,5vw,64px)", fontWeight: 800, color: t.ivory, lineHeight: 1.1, marginTop: 16 }}>{tr("LUMA works because people like you decide to show up.", "LUMA fonctionne parce que des gens comme vous décident d'être présents.")}</h1>
+          <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 18, color: "rgba(247,243,236,0.7)", lineHeight: 1.7, maxWidth: 600, marginTop: 16 }}>{tr("Choose how you want to be part of LUMA. Each option has its own short application.", "Choisissez comment vous souhaitez faire partie de LUMA. Chaque option a son propre formulaire.")}</p>
         </div>
       </div>
       <section style={{ padding: "80px 32px", background: t.bg }}>
@@ -1205,98 +1168,247 @@ export const InvolvePage = ({ t, setPage }) => {
                   <h3 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 20, fontWeight: 700, color: t.text, marginBottom: 12 }}>{w.title}</h3>
                   <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 15, color: t.textMuted, lineHeight: 1.7, marginBottom: 24 }}>{w.body}</p>
                 </div>
-                <Btn t={t} variant="primary" onClick={w.action || (() => scrollTo(w.target))}>{w.cta}</Btn>
+                <Btn t={t} variant="primary" onClick={() => setPage(w.target)}>{w.cta}</Btn>
               </Card>
             ))}
-          </div>
-
-          {/* FORM 2 — CAMPUS AMBASSADOR */}
-          <div id="amb-form" style={{ marginTop: 96, scrollMarginTop: 80 }}>
-            <SectionLabel t={t}>Form · Campus Ambassador</SectionLabel>
-            <h2 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: "clamp(26px,3.5vw,42px)", fontWeight: 800, color: t.text, marginBottom: 12 }}>Be the first LUMA presence on your campus</h2>
-            <p style={noteStyle}>No prior HIV advocacy experience required. Just the belief that every student deserves better.</p>
-            {ambSent ? <FormSuccess t={t} message="Application received. We will review it and be in touch within five working days." /> : (
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: 16, maxWidth: 760 }}>
-                <Field label="1. Your full name"><Input t={t} placeholder="Full name" value={ambForm.name} onChange={e => setAmbForm({...ambForm, name: e.target.value})} /></Field>
-                <Field label="2. Your email address"><Input t={t} type="email" placeholder="your@email.com" value={ambForm.email} onChange={e => setAmbForm({...ambForm, email: e.target.value})} /></Field>
-                <Field label="3. Your WhatsApp number (Optional, for the ambassador group)"><Input t={t} placeholder="WhatsApp number" value={ambForm.phone} onChange={e => setAmbForm({...ambForm, phone: e.target.value})} /></Field>
-                <Field label="4. Which university do you attend?"><Input t={t} placeholder="Name of your university" value={ambForm.university} onChange={e => setAmbForm({...ambForm, university: e.target.value})} /></Field>
-                <Field label="5. What year are you in?">
-                  <Select t={t} value={ambForm.year} onChange={e => setAmbForm({...ambForm, year: e.target.value})}>
-                    <option value="">Select your year...</option>
-                    {YEAR_OPTIONS.filter(y => y !== "Prefer not to say").map(y => <option key={y} value={y}>{y}</option>)}
-                  </Select>
-                </Field>
-                <Field label="6. What is your course of study?"><Input t={t} placeholder="e.g. Medicine, Law, Computer Science" value={ambForm.course} onChange={e => setAmbForm({...ambForm, course: e.target.value})} /></Field>
-                <Field full label="7. Why do you want to be a LUMA campus ambassador? (2 to 4 sentences)"><Textarea t={t} placeholder="Tell us why this matters to you..." value={ambForm.why} onChange={e => setAmbForm({...ambForm, why: e.target.value})} rows={4} /></Field>
-                <Field full label="8. What is one concrete thing you would do in your first month as a LUMA ambassador on your campus?"><Textarea t={t} placeholder="Describe one concrete first-month action..." value={ambForm.firstMonth} onChange={e => setAmbForm({...ambForm, firstMonth: e.target.value})} rows={4} /></Field>
-                <Field full label="9. Have you done any student activism, health advocacy, or community work before? (Optional. No experience is a perfectly valid answer.)"><Textarea t={t} placeholder="Share anything relevant, or leave blank." value={ambForm.experience} onChange={e => setAmbForm({...ambForm, experience: e.target.value})} rows={3} /></Field>
-                <div style={{ gridColumn: "1 / -1" }}><Btn t={t} variant="primary" onClick={handleAmb} style={{ opacity: ambSending ? 0.6 : 1 }}>{ambSending ? "Sending..." : "Submit Application"}</Btn></div>
-              </div>
-            )}
-          </div>
-
-          {/* FORM 3 — VOLUNTEER */}
-          <div id="vol-form" style={{ marginTop: 96, scrollMarginTop: 80, paddingTop: 64, borderTop: `1px solid ${t.borderColor}` }}>
-            <SectionLabel t={t}>Form · Volunteer</SectionLabel>
-            <h2 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: "clamp(26px,3.5vw,42px)", fontWeight: 800, color: t.text, marginBottom: 12 }}>Bring your skill to LUMA</h2>
-            <p style={noteStyle}>LUMA is built by people who care. Whatever your skill, there is a place for it here.</p>
-            {volSent ? <FormSuccess t={t} message="We have received your message. We will reach out within 48 hours. Thank you for wanting to be part of LUMA." /> : (
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: 16, maxWidth: 760 }}>
-                <Field label="1. Your full name"><Input t={t} placeholder="Full name" value={volForm.name} onChange={e => setVolForm({...volForm, name: e.target.value})} /></Field>
-                <Field label="2. Your email address"><Input t={t} type="email" placeholder="your@email.com" value={volForm.email} onChange={e => setVolForm({...volForm, email: e.target.value})} /></Field>
-                <Field label="3. Your WhatsApp number (Optional)"><Input t={t} placeholder="WhatsApp number" value={volForm.phone} onChange={e => setVolForm({...volForm, phone: e.target.value})} /></Field>
-                <Field label="4. Which university or institution are you with? (If applicable)"><Input t={t} placeholder="University or institution" value={volForm.institution} onChange={e => setVolForm({...volForm, institution: e.target.value})} /></Field>
-                <Field full label="5. What skill or area do you want to volunteer in?">
-                  <Select t={t} value={volForm.skill} onChange={e => setVolForm({...volForm, skill: e.target.value})}>
-                    <option value="">Select a skill area...</option>
-                    {VOL_SKILLS.map(s => <option key={s} value={s}>{s}</option>)}
-                  </Select>
-                </Field>
-                <Field full label="6. Tell us a little about your experience in that area. (2 to 3 sentences is enough)"><Textarea t={t} placeholder="A couple of sentences on your experience..." value={volForm.experience} onChange={e => setVolForm({...volForm, experience: e.target.value})} rows={3} /></Field>
-                <Field label="7. How many hours per week can you realistically commit to LUMA?"><Input t={t} placeholder="e.g. 3 to 5 hours" value={volForm.hours} onChange={e => setVolForm({...volForm, hours: e.target.value})} /></Field>
-                <Field full label="8. Is there anything specific you want to work on at LUMA? (Optional)"><Textarea t={t} placeholder="A project, a programme, an area of interest..." value={volForm.interest} onChange={e => setVolForm({...volForm, interest: e.target.value})} rows={3} /></Field>
-                <div style={{ gridColumn: "1 / -1" }}><Btn t={t} variant="primary" onClick={handleVol} style={{ opacity: volSending ? 0.6 : 1 }}>{volSending ? "Sending..." : "Get In Touch"}</Btn></div>
-              </div>
-            )}
-          </div>
-
-          {/* FORM 4 — PARTNER */}
-          <div id="part-form" style={{ marginTop: 96, scrollMarginTop: 80, paddingTop: 64, borderTop: `1px solid ${t.borderColor}` }}>
-            <SectionLabel t={t}>Form · Partner with LUMA</SectionLabel>
-            <h2 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: "clamp(26px,3.5vw,42px)", fontWeight: 800, color: t.text, marginBottom: 12 }}>Start a partnership conversation</h2>
-            <p style={noteStyle}>LUMA welcomes partnerships with organisations, institutions, and programmes that share our commitment to HIV-positive students on Nigerian campuses.</p>
-            {partSent ? <FormSuccess t={t} message="Thank you for reaching out. We will review your message and respond within five working days." /> : (
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: 16, maxWidth: 760 }}>
-                <Field label="1. Your full name"><Input t={t} placeholder="Full name" value={partForm.name} onChange={e => setPartForm({...partForm, name: e.target.value})} /></Field>
-                <Field label="2. Your role or title"><Input t={t} placeholder="e.g. Director, Programme Lead" value={partForm.role} onChange={e => setPartForm({...partForm, role: e.target.value})} /></Field>
-                <Field label="3. Organisation or institution name"><Input t={t} placeholder="Organisation name" value={partForm.org} onChange={e => setPartForm({...partForm, org: e.target.value})} /></Field>
-                <Field label="4. Organisation email address"><Input t={t} type="email" placeholder="contact@organisation.org" value={partForm.email} onChange={e => setPartForm({...partForm, email: e.target.value})} /></Field>
-                <Field full label="5. Website or social media link (Optional)"><Input t={t} placeholder="https://..." value={partForm.link} onChange={e => setPartForm({...partForm, link: e.target.value})} /></Field>
-                <Field label="6. What type of organisation are you?">
-                  <Select t={t} value={partForm.orgType} onChange={e => setPartForm({...partForm, orgType: e.target.value})}>
-                    <option value="">Select organisation type...</option>
-                    {ORG_TYPES.map(o => <option key={o} value={o}>{o}</option>)}
-                  </Select>
-                </Field>
-                <Field label="7. Which country are you based in?"><Input t={t} placeholder="Country" value={partForm.country} onChange={e => setPartForm({...partForm, country: e.target.value})} /></Field>
-                <Field full label="8. What kind of partnership are you interested in?">
-                  <Select t={t} value={partForm.partnership} onChange={e => setPartForm({...partForm, partnership: e.target.value})}>
-                    <option value="">Select partnership type...</option>
-                    {PARTNERSHIP_TYPES.map(p => <option key={p} value={p}>{p}</option>)}
-                  </Select>
-                </Field>
-                <Field full label="9. Tell us about your organisation and why you want to partner with LUMA. (4 to 6 sentences)"><Textarea t={t} placeholder="Tell us about your organisation and the alignment you see with LUMA..." value={partForm.about} onChange={e => setPartForm({...partForm, about: e.target.value})} rows={6} /></Field>
-                <Field full label="10. Is there a specific project or initiative you have in mind? (Optional)"><Textarea t={t} placeholder="If you have a concrete initiative in mind, describe it here." value={partForm.project} onChange={e => setPartForm({...partForm, project: e.target.value})} rows={4} /></Field>
-                <div style={{ gridColumn: "1 / -1" }}><Btn t={t} variant="primary" onClick={handlePart} style={{ opacity: partSending ? 0.6 : 1 }}>{partSending ? "Sending..." : "Start a Conversation"}</Btn></div>
-              </div>
-            )}
           </div>
         </div>
       </section>
     </div>
   );
 };
+
+// ─── FORM PAGE SHARED HELPERS ─────────────────────────────────────────────────
+
+const formNoteStyle = (t) => ({ fontFamily: "'DM Sans',sans-serif", fontSize: 14, fontStyle: "italic", color: t.textMuted, lineHeight: 1.7, marginBottom: 28, padding: "12px 16px", background: t.isDark ? t.card : t.accentLight, borderLeft: `3px solid ${t.accent}`, borderRadius: "0 8px 8px 0", maxWidth: 720 });
+const formLabelStyle = (t) => ({ fontFamily: "'DM Sans',sans-serif", fontSize: 13, fontWeight: 600, color: t.text, marginBottom: 6, display: "block" });
+const FormField = ({ t, label, children, full }) => (
+  <div style={full ? { gridColumn: "1 / -1" } : undefined}>
+    <label style={formLabelStyle(t)}>{label}</label>
+    {children}
+  </div>
+);
+
+const FormPageShell = ({ t, eyebrow, title, intro, children, backTo = "involve", setPage }) => (
+  <div>
+    <div style={{ background: t.primary, padding: "100px 32px 64px" }}>
+      <div style={{ maxWidth: 900, margin: "0 auto" }}>
+        <button onClick={() => setPage(backTo)} style={{ background: "none", border: "none", color: "rgba(247,243,236,0.75)", fontFamily: "'Space Grotesk',sans-serif", fontSize: 13, fontWeight: 600, cursor: "pointer", marginBottom: 16, display: "inline-flex", alignItems: "center", gap: 6 }}>
+          <ArrowLeft color="rgba(247,243,236,0.75)" size={14} /> {useLang().tr("Back", "Retour")}
+        </button>
+        <Tag t={t} light>{eyebrow}</Tag>
+        <h1 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: "clamp(32px,4.5vw,52px)", fontWeight: 800, color: t.ivory, lineHeight: 1.15, marginTop: 16 }}>{title}</h1>
+        {intro && <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 17, color: "rgba(247,243,236,0.75)", lineHeight: 1.7, maxWidth: 620, marginTop: 16 }}>{intro}</p>}
+      </div>
+    </div>
+    <section style={{ padding: "64px 32px 96px", background: t.bg }}>
+      <div style={{ maxWidth: 900, margin: "0 auto" }}>{children}</div>
+    </section>
+  </div>
+);
+
+// ─── AMBASSADOR FORM PAGE ─────────────────────────────────────────────────────
+
+export const AmbassadorFormPage = ({ t, setPage }) => {
+  const { tr } = useLang();
+  const [form, setForm] = useState({ name: "", email: "", phone: "", university: "", year: "", course: "", why: "", firstMonth: "", experience: "" });
+  const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const submit = async () => {
+    if (!form.name || !form.email || !form.university || !form.year || !form.course || !form.why || !form.firstMonth) return;
+    setSending(true);
+    await submitToEmail("Campus Ambassador Application", {
+      "Full Name": form.name, "Email": form.email, "WhatsApp Number": form.phone || "(not provided)",
+      "University": form.university, "Year": form.year, "Course of Study": form.course,
+      "Why be a LUMA ambassador": form.why, "First month plan": form.firstMonth,
+      "Prior experience": form.experience || "(none stated)",
+    });
+    setSending(false); setSent(true);
+  };
+  return (
+    <FormPageShell t={t} setPage={setPage} eyebrow={tr("Application · Campus Ambassador", "Candidature · Ambassadeur de Campus")}
+      title={tr("Be the first LUMA presence on your campus", "Soyez la première présence LUMA sur votre campus")}
+      intro={tr("No prior HIV advocacy experience required. Just the belief that every student deserves better.", "Aucune expérience préalable en plaidoyer VIH requise. Juste la conviction que chaque étudiant mérite mieux.")}>
+      {sent ? <FormSuccess t={t} message={tr("Application received. We will review it and be in touch within five working days.", "Candidature reçue. Nous l'examinerons et vous répondrons sous cinq jours ouvrables.")} /> : (
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: 16 }}>
+          <FormField t={t} label={tr("1. Your full name", "1. Votre nom complet")}><Input t={t} placeholder={tr("Full name", "Nom complet")} value={form.name} onChange={e => setForm({...form, name: e.target.value})} /></FormField>
+          <FormField t={t} label={tr("2. Your email address", "2. Votre adresse e-mail")}><Input t={t} type="email" placeholder="your@email.com" value={form.email} onChange={e => setForm({...form, email: e.target.value})} /></FormField>
+          <FormField t={t} label={tr("3. Your WhatsApp number (Optional)", "3. Votre numéro WhatsApp (Facultatif)")}><Input t={t} placeholder="WhatsApp" value={form.phone} onChange={e => setForm({...form, phone: e.target.value})} /></FormField>
+          <FormField t={t} label={tr("4. Which university do you attend?", "4. Quelle université fréquentez-vous ?")}><Input t={t} placeholder={tr("Name of your university", "Nom de votre université")} value={form.university} onChange={e => setForm({...form, university: e.target.value})} /></FormField>
+          <FormField t={t} label={tr("5. What year are you in?", "5. En quelle année êtes-vous ?")}>
+            <Select t={t} value={form.year} onChange={e => setForm({...form, year: e.target.value})}>
+              <option value="">{tr("Select your year...", "Sélectionnez...")}</option>
+              {YEAR_OPTIONS.filter(y => y !== "Prefer not to say").map(y => <option key={y} value={y}>{y}</option>)}
+            </Select>
+          </FormField>
+          <FormField t={t} label={tr("6. What is your course of study?", "6. Quelle est votre filière d'étude ?")}><Input t={t} placeholder={tr("e.g. Medicine, Law", "ex. Médecine, Droit")} value={form.course} onChange={e => setForm({...form, course: e.target.value})} /></FormField>
+          <FormField t={t} full label={tr("7. Why do you want to be a LUMA campus ambassador? (2 to 4 sentences)", "7. Pourquoi voulez-vous être ambassadeur LUMA ? (2 à 4 phrases)")}><Textarea t={t} value={form.why} onChange={e => setForm({...form, why: e.target.value})} rows={4} /></FormField>
+          <FormField t={t} full label={tr("8. What is one concrete thing you would do in your first month?", "8. Quelle action concrète feriez-vous le premier mois ?")}><Textarea t={t} value={form.firstMonth} onChange={e => setForm({...form, firstMonth: e.target.value})} rows={4} /></FormField>
+          <FormField t={t} full label={tr("9. Have you done any student activism, health advocacy, or community work before? (Optional)", "9. Avez-vous déjà fait du militantisme étudiant ou du plaidoyer ? (Facultatif)")}><Textarea t={t} value={form.experience} onChange={e => setForm({...form, experience: e.target.value})} rows={3} /></FormField>
+          <div style={{ gridColumn: "1 / -1" }}><Btn t={t} variant="primary" onClick={submit} style={{ opacity: sending ? 0.6 : 1 }}>{sending ? tr("Sending...", "Envoi...") : tr("Submit Application", "Envoyer ma candidature")}</Btn></div>
+        </div>
+      )}
+    </FormPageShell>
+  );
+};
+
+// ─── VOLUNTEER FORM PAGE ──────────────────────────────────────────────────────
+
+export const VolunteerFormPage = ({ t, setPage }) => {
+  const { tr } = useLang();
+  const VOL_SKILLS = ["Content Writing", "Graphic Design", "Research", "Social Media", "Translation", "Video or Photography", "Web Development", "Mental Health Support", "Other"];
+  const [form, setForm] = useState({ name: "", email: "", phone: "", institution: "", skill: "", experience: "", hours: "", interest: "" });
+  const [sent, setSent] = useState(false); const [sending, setSending] = useState(false);
+  const submit = async () => {
+    if (!form.name || !form.email || !form.skill || !form.experience || !form.hours) return;
+    setSending(true);
+    await submitToEmail("Volunteer Application", {
+      "Full Name": form.name, "Email": form.email, "WhatsApp Number": form.phone || "(not provided)",
+      "University or Institution": form.institution || "(not applicable)",
+      "Skill / Area": form.skill, "Experience": form.experience, "Hours per week": form.hours,
+      "Specific interest": form.interest || "(none)",
+    });
+    setSending(false); setSent(true);
+  };
+  return (
+    <FormPageShell t={t} setPage={setPage} eyebrow={tr("Application · Volunteer", "Candidature · Bénévole")}
+      title={tr("Bring your skill to LUMA", "Apportez votre talent à LUMA")}
+      intro={tr("LUMA is built by people who care. Whatever your skill, there is a place for it here.", "LUMA est construit par des personnes engagées. Quelle que soit votre compétence, il y a une place pour vous.")}>
+      {sent ? <FormSuccess t={t} message={tr("We have received your message. We will reach out within 48 hours.", "Nous avons reçu votre message. Nous vous contacterons sous 48 heures.")} /> : (
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: 16 }}>
+          <FormField t={t} label={tr("1. Your full name", "1. Votre nom complet")}><Input t={t} value={form.name} onChange={e => setForm({...form, name: e.target.value})} /></FormField>
+          <FormField t={t} label={tr("2. Your email address", "2. Votre adresse e-mail")}><Input t={t} type="email" value={form.email} onChange={e => setForm({...form, email: e.target.value})} /></FormField>
+          <FormField t={t} label={tr("3. Your WhatsApp number (Optional)", "3. Votre numéro WhatsApp (Facultatif)")}><Input t={t} value={form.phone} onChange={e => setForm({...form, phone: e.target.value})} /></FormField>
+          <FormField t={t} label={tr("4. Which university or institution? (If applicable)", "4. Quelle université ou institution ? (Si applicable)")}><Input t={t} value={form.institution} onChange={e => setForm({...form, institution: e.target.value})} /></FormField>
+          <FormField t={t} full label={tr("5. What skill or area do you want to volunteer in?", "5. Dans quel domaine souhaitez-vous être bénévole ?")}>
+            <Select t={t} value={form.skill} onChange={e => setForm({...form, skill: e.target.value})}>
+              <option value="">{tr("Select a skill area...", "Sélectionnez...")}</option>
+              {VOL_SKILLS.map(s => <option key={s} value={s}>{s}</option>)}
+            </Select>
+          </FormField>
+          <FormField t={t} full label={tr("6. Tell us about your experience. (2 to 3 sentences)", "6. Parlez-nous de votre expérience. (2 à 3 phrases)")}><Textarea t={t} value={form.experience} onChange={e => setForm({...form, experience: e.target.value})} rows={3} /></FormField>
+          <FormField t={t} label={tr("7. How many hours per week can you commit?", "7. Combien d'heures par semaine pouvez-vous engager ?")}><Input t={t} placeholder={tr("e.g. 3 to 5 hours", "ex. 3 à 5 heures")} value={form.hours} onChange={e => setForm({...form, hours: e.target.value})} /></FormField>
+          <FormField t={t} full label={tr("8. Anything specific you want to work on? (Optional)", "8. Un sujet spécifique en tête ? (Facultatif)")}><Textarea t={t} value={form.interest} onChange={e => setForm({...form, interest: e.target.value})} rows={3} /></FormField>
+          <div style={{ gridColumn: "1 / -1" }}><Btn t={t} variant="primary" onClick={submit} style={{ opacity: sending ? 0.6 : 1 }}>{sending ? tr("Sending...", "Envoi...") : tr("Get In Touch", "Envoyer")}</Btn></div>
+        </div>
+      )}
+    </FormPageShell>
+  );
+};
+
+// ─── PARTNER FORM PAGE ────────────────────────────────────────────────────────
+
+export const PartnerFormPage = ({ t, setPage }) => {
+  const { tr } = useLang();
+  const ORG_TYPES = ["University or Academic Institution", "Health Organisation", "NGO or Civil Society", "Research Institution", "Government Agency", "Corporate or Private Sector", "Media or Communications", "Other"];
+  const PARTNERSHIP_TYPES = ["Research Collaboration", "Programme Partnership", "Campus Outreach", "Funding or Sponsorship", "Media or Communications", "Content or Knowledge Sharing", "Other"];
+  const [form, setForm] = useState({ name: "", role: "", org: "", email: "", link: "", orgType: "", country: "", partnership: "", about: "", project: "" });
+  const [sent, setSent] = useState(false); const [sending, setSending] = useState(false);
+  const submit = async () => {
+    if (!form.name || !form.role || !form.org || !form.email || !form.orgType || !form.country || !form.partnership || !form.about) return;
+    setSending(true);
+    await submitToEmail("Partnership Enquiry", {
+      "Full Name": form.name, "Role / Title": form.role, "Organisation": form.org,
+      "Organisation Email": form.email, "Website / Social Link": form.link || "(not provided)",
+      "Organisation Type": form.orgType, "Country": form.country,
+      "Partnership Interest": form.partnership, "About / Why partner": form.about,
+      "Specific project": form.project || "(none)",
+    });
+    setSending(false); setSent(true);
+  };
+  return (
+    <FormPageShell t={t} setPage={setPage} eyebrow={tr("Application · Partner With LUMA", "Candidature · Partenariat")}
+      title={tr("Start a partnership conversation", "Démarrer une conversation de partenariat")}
+      intro={tr("LUMA welcomes partnerships with organisations, institutions, and programmes that share our commitment to HIV-positive students on Nigerian campuses.", "LUMA accueille les partenariats avec des organisations partageant notre engagement envers les étudiants séropositifs sur les campus nigérians.")}>
+      {sent ? <FormSuccess t={t} message={tr("Thank you for reaching out. We will review your message and respond within five working days.", "Merci de nous avoir contactés. Nous répondrons sous cinq jours ouvrables.")} /> : (
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: 16 }}>
+          <FormField t={t} label={tr("1. Your full name", "1. Votre nom complet")}><Input t={t} value={form.name} onChange={e => setForm({...form, name: e.target.value})} /></FormField>
+          <FormField t={t} label={tr("2. Your role or title", "2. Votre rôle ou titre")}><Input t={t} value={form.role} onChange={e => setForm({...form, role: e.target.value})} /></FormField>
+          <FormField t={t} label={tr("3. Organisation name", "3. Nom de l'organisation")}><Input t={t} value={form.org} onChange={e => setForm({...form, org: e.target.value})} /></FormField>
+          <FormField t={t} label={tr("4. Organisation email", "4. E-mail de l'organisation")}><Input t={t} type="email" value={form.email} onChange={e => setForm({...form, email: e.target.value})} /></FormField>
+          <FormField t={t} full label={tr("5. Website or social media link (Optional)", "5. Site web ou lien réseau social (Facultatif)")}><Input t={t} placeholder="https://..." value={form.link} onChange={e => setForm({...form, link: e.target.value})} /></FormField>
+          <FormField t={t} label={tr("6. What type of organisation are you?", "6. Quel type d'organisation ?")}>
+            <Select t={t} value={form.orgType} onChange={e => setForm({...form, orgType: e.target.value})}>
+              <option value="">{tr("Select organisation type...", "Sélectionnez...")}</option>
+              {ORG_TYPES.map(o => <option key={o} value={o}>{o}</option>)}
+            </Select>
+          </FormField>
+          <FormField t={t} label={tr("7. Which country are you based in?", "7. Dans quel pays êtes-vous basé ?")}><Input t={t} value={form.country} onChange={e => setForm({...form, country: e.target.value})} /></FormField>
+          <FormField t={t} full label={tr("8. What kind of partnership are you interested in?", "8. Quel type de partenariat vous intéresse ?")}>
+            <Select t={t} value={form.partnership} onChange={e => setForm({...form, partnership: e.target.value})}>
+              <option value="">{tr("Select partnership type...", "Sélectionnez...")}</option>
+              {PARTNERSHIP_TYPES.map(p => <option key={p} value={p}>{p}</option>)}
+            </Select>
+          </FormField>
+          <FormField t={t} full label={tr("9. Tell us about your organisation and why you want to partner with LUMA. (4 to 6 sentences)", "9. Parlez-nous de votre organisation et de votre intérêt pour LUMA. (4 à 6 phrases)")}><Textarea t={t} value={form.about} onChange={e => setForm({...form, about: e.target.value})} rows={6} /></FormField>
+          <FormField t={t} full label={tr("10. Is there a specific project you have in mind? (Optional)", "10. Avez-vous un projet spécifique en tête ? (Facultatif)")}><Textarea t={t} value={form.project} onChange={e => setForm({...form, project: e.target.value})} rows={4} /></FormField>
+          <div style={{ gridColumn: "1 / -1" }}><Btn t={t} variant="primary" onClick={submit} style={{ opacity: sending ? 0.6 : 1 }}>{sending ? tr("Sending...", "Envoi...") : tr("Start a Conversation", "Démarrer la conversation")}</Btn></div>
+        </div>
+      )}
+    </FormPageShell>
+  );
+};
+
+// ─── GUIDE PAGE (PDF READER + DOWNLOAD) ───────────────────────────────────────
+
+export const GuidePage = ({ t, guideId, setPage }) => {
+  const { lang, tr } = useLang();
+  const guide = GUIDES[guideId];
+  if (!guide) {
+    return (
+      <div style={{ padding: "120px 32px", background: t.bg, textAlign: "center" }}>
+        <h1 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 32, color: t.text, marginBottom: 16 }}>{tr("Guide not found", "Guide introuvable")}</h1>
+        <Btn t={t} onClick={() => setPage("resources")}>{tr("Back to Resources", "Retour aux Ressources")}</Btn>
+      </div>
+    );
+  }
+  const title = lang === "fr" ? guide.titleFr : guide.title;
+  const body = lang === "fr" ? guide.bodyFr : guide.body;
+  const url = guide.asset.url;
+  const others = Object.entries(GUIDES).filter(([id]) => id !== guideId).slice(0, 3);
+
+  return (
+    <div>
+      <div style={{ background: t.primary, padding: "100px 32px 56px" }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+          <button onClick={() => setPage("resources")} style={{ background: "none", border: "none", color: "rgba(247,243,236,0.75)", fontFamily: "'Space Grotesk',sans-serif", fontSize: 13, fontWeight: 600, cursor: "pointer", marginBottom: 16, display: "inline-flex", alignItems: "center", gap: 6 }}>
+            <ArrowLeft color="rgba(247,243,236,0.75)" size={14} /> {tr("All guides", "Tous les guides")}
+          </button>
+          <Tag t={t} light>{tr("LUMA Guide", "Guide LUMA")}</Tag>
+          <h1 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: "clamp(32px,4.5vw,52px)", fontWeight: 800, color: t.ivory, lineHeight: 1.15, marginTop: 16 }}>{title}</h1>
+          <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 17, color: "rgba(247,243,236,0.75)", lineHeight: 1.7, maxWidth: 620, marginTop: 16 }}>{body}</p>
+          <div style={{ display: "flex", gap: 12, marginTop: 28, flexWrap: "wrap" }}>
+            <a href={url} download={guide.asset.original_filename} style={{ background: t.ivory, color: t.primary, padding: "13px 24px", borderRadius: 100, fontFamily: "'Space Grotesk',sans-serif", fontWeight: 700, fontSize: 14 }}>{tr("Download PDF", "Télécharger le PDF")}</a>
+            <a href={url} target="_blank" rel="noreferrer" style={{ background: "transparent", color: t.ivory, padding: "13px 24px", borderRadius: 100, fontFamily: "'Space Grotesk',sans-serif", fontWeight: 700, fontSize: 14, border: "2px solid rgba(247,243,236,0.4)" }}>{tr("Open in new tab", "Ouvrir dans un onglet")}</a>
+          </div>
+        </div>
+      </div>
+      <section style={{ padding: "48px 32px 32px", background: t.bg }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+          <div style={{ background: t.card, border: `1px solid ${t.borderColor}`, borderRadius: 16, overflow: "hidden" }}>
+            <iframe src={url} title={title} style={{ width: "100%", height: "85vh", minHeight: 600, border: "none", display: "block", background: "#fff" }} />
+          </div>
+        </div>
+      </section>
+      <section style={{ padding: "48px 32px 96px", background: t.bg }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+          <SectionLabel t={t}>{tr("Continue Reading", "Continuer la lecture")}</SectionLabel>
+          <h2 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 28, fontWeight: 800, color: t.text, marginTop: 8, marginBottom: 28 }}>{tr("Other guides", "Autres guides")}</h2>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))", gap: 20 }}>
+            {others.map(([id, g]) => (
+              <Card key={id} t={t} style={{ cursor: "pointer" }} onClick={() => setPage("guide:" + id)}>
+                <h3 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 18, fontWeight: 700, color: t.text, marginBottom: 10 }}>{lang === "fr" ? g.titleFr : g.title}</h3>
+                <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 14, color: t.textMuted, lineHeight: 1.6, marginBottom: 16 }}>{lang === "fr" ? g.bodyFr : g.body}</p>
+                <span style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 13, fontWeight: 700, color: t.accent, display: "inline-flex", alignItems: "center", gap: 6 }}>{tr("Read guide", "Lire le guide")} <ArrowRight color={t.accent} size={12} /></span>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
+
 
 // ─── CONTACT PAGE ────────────────────────────────────────────────────────────
 
@@ -1680,6 +1792,7 @@ const PAGE_TO_ROUTE = {
   home: "/", about: "/about", work: "/work", truth: "/truth",
   circle: "/circle", advocacy: "/advocacy", resources: "/resources",
   involve: "/involve", contact: "/contact", games: "/games",
+  ambassador: "/apply/ambassador", volunteer: "/apply/volunteer", partner: "/apply/partner",
 };
 const ROUTE_TO_PAGE = Object.fromEntries(Object.entries(PAGE_TO_ROUTE).map(([k, v]) => [v, k]));
 
@@ -1687,12 +1800,19 @@ export const useNavToPage = () => {
   const router = useRouter();
   return (id) => {
     if (id === "story") return;
+    if (typeof id === "string" && id.startsWith("guide:")) {
+      const guideId = id.slice("guide:".length);
+      router.navigate({ to: "/resources/$guideId", params: { guideId } });
+      try { window.scrollTo({ top: 0, behavior: "smooth" }); } catch (e) {}
+      return;
+    }
     const to = PAGE_TO_ROUTE[id];
     if (!to) return;
     router.navigate({ to });
     try { window.scrollTo({ top: 0, behavior: "smooth" }); } catch (e) {}
   };
 };
+
 
 export const useNavToStory = () => {
   const router = useRouter();
