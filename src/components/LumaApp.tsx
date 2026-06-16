@@ -1720,6 +1720,7 @@ const PAGE_TO_ROUTE = {
   home: "/", about: "/about", work: "/work", truth: "/truth",
   circle: "/circle", advocacy: "/advocacy", resources: "/resources",
   involve: "/involve", contact: "/contact", games: "/games",
+  ambassador: "/apply/ambassador", volunteer: "/apply/volunteer", partner: "/apply/partner",
 };
 const ROUTE_TO_PAGE = Object.fromEntries(Object.entries(PAGE_TO_ROUTE).map(([k, v]) => [v, k]));
 
