@@ -1800,12 +1800,19 @@ export const useNavToPage = () => {
   const router = useRouter();
   return (id) => {
     if (id === "story") return;
+    if (typeof id === "string" && id.startsWith("guide:")) {
+      const guideId = id.slice("guide:".length);
+      router.navigate({ to: "/resources/$guideId", params: { guideId } });
+      try { window.scrollTo({ top: 0, behavior: "smooth" }); } catch (e) {}
+      return;
+    }
     const to = PAGE_TO_ROUTE[id];
     if (!to) return;
     router.navigate({ to });
     try { window.scrollTo({ top: 0, behavior: "smooth" }); } catch (e) {}
   };
 };
+
 
 export const useNavToStory = () => {
   const router = useRouter();
