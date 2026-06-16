@@ -1136,7 +1136,8 @@ export const ResourcesPage = ({ t }) => {
       </div>
     </section>
   </div>
-);
+  );
+};
 
 // ─── GET INVOLVED PAGE ────────────────────────────────────────────────────────
 
