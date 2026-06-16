@@ -1044,39 +1044,40 @@ export const AdvocacyPage = ({ t }) => (
 
 // ─── RESOURCES PAGE ───────────────────────────────────────────────────────────
 
-export const ResourcesPage = ({ t }) => (
+export const ResourcesPage = ({ t }) => {
+  const { lang, tr } = useLang();
+  const setPage = useNavToPage();
+  return (
   <div>
     <div style={{ background: t.primary, padding: "120px 32px 80px" }}>
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-        <Tag t={t} light>Resources</Tag>
-        <h1 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: "clamp(36px,5vw,64px)", fontWeight: 800, color: t.ivory, lineHeight: 1.1, marginTop: 16 }}>Everything you need to know.<br />In one place.</h1>
-        <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 18, color: "rgba(247,243,236,0.7)", lineHeight: 1.7, maxWidth: 540, marginTop: 16 }}>LUMA's resource hub is built specifically for Nigerian university students. No jargon. No gatekeeping.</p>
+        <Tag t={t} light>{tr("Resources", "Ressources")}</Tag>
+        <h1 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: "clamp(36px,5vw,64px)", fontWeight: 800, color: t.ivory, lineHeight: 1.1, marginTop: 16 }}>{tr("Everything you need to know.", "Tout ce que vous devez savoir.")}<br />{tr("In one place.", "En un seul endroit.")}</h1>
+        <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 18, color: "rgba(247,243,236,0.7)", lineHeight: 1.7, maxWidth: 540, marginTop: 16 }}>{tr("LUMA's resource hub is built specifically for Nigerian university students. No jargon. No gatekeeping.", "Le centre de ressources LUMA est conçu pour les étudiants universitaires nigérians. Sans jargon. Sans barrières.")}</p>
       </div>
     </div>
     <section style={{ padding: "80px 32px", background: t.bg }}>
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: 24 }}>
-          {[
-            ["HIV Basics", "What HIV is, how it works, and what it absolutely does not do. Plain language, no jargon.", "Download Guide"],
-            ["PrEP and Prevention", "What PrEP is, how to access it in Nigeria, and why every student should know about it.", "Read More"],
-            ["Testing and Treatment", "Where to get tested, what treatment looks like, and what undetectable means for your life.", "Read More"],
-            ["Your Rights on Campus", "Anti-discrimination law, medical confidentiality, and what your university legally owes you.", "Read More"],
-            ["Mental Health and HIV", "Resources for students navigating the emotional weight of an HIV diagnosis on campus.", "Read More"],
-            ["For Allies", "How non-positive students can actively support, advocate, and break stigma on their campuses.", "Read More"],
-          ].map(([title, body, cta], i) => (
-            <Card key={i} t={t} style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", cursor: "pointer", transition: "transform 0.2s" }}
+          {Object.entries(GUIDES).map(([id, g]) => (
+            <Card key={id} t={t} style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", cursor: "pointer", transition: "transform 0.2s" }}
+              onClick={() => setPage("guide:" + id)}
               onMouseEnter={e => e.currentTarget.style.transform = "translateY(-4px)"}
               onMouseLeave={e => e.currentTarget.style.transform = "translateY(0)"}>
               <div>
-                <h3 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 19, fontWeight: 700, color: t.text, marginBottom: 12 }}>{title}</h3>
-                <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 15, color: t.textMuted, lineHeight: 1.7, marginBottom: 20 }}>{body}</p>
+                <h3 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 19, fontWeight: 700, color: t.text, marginBottom: 12 }}>{lang === "fr" ? g.titleFr : g.title}</h3>
+                <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 15, color: t.textMuted, lineHeight: 1.7, marginBottom: 20 }}>{lang === "fr" ? g.bodyFr : g.body}</p>
               </div>
-              <span style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 13, fontWeight: 700, color: t.accent, display: "flex", alignItems: "center", gap: 6 }}>{cta} <ArrowRight color={t.accent} size={12} /></span>
+              <div style={{ display: "flex", gap: 14, alignItems: "center", flexWrap: "wrap" }}>
+                <span style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 13, fontWeight: 700, color: t.accent, display: "flex", alignItems: "center", gap: 6 }}>{tr("Read Guide", "Lire le Guide")} <ArrowRight color={t.accent} size={12} /></span>
+                <a href={g.asset.url} download={g.asset.original_filename} onClick={e => e.stopPropagation()} style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 13, fontWeight: 700, color: t.textMuted }}>{tr("Download", "Télécharger")} ↓</a>
+              </div>
             </Card>
           ))}
         </div>
       </div>
     </section>
+
 
     {/* POLICY SHIELD — Student Rights Handout */}
     <section style={{ padding: "80px 32px", background: t.isDark ? t.surface : t.accentLight }}>
