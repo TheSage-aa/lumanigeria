@@ -1056,7 +1056,7 @@ export const ResourcesPage = ({ t }) => {
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>
         <Tag t={t} light>{tr("Resources", "Ressources")}</Tag>
         <h1 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: "clamp(36px,5vw,64px)", fontWeight: 800, color: t.ivory, lineHeight: 1.1, marginTop: 16 }}>{tr("Everything you need to know.", "Tout ce que vous devez savoir.")}<br />{tr("In one place.", "En un seul endroit.")}</h1>
-        <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 18, color: "rgba(247,243,236,0.7)", lineHeight: 1.7, maxWidth: 540, marginTop: 16 }}>{tr("LUMA's resource hub is built specifically for Nigerian university students. No jargon. No gatekeeping.", "Le centre de ressources LUMA est conçu pour les étudiants universitaires nigérians. Sans jargon. Sans barrières.")}</p>
+        <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 18, color: "rgba(247,243,236,0.7)", lineHeight: 1.7, maxWidth: 620, marginTop: 16 }}>{tr("Every resource in this library is built around one question: not what do you know, but what will you do with it?", "Chaque ressource de cette bibliothèque part d'une seule question : non pas que savez-vous, mais qu'allez-vous en faire ?")}</p>
       </div>
     </div>
     <section style={{ padding: "80px 32px", background: t.bg }}>
