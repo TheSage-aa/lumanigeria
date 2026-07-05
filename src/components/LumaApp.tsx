@@ -425,7 +425,7 @@ export const Footer = ({ t, setPage }) => {
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(180px,1fr))", gap: 48, marginBottom: 48 }}>
           <div>
             <Logo variant="light" size={32} />
-            <p style={{ color: "rgba(247,243,236,0.6)", fontSize: 14, fontFamily: "'DM Sans',sans-serif", lineHeight: 1.6, marginTop: 12, maxWidth: 240 }}>Closing HIV information gaps in Nigerian universities. Built by youth, for youth.</p>
+            <p style={{ color: "rgba(247,243,236,0.6)", fontSize: 14, fontFamily: "'DM Sans',sans-serif", lineHeight: 1.6, marginTop: 12, maxWidth: 240 }}>Transforming HIV information into HIV action. Built by youth, for youth.</p>
           </div>
           {col("Navigate", [["About LUMA", () => setPage("about")], ["Our Work", () => setPage("work")], ["Campus Truth Series", () => setPage("truth")], ["The Peer Circle", () => setPage("circle")], ["Advocacy", () => setPage("advocacy")], ["Resources", () => setPage("resources")], ["Games", () => setPage("games")]])}
           {col("Get Involved", [["Join The Peer Circle", () => setPage("circle")], ["Become an Ambassador", () => setPage("involve")], ["Volunteer", () => setPage("involve")], ["Partner with LUMA", () => setPage("contact")]])}
@@ -539,9 +539,9 @@ export const HomePage = ({ t, setPage, setStoryId }) => {
   };
 
   const pillars = [
-    { num: "01", title: "Inform", body: "Status neutral HIV education built for Nigerian campuses. No separation. Everyone learns together.", page: "truth" },
-    { num: "02", title: "Advocate", body: "We push for anti-discrimination policies, campus health reform, and youth voices in Nigeria's national HIV plan.", page: "advocacy" },
-    { num: "03", title: "Belong", body: "A safe digital community for university students living with HIV. Peer-led. Anonymous where needed.", page: "circle" },
+    { num: "01", title: "Inform", body: "We do not just deliver HIV information. Nigerian students already have it. We make that information actionable, contextual, and impossible to ignore. Every Campus Truth Series article moves students from knowing to doing.", page: "truth" },
+    { num: "02", title: "Advocate", body: "Knowing your rights and exercising your rights are two completely different things. LUMA equips students with the tools, language, and confidence to turn legal knowledge into real protection on their campuses.", page: "advocacy" },
+    { num: "03", title: "Belong", body: "Community is where information becomes knowledge. In the Peer Circle, what students know in theory becomes something they can live with, talk about, and act on together.", page: "circle" },
   ];
 
   return (
@@ -549,9 +549,9 @@ export const HomePage = ({ t, setPage, setStoryId }) => {
       <section style={s.hero}>
         <svg style={{ position: "absolute", right: -80, top: "50%", transform: "translateY(-50%)", opacity: 0.05, pointerEvents: "none" }} width="700" height="700" viewBox="0 0 700 700"><path d="M100 600 Q350 50 600 600" stroke="white" strokeWidth="130" fill="none" strokeLinecap="round"/></svg>
         <div style={{ maxWidth: 640, position: "relative", zIndex: 2 }}>
-          <Tag t={t} light>Luminating Africa</Tag>
-          <h1 style={s.h1}>No student should navigate HIV on campus alone.</h1>
-          <p style={s.heroSub}>LUMA is a youth-led organisation closing HIV information gaps in Nigerian universities, fighting for campus health policy change, and building community for students who need it most.</p>
+          <Tag t={t} light>From Information to Knowledge. From Knowledge to Action.</Tag>
+          <h1 style={s.h1}>Most Nigerian university students already know the HIV facts. LUMA makes those facts matter.</h1>
+          <p style={s.heroSub}>Knowing that HIV is not transmitted through casual contact does not stop stigma. Knowing your legal rights does not mean you will use them. Knowing PrEP exists does not mean you will access it. LUMA closes the gap between what you know and what you do.</p>
           <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
             <Btn t={t} variant="light" onClick={() => setPage("about")}>Learn About LUMA</Btn>
             <Btn t={t} variant="ghost" onClick={() => setPage("work")}>See Our Work</Btn>
@@ -561,7 +561,7 @@ export const HomePage = ({ t, setPage, setStoryId }) => {
 
       <div style={{ background: t.bg, padding: "48px 32px", borderBottom: `1px solid ${t.borderColor}` }}>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 2, maxWidth: 900, margin: "0 auto" }}>
-          {[["1.4%", "National HIV prevalence in Nigeria", "UNAIDS 2025"], ["0", "Dedicated HIV platforms for Nigerian university students before LUMA", "As of June 2026"], ["55%", "of students hold stigmatising attitudes toward PLHIV", "Despite 96% HIV knowledge"]].map(([num, label, src], i) => (
+          {[["96.85%", "of Nigerian university students already have high HIV knowledge", "Campus research, 2024"], ["55.5%", "still hold stigmatising attitudes toward PLHIV despite that knowledge", "The gap LUMA closes"], ["0", "organisations closing the Information-to-Action gap for Nigerian university students before LUMA", "As of June 2026"]].map(([num, label, src], i) => (
             <div key={i} style={{ textAlign: "center", padding: "24px 16px", borderRight: i < 2 ? `1px solid ${t.borderColor}` : "none" }}>
               <div style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: "clamp(32px,4vw,52px)", fontWeight: 800, color: t.primary, lineHeight: 1, marginBottom: 8 }}>{num}</div>
               <div style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 13, color: t.textMuted, lineHeight: 1.4 }}>{label}</div>
@@ -590,10 +590,10 @@ export const HomePage = ({ t, setPage, setStoryId }) => {
 
       <section style={s.sectionDark}>
         <div style={{ ...s.inner, textAlign: "center" }}>
-          <SectionLabel t={t}>The Status Neutral Promise</SectionLabel>
-          <p style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: "clamp(22px,3.5vw,44px)", fontWeight: 700, color: t.ivory, lineHeight: 1.3, maxWidth: 780, margin: "24px auto" }}>We do not separate the positive from the negative. We build one community.</p>
-          <p style={{ ...s.bodyLight, maxWidth: 640, margin: "0 auto 16px" }}>LUMA operates on the status neutral approach: the same information, the same care, and the same community for every student regardless of HIV status.</p>
-          <p style={{ ...s.bodyLight, maxWidth: 640, margin: "0 auto 40px" }}>Whether you are accessing PrEP for prevention or adhering to ART for viral suppression, you are a crucial stakeholder of the exact same unified support circle.</p>
+          <SectionLabel t={t}>Status Neutral by Design</SectionLabel>
+          <p style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: "clamp(22px,3.5vw,44px)", fontWeight: 700, color: t.ivory, lineHeight: 1.3, maxWidth: 780, margin: "24px auto" }}>The Information-to-Action gap affects every student, regardless of HIV status.</p>
+          <p style={{ ...s.bodyLight, maxWidth: 640, margin: "0 auto 16px" }}>LUMA is status neutral because the Information-to-Action gap affects every student regardless of HIV status. HIV positive students who know their rights but cannot exercise them. HIV negative students who know about PrEP but have never accessed it. Allies who know stigma is wrong but stay silent anyway.</p>
+          <p style={{ ...s.bodyLight, maxWidth: 640, margin: "0 auto 40px" }}>LUMA closes the gap for all of them.</p>
           <Btn t={t} variant="ghost" onClick={() => setPage("about")}>Read More About Our Approach</Btn>
         </div>
       </section>
@@ -646,8 +646,8 @@ export const HomePage = ({ t, setPage, setStoryId }) => {
         <div style={s.inner}>
           <div style={{ background: t.isDark ? t.card : "rgba(247,243,236,0.7)", borderRadius: 20, padding: 48, borderLeft: `4px solid ${t.accent}`, maxWidth: 780, margin: "0 auto" }}>
             <SectionLabel t={t}>A Note From Our Founder</SectionLabel>
-            <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 20, fontStyle: "italic", color: t.text, lineHeight: 1.75, marginBottom: 24, marginTop: 16 }}>"I grew up with HIV. I went to university with HIV. And I spent those years figuring things out completely alone because no one had built anything for students like me. LUMA is what I needed and did not have. It is for every student sitting where I once sat."</p>
-            <p style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 14, fontWeight: 600, color: t.primary }}>Adebare Hammed — Founder, LUMA | Computer Science, Kwara State University</p>
+            <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 20, fontStyle: "italic", color: t.text, lineHeight: 1.75, marginBottom: 24, marginTop: 16 }}>"I built LUMA because I saw the gap up close. Students who knew the facts but still stigmatised their classmates. Students who knew their rights but had no idea how to use them. Students who had never heard of PrEP despite it being available for years. Information was never the problem. Action was. LUMA is the bridge."</p>
+            <p style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 14, fontWeight: 600, color: t.primary }}>Adebare Hammed, Founder, LUMA</p>
             <div style={{ marginTop: 24 }}><Btn t={t} variant="primary" onClick={() => setPage("about")}>Meet the Founder</Btn></div>
           </div>
         </div>
@@ -684,8 +684,8 @@ export const AboutPage = ({ t }) => {
       <div style={s.hero}>
         <div style={s.inner}>
           <Tag t={t} light>Our Story</Tag>
-          <h1 style={s.h1}>Built from lived experience.<br />Built for every student.</h1>
-          <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 18, color: "rgba(247,243,236,0.72)", lineHeight: 1.7, maxWidth: 620, marginTop: 20 }}>LUMA was founded in 2026 by Adebare Hammed, a young person living with HIV since childhood, a Computer Science undergraduate at Kwara State University, and a youth advocate who spent years navigating HIV in spaces that were not built for him.</p>
+          <h1 style={s.h1}>From Information to Knowledge.<br />From Knowledge to Action.</h1>
+          <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 18, color: "rgba(247,243,236,0.72)", lineHeight: 1.7, maxWidth: 620, marginTop: 20 }}>LUMA exists to transform HIV information into HIV knowledge among Nigerian university students. We take what students already know and make it something they can use, act on, and live by.</p>
         </div>
       </div>
 
@@ -695,8 +695,9 @@ export const AboutPage = ({ t }) => {
             <div>
               <SectionLabel t={t}>The Problem Nobody Named</SectionLabel>
               <h2 style={s.h2}>The gap LUMA fills</h2>
-              <p style={s.body}>Nigeria has over 1.9 million people living with HIV. Stigma prevalence is at 67%. University campuses have no dedicated HIV resource, no anti-discrimination policy, and no peer community for students navigating a positive status.</p>
-              <p style={s.body}>LUMA does not replicate what NEPWHAN or ANAYD do. We go where they have not gone: directly onto the campus, into the student's digital life, before the crisis arrives.</p>
+              <p style={s.body}>Nigeria has over 1.9 million people living with HIV. University campuses have no dedicated HIV support, no anti-discrimination policies, and no peer community for students navigating a positive status.</p>
+              <p style={s.body}>But the deeper problem is not a lack of information. Research shows 96.85% of students already have high HIV knowledge. The problem is that information is not translating into action. Students are not accessing PrEP. Not exercising their rights. Not challenging stigma even when they know it is wrong.</p>
+              <p style={s.body}>LUMA is the organisation that closes that gap.</p>
             </div>
             <div style={{ background: t.primary, borderRadius: 16, padding: "48px 32px", textAlign: "center" }}>
               <div style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 80, fontWeight: 800, color: t.ivory, lineHeight: 1 }}>0</div>
@@ -725,8 +726,10 @@ export const AboutPage = ({ t }) => {
               <span key={r} style={{ background: "rgba(247,243,236,0.12)", color: t.ivory, fontFamily: "'Space Grotesk',sans-serif", fontSize: 12, fontWeight: 600, padding: "5px 14px", borderRadius: 100 }}>{r}</span>
             ))}
           </div>
-          <p style={s.bodyLight}>Adebare is completing a Computer Science degree at Kwara State University in July 2026. His research spans PrEP awareness at KWASU and HIV stigma and mental health across Nigeria. He has facilitated sessions at the Adolescent Girls Summit 2026 in Yamoussoukro and participated in the African Regional Convening by Sonke Gender Justice in Nairobi.</p>
-          <p style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 13, color: t.accent, marginTop: 20 }}>UNESCO Nigeria Youth Network · Kectil Global Leadership Program · Aspire Leadership Program · Leaders of Africa Institute (September 2026)</p>
+          <p style={s.bodyLight}>Adebare Hammed is completing a Computer Science degree at Kwara State University in July 2026. He is a Youth Advocate, Peer Mentor, and researcher whose work sits at the intersection of HIV advocacy, campus health policy, and youth rights in Nigeria.</p>
+          <p style={s.bodyLight}>He founded LUMA after years of observing a gap no organisation was addressing: Nigerian university students have HIV information but lack the tools, community, and confidence to act on it.</p>
+          <p style={s.bodyLight}>His research spans PrEP awareness at KWASU and HIV stigma and mental health across Nigerian youth HIV networks. He has facilitated sessions at the Adolescent Girls Summit 2026 in Yamoussoukro and participated in the African Regional Convening organised by Sonke Gender Justice in Nairobi.</p>
+          <p style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 13, color: t.accent, marginTop: 20 }}>UNESCO Nigeria Youth Network · Kectil Global Leadership Program · Aspire Leadership Program</p>
         </div>
       </section>
 
@@ -760,7 +763,7 @@ export const TruthPage = ({ t, setPage, setStoryId }) => (
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>
         <Tag t={t} light>From the Inform Pillar</Tag>
         <h1 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: "clamp(36px,5vw,60px)", fontWeight: 800, color: t.ivory, lineHeight: 1.1, marginTop: 16 }}>The Campus Truth Series</h1>
-        <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 18, color: "rgba(247,243,236,0.7)", lineHeight: 1.7, maxWidth: 580, marginTop: 16 }}>HIV myths do not belong on university campuses. We are replacing them, one truth at a time, with evidence from real Nigerian research.</p>
+        <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 18, color: "rgba(247,243,236,0.7)", lineHeight: 1.7, maxWidth: 620, marginTop: 16 }}>The Campus Truth Series does not just tell students what is true. It shows them what to do with the truth. Every article ends with action, not just information.</p>
       </div>
     </div>
     <section style={{ padding: "80px 32px", background: t.bg }}>
@@ -968,9 +971,9 @@ export const CirclePage = ({ t }) => {
 
 export const WorkPage = ({ t, setPage }) => {
   const pillars = [
-    { num: "01", label: "Inform", title: "Because ignorance is not neutral.", body: "HIV myths do not stay in classrooms. They spread in hostels, lecture halls, and WhatsApp groups. LUMA delivers status neutral HIV education built specifically for Nigerian campuses. No separation. Everyone learns together.", programs: ["Campus Truth Series", "The Status Neutral Campus Guide"], page: "truth", dark: false },
-    { num: "02", label: "Advocate", title: "Policy does not change by itself.", body: "Nigerian universities have no anti-discrimination policies for students living with HIV. No integration of HIV into campus health services. LUMA is changing that, one campus at a time, grounded in evidence.", programs: ["Campus Policy Push", "National Prevention Plan Engagement", "Research to Advocacy Pipeline"], page: "advocacy", dark: true },
-    { num: "03", label: "Belong", title: "You should not have to be alone in this.", body: "The Belong pillar is the heart of LUMA. A peer-led digital community for university students living with HIV in Nigeria. Safe. Affirming. Anonymous where needed.", programs: ["The Peer Circle", "Voices From Campus"], page: "circle", dark: false },
+    { num: "01", label: "Inform", title: "Because ignorance is not neutral.", body: "We do not just deliver HIV information. Nigerian students already have it. We make that information actionable, contextual, and impossible to ignore. Every Campus Truth Series article moves students from knowing to doing.", programs: ["Campus Truth Series", "The Status Neutral Campus Guide"], page: "truth", dark: false },
+    { num: "02", label: "Advocate", title: "Policy does not change by itself.", body: "Knowing your rights and exercising your rights are two completely different things. LUMA equips students with the tools, language, and confidence to turn legal knowledge into real protection on their campuses.", programs: ["Campus Policy Push", "National Prevention Plan Engagement", "Research to Advocacy Pipeline"], page: "advocacy", dark: true },
+    { num: "03", label: "Belong", title: "You should not have to be alone in this.", body: "Community is where information becomes knowledge. In the Peer Circle, what students know in theory becomes something they can live with, talk about, and act on together.", programs: ["The Peer Circle", "Voices From Campus"], page: "circle", dark: false },
   ];
   const bg0 = { padding: "96px 32px", background: t.bg };
   const bgA = { padding: "96px 32px", background: t.isDark ? t.surface : t.accentLight };
@@ -1053,7 +1056,7 @@ export const ResourcesPage = ({ t }) => {
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>
         <Tag t={t} light>{tr("Resources", "Ressources")}</Tag>
         <h1 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: "clamp(36px,5vw,64px)", fontWeight: 800, color: t.ivory, lineHeight: 1.1, marginTop: 16 }}>{tr("Everything you need to know.", "Tout ce que vous devez savoir.")}<br />{tr("In one place.", "En un seul endroit.")}</h1>
-        <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 18, color: "rgba(247,243,236,0.7)", lineHeight: 1.7, maxWidth: 540, marginTop: 16 }}>{tr("LUMA's resource hub is built specifically for Nigerian university students. No jargon. No gatekeeping.", "Le centre de ressources LUMA est conçu pour les étudiants universitaires nigérians. Sans jargon. Sans barrières.")}</p>
+        <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 18, color: "rgba(247,243,236,0.7)", lineHeight: 1.7, maxWidth: 620, marginTop: 16 }}>{tr("Every resource in this library is built around one question: not what do you know, but what will you do with it?", "Chaque ressource de cette bibliothèque part d'une seule question : non pas que savez-vous, mais qu'allez-vous en faire ?")}</p>
       </div>
     </div>
     <section style={{ padding: "80px 32px", background: t.bg }}>
@@ -1155,7 +1158,7 @@ export const InvolvePage = ({ t, setPage }) => {
       <div style={{ background: t.primary, padding: "120px 32px 80px" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
           <Tag t={t} light>{tr("Get Involved", "S'impliquer")}</Tag>
-          <h1 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: "clamp(36px,5vw,64px)", fontWeight: 800, color: t.ivory, lineHeight: 1.1, marginTop: 16 }}>{tr("LUMA works because people like you decide to show up.", "LUMA fonctionne parce que des gens comme vous décident d'être présents.")}</h1>
+          <h1 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: "clamp(36px,5vw,64px)", fontWeight: 800, color: t.ivory, lineHeight: 1.1, marginTop: 16 }}>{tr("Join LUMA and help turn HIV knowledge into HIV action on Nigerian campuses.", "Rejoignez LUMA et aidez à transformer les connaissances sur le VIH en actions concrètes sur les campus nigérians.")}</h1>
           <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 18, color: "rgba(247,243,236,0.7)", lineHeight: 1.7, maxWidth: 600, marginTop: 16 }}>{tr("Choose how you want to be part of LUMA. Each option has its own short application.", "Choisissez comment vous souhaitez faire partie de LUMA. Chaque option a son propre formulaire.")}</p>
         </div>
       </div>
@@ -1739,7 +1742,7 @@ export const GamesPage = ({ t, setPage }) => {
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
           <Tag t={t} light>LUMA Games</Tag>
           <h1 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: "clamp(36px,5vw,64px)", fontWeight: 800, color: t.ivory, lineHeight: 1.1, marginTop: 16 }}>Learn through play.</h1>
-          <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 18, color: "rgba(247,243,236,0.72)", lineHeight: 1.7, maxWidth: 580, marginTop: 16 }}>Three games built around HIV education, campus rights, and empathy. Each takes under 10 minutes and teaches you something real.</p>
+          <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 18, color: "rgba(247,243,236,0.72)", lineHeight: 1.7, maxWidth: 620, marginTop: 16 }}>Games that do not just test what you know. They change what you do with what you know.</p>
         </div>
       </div>
       <section style={{ padding: "80px 32px", background: t.bg }}>
