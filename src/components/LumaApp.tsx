@@ -763,7 +763,7 @@ export const TruthPage = ({ t, setPage, setStoryId }) => (
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>
         <Tag t={t} light>From the Inform Pillar</Tag>
         <h1 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: "clamp(36px,5vw,60px)", fontWeight: 800, color: t.ivory, lineHeight: 1.1, marginTop: 16 }}>The Campus Truth Series</h1>
-        <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 18, color: "rgba(247,243,236,0.7)", lineHeight: 1.7, maxWidth: 580, marginTop: 16 }}>HIV myths do not belong on university campuses. We are replacing them, one truth at a time, with evidence from real Nigerian research.</p>
+        <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 18, color: "rgba(247,243,236,0.7)", lineHeight: 1.7, maxWidth: 620, marginTop: 16 }}>The Campus Truth Series does not just tell students what is true. It shows them what to do with the truth. Every article ends with action, not just information.</p>
       </div>
     </div>
     <section style={{ padding: "80px 32px", background: t.bg }}>
