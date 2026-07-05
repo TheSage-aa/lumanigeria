@@ -684,8 +684,8 @@ export const AboutPage = ({ t }) => {
       <div style={s.hero}>
         <div style={s.inner}>
           <Tag t={t} light>Our Story</Tag>
-          <h1 style={s.h1}>Built from lived experience.<br />Built for every student.</h1>
-          <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 18, color: "rgba(247,243,236,0.72)", lineHeight: 1.7, maxWidth: 620, marginTop: 20 }}>LUMA was founded in 2026 by Adebare Hammed, a young person living with HIV since childhood, a Computer Science undergraduate at Kwara State University, and a youth advocate who spent years navigating HIV in spaces that were not built for him.</p>
+          <h1 style={s.h1}>From Information to Knowledge.<br />From Knowledge to Action.</h1>
+          <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 18, color: "rgba(247,243,236,0.72)", lineHeight: 1.7, maxWidth: 620, marginTop: 20 }}>LUMA exists to transform HIV information into HIV knowledge among Nigerian university students. We take what students already know and make it something they can use, act on, and live by.</p>
         </div>
       </div>
 
