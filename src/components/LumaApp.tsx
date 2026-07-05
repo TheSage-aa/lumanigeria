@@ -646,8 +646,8 @@ export const HomePage = ({ t, setPage, setStoryId }) => {
         <div style={s.inner}>
           <div style={{ background: t.isDark ? t.card : "rgba(247,243,236,0.7)", borderRadius: 20, padding: 48, borderLeft: `4px solid ${t.accent}`, maxWidth: 780, margin: "0 auto" }}>
             <SectionLabel t={t}>A Note From Our Founder</SectionLabel>
-            <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 20, fontStyle: "italic", color: t.text, lineHeight: 1.75, marginBottom: 24, marginTop: 16 }}>"I grew up with HIV. I went to university with HIV. And I spent those years figuring things out completely alone because no one had built anything for students like me. LUMA is what I needed and did not have. It is for every student sitting where I once sat."</p>
-            <p style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 14, fontWeight: 600, color: t.primary }}>Adebare Hammed — Founder, LUMA | Computer Science, Kwara State University</p>
+            <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 20, fontStyle: "italic", color: t.text, lineHeight: 1.75, marginBottom: 24, marginTop: 16 }}>"I built LUMA because I saw the gap up close. Students who knew the facts but still stigmatised their classmates. Students who knew their rights but had no idea how to use them. Students who had never heard of PrEP despite it being available for years. Information was never the problem. Action was. LUMA is the bridge."</p>
+            <p style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 14, fontWeight: 600, color: t.primary }}>Adebare Hammed, Founder, LUMA</p>
             <div style={{ marginTop: 24 }}><Btn t={t} variant="primary" onClick={() => setPage("about")}>Meet the Founder</Btn></div>
           </div>
         </div>
