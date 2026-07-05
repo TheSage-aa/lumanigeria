@@ -695,8 +695,9 @@ export const AboutPage = ({ t }) => {
             <div>
               <SectionLabel t={t}>The Problem Nobody Named</SectionLabel>
               <h2 style={s.h2}>The gap LUMA fills</h2>
-              <p style={s.body}>Nigeria has over 1.9 million people living with HIV. Stigma prevalence is at 67%. University campuses have no dedicated HIV resource, no anti-discrimination policy, and no peer community for students navigating a positive status.</p>
-              <p style={s.body}>LUMA does not replicate what NEPWHAN or ANAYD do. We go where they have not gone: directly onto the campus, into the student's digital life, before the crisis arrives.</p>
+              <p style={s.body}>Nigeria has over 1.9 million people living with HIV. University campuses have no dedicated HIV support, no anti-discrimination policies, and no peer community for students navigating a positive status.</p>
+              <p style={s.body}>But the deeper problem is not a lack of information. Research shows 96.85% of students already have high HIV knowledge. The problem is that information is not translating into action. Students are not accessing PrEP. Not exercising their rights. Not challenging stigma even when they know it is wrong.</p>
+              <p style={s.body}>LUMA is the organisation that closes that gap.</p>
             </div>
             <div style={{ background: t.primary, borderRadius: 16, padding: "48px 32px", textAlign: "center" }}>
               <div style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 80, fontWeight: 800, color: t.ivory, lineHeight: 1 }}>0</div>
