@@ -1742,7 +1742,7 @@ export const GamesPage = ({ t, setPage }) => {
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
           <Tag t={t} light>LUMA Games</Tag>
           <h1 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: "clamp(36px,5vw,64px)", fontWeight: 800, color: t.ivory, lineHeight: 1.1, marginTop: 16 }}>Learn through play.</h1>
-          <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 18, color: "rgba(247,243,236,0.72)", lineHeight: 1.7, maxWidth: 580, marginTop: 16 }}>Three games built around HIV education, campus rights, and empathy. Each takes under 10 minutes and teaches you something real.</p>
+          <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 18, color: "rgba(247,243,236,0.72)", lineHeight: 1.7, maxWidth: 620, marginTop: 16 }}>Games that do not just test what you know. They change what you do with what you know.</p>
         </div>
       </div>
       <section style={{ padding: "80px 32px", background: t.bg }}>
