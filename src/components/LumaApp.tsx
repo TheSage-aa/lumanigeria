@@ -561,7 +561,7 @@ export const HomePage = ({ t, setPage, setStoryId }) => {
 
       <div style={{ background: t.bg, padding: "48px 32px", borderBottom: `1px solid ${t.borderColor}` }}>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 2, maxWidth: 900, margin: "0 auto" }}>
-          {[["1.4%", "National HIV prevalence in Nigeria", "UNAIDS 2025"], ["0", "Dedicated HIV platforms for Nigerian university students before LUMA", "As of June 2026"], ["55%", "of students hold stigmatising attitudes toward PLHIV", "Despite 96% HIV knowledge"]].map(([num, label, src], i) => (
+          {[["96.85%", "of Nigerian university students already have high HIV knowledge", "Campus research, 2024"], ["55.5%", "still hold stigmatising attitudes toward PLHIV despite that knowledge", "The gap LUMA closes"], ["0", "organisations closing the Information-to-Action gap for Nigerian university students before LUMA", "As of June 2026"]].map(([num, label, src], i) => (
             <div key={i} style={{ textAlign: "center", padding: "24px 16px", borderRight: i < 2 ? `1px solid ${t.borderColor}` : "none" }}>
               <div style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: "clamp(32px,4vw,52px)", fontWeight: 800, color: t.primary, lineHeight: 1, marginBottom: 8 }}>{num}</div>
               <div style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 13, color: t.textMuted, lineHeight: 1.4 }}>{label}</div>
