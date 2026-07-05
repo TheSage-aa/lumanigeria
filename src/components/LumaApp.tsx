@@ -539,9 +539,9 @@ export const HomePage = ({ t, setPage, setStoryId }) => {
   };
 
   const pillars = [
-    { num: "01", title: "Inform", body: "Status neutral HIV education built for Nigerian campuses. No separation. Everyone learns together.", page: "truth" },
-    { num: "02", title: "Advocate", body: "We push for anti-discrimination policies, campus health reform, and youth voices in Nigeria's national HIV plan.", page: "advocacy" },
-    { num: "03", title: "Belong", body: "A safe digital community for university students living with HIV. Peer-led. Anonymous where needed.", page: "circle" },
+    { num: "01", title: "Inform", body: "We do not just deliver HIV information. Nigerian students already have it. We make that information actionable, contextual, and impossible to ignore. Every Campus Truth Series article moves students from knowing to doing.", page: "truth" },
+    { num: "02", title: "Advocate", body: "Knowing your rights and exercising your rights are two completely different things. LUMA equips students with the tools, language, and confidence to turn legal knowledge into real protection on their campuses.", page: "advocacy" },
+    { num: "03", title: "Belong", body: "Community is where information becomes knowledge. In the Peer Circle, what students know in theory becomes something they can live with, talk about, and act on together.", page: "circle" },
   ];
 
   return (
