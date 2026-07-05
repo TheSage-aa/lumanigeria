@@ -425,7 +425,7 @@ export const Footer = ({ t, setPage }) => {
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(180px,1fr))", gap: 48, marginBottom: 48 }}>
           <div>
             <Logo variant="light" size={32} />
-            <p style={{ color: "rgba(247,243,236,0.6)", fontSize: 14, fontFamily: "'DM Sans',sans-serif", lineHeight: 1.6, marginTop: 12, maxWidth: 240 }}>Closing HIV information gaps in Nigerian universities. Built by youth, for youth.</p>
+            <p style={{ color: "rgba(247,243,236,0.6)", fontSize: 14, fontFamily: "'DM Sans',sans-serif", lineHeight: 1.6, marginTop: 12, maxWidth: 240 }}>Transforming HIV information into HIV action. Built by youth, for youth.</p>
           </div>
           {col("Navigate", [["About LUMA", () => setPage("about")], ["Our Work", () => setPage("work")], ["Campus Truth Series", () => setPage("truth")], ["The Peer Circle", () => setPage("circle")], ["Advocacy", () => setPage("advocacy")], ["Resources", () => setPage("resources")], ["Games", () => setPage("games")]])}
           {col("Get Involved", [["Join The Peer Circle", () => setPage("circle")], ["Become an Ambassador", () => setPage("involve")], ["Volunteer", () => setPage("involve")], ["Partner with LUMA", () => setPage("contact")]])}
