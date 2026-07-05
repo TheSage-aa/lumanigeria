@@ -1158,7 +1158,7 @@ export const InvolvePage = ({ t, setPage }) => {
       <div style={{ background: t.primary, padding: "120px 32px 80px" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
           <Tag t={t} light>{tr("Get Involved", "S'impliquer")}</Tag>
-          <h1 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: "clamp(36px,5vw,64px)", fontWeight: 800, color: t.ivory, lineHeight: 1.1, marginTop: 16 }}>{tr("LUMA works because people like you decide to show up.", "LUMA fonctionne parce que des gens comme vous décident d'être présents.")}</h1>
+          <h1 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: "clamp(36px,5vw,64px)", fontWeight: 800, color: t.ivory, lineHeight: 1.1, marginTop: 16 }}>{tr("Join LUMA and help turn HIV knowledge into HIV action on Nigerian campuses.", "Rejoignez LUMA et aidez à transformer les connaissances sur le VIH en actions concrètes sur les campus nigérians.")}</h1>
           <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 18, color: "rgba(247,243,236,0.7)", lineHeight: 1.7, maxWidth: 600, marginTop: 16 }}>{tr("Choose how you want to be part of LUMA. Each option has its own short application.", "Choisissez comment vous souhaitez faire partie de LUMA. Chaque option a son propre formulaire.")}</p>
         </div>
       </div>
