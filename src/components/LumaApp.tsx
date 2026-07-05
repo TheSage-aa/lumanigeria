@@ -549,9 +549,9 @@ export const HomePage = ({ t, setPage, setStoryId }) => {
       <section style={s.hero}>
         <svg style={{ position: "absolute", right: -80, top: "50%", transform: "translateY(-50%)", opacity: 0.05, pointerEvents: "none" }} width="700" height="700" viewBox="0 0 700 700"><path d="M100 600 Q350 50 600 600" stroke="white" strokeWidth="130" fill="none" strokeLinecap="round"/></svg>
         <div style={{ maxWidth: 640, position: "relative", zIndex: 2 }}>
-          <Tag t={t} light>Luminating Africa</Tag>
-          <h1 style={s.h1}>No student should navigate HIV on campus alone.</h1>
-          <p style={s.heroSub}>LUMA is a youth-led organisation closing HIV information gaps in Nigerian universities, fighting for campus health policy change, and building community for students who need it most.</p>
+          <Tag t={t} light>From Information to Knowledge. From Knowledge to Action.</Tag>
+          <h1 style={s.h1}>Most Nigerian university students already know the HIV facts. LUMA makes those facts matter.</h1>
+          <p style={s.heroSub}>Knowing that HIV is not transmitted through casual contact does not stop stigma. Knowing your legal rights does not mean you will use them. Knowing PrEP exists does not mean you will access it. LUMA closes the gap between what you know and what you do.</p>
           <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
             <Btn t={t} variant="light" onClick={() => setPage("about")}>Learn About LUMA</Btn>
             <Btn t={t} variant="ghost" onClick={() => setPage("work")}>See Our Work</Btn>
