@@ -726,8 +726,10 @@ export const AboutPage = ({ t }) => {
               <span key={r} style={{ background: "rgba(247,243,236,0.12)", color: t.ivory, fontFamily: "'Space Grotesk',sans-serif", fontSize: 12, fontWeight: 600, padding: "5px 14px", borderRadius: 100 }}>{r}</span>
             ))}
           </div>
-          <p style={s.bodyLight}>Adebare is completing a Computer Science degree at Kwara State University in July 2026. His research spans PrEP awareness at KWASU and HIV stigma and mental health across Nigeria. He has facilitated sessions at the Adolescent Girls Summit 2026 in Yamoussoukro and participated in the African Regional Convening by Sonke Gender Justice in Nairobi.</p>
-          <p style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 13, color: t.accent, marginTop: 20 }}>UNESCO Nigeria Youth Network · Kectil Global Leadership Program · Aspire Leadership Program · Leaders of Africa Institute (September 2026)</p>
+          <p style={s.bodyLight}>Adebare Hammed is completing a Computer Science degree at Kwara State University in July 2026. He is a Youth Advocate, Peer Mentor, and researcher whose work sits at the intersection of HIV advocacy, campus health policy, and youth rights in Nigeria.</p>
+          <p style={s.bodyLight}>He founded LUMA after years of observing a gap no organisation was addressing: Nigerian university students have HIV information but lack the tools, community, and confidence to act on it.</p>
+          <p style={s.bodyLight}>His research spans PrEP awareness at KWASU and HIV stigma and mental health across Nigerian youth HIV networks. He has facilitated sessions at the Adolescent Girls Summit 2026 in Yamoussoukro and participated in the African Regional Convening organised by Sonke Gender Justice in Nairobi.</p>
+          <p style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 13, color: t.accent, marginTop: 20 }}>UNESCO Nigeria Youth Network · Kectil Global Leadership Program · Aspire Leadership Program</p>
         </div>
       </section>
 
