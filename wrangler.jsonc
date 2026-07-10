@@ -2,15 +2,11 @@
   "name": "lumanigeria",
   "compatibility_date": "2026-07-10",
   "compatibility_flags": ["nodejs_compat"],
-  // D1 binding is added back automatically by .github/workflows/setup-d1.yml
-  // once the database is provisioned (blocked on a Cloudflare API token that
-  // has the D1 Edit permission). Until then, keep this commented out —
-  // an invalid/placeholder database_id makes every deploy fail outright.
-  // "d1_databases": [
-  //   {
-  //     "binding": "DB",
-  //     "database_name": "luma-submissions",
-  //     "database_id": "REPLACE_WITH_D1_DATABASE_ID",
-  //   },
-  // ],
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "luma-submissions",
+      "database_id": "3b41bd19-1362-4bce-9970-2cb741b7466e",
+    },
+  ],
 }
