@@ -56,9 +56,28 @@ jobs:
           node -e "
             const fs = require('fs');
             const path = 'wrangler.jsonc';
-            let content = fs.readFileSync(path, 'utf8');
-            content = content.replace('REPLACE_WITH_D1_DATABASE_ID', process.env.DATABASE_ID);
-            fs.writeFileSync(path, content);
+            const id = process.env.DATABASE_ID;
+            const block = [
+              '  \"d1_databases\": [',
+              '    {',
+              '      \"binding\": \"DB\",',
+              '      \"database_name\": \"luma-submissions\",',
+              '      \"database_id\": \"' + id + '\",',
+              '    },',
+              '  ],',
+            ].join('\n');
+            const config = {
+              name: 'lumanigeria',
+              compatibility_date: '2026-07-10',
+              compatibility_flags: ['nodejs_compat'],
+            };
+            const header = [
+              '{',
+              '  \"name\": \"' + config.name + '\",',
+              '  \"compatibility_date\": \"' + config.compatibility_date + '\",',
+              '  \"compatibility_flags\": [\"nodejs_compat\"],',
+            ].join('\n');
+            fs.writeFileSync(path, header + '\n' + block + '\n}\n');
           "
           cat wrangler.jsonc
 
