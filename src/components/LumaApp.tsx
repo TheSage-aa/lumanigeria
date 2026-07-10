@@ -1706,6 +1706,454 @@ const ScenarioGame = ({ t }) => {
   );
 };
 
+// ─── WORD SCRAMBLE ────────────────────────────────────────────────────────────
+
+const SCRAMBLE_WORDS = [
+  { word: "PREP", clue: "Pre-Exposure ____. Reduces HIV risk by up to 99% when taken consistently." },
+  { word: "STIGMA", clue: "The social judgement LUMA is built to dismantle." },
+  { word: "STATUS", clue: "In LUMA's status neutral approach, this word describes what does not determine your care." },
+  { word: "TESTING", clue: "The first step toward knowing your HIV status. Free and confidential in Nigeria." },
+  { word: "ADHERENCE", clue: "Taking treatment consistently. Key to reaching undetectable." },
+  { word: "UNDETECTABLE", clue: "The viral load level at which HIV cannot be transmitted sexually." },
+  { word: "CAMPUS", clue: "Where LUMA does its work — Nigerian universities." },
+  { word: "ADVOCACY", clue: "Turning knowledge into policy change. One of LUMA's three pillars." },
+];
+
+const shuffleStr = (w) => {
+  const a = w.split("");
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  const out = a.join("");
+  return out === w ? shuffleStr(w) : out;
+};
+
+const WordScrambleGame = ({ t }) => {
+  const [idx, setIdx] = useState(0);
+  const [scrambled, setScrambled] = useState(() => shuffleStr(SCRAMBLE_WORDS[0].word));
+  const [guess, setGuess] = useState("");
+  const [status, setStatus] = useState(null); // null | 'right' | 'wrong'
+  const [correct, setCorrect] = useState(0);
+  const [done, setDone] = useState(false);
+
+  const current = SCRAMBLE_WORDS[idx];
+  const check = () => {
+    if (!guess.trim()) return;
+    const ok = guess.trim().toUpperCase() === current.word;
+    setStatus(ok ? "right" : "wrong");
+    if (ok) setCorrect((c) => c + 1);
+  };
+  const next = () => {
+    if (idx + 1 >= SCRAMBLE_WORDS.length) { setDone(true); return; }
+    const n = idx + 1;
+    setIdx(n); setScrambled(shuffleStr(SCRAMBLE_WORDS[n].word)); setGuess(""); setStatus(null);
+  };
+  const reset = () => { setIdx(0); setScrambled(shuffleStr(SCRAMBLE_WORDS[0].word)); setGuess(""); setStatus(null); setCorrect(0); setDone(false); };
+
+  if (done) return (
+    <div style={{ textAlign: "center", padding: "40px 0" }}>
+      <div style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 72, fontWeight: 800, color: t.primary }}>{correct}/{SCRAMBLE_WORDS.length}</div>
+      <p style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 20, fontWeight: 700, color: t.text, marginTop: 12 }}>{correct >= 6 ? "Sharp. You speak the language of HIV response." : correct >= 4 ? "Nice work. Read the Guides to lock in the rest." : "Every word matters. The vocabulary is the foundation."}</p>
+      <div style={{ marginTop: 32 }}><Btn t={t} variant="primary" onClick={reset}>Play Again</Btn></div>
+    </div>
+  );
+
+  return (
+    <div>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
+        <span style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 13, fontWeight: 600, color: t.textMuted }}>Word {idx + 1} of {SCRAMBLE_WORDS.length}</span>
+        <span style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 13, fontWeight: 700, color: t.accent }}>Correct: {correct}</span>
+      </div>
+      <ProgressBar t={t} value={idx} max={SCRAMBLE_WORDS.length} />
+      <div style={{ background: t.isDark ? t.surface : t.accentLight, borderRadius: 16, padding: "36px 20px", textAlign: "center", marginBottom: 20 }}>
+        <p style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: "1.5px", color: t.textMuted, marginBottom: 12 }}>LETTERS</p>
+        <p style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 40, fontWeight: 800, color: t.primary, letterSpacing: "10px" }}>{scrambled}</p>
+      </div>
+      <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 15, color: t.textMuted, lineHeight: 1.6, marginBottom: 14 }}>{current.clue}</p>
+      <input
+        value={guess}
+        onChange={(e) => setGuess(e.target.value)}
+        onKeyDown={(e) => { if (e.key === "Enter" && status === null) check(); }}
+        disabled={status !== null}
+        placeholder="Your answer"
+        style={{ width: "100%", padding: "14px 16px", borderRadius: 10, border: `1.5px solid ${t.borderColor}`, background: t.card, color: t.text, fontFamily: "'Space Grotesk',sans-serif", fontSize: 16, marginBottom: 14, textTransform: "uppercase" }}
+      />
+      {status === null ? (
+        <Btn t={t} variant="primary" onClick={check} style={{ width: "100%", textAlign: "center" }}>Check</Btn>
+      ) : (
+        <div>
+          <div style={{ background: status === "right" ? t.accentLight : "#FFE8E8", border: `1.5px solid ${status === "right" ? t.accent : "#E88"}`, borderRadius: 10, padding: "16px 18px", marginBottom: 14 }}>
+            <p style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 13, fontWeight: 700, color: status === "right" ? t.primary : "#C00", marginBottom: 6 }}>{status === "right" ? "✓ Correct!" : `✗ The word was ${current.word}.`}</p>
+            <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 14, color: t.text, lineHeight: 1.6 }}>{current.clue}</p>
+          </div>
+          <Btn t={t} variant="primary" onClick={next} style={{ width: "100%", textAlign: "center" }}>{idx + 1 >= SCRAMBLE_WORDS.length ? "See Results" : "Next Word →"}</Btn>
+        </div>
+      )}
+    </div>
+  );
+};
+
+// ─── MEMORY MATCH ─────────────────────────────────────────────────────────────
+
+const MEMORY_PAIRS = [
+  { a: "Right to education regardless of HIV status", b: "HIV and AIDS Anti-Discrimination Act 2014" },
+  { a: "Confidential HIV test results", b: "National Health Act 2014, Section 26" },
+  { a: "Free ART and PrEP at public clinics", b: "2026 National Health Guidelines" },
+  { a: "No forced HIV disclosure to universities", b: "Anti-Discrimination Act, Section 5" },
+  { a: "Right to work with HIV", b: "Nigerian Labour Act — non-discrimination clause" },
+  { a: "Freedom from stigma-based expulsion", b: "Anti-Discrimination Act, Section 4" },
+];
+
+const MemoryMatchGame = ({ t }) => {
+  const build = () => {
+    const cards = [];
+    MEMORY_PAIRS.forEach((p, i) => {
+      cards.push({ id: `${i}a`, pair: i, text: p.a, side: "a" });
+      cards.push({ id: `${i}b`, pair: i, text: p.b, side: "b" });
+    });
+    for (let i = cards.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [cards[i], cards[j]] = [cards[j], cards[i]];
+    }
+    return cards;
+  };
+  const [cards, setCards] = useState(build);
+  const [flipped, setFlipped] = useState([]); // ids currently face-up but unmatched
+  const [matched, setMatched] = useState([]); // pair indices matched
+  const [moves, setMoves] = useState(0);
+
+  const flip = (id) => {
+    if (flipped.includes(id)) return;
+    const card = cards.find((c) => c.id === id);
+    if (!card || matched.includes(card.pair)) return;
+    if (flipped.length === 2) return;
+    const nf = [...flipped, id];
+    setFlipped(nf);
+    if (nf.length === 2) {
+      setMoves((m) => m + 1);
+      const [a, b] = nf.map((fid) => cards.find((c) => c.id === fid));
+      if (a && b && a.pair === b.pair) {
+        setTimeout(() => { setMatched((m) => [...m, a.pair]); setFlipped([]); }, 500);
+      } else {
+        setTimeout(() => setFlipped([]), 1000);
+      }
+    }
+  };
+  const restart = () => { setCards(build()); setFlipped([]); setMatched([]); setMoves(0); };
+  const done = matched.length === MEMORY_PAIRS.length;
+
+  return (
+    <div>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16 }}>
+        <span style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 13, fontWeight: 700, color: t.textMuted }}>Moves: {moves}</span>
+        <button onClick={restart} style={{ background: "none", border: `1.5px solid ${t.borderColor}`, borderRadius: 100, padding: "6px 14px", cursor: "pointer", color: t.text, fontFamily: "'Space Grotesk',sans-serif", fontSize: 12, fontWeight: 600 }}>Restart</button>
+      </div>
+      {done && (
+        <div style={{ background: t.accentLight, border: `1.5px solid ${t.accent}`, borderRadius: 12, padding: "16px 20px", marginBottom: 16, textAlign: "center" }}>
+          <p style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 16, fontWeight: 800, color: t.primary }}>All matched in {moves} moves.</p>
+          <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 14, color: t.text, marginTop: 4 }}>Every right paired with the law that protects it.</p>
+        </div>
+      )}
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 10 }}>
+        {cards.map((c) => {
+          const isUp = flipped.includes(c.id) || matched.includes(c.pair);
+          return (
+            <button key={c.id} onClick={() => flip(c.id)} style={{
+              minHeight: 110, padding: 10, borderRadius: 12, cursor: isUp ? "default" : "pointer",
+              border: `1.5px solid ${isUp ? t.accent : t.borderColor}`,
+              background: isUp ? (c.side === "a" ? t.accentLight : (t.isDark ? t.surface : t.card)) : t.primary,
+              color: isUp ? t.text : t.ivory,
+              fontFamily: "'Space Grotesk',sans-serif", fontSize: isUp ? 12 : 22, fontWeight: 700,
+              lineHeight: 1.35, textAlign: "center", transition: "all 0.2s",
+            }}>{isUp ? c.text : "?"}</button>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
+
+// ─── STIGMA BINGO ─────────────────────────────────────────────────────────────
+
+const BINGO_PHRASES = [
+  { phrase: "Keep your children away.", rebuttal: "HIV is not transmitted through casual contact. Children of parents living with HIV are safe with any classmate." },
+  { phrase: "I could never date someone like that.", rebuttal: "With treatment, U=U — undetectable equals untransmittable. A partner living with HIV on treatment cannot transmit the virus sexually." },
+  { phrase: "Who did they get it from?", rebuttal: "Someone's route of transmission is not your business. Curiosity is not concern." },
+  { phrase: "Just avoid them, to be safe.", rebuttal: "There is no danger to avoid. Casual contact does not transmit HIV. Avoidance is stigma, not safety." },
+  { phrase: "Don't hug them.", rebuttal: "Hugs, handshakes, and touch never transmit HIV. Withholding touch is one of the most damaging forms of stigma." },
+  { phrase: "They must have been careless.", rebuttal: "HIV is a virus, not a verdict on character. Blame belongs to stigma, not the person living with the diagnosis." },
+  { phrase: "HIV people can't have kids.", rebuttal: "People living with HIV have HIV-negative children every day. Treatment during pregnancy makes vertical transmission preventable." },
+  { phrase: "God is punishing them.", rebuttal: "HIV is a virus. Framing it as punishment is theology weaponised against public health." },
+  { phrase: "Are you sure it's not AIDS?", rebuttal: "HIV and AIDS are different. Most people living with HIV on treatment never develop AIDS." },
+  { phrase: "Their family must be ashamed.", rebuttal: "Families of people living with HIV are not the source of shame. Stigma is." },
+  { phrase: "It's a lifestyle problem.", rebuttal: "HIV is a public health issue. Framing it as a lifestyle failure is stigma dressed as concern." },
+  { phrase: "They can't work here.", rebuttal: "Nigerian labour law prohibits HIV-based discrimination in employment. This is not opinion — it is law." },
+  { phrase: "They shouldn't be allowed to marry.", rebuttal: "People living with HIV marry, love, and build families. There is no legal or medical basis to deny them." },
+  { phrase: "They deserve it.", rebuttal: "No one deserves a virus. This sentence is stigma at its rawest." },
+  { phrase: "Only certain kinds of people get it.", rebuttal: "HIV does not discriminate. Anyone sexually active without protection is at some level of risk." },
+  { phrase: "Don't share cups with them.", rebuttal: "HIV is not transmitted through saliva or shared utensils. This myth has damaged lives for four decades." },
+  { phrase: "Don't touch their things.", rebuttal: "HIV cannot survive on surfaces long enough to transmit. Objects do not carry HIV." },
+  { phrase: "They shouldn't be in this class.", rebuttal: "Nigeria's HIV Anti-Discrimination Act 2014 makes exclusion from education illegal. Full stop." },
+  { phrase: "They should keep it a secret.", rebuttal: "Disclosure is a personal decision, not an obligation to secrecy. Silence protects stigma, not people." },
+  { phrase: "Testing is only for 'those' people.", rebuttal: "HIV testing is a normal, routine part of sexual health for everyone. There are no 'those people'." },
+  { phrase: "It's a punishment.", rebuttal: "See: God is punishing them. Same distortion, same harm." },
+  { phrase: "You can catch it from a toilet seat.", rebuttal: "You cannot. HIV is not transmitted through surfaces, toilets, or bathrooms." },
+  { phrase: "HIV = death sentence.", rebuttal: "With treatment, people living with HIV live full lifespans. This equation was outdated 20 years ago." },
+  { phrase: "They brought it on themselves.", rebuttal: "Blame is stigma with a smile. HIV is a virus, not a moral outcome." },
+];
+
+const StigmaBingoGame = ({ t }) => {
+  // 5x5 grid with FREE in centre
+  const build = () => {
+    const shuffled = [...BINGO_PHRASES].sort(() => Math.random() - 0.5).slice(0, 24);
+    const grid = [];
+    let k = 0;
+    for (let i = 0; i < 25; i++) {
+      if (i === 12) grid.push({ free: true, phrase: "FREE — Stigma Ends Here", rebuttal: "This square is yours. It marks the moment you decided to call stigma out." });
+      else { grid.push({ ...shuffled[k], free: false }); k++; }
+    }
+    return grid;
+  };
+  const [grid, setGrid] = useState(build);
+  const [marked, setMarked] = useState<number[]>([12]);
+  const [opened, setOpened] = useState<number | null>(null);
+
+  const toggle = (i) => {
+    if (i === 12) return;
+    setOpened(i);
+    setMarked((m) => (m.includes(i) ? m.filter((x) => x !== i) : [...m, i]));
+  };
+
+  const lines: number[][] = [];
+  for (let r = 0; r < 5; r++) lines.push([0,1,2,3,4].map((c) => r * 5 + c));
+  for (let c = 0; c < 5; c++) lines.push([0,1,2,3,4].map((r) => r * 5 + c));
+  lines.push([0, 6, 12, 18, 24]);
+  lines.push([4, 8, 12, 16, 20]);
+  const bingo = lines.some((ln) => ln.every((i) => marked.includes(i)));
+
+  const restart = () => { setGrid(build()); setMarked([12]); setOpened(null); };
+
+  return (
+    <div>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 14 }}>
+        <span style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 13, fontWeight: 700, color: t.textMuted }}>Tapped: {marked.length - 1}/24</span>
+        <button onClick={restart} style={{ background: "none", border: `1.5px solid ${t.borderColor}`, borderRadius: 100, padding: "6px 14px", cursor: "pointer", color: t.text, fontFamily: "'Space Grotesk',sans-serif", fontSize: 12, fontWeight: 600 }}>Restart board</button>
+      </div>
+      {bingo && (
+        <div style={{ background: t.accent, borderRadius: 12, padding: "14px 18px", marginBottom: 14, textAlign: "center" }}>
+          <p style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 15, fontWeight: 800, color: t.primary }}>BINGO — five in a row. Every one of those was a lie you have heard.</p>
+        </div>
+      )}
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 6 }}>
+        {grid.map((cell, i) => {
+          const isMarked = marked.includes(i);
+          return (
+            <button key={i} onClick={() => toggle(i)} title={cell.phrase} style={{
+              aspectRatio: "1 / 1", padding: 6, borderRadius: 8, cursor: cell.free ? "default" : "pointer",
+              border: `1.5px solid ${isMarked ? t.accent : t.borderColor}`,
+              background: cell.free ? t.primary : isMarked ? t.accentLight : t.card,
+              color: cell.free ? t.ivory : t.text,
+              fontFamily: "'Space Grotesk',sans-serif", fontSize: 10, fontWeight: 600,
+              lineHeight: 1.25, textAlign: "center",
+            }}>{cell.phrase}</button>
+          );
+        })}
+      </div>
+      {opened !== null && !grid[opened].free && (
+        <div style={{ marginTop: 16, background: t.isDark ? t.surface : t.accentLight, border: `1.5px solid ${t.borderColor}`, borderRadius: 12, padding: "16px 18px" }}>
+          <p style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: "1.5px", color: t.accent, marginBottom: 6 }}>THE REBUTTAL</p>
+          <p style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 14, fontWeight: 700, color: t.text, marginBottom: 8 }}>"{grid[opened].phrase}"</p>
+          <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 14, color: t.text, lineHeight: 1.65 }}>{grid[opened].rebuttal}</p>
+        </div>
+      )}
+    </div>
+  );
+};
+
+// ─── PREP ACCESS NAVIGATOR ────────────────────────────────────────────────────
+
+const PREP_STEPS = [
+  {
+    prompt: "You've decided to look into PrEP. Where do you start?",
+    label: "Your first move:",
+    choices: [
+      { text: "Search 'PrEP Nigeria' and read from the Federal Ministry of Health and NACA.", delta: 15, note: "Grounding in verified sources. Best possible start." },
+      { text: "Ask in a group chat and take the first answer.", delta: -10, note: "Group chats spread misinformation faster than facts. Verify before you decide." },
+      { text: "Assume PrEP isn't available in Nigeria.", delta: -20, note: "PrEP has been in Nigeria since 2017. Assumption is the first barrier to access." },
+    ],
+  },
+  {
+    prompt: "You call your campus health centre and ask about PrEP. They say they don't offer it. What next?",
+    label: "Your next move:",
+    choices: [
+      { text: "Ask for a referral to the nearest public HIV treatment centre or PEPFAR-supported clinic.", delta: 20, note: "Referrals are a right. Campus clinics must connect you to a facility that does provide PrEP." },
+      { text: "Give up and hope for the best.", delta: -20, note: "PrEP is worth an extra call. Hope is not a prevention strategy." },
+      { text: "Buy 'HIV prevention pills' online from an unknown seller.", delta: -25, note: "Unverified drugs can be fake, expired, or harmful. Only take PrEP from a licensed provider." },
+    ],
+  },
+  {
+    prompt: "You reach a public health facility. Before starting PrEP, they need to do a rapid HIV test. How do you feel?",
+    label: "Your response:",
+    choices: [
+      { text: "Take the test. It is required, confidential, and free.", delta: 15, note: "PrEP is only for people who are HIV negative. Testing first is standard, safe, and legally protected." },
+      { text: "Refuse the test and ask for the pills anyway.", delta: -15, note: "No responsible clinic will prescribe PrEP without an HIV test. This step protects you." },
+      { text: "Panic about who might see the results.", delta: -5, note: "Understandable — but your results are legally protected by the National Health Act. Take the test." },
+    ],
+  },
+  {
+    prompt: "You test negative and get your first PrEP prescription. The nurse explains you need to take it daily. What do you do?",
+    label: "Your plan:",
+    choices: [
+      { text: "Set a phone alarm and take it at the same time each day.", delta: 20, note: "Adherence is everything. Consistent daily dosing gives you up to 99% protection." },
+      { text: "Take it when you remember, mostly.", delta: -10, note: "Missed doses reduce PrEP's effectiveness. Consistency is what makes it work." },
+      { text: "Only take it when you think you might be at risk.", delta: -15, note: "Daily PrEP is not on-demand. Skipping doses leaves gaps in protection." },
+    ],
+  },
+  {
+    prompt: "It's been three months. Time for your PrEP follow-up. What do you do?",
+    label: "Your follow-up:",
+    choices: [
+      { text: "Return to the clinic for the free follow-up HIV test and prescription refill.", delta: 20, note: "Three-month reviews confirm you are still HIV negative and refill your PrEP. This is how the system works." },
+      { text: "Skip the follow-up and keep taking whatever pills are left.", delta: -15, note: "Follow-ups are non-negotiable. Missing them means running out and losing protection." },
+      { text: "Stop taking PrEP because 'you feel fine'.", delta: -10, note: "PrEP works only while you take it. Stopping ends the protection." },
+    ],
+  },
+];
+
+const PrEPNavigatorGame = ({ t }) => {
+  const [idx, setIdx] = useState(0);
+  const [access, setAccess] = useState(50);
+  const [chosen, setChosen] = useState<number | null>(null);
+  const [done, setDone] = useState(false);
+
+  const step = PREP_STEPS[idx];
+  const choose = (i) => {
+    if (chosen !== null) return;
+    setChosen(i);
+    setAccess((a) => Math.max(0, Math.min(100, a + step.choices[i].delta)));
+  };
+  const next = () => {
+    if (idx + 1 >= PREP_STEPS.length) { setDone(true); return; }
+    setIdx(idx + 1); setChosen(null);
+  };
+  const reset = () => { setIdx(0); setAccess(50); setChosen(null); setDone(false); };
+
+  if (done) {
+    const verdict = access >= 90 ? "You navigated the system. You are actually on PrEP." : access >= 70 ? "You are close. A couple of choices cost you time, not access." : access >= 40 ? "You started but stalled. The barriers here are structural, not personal." : "The system won this round. Try again — this time you know where it breaks.";
+    return (
+      <div style={{ textAlign: "center", padding: "40px 0" }}>
+        <div style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 72, fontWeight: 800, color: t.primary }}>{access}%</div>
+        <p style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 15, fontWeight: 700, color: t.textMuted, letterSpacing: "1.5px", textTransform: "uppercase" }}>Final Access Score</p>
+        <p style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 20, fontWeight: 700, color: t.text, marginTop: 20, maxWidth: 480, marginInline: "auto" }}>{verdict}</p>
+        <div style={{ marginTop: 32 }}><Btn t={t} variant="primary" onClick={reset}>Play Again</Btn></div>
+      </div>
+    );
+  }
+
+  return (
+    <div>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
+        <span style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 13, fontWeight: 600, color: t.textMuted }}>Step {idx + 1} of {PREP_STEPS.length}</span>
+        <span style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 13, fontWeight: 700, color: t.accent }}>Access: {access}%</span>
+      </div>
+      <ProgressBar t={t} value={access} max={100} />
+      <div style={{ background: t.primary, borderRadius: 14, padding: "26px 22px", marginBottom: 20 }}>
+        <p style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: "1.5px", color: t.accent, textTransform: "uppercase", marginBottom: 10 }}>The Situation</p>
+        <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 16, color: t.ivory, lineHeight: 1.7 }}>{step.prompt}</p>
+      </div>
+      <p style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 13, fontWeight: 600, color: t.textMuted, marginBottom: 10 }}>{step.label}</p>
+      <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+        {step.choices.map((c, i) => {
+          let bg = t.card, border = t.borderColor, color = t.text;
+          if (chosen !== null) {
+            if (i === chosen) {
+              const good = c.delta > 0;
+              bg = good ? t.accentLight : "#FFE8E8"; border = good ? t.accent : "#E88"; color = good ? t.primary : "#C00";
+            }
+          }
+          return <button key={i} onClick={() => choose(i)} style={{ background: bg, border: `1.5px solid ${border}`, borderRadius: 10, padding: "14px 18px", textAlign: "left", fontFamily: "'DM Sans',sans-serif", fontSize: 15, color, cursor: chosen !== null ? "default" : "pointer", lineHeight: 1.5 }}>{c.text}</button>;
+        })}
+      </div>
+      {chosen !== null && (
+        <div style={{ marginTop: 16 }}>
+          <div style={{ background: t.isDark ? t.surface : t.accentLight, border: `1.5px solid ${t.borderColor}`, borderRadius: 10, padding: "16px 18px", marginBottom: 14 }}>
+            <p style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 13, fontWeight: 700, color: step.choices[chosen].delta > 0 ? t.primary : "#C00", marginBottom: 6 }}>{step.choices[chosen].delta > 0 ? `+${step.choices[chosen].delta}% access` : `${step.choices[chosen].delta}% access`}</p>
+            <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 14, color: t.text, lineHeight: 1.65 }}>{step.choices[chosen].note}</p>
+          </div>
+          <Btn t={t} variant="primary" onClick={next} style={{ width: "100%", textAlign: "center" }}>{idx + 1 >= PREP_STEPS.length ? "See Final Score" : "Next Step →"}</Btn>
+        </div>
+      )}
+    </div>
+  );
+};
+
+// ─── MENTAL HEALTH CHECK-IN ───────────────────────────────────────────────────
+
+const CHECKIN_QUESTIONS = [
+  { q: "How rested do you feel today?", labels: ["Running on empty", "Getting by", "Okay", "Rested", "Fully charged"] },
+  { q: "How connected do you feel to the people around you?", labels: ["Isolated", "Distant", "Somewhat", "Connected", "Deeply held"] },
+  { q: "How heavy has your mind felt this week?", labels: ["Very heavy", "Heavy", "Mixed", "Light", "Very light"] },
+  { q: "How safe do you feel being yourself on campus right now?", labels: ["Not safe", "Cautious", "Mixed", "Mostly safe", "Fully safe"] },
+  { q: "How supported do you feel in what you are carrying?", labels: ["Alone", "Barely", "Some support", "Supported", "Deeply supported"] },
+  { q: "How hopeful do you feel about this week?", labels: ["Not at all", "A little", "Neutral", "Hopeful", "Very hopeful"] },
+];
+
+const MentalHealthCheckIn = ({ t }) => {
+  const [answers, setAnswers] = useState<(number | null)[]>(Array(CHECKIN_QUESTIONS.length).fill(null));
+  const [done, setDone] = useState(false);
+  const complete = answers.every((a) => a !== null);
+
+  const reflection = () => {
+    const avg = answers.reduce<number>((s, v) => s + (v ?? 0), 0) / answers.length;
+    if (avg <= 1.5) return { title: "You are carrying a lot right now.", body: "This week has been heavy. That is real. Please consider reaching out to someone you trust, a campus counsellor, or a peer circle. You do not have to carry this alone. Text 'HELP' to a friend today — one message." };
+    if (avg <= 2.5) return { title: "You are holding on, but the edges are showing.", body: "You are managing, and managing is not nothing. Notice what one small kindness could look like for you this week — an early night, a phone call, ten minutes outside. Small acts refill quietly." };
+    if (avg <= 3.5) return { title: "You are steady. Not soaring, not sinking.", body: "This is a real place to be. Steady is a foundation. If there is one dimension pulling low, gently name it. You do not have to fix it today — just see it." };
+    return { title: "You are in a full week.", body: "Rested, connected, hopeful. Hold this. Notice what has made it feel this way, because that is knowledge your future self will need on a harder week." };
+  };
+
+  if (done) {
+    const r = reflection();
+    return (
+      <div style={{ padding: "20px 0" }}>
+        <p style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: "1.5px", color: t.accent, textTransform: "uppercase", marginBottom: 12 }}>Your Reflection</p>
+        <h3 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 26, fontWeight: 800, color: t.text, lineHeight: 1.25, marginBottom: 16 }}>{r.title}</h3>
+        <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 16, color: t.text, lineHeight: 1.75, marginBottom: 24 }}>{r.body}</p>
+        <div style={{ background: t.isDark ? t.surface : t.accentLight, border: `1px solid ${t.borderColor}`, borderRadius: 12, padding: "18px 20px", marginBottom: 24 }}>
+          <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 14, color: t.textMuted, lineHeight: 1.7 }}>These answers never leave your browser. There is no score. This was only ever meant as a quiet moment to notice where you actually are.</p>
+        </div>
+        <Btn t={t} variant="primary" onClick={() => { setAnswers(Array(CHECKIN_QUESTIONS.length).fill(null)); setDone(false); }}>Check in again</Btn>
+      </div>
+    );
+  }
+
+  return (
+    <div>
+      <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 15, color: t.textMuted, lineHeight: 1.7, marginBottom: 28 }}>Six quiet questions. No score. No judgement. Your answers never leave your browser.</p>
+      {CHECKIN_QUESTIONS.map((cq, qi) => (
+        <div key={qi} style={{ marginBottom: 28 }}>
+          <p style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 16, fontWeight: 700, color: t.text, marginBottom: 12 }}>{cq.q}</p>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 6 }}>
+            {cq.labels.map((lbl, li) => {
+              const active = answers[qi] === li;
+              return (
+                <button key={li} onClick={() => setAnswers((a) => a.map((v, k) => (k === qi ? li : v)))} style={{
+                  padding: "10px 4px", borderRadius: 8, cursor: "pointer",
+                  border: `1.5px solid ${active ? t.accent : t.borderColor}`,
+                  background: active ? t.accentLight : t.card,
+                  color: t.text, fontFamily: "'Space Grotesk',sans-serif",
+                  fontSize: 11, fontWeight: active ? 700 : 500, lineHeight: 1.3,
+                }}>{lbl}</button>
+              );
+            })}
+          </div>
+        </div>
+      ))}
+      <Btn t={t} variant="primary" disabled={!complete} onClick={() => complete && setDone(true)} style={{ width: "100%", textAlign: "center", opacity: complete ? 1 : 0.5 }}>{complete ? "See my reflection" : "Answer all six to continue."}</Btn>
+    </div>
+  );
+};
+
 // ─── GAMES PAGE ───────────────────────────────────────────────────────────────
 
 export const GamesPage = ({ t, setPage }) => {
