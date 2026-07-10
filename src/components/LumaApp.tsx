@@ -1235,6 +1235,7 @@ export const Nav = ({ t, colorId, setColorId, isDark, setIsDark, page, setPage }
 // ─── FOOTER ──────────────────────────────────────────────────────────────────
 
 export const Footer = ({ t, setPage }) => {
+  const { tr } = useLang();
   const col = (heading, links) => (
     <div>
       <p
@@ -1299,25 +1300,28 @@ export const Footer = ({ t, setPage }) => {
                 maxWidth: 240,
               }}
             >
-              Transforming HIV information into HIV action. Built by youth, for youth.
+              {tr(
+                "Transforming HIV information into HIV action. Built by youth, for youth.",
+                "Transformer l'information sur le VIH en action contre le VIH. Créée par des jeunes, pour des jeunes."
+              )}
             </p>
           </div>
-          {col("Navigate", [
-            ["About LUMA", () => setPage("about")],
-            ["Our Work", () => setPage("work")],
-            ["Campus Truth Series", () => setPage("truth")],
-            ["The Peer Circle", () => setPage("circle")],
-            ["Advocacy", () => setPage("advocacy")],
-            ["Resources", () => setPage("resources")],
-            ["Games", () => setPage("games")],
+          {col(tr("Navigate", "Navigation"), [
+            [tr("About LUMA", "À propos de LUMA"), () => setPage("about")],
+            [tr("Our Work", "Notre Travail"), () => setPage("work")],
+            [tr("Campus Truth Series", "Série Vérité Campus"), () => setPage("truth")],
+            [tr("The Peer Circle", "Le Cercle des Pairs"), () => setPage("circle")],
+            [tr("Advocacy", "Plaidoyer"), () => setPage("advocacy")],
+            [tr("Resources", "Ressources"), () => setPage("resources")],
+            [tr("Games", "Jeux"), () => setPage("games")],
           ])}
-          {col("Get Involved", [
-            ["Join The Peer Circle", () => setPage("circle")],
-            ["Become an Ambassador", () => setPage("involve")],
-            ["Volunteer", () => setPage("involve")],
-            ["Partner with LUMA", () => setPage("contact")],
+          {col(tr("Get Involved", "S'impliquer"), [
+            [tr("Join The Peer Circle", "Rejoindre le Cercle des Pairs"), () => setPage("circle")],
+            [tr("Become an Ambassador", "Devenir ambassadeur"), () => setPage("involve")],
+            [tr("Volunteer", "Faire du bénévolat"), () => setPage("involve")],
+            [tr("Partner with LUMA", "Devenir partenaire de LUMA"), () => setPage("contact")],
           ])}
-          {col("Connect", [
+          {col(tr("Connect", "Nous suivre"), [
             ["Instagram", () => window.open("https://instagram.com/luma_ng", "_blank")],
             ["X (Twitter)", () => window.open("https://twitter.com/luma_ng", "_blank")],
             ["LinkedIn", () => window.open("https://linkedin.com/company/luma_ng", "_blank")],
@@ -1341,7 +1345,10 @@ export const Footer = ({ t, setPage }) => {
               fontFamily: "'DM Sans',sans-serif",
             }}
           >
-            © 2026 LUMA. A youth-led digital organisation registered in Nigeria.
+            {tr(
+              "© 2026 LUMA. A youth-led digital organisation registered in Nigeria.",
+              "© 2026 LUMA. Une organisation numérique dirigée par des jeunes, enregistrée au Nigéria."
+            )}
           </span>
           <span
             style={{
@@ -1350,7 +1357,7 @@ export const Footer = ({ t, setPage }) => {
               fontFamily: "'DM Sans',sans-serif",
             }}
           >
-            Designed by .bare
+            {tr("Designed by .bare", "Conçu par .bare")}
           </span>
         </div>
       </div>
