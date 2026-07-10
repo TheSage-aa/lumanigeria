@@ -2162,6 +2162,11 @@ export const GamesPage = ({ t, setPage }) => {
     { id: "myth", title: "Myth Buster", tag: "HIV EDUCATION", description: "10 cards. Each one is a statement about HIV. You decide: Myth or Fact. The truth might surprise you.", time: "5 min", difficulty: "Beginner friendly", component: <MythBusterGame t={t} /> },
     { id: "quiz", title: "LUMA Challenge", tag: "KNOWLEDGE QUIZ", description: "10 questions. 20 seconds each. How well do you really know HIV, PrEP, campus rights, and the status neutral approach?", time: "4 min", difficulty: "Intermediate", component: <QuizGame t={t} /> },
     { id: "scenario", title: "Campus Quest", tag: "SCENARIO GAME", description: "5 real campus scenarios involving HIV, stigma, and allyship. What would you actually do? Your choices reveal your instincts.", time: "6 min", difficulty: "Reflective", component: <ScenarioGame t={t} /> },
+    { id: "scramble", title: "Word Scramble", tag: "HIV TERMS", description: "Eight scrambled words from the HIV response vocabulary. Unscramble each one with a clue.", time: "3 min", difficulty: "All levels", component: <WordScrambleGame t={t} /> },
+    { id: "memory", title: "Memory Match", tag: "CAMPUS RIGHTS", description: "Flip two cards. Match each student right with the law or framework that protects it.", time: "4 min", difficulty: "All levels", component: <MemoryMatchGame t={t} /> },
+    { id: "bingo", title: "Stigma Bingo", tag: "CALL IT OUT", description: "A 5x5 board of real stigmatising phrases heard on Nigerian campuses. Tap every one you've heard. Get five in a row to win — and read the rebuttal.", time: "5 min", difficulty: "All levels", component: <StigmaBingoGame t={t} /> },
+    { id: "prep", title: "PrEP Access Navigator", tag: "PRACTICAL", description: "Walk the real journey from curiosity to prescription. Every choice moves your access score up or down.", time: "6 min", difficulty: "Practical", component: <PrEPNavigatorGame t={t} /> },
+    { id: "wellbeing", title: "Mental Health Check-In", tag: "WELLBEING", description: "Six quiet questions. No score, no judgement — a private moment to notice where you actually are this week.", time: "4 min", difficulty: "Reflective", component: <MentalHealthCheckIn t={t} /> },
   ];
 
   if (activeGame) {
