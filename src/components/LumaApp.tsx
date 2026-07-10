@@ -2219,15 +2219,10 @@ export const GamesPage = ({ t, setPage }) => {
               </Card>
             ))}
           </div>
-          <div style={{ background: t.isDark ? t.card : t.accentLight, border: `1px solid ${t.borderColor}`, borderRadius: 20, padding: "48px 40px" }}>
-            <SectionLabel t={t}>Coming Soon</SectionLabel>
-            <h2 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 26, fontWeight: 800, color: t.text, marginBottom: 12 }}>More games on the way</h2>
-            <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 16, color: t.textMuted, lineHeight: 1.7, maxWidth: 560, marginBottom: 28 }}>LUMA is building a full game library covering mental health, PrEP access, campus policy, and peer allyship. New games drop regularly.</p>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
-              {["Word Scramble: HIV Terms", "Memory Match: Campus Rights", "Stigma Bingo", "PrEP Access Navigator", "Mental Health Check-In"].map(g => (
-                <span key={g} style={{ background: t.card, border: `1px solid ${t.borderColor}`, borderRadius: 100, padding: "7px 14px", fontFamily: "'Space Grotesk',sans-serif", fontSize: 12, fontWeight: 600, color: t.textMuted }}>🔒 {g}</span>
-              ))}
-            </div>
+          <div style={{ background: t.isDark ? t.card : t.accentLight, border: `1px solid ${t.borderColor}`, borderRadius: 20, padding: "40px 32px", textAlign: "center" }}>
+            <SectionLabel t={t}>Eight games. One bridge.</SectionLabel>
+            <h2 style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 24, fontWeight: 800, color: t.text, marginTop: 12, marginBottom: 10 }}>From what you know to what you do.</h2>
+            <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 15, color: t.textMuted, lineHeight: 1.7, maxWidth: 560, marginInline: "auto" }}>Every game above closes a different corner of the Information-to-Action gap — myths, vocabulary, rights, stigma, PrEP access, and mental health.</p>
           </div>
         </div>
       </section>
