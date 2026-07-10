@@ -1,9 +1,15 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
-import { StoryPage, STORIES, useLumaTheme, useNavToPage, useNavToStory } from "@/components/LumaApp";
+import {
+  StoryPage,
+  STORIES,
+  useLumaTheme,
+  useNavToPage,
+  useNavToStory,
+} from "@/components/LumaApp";
 
 export const Route = createFileRoute("/truth_/$storyId")({
   loader: ({ params }) => {
-    const story = STORIES.find((s: any) => s.id === params.storyId);
+    const story = STORIES.find((s) => s.id === params.storyId);
     if (!story) throw notFound();
     return { story };
   },

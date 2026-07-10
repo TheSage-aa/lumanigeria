@@ -8,9 +8,11 @@ export const Route = createFileRoute("/apply/partner")({
       { name: "description", content: "Start a partnership conversation with LUMA." },
     ],
   }),
-  component: () => {
-    const { t } = useLumaTheme();
-    const setPage = useNavToPage();
-    return <PartnerFormPage t={t} setPage={setPage} />;
-  },
+  component: ApplyPartnerRoute,
 });
+
+function ApplyPartnerRoute() {
+  const { t } = useLumaTheme();
+  const setPage = useNavToPage();
+  return <PartnerFormPage t={t} setPage={setPage} />;
+}

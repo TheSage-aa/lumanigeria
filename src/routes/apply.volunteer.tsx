@@ -5,12 +5,17 @@ export const Route = createFileRoute("/apply/volunteer")({
   head: () => ({
     meta: [
       { title: "Volunteer with LUMA" },
-      { name: "description", content: "Volunteer your skills — writing, design, research, translation — to LUMA." },
+      {
+        name: "description",
+        content: "Volunteer your skills — writing, design, research, translation — to LUMA.",
+      },
     ],
   }),
-  component: () => {
-    const { t } = useLumaTheme();
-    const setPage = useNavToPage();
-    return <VolunteerFormPage t={t} setPage={setPage} />;
-  },
+  component: ApplyVolunteerRoute,
 });
+
+function ApplyVolunteerRoute() {
+  const { t } = useLumaTheme();
+  const setPage = useNavToPage();
+  return <VolunteerFormPage t={t} setPage={setPage} />;
+}

@@ -1,21 +1,38 @@
-// @ts-nocheck
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
 
-const LangCtx = createContext({ lang: "en", setLang: (_l) => {}, tr: (en, _fr) => en });
+type Lang = "en" | "fr";
 
-export function LanguageProvider({ children }) {
-  const [lang, setLangState] = useState("en");
+interface LangContextValue {
+  lang: Lang;
+  setLang: (l: Lang) => void;
+  tr: (en: string, fr?: string) => string;
+}
+
+const LangCtx = createContext<LangContextValue>({
+  lang: "en",
+  setLang: () => {},
+  tr: (en) => en,
+});
+
+export function LanguageProvider({ children }: { children: ReactNode }) {
+  const [lang, setLangState] = useState<Lang>("en");
   useEffect(() => {
     try {
       const saved = localStorage.getItem("luma.lang");
       if (saved === "fr" || saved === "en") setLangState(saved);
-    } catch {}
+    } catch {
+      // localStorage unavailable (private browsing, SSR)
+    }
   }, []);
-  const setLang = (l) => {
+  const setLang = (l: Lang) => {
     setLangState(l);
-    try { localStorage.setItem("luma.lang", l); } catch {}
+    try {
+      localStorage.setItem("luma.lang", l);
+    } catch {
+      // localStorage unavailable (private browsing, SSR)
+    }
   };
-  const tr = (en, fr) => (lang === "fr" && fr ? fr : en);
+  const tr = (en: string, fr?: string) => (lang === "fr" && fr ? fr : en);
   return <LangCtx.Provider value={{ lang, setLang, tr }}>{children}</LangCtx.Provider>;
 }
 

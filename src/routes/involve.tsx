@@ -5,14 +5,23 @@ export const Route = createFileRoute("/involve")({
   head: () => ({
     meta: [
       { title: "Get Involved — LUMA" },
-      { name: "description", content: "Join LUMA as an ambassador, volunteer, or partner. Help build HIV awareness on Nigerian campuses." },
+      {
+        name: "description",
+        content:
+          "Join LUMA as an ambassador, volunteer, or partner. Help build HIV awareness on Nigerian campuses.",
+      },
       { property: "og:title", content: "Get Involved — LUMA" },
-      { property: "og:description", content: "Ambassadors, volunteers, and partners wanted. Join LUMA." },
+      {
+        property: "og:description",
+        content: "Ambassadors, volunteers, and partners wanted. Join LUMA.",
+      },
     ],
   }),
-  component: () => {
-    const { t } = useLumaTheme();
-    const setPage = useNavToPage();
-    return <InvolvePage t={t} setPage={setPage} />;
-  },
+  component: InvolveRoute,
 });
+
+function InvolveRoute() {
+  const { t } = useLumaTheme();
+  const setPage = useNavToPage();
+  return <InvolvePage t={t} setPage={setPage} />;
+}
