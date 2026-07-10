@@ -128,46 +128,71 @@ export const STORIES = [
   {
     id: "classroom-myth",
     tag: "MYTH vs FACT",
+    tagFr: "MYTHE vs RÉALITÉ",
     title: "You cannot get HIV from sharing a classroom. Here is what the research says.",
+    titleFr:
+      "On ne peut pas contracter le VIH en partageant une salle de classe. Voici ce que dit la recherche.",
     excerpt:
       "A common misconception on Nigerian campuses is that casual contact can transmit HIV. We break down exactly how HIV does and does not spread, using data from Nigerian university studies.",
+    excerptFr:
+      "Une idée reçue répandue sur les campus nigérians veut que le contact occasionnel puisse transmettre le VIH. Nous expliquons précisément comment le VIH se transmet et ne se transmet pas, en nous appuyant sur des données d'études universitaires nigérianes.",
     date: "June 2026",
     readTime: "5 min read",
     content: [
       {
         type: "lead",
         text: "One of the most persistent myths circulating in Nigerian universities is that you can contract HIV through everyday contact with someone who is HIV positive. Sharing a lecture hall, a hostel bathroom, or a plate of food does not put you at risk. Not even close. And yet this myth continues to shape how students treat their peers.",
+        textFr:
+          "L'un des mythes les plus persistants dans les universités nigérianes est qu'on peut contracter le VIH par un contact quotidien avec une personne séropositive. Partager un amphithéâtre, une salle de bain d'internat ou une assiette de nourriture ne présente aucun risque. Absolument aucun. Et pourtant, ce mythe continue de façonner la façon dont les étudiants traitent leurs pairs.",
       },
-      { type: "heading", text: "How HIV is actually transmitted" },
+      { type: "heading", text: "How HIV is actually transmitted", textFr: "Comment le VIH se transmet réellement" },
       {
         type: "body",
         text: "HIV is transmitted through specific bodily fluids: blood, semen, vaginal and rectal fluids, breast milk, and pre-seminal fluid. It is not transmitted through saliva, tears, sweat, air, water, insect bites, or skin contact. You cannot get HIV from a handshake, a hug, sharing food, or sitting beside someone in a class.",
+        textFr:
+          "Le VIH se transmet par des fluides corporels spécifiques : le sang, le sperme, les sécrétions vaginales et rectales, le lait maternel et le liquide pré-séminal. Il ne se transmet pas par la salive, les larmes, la sueur, l'air, l'eau, les piqûres d'insectes ou le contact cutané. On ne peut pas contracter le VIH par une poignée de main, une accolade, le partage d'un repas ou le fait de s'asseoir à côté de quelqu'un en cours.",
       },
       {
         type: "body",
         text: "The 2018 study at Ebonyi State University, the only campus-specific HIV data available from Nigerian universities, found a prevalence rate of just 0.22% among newly admitted students. If casual contact transmitted HIV, we would see a very different picture on campuses where students share everything from hostels to lecture notes.",
+        textFr:
+          "L'étude de 2018 menée à l'Université d'État d'Ebonyi, la seule donnée sur le VIH spécifique à un campus disponible pour les universités nigérianes, a révélé un taux de prévalence de seulement 0,22 % chez les nouveaux admis. Si le contact occasionnel transmettait le VIH, la situation serait très différente sur des campus où les étudiants partagent tout, des internats aux notes de cours.",
       },
-      { type: "heading", text: "Where the myth comes from" },
+      { type: "heading", text: "Where the myth comes from", textFr: "D'où vient ce mythe" },
       {
         type: "body",
         text: "HIV stigma in Nigeria has deep roots in early public health messaging from the 1980s and 1990s, when the science of transmission was not fully understood. Much of that fear stuck even as the science moved forward. A 2017 review of HIV stigma in Nigeria found that misconceptions about transmission are one of the primary drivers of discriminatory behaviour toward people living with HIV.",
+        textFr:
+          "La stigmatisation du VIH au Nigéria a des racines profondes dans les premiers messages de santé publique des années 1980 et 1990, à une époque où la science de la transmission n'était pas encore bien comprise. Une grande partie de cette peur a persisté même après les avancées scientifiques. Une revue de 2017 sur la stigmatisation du VIH au Nigéria a révélé que les idées fausses sur la transmission sont l'un des principaux moteurs des comportements discriminatoires envers les personnes vivant avec le VIH.",
       },
       {
         type: "body",
         text: "On Nigerian campuses specifically, these myths spread through informal peer conversations, religious communities, and social media content that has never been fact-checked. By the time a student arrives at university, they may have been carrying incorrect beliefs for years.",
+        textFr:
+          "Sur les campus nigérians en particulier, ces mythes se propagent à travers des conversations informelles entre pairs, des communautés religieuses et du contenu sur les réseaux sociaux jamais vérifié. Au moment où un étudiant arrive à l'université, il peut porter ces croyances erronées depuis des années.",
       },
-      { type: "heading", text: "What the knowledge-attitude paradox tells us" },
+      {
+        type: "heading",
+        text: "What the knowledge-attitude paradox tells us",
+        textFr: "Ce que le paradoxe connaissance-attitude nous apprend",
+      },
       {
         type: "body",
         text: "Research consistently shows what we call a knowledge-attitude paradox: students can score high on HIV knowledge tests and still hold deeply stigmatising attitudes toward their HIV positive peers. A 2024 study of university students found that 96.85% demonstrated high AIDS knowledge, yet only 55.52% had positive attitudes toward people living with HIV. Knowing the facts is not enough to change behaviour. That is why LUMA exists.",
+        textFr:
+          "La recherche montre systématiquement ce que nous appelons un paradoxe connaissance-attitude : des étudiants peuvent obtenir d'excellents résultats aux tests de connaissance sur le VIH tout en conservant des attitudes profondément stigmatisantes envers leurs pairs séropositifs. Une étude de 2024 sur des étudiants universitaires a révélé que 96,85 % avaient un niveau de connaissance élevé sur le sida, mais que seulement 55,52 % avaient des attitudes positives envers les personnes vivant avec le VIH. Connaître les faits ne suffit pas à changer les comportements. C'est pour cela que LUMA existe.",
       },
       {
         type: "callout",
         text: "HIV is not transmitted through the air, water, food, casual contact, insect bites, or shared facilities. It is transmitted through specific bodily fluids during specific activities. Full stop.",
+        textFr:
+          "Le VIH ne se transmet pas par l'air, l'eau, la nourriture, le contact occasionnel, les piqûres d'insectes ou les installations partagées. Il se transmet par des fluides corporels spécifiques lors d'activités spécifiques. Point final.",
       },
       {
         type: "body",
         text: "If someone at your university is living with HIV, sharing a classroom with them carries no risk whatsoever. What does carry risk is the stigma that makes them feel unsafe, unseen, and unsupported in that classroom. That is the real problem LUMA is here to address.",
+        textFr:
+          "Si une personne de votre université vit avec le VIH, partager une salle de classe avec elle ne présente absolument aucun risque. Ce qui présente un risque, c'est la stigmatisation qui la fait se sentir en danger, invisible et sans soutien dans cette salle. C'est le vrai problème que LUMA est venue résoudre.",
       },
     ],
     related: ["prep-explained", "stigma-data", "your-rights"],
@@ -175,51 +200,74 @@ export const STORIES = [
   {
     id: "prep-explained",
     tag: "RESEARCH",
+    tagFr: "RECHERCHE",
     title: "What is PrEP and why does no one at your campus health centre mention it?",
+    titleFr:
+      "Qu'est-ce que la PrEP et pourquoi personne au centre de santé de votre campus n'en parle ?",
     excerpt:
       "Pre-Exposure Prophylaxis is one of the most effective HIV prevention tools available. Yet PrEP awareness at Nigerian universities remains critically low. Our KWASU research tells the full story.",
+    excerptFr:
+      "La prophylaxie pré-exposition est l'un des outils de prévention du VIH les plus efficaces qui existent. Pourtant, la connaissance de la PrEP dans les universités nigérianes reste extrêmement faible. Notre recherche à la KWASU raconte toute l'histoire.",
     date: "June 2026",
     readTime: "7 min read",
     content: [
       {
         type: "lead",
         text: "Pre-Exposure Prophylaxis, known as PrEP, is a daily medication that reduces the risk of contracting HIV through sex by up to 99% when taken consistently. It has been available in Nigeria since 2017. And yet, if you asked students at your campus health centre about it, the chances are very high that they would not know what you were talking about.",
+        textFr:
+          "La prophylaxie pré-exposition, ou PrEP, est un médicament quotidien qui réduit le risque de contracter le VIH par voie sexuelle jusqu'à 99 % lorsqu'il est pris régulièrement. Elle est disponible au Nigéria depuis 2017. Et pourtant, si vous en parliez au personnel du centre de santé de votre campus, il y a de fortes chances qu'il ne sache pas de quoi vous parlez.",
       },
-      { type: "heading", text: "What PrEP actually is" },
+      { type: "heading", text: "What PrEP actually is", textFr: "Ce qu'est réellement la PrEP" },
       {
         type: "body",
         text: "PrEP is not a treatment for HIV. It is a prevention tool for people who do not have HIV but may be at risk. It works by keeping the virus from establishing itself in the body if you are exposed. The most common form is a daily pill called Tenofovir/Emtricitabine (brand name Truvada), though long-acting injectable forms are now also available in some settings.",
+        textFr:
+          "La PrEP n'est pas un traitement contre le VIH. C'est un outil de prévention pour les personnes qui ne vivent pas avec le VIH mais qui peuvent être exposées à un risque. Elle empêche le virus de s'installer dans l'organisme en cas d'exposition. La forme la plus courante est un comprimé quotidien appelé Ténofovir/Emtricitabine (nom commercial Truvada), bien que des formes injectables à action prolongée soient désormais disponibles dans certains contextes.",
       },
       {
         type: "body",
         text: "PrEP is recommended for people who are HIV negative but have a partner living with HIV, people who do not consistently use condoms, and anyone who wants an additional layer of protection. It is safe, effective, and increasingly accessible in Nigeria through public health facilities.",
+        textFr:
+          "La PrEP est recommandée aux personnes séronégatives dont le partenaire vit avec le VIH, à celles qui n'utilisent pas systématiquement de préservatif, et à toute personne souhaitant une protection supplémentaire. Elle est sûre, efficace et de plus en plus accessible au Nigéria via les établissements de santé publique.",
       },
-      { type: "heading", text: "What LUMA's research found at KWASU" },
+      { type: "heading", text: "What LUMA's research found at KWASU", textFr: "Ce que la recherche de LUMA a révélé à la KWASU" },
       {
         type: "body",
         text: "LUMA's ongoing research on PrEP awareness at Kwara State University is revealing a significant awareness gap. Preliminary findings suggest that the majority of students surveyed had never heard of PrEP, and fewer still knew how to access it through the university's health centre or nearby public facilities. This is not unique to KWASU. It reflects a national pattern.",
+        textFr:
+          "La recherche en cours menée par LUMA sur la connaissance de la PrEP à l'Université d'État de Kwara révèle un écart de connaissance important. Les résultats préliminaires suggèrent que la majorité des étudiants interrogés n'avaient jamais entendu parler de la PrEP, et encore moins savaient comment y accéder via le centre de santé de l'université ou les établissements publics à proximité. Cela ne se limite pas à la KWASU. Cela reflète une tendance nationale.",
       },
       {
         type: "body",
         text: "PEPFAR data from before the 2025 funding cuts showed that 742,000 people across 28 African countries were on PEPFAR-funded PrEP. Following the cuts, an estimated 719,000 of those people lost access. Nigeria was one of the five countries most severely affected. This crisis makes campus-level PrEP awareness more critical, not less.",
+        textFr:
+          "Les données du PEPFAR d'avant les coupes budgétaires de 2025 montraient que 742 000 personnes dans 28 pays africains bénéficiaient de la PrEP financée par le PEPFAR. Après ces coupes, on estime que 719 000 de ces personnes ont perdu l'accès. Le Nigéria a été l'un des cinq pays les plus durement touchés. Cette crise rend la sensibilisation à la PrEP sur les campus encore plus essentielle, pas moins.",
       },
-      { type: "heading", text: "Why campus health centres stay silent" },
+      { type: "heading", text: "Why campus health centres stay silent", textFr: "Pourquoi les centres de santé des campus restent silencieux" },
       {
         type: "body",
         text: "Campus health centres in Nigeria were not designed around sexual health. They were designed around malaria treatment, minor injury care, and routine checkups. HIV prevention, including PrEP, was never part of their original mandate. Without specific training for campus health staff, PrEP remains invisible in campus health conversations.",
+        textFr:
+          "Les centres de santé des campus au Nigéria n'ont pas été conçus autour de la santé sexuelle. Ils ont été conçus pour le traitement du paludisme, les soins de blessures mineures et les bilans de routine. La prévention du VIH, y compris la PrEP, n'a jamais fait partie de leur mission d'origine. Sans formation spécifique du personnel de santé des campus, la PrEP reste invisible dans les discussions sur la santé du campus.",
       },
       {
         type: "callout",
         text: "PrEP reduces the risk of getting HIV from sex by up to 99% when taken consistently. It is available in Nigeria. Your campus health centre probably has not told you this.",
+        textFr:
+          "La PrEP réduit le risque de contracter le VIH par voie sexuelle jusqu'à 99 % lorsqu'elle est prise régulièrement. Elle est disponible au Nigéria. Le centre de santé de votre campus ne vous l'a probablement jamais dit.",
       },
       {
         type: "body",
         text: "This is one of LUMA's core advocacy targets: pushing Nigerian universities to train campus health staff on PrEP, integrate it into campus sexual health conversations, and make clear referral pathways available to any student who needs it.",
+        textFr:
+          "C'est l'un des principaux objectifs de plaidoyer de LUMA : pousser les universités nigérianes à former leur personnel de santé sur la PrEP, l'intégrer aux discussions sur la santé sexuelle du campus, et mettre en place des filières d'orientation claires pour tout étudiant qui en a besoin.",
       },
-      { type: "heading", text: "How to access PrEP in Nigeria right now" },
+      { type: "heading", text: "How to access PrEP in Nigeria right now", textFr: "Comment accéder à la PrEP au Nigéria dès maintenant" },
       {
         type: "body",
         text: "Visit a public health facility near your university and ask specifically about PrEP. Many facilities receive PrEP through government programmes and it is available at low or no cost. You will need an HIV test first to confirm you are negative. After that, PrEP is prescribed and dispensed with follow-up appointments every three months. You do not need a referral. You can walk in and ask.",
+        textFr:
+          "Rendez-vous dans un établissement de santé publique près de votre université et demandez spécifiquement la PrEP. De nombreux établissements reçoivent la PrEP via des programmes gouvernementaux, et elle est disponible à faible coût, voire gratuitement. Vous devrez d'abord passer un test de dépistage du VIH pour confirmer que vous êtes séronégatif. Ensuite, la PrEP est prescrite et délivrée avec des rendez-vous de suivi tous les trois mois. Aucune orientation n'est nécessaire. Vous pouvez vous présenter directement et demander.",
       },
     ],
     related: ["classroom-myth", "stigma-data", "uequals-u"],
@@ -227,46 +275,67 @@ export const STORIES = [
   {
     id: "stigma-data",
     tag: "DATA",
+    tagFr: "DONNÉES",
     title: "HIV stigma at Nigerian universities: what our data found and why it matters.",
+    titleFr:
+      "La stigmatisation du VIH dans les universités nigérianes : ce que nos données révèlent et pourquoi c'est important.",
     excerpt:
       "Our ongoing research across APYIN branches reveals a knowledge-attitude paradox: 96.85% of students know the facts about HIV, yet only 55.5% hold non-stigmatising attitudes toward PLHIV.",
+    excerptFr:
+      "Notre recherche en cours dans les antennes de l'APYIN révèle un paradoxe connaissance-attitude : 96,85 % des étudiants connaissent les faits sur le VIH, mais seulement 55,5 % ont des attitudes non stigmatisantes envers les PVVIH.",
     date: "June 2026",
     readTime: "6 min read",
     content: [
       {
         type: "lead",
         text: "The numbers are striking. Nearly every university student surveyed knows that HIV is not transmitted through casual contact. They know you cannot get it from sharing a classroom or a meal. And yet over 40% of those same students would be uncomfortable sitting beside someone they knew was HIV positive. This is the knowledge-attitude paradox, and it is at the heart of everything LUMA is trying to change.",
+        textFr:
+          "Les chiffres sont frappants. Presque tous les étudiants interrogés savent que le VIH ne se transmet pas par contact occasionnel. Ils savent qu'on ne peut pas le contracter en partageant une salle de classe ou un repas. Et pourtant, plus de 40 % de ces mêmes étudiants seraient mal à l'aise de s'asseoir à côté d'une personne séropositive. C'est le paradoxe connaissance-attitude, et c'est au cœur de tout ce que LUMA essaie de changer.",
       },
-      { type: "heading", text: "What the research shows" },
+      { type: "heading", text: "What the research shows", textFr: "Ce que montre la recherche" },
       {
         type: "body",
         text: "LUMA's ongoing study on HIV stigma and mental health across APYIN branches is building on a growing body of evidence. A 2024 study of university students found that 96.85% demonstrated high AIDS knowledge. Yet only 55.52% had positive attitudes toward people living with HIV. The gap between knowing and acting with dignity is enormous.",
+        textFr:
+          "L'étude en cours de LUMA sur la stigmatisation du VIH et la santé mentale dans les antennes de l'APYIN s'appuie sur un corpus de preuves grandissant. Une étude de 2024 sur des étudiants universitaires a révélé que 96,85 % avaient un niveau de connaissance élevé sur le sida. Pourtant, seulement 55,52 % avaient des attitudes positives envers les personnes vivant avec le VIH. L'écart entre savoir et agir avec dignité est immense.",
       },
       {
         type: "body",
         text: "Specific stigma indicators from university student research include: 59.8% were unwilling to have contact with people living with HIV; 58.9% were uncomfortable eating at the same table; 60% were not willing to buy food from someone living with HIV; and 43.5% were uncomfortable shaking hands. These are not abstract statistics. These are the daily experiences of your classmates.",
+        textFr:
+          "Les indicateurs de stigmatisation spécifiques issus de la recherche auprès des étudiants universitaires incluent : 59,8 % refusaient tout contact avec des personnes vivant avec le VIH ; 58,9 % étaient mal à l'aise à l'idée de manger à la même table ; 60 % ne voulaient pas acheter de nourriture auprès d'une personne séropositive ; et 43,5 % étaient mal à l'aise à l'idée de lui serrer la main. Ce ne sont pas des statistiques abstraites. Ce sont le quotidien de vos camarades de classe.",
       },
-      { type: "heading", text: "What stigma does to mental health" },
+      { type: "heading", text: "What stigma does to mental health", textFr: "Ce que la stigmatisation fait à la santé mentale" },
       {
         type: "body",
         text: "HIV-related stigma has direct, measurable consequences for mental health. For a university student already navigating the pressures of academic life, the additional burden of managing a stigmatised identity is significant. Research consistently links HIV stigma to higher rates of depression, anxiety, social withdrawal, and poorer treatment adherence among young people living with HIV.",
+        textFr:
+          "La stigmatisation liée au VIH a des conséquences directes et mesurables sur la santé mentale. Pour un étudiant universitaire déjà confronté aux pressions de la vie académique, le fardeau supplémentaire de gérer une identité stigmatisée est considérable. La recherche établit systématiquement un lien entre la stigmatisation du VIH et des taux plus élevés de dépression, d'anxiété, de retrait social et une moins bonne observance du traitement chez les jeunes vivant avec le VIH.",
       },
       {
         type: "body",
         text: "A 2021 Nigerian study found that only half of people living with HIV received sufficient support from family, friends, and significant others. On university campuses, where peer relationships are central to wellbeing, this isolation is particularly damaging.",
+        textFr:
+          "Une étude nigériane de 2021 a révélé que seule la moitié des personnes vivant avec le VIH recevaient un soutien suffisant de leur famille, de leurs amis et de leurs proches. Sur les campus universitaires, où les relations entre pairs sont essentielles au bien-être, cet isolement est particulièrement néfaste.",
       },
-      { type: "heading", text: "Why knowledge alone is not enough" },
+      { type: "heading", text: "Why knowledge alone is not enough", textFr: "Pourquoi la connaissance seule ne suffit pas" },
       {
         type: "body",
         text: "The knowledge-attitude paradox tells us something important: HIV education as it is currently delivered in Nigeria is not working. Telling people the facts about transmission does not automatically change how they feel about or treat their HIV positive peers. Stigma is a social phenomenon. It requires social solutions.",
+        textFr:
+          "Le paradoxe connaissance-attitude nous apprend quelque chose d'important : l'éducation sur le VIH telle qu'elle est actuellement dispensée au Nigéria ne fonctionne pas. Dire aux gens les faits sur la transmission ne change pas automatiquement leur ressenti ou leur comportement envers leurs pairs séropositifs. La stigmatisation est un phénomène social. Elle nécessite des solutions sociales.",
       },
       {
         type: "callout",
         text: "Knowing the facts about HIV is not the same as treating HIV positive people with dignity. LUMA exists in that gap.",
+        textFr:
+          "Connaître les faits sur le VIH n'est pas la même chose que de traiter les personnes séropositives avec dignité. LUMA existe précisément dans cet écart.",
       },
       {
         type: "body",
         text: "This is why LUMA's approach centres advocacy and community, not just information. The status neutral approach, which removes the separation between HIV positive and negative in how we deliver education and services, is specifically designed to address the social roots of stigma rather than just its informational causes.",
+        textFr:
+          "C'est pourquoi l'approche de LUMA place le plaidoyer et la communauté au centre, pas seulement l'information. L'approche « statut neutre », qui supprime la séparation entre séropositif et séronégatif dans la façon dont nous délivrons l'éducation et les services, est spécifiquement conçue pour s'attaquer aux racines sociales de la stigmatisation, et non seulement à ses causes informationnelles.",
       },
     ],
     related: ["classroom-myth", "your-rights", "first-year-diagnosis"],
@@ -274,46 +343,66 @@ export const STORIES = [
   {
     id: "your-rights",
     tag: "RIGHTS",
+    tagFr: "DROITS",
     title: "As an HIV positive student, you have rights on campus. Here is what they are.",
+    titleFr: "En tant qu'étudiant séropositif, vous avez des droits sur le campus. Voici lesquels.",
     excerpt:
       "From medical confidentiality to anti-discrimination protections, many Nigerian university students living with HIV do not know their legal rights. This post changes that.",
+    excerptFr:
+      "De la confidentialité médicale aux protections contre la discrimination, de nombreux étudiants nigérians vivant avec le VIH ignorent leurs droits légaux. Cet article change la donne.",
     date: "June 2026",
     readTime: "8 min read",
     content: [
       {
         type: "lead",
         text: "If you are a university student living with HIV in Nigeria, you have legal rights. Your HIV status is protected health information. You cannot be expelled, suspended, or discriminated against on the basis of your HIV status. You are entitled to reasonable accommodations if your health requires them. Most students living with HIV in Nigerian universities do not know any of this. That is a problem LUMA is determined to fix.",
+        textFr:
+          "Si vous êtes un étudiant universitaire vivant avec le VIH au Nigéria, vous avez des droits légaux. Votre statut sérologique est une information de santé protégée. Vous ne pouvez pas être exclu, suspendu ou discriminé en raison de votre statut. Vous avez droit à des aménagements raisonnables si votre santé l'exige. La plupart des étudiants vivant avec le VIH dans les universités nigérianes ne savent rien de tout cela. C'est un problème que LUMA est déterminée à résoudre.",
       },
-      { type: "heading", text: "The HIV and AIDS Anti-Discrimination Act" },
+      { type: "heading", text: "The HIV and AIDS Anti-Discrimination Act", textFr: "La loi anti-discrimination sur le VIH et le sida" },
       {
         type: "body",
         text: "Nigeria's HIV and AIDS Anti-Discrimination Act of 2014 is clear: no person shall be denied access to education on the grounds of their actual or perceived HIV status. This means a university cannot expel you, refuse your admission, or remove you from a programme because you are living with HIV. Any such action is unlawful.",
+        textFr:
+          "La loi nigériane de 2014 sur l'anti-discrimination liée au VIH et au sida est claire : nul ne peut se voir refuser l'accès à l'éducation en raison de son statut sérologique réel ou perçu. Cela signifie qu'une université ne peut pas vous exclure, refuser votre admission ou vous retirer d'un programme parce que vous vivez avec le VIH. Une telle action est illégale.",
       },
       {
         type: "body",
         text: "The Act also protects your right to privacy. Your HIV status is protected health information. No one at your university, including lecturers, hall wardens, or health centre staff, has the right to disclose your HIV status to other students, staff, or the public without your explicit consent.",
+        textFr:
+          "La loi protège également votre droit à la vie privée. Votre statut sérologique est une information de santé protégée. Personne dans votre université, y compris les enseignants, les surveillants d'internat ou le personnel du centre de santé, n'a le droit de divulguer votre statut à d'autres étudiants, au personnel ou au public sans votre consentement explicite.",
       },
-      { type: "heading", text: "Medical confidentiality on campus" },
+      { type: "heading", text: "Medical confidentiality on campus", textFr: "La confidentialité médicale sur le campus" },
       {
         type: "body",
         text: "When you access health services at your university health centre, your records are confidential. This includes HIV testing, treatment, and counselling. Staff at the health centre are bound by professional confidentiality obligations. If your status is ever disclosed without your consent, this is a violation of both your legal rights and professional ethics standards.",
+        textFr:
+          "Lorsque vous accédez aux services de santé du centre médical de votre université, vos dossiers sont confidentiels. Cela inclut le dépistage, le traitement et le conseil liés au VIH. Le personnel du centre de santé est tenu par des obligations de confidentialité professionnelle. Si votre statut est divulgué sans votre consentement, il s'agit d'une violation à la fois de vos droits légaux et des normes déontologiques.",
       },
       {
         type: "body",
         text: "In practice, we know confidentiality is not always maintained. Informal disclosure happens. If you experience a breach of confidentiality at your university, document it. Write down what happened, when, and who was involved. This creates a record you can use to make a formal complaint.",
+        textFr:
+          "Dans la pratique, nous savons que la confidentialité n'est pas toujours respectée. Des divulgations informelles se produisent. Si vous êtes victime d'une atteinte à la confidentialité dans votre université, documentez-la. Notez ce qui s'est passé, quand, et qui était impliqué. Cela constitue une preuve que vous pourrez utiliser pour déposer une plainte formelle.",
       },
-      { type: "heading", text: "What your university should provide" },
+      { type: "heading", text: "What your university should provide", textFr: "Ce que votre université doit fournir" },
       {
         type: "body",
         text: "Under Nigeria's 2026 to 2030 National HIV Prevention Plan, universities are expected to provide HIV testing and counselling services, referral pathways to treatment, and support for students living with HIV. In practice, most Nigerian universities do not yet meet this standard. This is the gap LUMA's advocacy work is targeting.",
+        textFr:
+          "Dans le cadre du Plan national de prévention du VIH du Nigéria 2026-2030, les universités sont censées fournir des services de dépistage et de conseil, des filières d'orientation vers le traitement, et un soutien aux étudiants vivant avec le VIH. Dans la pratique, la plupart des universités nigérianes n'atteignent pas encore ce niveau. C'est l'écart que le travail de plaidoyer de LUMA vise à combler.",
       },
       {
         type: "callout",
         text: "You cannot be expelled from a Nigerian university because you are living with HIV. Your medical records are confidential. These are not requests. They are rights.",
+        textFr:
+          "Vous ne pouvez pas être exclu d'une université nigériane parce que vous vivez avec le VIH. Vos dossiers médicaux sont confidentiels. Ce ne sont pas des faveurs. Ce sont des droits.",
       },
       {
         type: "body",
         text: "If you are experiencing discrimination at your university based on your HIV status, reach out to LUMA through our anonymous contact option. We can help you understand your options and connect you with support.",
+        textFr:
+          "Si vous subissez une discrimination dans votre université en raison de votre statut sérologique, contactez LUMA via notre option de contact anonyme. Nous pouvons vous aider à comprendre vos options et vous mettre en relation avec du soutien.",
       },
     ],
     related: ["stigma-data", "first-year-diagnosis", "prep-explained"],
@@ -321,46 +410,66 @@ export const STORIES = [
   {
     id: "first-year-diagnosis",
     tag: "MENTAL HEALTH",
+    tagFr: "SANTÉ MENTALE",
     title: "Navigating a new HIV diagnosis in your first year of university.",
+    titleFr: "Traverser un nouveau diagnostic VIH en première année d'université.",
     excerpt:
       "Receiving a diagnosis during the high-pressure environment of early university life is uniquely challenging. This piece, written with LUMA community members, maps what that journey can look like.",
+    excerptFr:
+      "Recevoir un diagnostic dans l'environnement à forte pression des débuts de la vie universitaire est un défi unique. Cet article, écrit avec des membres de la communauté LUMA, décrit à quoi ce parcours peut ressembler.",
     date: "June 2026",
     readTime: "9 min read",
     content: [
       {
         type: "lead",
         text: "This piece was written with members of the LUMA community who received their HIV diagnosis during university. Their experiences are their own. We share them here with gratitude and with their permission. If you are currently navigating a new diagnosis, this is for you.",
+        textFr:
+          "Cet article a été écrit avec des membres de la communauté LUMA qui ont reçu leur diagnostic VIH pendant leurs études universitaires. Leurs expériences leur appartiennent. Nous les partageons ici avec gratitude et avec leur permission. Si vous traversez actuellement un nouveau diagnostic, cet article est pour vous.",
       },
-      { type: "heading", text: "The first weeks" },
+      { type: "heading", text: "The first weeks", textFr: "Les premières semaines" },
       {
         type: "body",
         text: "The weeks following an HIV diagnosis are often described in similar ways regardless of where or when they happen: shock, fear, isolation, and an overwhelming sense that everything has changed. For a first-year student, this arrives on top of already intense transitions. A new city. A new academic environment. A new social world. A new identity to build.",
+        textFr:
+          "Les semaines suivant un diagnostic VIH sont souvent décrites de façon similaire, quel que soit le contexte : choc, peur, isolement, et un sentiment accablant que tout a changé. Pour un étudiant de première année, cela s'ajoute à des transitions déjà intenses. Une nouvelle ville. Un nouvel environnement académique. Un nouveau monde social. Une nouvelle identité à construire.",
       },
       {
         type: "body",
         text: "Many students describe a period of complete withdrawal in the immediate aftermath of a diagnosis. Skipping lectures. Avoiding friends. Spending days in the hostel room. This is an understandable response to overwhelming news. It is not permanent. And it does not mean you are not going to be okay.",
+        textFr:
+          "Beaucoup d'étudiants décrivent une période de repli complet juste après le diagnostic. Sécher les cours. Éviter les amis. Passer des journées entières dans la chambre d'internat. C'est une réaction compréhensible face à une nouvelle bouleversante. Ce n'est pas permanent. Et cela ne signifie pas que tout n'ira pas bien.",
       },
-      { type: "heading", text: "What actually helps" },
+      { type: "heading", text: "What actually helps", textFr: "Ce qui aide vraiment" },
       {
         type: "body",
         text: "Getting into treatment quickly matters, not just for your physical health but for your mental health too. Starting antiretroviral therapy (ART) and seeing your viral load begin to drop gives many people a sense of agency that reduces the psychological weight of a diagnosis. Treatment works. And treatment in Nigeria is more accessible than most students realise.",
+        textFr:
+          "Commencer rapidement un traitement compte, pas seulement pour votre santé physique mais aussi pour votre santé mentale. Débuter la thérapie antirétrovirale (ARV) et voir sa charge virale commencer à baisser donne à beaucoup de gens un sentiment de contrôle qui allège le poids psychologique du diagnostic. Le traitement fonctionne. Et le traitement au Nigéria est plus accessible que la plupart des étudiants ne le pensent.",
       },
       {
         type: "body",
         text: "Community matters equally. Connecting with even one other person who understands what you are navigating changes the experience significantly. The Peer Circle exists specifically for this. You do not need to process this alone. You were never supposed to.",
+        textFr:
+          "La communauté compte tout autant. Se connecter à ne serait-ce qu'une seule autre personne qui comprend ce que vous traversez change considérablement l'expérience. Le Cercle des Pairs existe précisément pour cela. Vous n'avez pas à traverser cela seul. Vous n'étiez jamais censé le faire.",
       },
-      { type: "heading", text: "Managing your academic life" },
+      { type: "heading", text: "Managing your academic life", textFr: "Gérer votre vie académique" },
       {
         type: "body",
         text: "You do not have to disclose your HIV status to access academic support. If your health is affecting your studies, you can speak to your academic adviser or student welfare office about a medical situation without specifying what it is. Universities generally have provisions for students experiencing health challenges. Ask about deferral options, extensions, and welfare support.",
+        textFr:
+          "Vous n'êtes pas obligé de divulguer votre statut sérologique pour accéder à un soutien académique. Si votre santé affecte vos études, vous pouvez parler à votre conseiller académique ou au bureau des affaires étudiantes d'une situation médicale sans en préciser la nature. Les universités disposent généralement de dispositifs pour les étudiants confrontés à des problèmes de santé. Renseignez-vous sur les reports, les prolongations et le soutien social.",
       },
       {
         type: "callout",
         text: "A diagnosis is information about your health. It is not a verdict on your future. Students living with HIV graduate. They build careers. They have relationships. They live full lives. This is not the exception. It is the rule.",
+        textFr:
+          "Un diagnostic est une information sur votre santé. Ce n'est pas un verdict sur votre avenir. Les étudiants vivant avec le VIH obtiennent leur diplôme. Ils construisent des carrières. Ils vivent des relations. Ils mènent une vie pleine. Ce n'est pas l'exception. C'est la règle.",
       },
       {
         type: "body",
         text: "If you received your HIV diagnosis recently and you are a university student in Nigeria, please consider joining The Peer Circle. You do not need to share your name. You do not need to share your story. You just need to know there is a room full of people who understand. There is.",
+        textFr:
+          "Si vous avez récemment reçu votre diagnostic VIH et que vous êtes étudiant au Nigéria, envisagez de rejoindre Le Cercle des Pairs. Vous n'avez pas besoin de donner votre nom. Vous n'avez pas besoin de raconter votre histoire. Vous avez juste besoin de savoir qu'il existe un espace rempli de personnes qui comprennent. Il existe.",
       },
     ],
     related: ["your-rights", "stigma-data", "uequals-u"],
@@ -368,42 +477,60 @@ export const STORIES = [
   {
     id: "uequals-u",
     tag: "PREVENTION",
+    tagFr: "PRÉVENTION",
     title: "U=U: What Undetectable equals Untransmittable means for you and your campus.",
+    titleFr: "I=I : Ce qu'Indétectable égale Intransmissible signifie pour vous et votre campus.",
     excerpt:
       "The U=U science is settled. But awareness among Nigerian students is almost zero. We explain what this means, why it matters, and how it changes the conversation around HIV on campus.",
+    excerptFr:
+      "La science derrière I=I est établie. Mais la connaissance de ce concept chez les étudiants nigérians est quasi nulle. Nous expliquons ce que cela signifie, pourquoi c'est important, et comment cela change la conversation sur le VIH sur le campus.",
     date: "June 2026",
     readTime: "6 min read",
     content: [
       {
         type: "lead",
         text: "U=U stands for Undetectable equals Untransmittable. It is one of the most important advances in HIV science of the past decade. A person living with HIV who is on effective treatment and has achieved an undetectable viral load cannot transmit HIV to a sexual partner. This is settled science, endorsed by the World Health Organization, the CDC, and every major HIV research body in the world. It is not widely known in Nigerian universities.",
+        textFr:
+          "I=I signifie Indétectable égale Intransmissible. C'est l'une des avancées les plus importantes de la science du VIH de la dernière décennie. Une personne vivant avec le VIH sous traitement efficace et ayant atteint une charge virale indétectable ne peut pas transmettre le VIH à un partenaire sexuel. C'est une science établie, reconnue par l'Organisation mondiale de la santé, le CDC, et tous les grands organismes de recherche sur le VIH dans le monde. Elle reste peu connue dans les universités nigérianes.",
       },
-      { type: "heading", text: "What undetectable means" },
+      { type: "heading", text: "What undetectable means", textFr: "Ce que signifie « indétectable »" },
       {
         type: "body",
         text: "When someone living with HIV takes antiretroviral therapy consistently, the medication suppresses the virus to levels that cannot be detected by standard blood tests. This is called an undetectable viral load. It typically takes between three and six months of consistent treatment to achieve, and it is maintained by continuing medication.",
+        textFr:
+          "Lorsqu'une personne vivant avec le VIH prend régulièrement un traitement antirétroviral, le médicament supprime le virus à des niveaux indétectables par les tests sanguins standards. On parle alors de charge virale indétectable. Cela prend généralement entre trois et six mois de traitement régulier pour y parvenir, et cela se maintient en continuant le traitement.",
       },
       {
         type: "body",
         text: "Large clinical studies, including the landmark PARTNER and Opposites Attract studies, followed thousands of serodiscordant couples (where one partner is HIV positive and one is HIV negative) over years. Across tens of thousands of sex acts between couples where the HIV positive partner had an undetectable viral load, there were zero transmissions. Zero.",
+        textFr:
+          "De vastes études cliniques, dont les études phares PARTNER et Opposites Attract, ont suivi pendant des années des milliers de couples sérodiscordants (où un partenaire est séropositif et l'autre séronégatif). Sur des dizaines de milliers de rapports sexuels entre couples où le partenaire séropositif avait une charge virale indétectable, il n'y a eu aucune transmission. Zéro.",
       },
-      { type: "heading", text: "Why this changes everything" },
+      { type: "heading", text: "Why this changes everything", textFr: "Pourquoi cela change tout" },
       {
         type: "body",
         text: "U=U fundamentally changes the conversation about HIV and relationships. A student living with HIV who is on treatment and undetectable poses no risk of transmitting HIV to a partner. This knowledge reduces stigma, because much of the fear around HIV positive people is rooted in fear of transmission. When transmission is not possible, that fear loses its basis.",
+        textFr:
+          "I=I change fondamentalement la conversation sur le VIH et les relations. Un étudiant vivant avec le VIH, sous traitement et indétectable, ne présente aucun risque de transmettre le VIH à un partenaire. Cette connaissance réduit la stigmatisation, car une grande partie de la peur envers les personnes séropositives est enracinée dans la peur de la transmission. Quand la transmission est impossible, cette peur perd son fondement.",
       },
       {
         type: "body",
         text: "U=U also provides enormous mental health benefits for people living with HIV. The fear of accidentally transmitting HIV to someone you love is one of the most significant psychological burdens of living with HIV. U=U removes that fear entirely for people who are on treatment.",
+        textFr:
+          "I=I apporte aussi d'énormes bénéfices en santé mentale pour les personnes vivant avec le VIH. La peur de transmettre accidentellement le VIH à une personne qu'on aime est l'un des fardeaux psychologiques les plus lourds de la vie avec le VIH. I=I supprime entièrement cette peur pour les personnes sous traitement.",
       },
       {
         type: "callout",
         text: "A person living with HIV who is on effective treatment and has an undetectable viral load cannot transmit HIV sexually. This is not an opinion. It is settled science endorsed by the WHO.",
+        textFr:
+          "Une personne vivant avec le VIH sous traitement efficace et ayant une charge virale indétectable ne peut pas transmettre le VIH par voie sexuelle. Ce n'est pas une opinion. C'est une science établie, reconnue par l'OMS.",
       },
-      { type: "heading", text: "What needs to change on Nigerian campuses" },
+      { type: "heading", text: "What needs to change on Nigerian campuses", textFr: "Ce qui doit changer sur les campus nigérians" },
       {
         type: "body",
         text: "U=U awareness among Nigerian university students is very close to zero. This means that students living with HIV who are on treatment and undetectable are still being treated as though they pose a transmission risk. This is both scientifically incorrect and deeply unfair. Spreading U=U awareness is one of the most direct ways to reduce HIV stigma on campuses. LUMA is committed to making U=U common knowledge in every Nigerian university.",
+        textFr:
+          "La connaissance d'I=I chez les étudiants nigérians est proche de zéro. Cela signifie que des étudiants vivant avec le VIH, sous traitement et indétectables, sont encore traités comme s'ils présentaient un risque de transmission. C'est à la fois scientifiquement incorrect et profondément injuste. Diffuser la connaissance d'I=I est l'un des moyens les plus directs de réduire la stigmatisation du VIH sur les campus. LUMA s'engage à faire d'I=I une connaissance commune dans chaque université nigériane.",
       },
     ],
     related: ["classroom-myth", "prep-explained", "first-year-diagnosis"],
@@ -1234,6 +1361,7 @@ export const Footer = ({ t, setPage }) => {
 // ─── STORY DETAIL PAGE ───────────────────────────────────────────────────────
 
 export const StoryPage = ({ t, story, setPage, setStoryId }) => {
+  const { tr, lang } = useLang();
   const related = STORIES.filter((s) => story.related.includes(s.id));
   const s = {
     hero: { background: t.primary, padding: "100px 32px 60px" },
@@ -1322,12 +1450,12 @@ export const StoryPage = ({ t, story, setPage, setStoryId }) => {
       <div style={s.hero}>
         <div style={s.inner}>
           <button style={s.back} onClick={() => setPage("truth")}>
-            <ArrowLeft color="rgba(247,243,236,0.7)" size={14} /> Back to Campus Truth Series
+            <ArrowLeft color="rgba(247,243,236,0.7)" size={14} /> {tr("Back to Campus Truth Series", "Retour à la série Vérité Campus")}
           </button>
           <Tag t={t} light>
-            {story.tag}
+            {lang === "fr" && story.tagFr ? story.tagFr : story.tag}
           </Tag>
-          <h1 style={s.h1}>{story.title}</h1>
+          <h1 style={s.h1}>{lang === "fr" && story.titleFr ? story.titleFr : story.title}</h1>
           <p
             style={{
               color: "rgba(247,243,236,0.55)",
@@ -1344,28 +1472,29 @@ export const StoryPage = ({ t, story, setPage, setStoryId }) => {
       <section style={s.section}>
         <div style={s.inner}>
           {story.content.map((block, i) => {
+            const text = lang === "fr" && block.textFr ? block.textFr : block.text;
             if (block.type === "lead")
               return (
                 <p key={i} style={s.lead}>
-                  {block.text}
+                  {text}
                 </p>
               );
             if (block.type === "heading")
               return (
                 <h2 key={i} style={s.heading}>
-                  {block.text}
+                  {text}
                 </h2>
               );
             if (block.type === "body")
               return (
                 <p key={i} style={s.body}>
-                  {block.text}
+                  {text}
                 </p>
               );
             if (block.type === "callout")
               return (
                 <div key={i} style={s.callout}>
-                  {block.text}
+                  {text}
                 </div>
               );
             return null;
@@ -1383,11 +1512,11 @@ export const StoryPage = ({ t, story, setPage, setStoryId }) => {
                 marginBottom: 16,
               }}
             >
-              Found this useful?
+              {tr("Found this useful?", "Cela vous a été utile ?")}
             </p>
             <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
               <Btn t={t} variant="primary" onClick={() => setPage("circle")}>
-                Join The Peer Circle
+                {tr("Join The Peer Circle", "Rejoindre le Cercle des Pairs")}
               </Btn>
               <Btn
                 t={t}
@@ -1396,7 +1525,7 @@ export const StoryPage = ({ t, story, setPage, setStoryId }) => {
                   setPage("contact");
                 }}
               >
-                Submit a Myth
+                {tr("Submit a Myth", "Signaler une rumeur")}
               </Btn>
             </div>
           </div>
@@ -1405,7 +1534,7 @@ export const StoryPage = ({ t, story, setPage, setStoryId }) => {
 
       <section style={s.relatedSection}>
         <div style={s.wide}>
-          <SectionLabel t={t}>Continue Reading</SectionLabel>
+          <SectionLabel t={t}>{tr("Continue Reading", "Continuer la lecture")}</SectionLabel>
           <h2
             style={{
               fontFamily: "'Space Grotesk',sans-serif",
@@ -1415,7 +1544,7 @@ export const StoryPage = ({ t, story, setPage, setStoryId }) => {
               marginBottom: 0,
             }}
           >
-            More from the Campus Truth Series
+            {tr("More from the Campus Truth Series", "Plus d'articles de la série Vérité Campus")}
           </h2>
           <div style={s.relatedGrid}>
             {related.map((rs) => (
@@ -1430,7 +1559,7 @@ export const StoryPage = ({ t, story, setPage, setStoryId }) => {
                 onMouseEnter={(e) => (e.currentTarget.style.transform = "translateY(-4px)")}
                 onMouseLeave={(e) => (e.currentTarget.style.transform = "translateY(0)")}
               >
-                <Tag t={t}>{rs.tag}</Tag>
+                <Tag t={t}>{lang === "fr" && rs.tagFr ? rs.tagFr : rs.tag}</Tag>
                 <h3
                   style={{
                     fontFamily: "'Space Grotesk',sans-serif",
@@ -1441,7 +1570,7 @@ export const StoryPage = ({ t, story, setPage, setStoryId }) => {
                     margin: "12px 0 8px",
                   }}
                 >
-                  {rs.title}
+                  {lang === "fr" && rs.titleFr ? rs.titleFr : rs.title}
                 </h3>
                 <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 13, color: t.textMuted }}>
                   {rs.readTime}
@@ -1458,14 +1587,14 @@ export const StoryPage = ({ t, story, setPage, setStoryId }) => {
                     marginTop: 12,
                   }}
                 >
-                  Read <ArrowRight color={t.accent} size={12} />
+                  {tr("Read", "Lire")} <ArrowRight color={t.accent} size={12} />
                 </p>
               </div>
             ))}
           </div>
           <div style={{ marginTop: 32 }}>
             <Btn t={t} variant="primary" onClick={() => setPage("truth")}>
-              All Campus Truth Posts
+              {tr("All Campus Truth Posts", "Tous les articles Vérité Campus")}
             </Btn>
           </div>
         </div>
@@ -2313,142 +2442,152 @@ export const AboutPage = ({ t }) => {
 
 // ─── CAMPUS TRUTH PAGE ────────────────────────────────────────────────────────
 
-export const TruthPage = ({ t, setPage, setStoryId }) => (
-  <div>
-    <div style={{ background: t.primary, padding: "120px 32px 80px" }}>
-      <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-        <Tag t={t} light>
-          From the Inform Pillar
-        </Tag>
-        <h1
-          style={{
-            fontFamily: "'Space Grotesk',sans-serif",
-            fontSize: "clamp(36px,5vw,60px)",
-            fontWeight: 800,
-            color: t.ivory,
-            lineHeight: 1.1,
-            marginTop: 16,
-          }}
-        >
-          The Campus Truth Series
-        </h1>
-        <p
-          style={{
-            fontFamily: "'DM Sans',sans-serif",
-            fontSize: 18,
-            color: "rgba(247,243,236,0.7)",
-            lineHeight: 1.7,
-            maxWidth: 620,
-            marginTop: 16,
-          }}
-        >
-          The Campus Truth Series does not just tell students what is true. It shows them what to do
-          with the truth. Every article ends with action, not just information.
-        </p>
-      </div>
-    </div>
-    <section style={{ padding: "80px 32px", background: t.bg }}>
-      <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit,minmax(300px,1fr))",
-            gap: 24,
-          }}
-        >
-          {STORIES.map((story) => (
-            <Card
-              key={story.id}
-              t={t}
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: 12,
-                cursor: "pointer",
-                transition: "transform 0.2s",
-              }}
-              onClick={() => {
-                setStoryId(story.id);
-                setPage("story");
-                window.scrollTo(0, 0);
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.transform = "translateY(-4px)")}
-              onMouseLeave={(e) => (e.currentTarget.style.transform = "translateY(0)")}
-            >
-              <Tag t={t}>{story.tag}</Tag>
-              <h3
-                style={{
-                  fontFamily: "'Space Grotesk',sans-serif",
-                  fontSize: 18,
-                  fontWeight: 700,
-                  color: t.text,
-                  lineHeight: 1.4,
-                }}
-              >
-                {story.title}
-              </h3>
-              <p
-                style={{
-                  fontFamily: "'DM Sans',sans-serif",
-                  fontSize: 14,
-                  color: t.textMuted,
-                  lineHeight: 1.6,
-                }}
-              >
-                {story.excerpt}
-              </p>
-              <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 12, color: t.textMuted }}>
-                {story.date} · {story.readTime}
-              </p>
-              <span
-                style={{
-                  fontFamily: "'Space Grotesk',sans-serif",
-                  fontSize: 13,
-                  fontWeight: 700,
-                  color: t.accent,
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 6,
-                }}
-              >
-                Read Full Story <ArrowRight color={t.accent} size={12} />
-              </span>
-            </Card>
-          ))}
+export const TruthPage = ({ t, setPage, setStoryId }) => {
+  const { tr, lang } = useLang();
+  return (
+    <div>
+      <div style={{ background: t.primary, padding: "120px 32px 80px" }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+          <Tag t={t} light>
+            {tr("From the Inform Pillar", "Du pilier Informer")}
+          </Tag>
+          <h1
+            style={{
+              fontFamily: "'Space Grotesk',sans-serif",
+              fontSize: "clamp(36px,5vw,60px)",
+              fontWeight: 800,
+              color: t.ivory,
+              lineHeight: 1.1,
+              marginTop: 16,
+            }}
+          >
+            {tr("The Campus Truth Series", "La série Vérité Campus")}
+          </h1>
+          <p
+            style={{
+              fontFamily: "'DM Sans',sans-serif",
+              fontSize: 18,
+              color: "rgba(247,243,236,0.7)",
+              lineHeight: 1.7,
+              maxWidth: 620,
+              marginTop: 16,
+            }}
+          >
+            {tr(
+              "The Campus Truth Series does not just tell students what is true. It shows them what to do with the truth. Every article ends with action, not just information.",
+              "La série Vérité Campus ne se contente pas de dire aux étudiants ce qui est vrai. Elle leur montre quoi faire de cette vérité. Chaque article se termine par une action, pas seulement une information."
+            )}
+          </p>
         </div>
       </div>
-    </section>
-    <section style={{ background: t.primary, padding: "80px 32px", textAlign: "center" }}>
-      <div style={{ maxWidth: 600, margin: "0 auto" }}>
-        <h2
-          style={{
-            fontFamily: "'Space Grotesk',sans-serif",
-            fontSize: "clamp(24px,3vw,38px)",
-            fontWeight: 800,
-            color: t.ivory,
-            marginBottom: 16,
-          }}
-        >
-          Heard something about HIV you are not sure about?
-        </h2>
-        <p
-          style={{
-            fontFamily: "'DM Sans',sans-serif",
-            fontSize: 16,
-            color: "rgba(247,243,236,0.7)",
-            marginBottom: 32,
-          }}
-        >
-          Send it to us. If it is a myth circulating on your campus, we will research it and publish
-          the truth.
-        </p>
-        <Btn t={t} variant="light" onClick={() => setPage("contact")}>
-          Submit a Myth
-        </Btn>
-      </div>
-    </section>
-  </div>
-);
+      <section style={{ padding: "80px 32px", background: t.bg }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit,minmax(300px,1fr))",
+              gap: 24,
+            }}
+          >
+            {STORIES.map((story) => (
+              <Card
+                key={story.id}
+                t={t}
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: 12,
+                  cursor: "pointer",
+                  transition: "transform 0.2s",
+                }}
+                onClick={() => {
+                  setStoryId(story.id);
+                  setPage("story");
+                  window.scrollTo(0, 0);
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.transform = "translateY(-4px)")}
+                onMouseLeave={(e) => (e.currentTarget.style.transform = "translateY(0)")}
+              >
+                <Tag t={t}>{lang === "fr" && story.tagFr ? story.tagFr : story.tag}</Tag>
+                <h3
+                  style={{
+                    fontFamily: "'Space Grotesk',sans-serif",
+                    fontSize: 18,
+                    fontWeight: 700,
+                    color: t.text,
+                    lineHeight: 1.4,
+                  }}
+                >
+                  {lang === "fr" && story.titleFr ? story.titleFr : story.title}
+                </h3>
+                <p
+                  style={{
+                    fontFamily: "'DM Sans',sans-serif",
+                    fontSize: 14,
+                    color: t.textMuted,
+                    lineHeight: 1.6,
+                  }}
+                >
+                  {lang === "fr" && story.excerptFr ? story.excerptFr : story.excerpt}
+                </p>
+                <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 12, color: t.textMuted }}>
+                  {story.date} · {story.readTime}
+                </p>
+                <span
+                  style={{
+                    fontFamily: "'Space Grotesk',sans-serif",
+                    fontSize: 13,
+                    fontWeight: 700,
+                    color: t.accent,
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 6,
+                  }}
+                >
+                  {tr("Read Full Story", "Lire l'article complet")} <ArrowRight color={t.accent} size={12} />
+                </span>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+      <section style={{ background: t.primary, padding: "80px 32px", textAlign: "center" }}>
+        <div style={{ maxWidth: 600, margin: "0 auto" }}>
+          <h2
+            style={{
+              fontFamily: "'Space Grotesk',sans-serif",
+              fontSize: "clamp(24px,3vw,38px)",
+              fontWeight: 800,
+              color: t.ivory,
+              marginBottom: 16,
+            }}
+          >
+            {tr(
+              "Heard something about HIV you are not sure about?",
+              "Vous avez entendu quelque chose sur le VIH dont vous n'êtes pas sûr ?"
+            )}
+          </h2>
+          <p
+            style={{
+              fontFamily: "'DM Sans',sans-serif",
+              fontSize: 16,
+              color: "rgba(247,243,236,0.7)",
+              marginBottom: 32,
+            }}
+          >
+            {tr(
+              "Send it to us. If it is a myth circulating on your campus, we will research it and publish the truth.",
+              "Envoyez-le-nous. S'il s'agit d'une rumeur qui circule sur votre campus, nous ferons des recherches et publierons la vérité."
+            )}
+          </p>
+          <Btn t={t} variant="light" onClick={() => setPage("contact")}>
+            {tr("Submit a Myth", "Signaler une rumeur")}
+          </Btn>
+        </div>
+      </section>
+    </div>
+  );
+};
 
 // ─── PEER CIRCLE PAGE ─────────────────────────────────────────────────────────
 
@@ -2464,6 +2603,7 @@ const YEAR_OPTIONS = [
 ];
 
 export const CirclePage = ({ t }) => {
+  const { tr } = useLang();
   const [form, setForm] = useState({
     displayName: "",
     email: "",
@@ -2554,7 +2694,7 @@ export const CirclePage = ({ t }) => {
       <div style={s.hero}>
         <div style={s.inner}>
           <Tag t={t} light>
-            From the Belong Pillar
+            {tr("From the Belong Pillar", "Du pilier Appartenir")}
           </Tag>
           <h1
             style={{
@@ -2566,7 +2706,7 @@ export const CirclePage = ({ t }) => {
               marginTop: 16,
             }}
           >
-            You do not have to figure this out alone.
+            {tr("You do not have to figure this out alone.", "Vous n'avez pas à traverser cela seul.")}
           </h1>
           <p
             style={{
@@ -2578,24 +2718,29 @@ export const CirclePage = ({ t }) => {
               marginTop: 16,
             }}
           >
-            The Peer Circle is a closed digital community for university students living with HIV in
-            Nigeria. Peer-led. Confidential. Built by people who understand.
+            {tr(
+              "The Peer Circle is a closed digital community for university students living with HIV in Nigeria. Peer-led. Confidential. Built by people who understand.",
+              "Le Cercle des Pairs est une communauté numérique fermée pour les étudiants universitaires vivant avec le VIH au Nigéria. Animée par des pairs. Confidentielle. Créée par des personnes qui comprennent."
+            )}
           </p>
         </div>
       </div>
 
       <section style={s.section}>
         <div style={s.inner}>
-          <SectionLabel t={t}>A Space Built For You</SectionLabel>
-          <h2 style={s.h2}>What the Peer Circle is</h2>
+          <SectionLabel t={t}>{tr("A Space Built For You", "Un espace conçu pour vous")}</SectionLabel>
+          <h2 style={s.h2}>{tr("What the Peer Circle is", "Ce qu'est le Cercle des Pairs")}</h2>
           <p style={s.body}>
-            The Peer Circle is not a forum. It is not a helpline. It is a community of Nigerian
-            university students who are navigating HIV together. Some members share openly. Others
-            prefer anonymity. Both are equally welcome and equally safe here.
+            {tr(
+              "The Peer Circle is not a forum. It is not a helpline. It is a community of Nigerian university students who are navigating HIV together. Some members share openly. Others prefer anonymity. Both are equally welcome and equally safe here.",
+              "Le Cercle des Pairs n'est pas un forum. Ce n'est pas une ligne d'assistance. C'est une communauté d'étudiants nigérians qui traversent le VIH ensemble. Certains membres s'expriment ouvertement. D'autres préfèrent l'anonymat. Les deux sont également bienvenus et également en sécurité ici."
+            )}
           </p>
           <p style={s.body}>
-            Inside The Peer Circle you will find peer support conversations, shared resources for
-            campus life with HIV, and guidance from people who have been in your exact position.
+            {tr(
+              "Inside The Peer Circle you will find peer support conversations, shared resources for campus life with HIV, and guidance from people who have been in your exact position.",
+              "Dans le Cercle des Pairs, vous trouverez des conversations de soutien entre pairs, des ressources partagées pour la vie sur le campus avec le VIH, et des conseils de personnes qui ont vécu exactement ce que vous vivez."
+            )}
           </p>
           <div
             style={{
@@ -2606,9 +2751,21 @@ export const CirclePage = ({ t }) => {
             }}
           >
             {[
-              ["01", "Apply", "Fill out a short confidential form. No real name required."],
-              ["02", "Join", "Once verified, you receive access and choose your own display name."],
-              ["03", "Connect", "Participate as much or as little as you want. No pressure."],
+              [
+                "01",
+                tr("Apply", "Postulez"),
+                tr("Fill out a short confidential form. No real name required.", "Remplissez un court formulaire confidentiel. Aucun vrai nom requis."),
+              ],
+              [
+                "02",
+                tr("Join", "Rejoignez"),
+                tr("Once verified, you receive access and choose your own display name.", "Une fois vérifié, vous recevez l'accès et choisissez votre propre nom d'affichage."),
+              ],
+              [
+                "03",
+                tr("Connect", "Connectez-vous"),
+                tr("Participate as much or as little as you want. No pressure.", "Participez autant ou aussi peu que vous le souhaitez. Aucune pression."),
+              ],
             ].map(([num, title, body]) => (
               <Card key={num} t={t}>
                 <div
@@ -2652,11 +2809,17 @@ export const CirclePage = ({ t }) => {
 
       <section style={s.sectionAlt}>
         <div style={s.inner}>
-          <SectionLabel t={t}>Voices From Campus</SectionLabel>
-          <h2 style={s.h2}>What members say</h2>
+          <SectionLabel t={t}>{tr("Voices From Campus", "Voix du Campus")}</SectionLabel>
+          <h2 style={s.h2}>{tr("What members say", "Ce que disent les membres")}</h2>
           {[
-            "For the first time since my diagnosis I talked to someone who actually gets it. Not a doctor. Not a counsellor. Someone my age, on a campus, living the same life.",
-            "I did not even know I had rights as an HIV positive student. The Peer Circle changed that.",
+            tr(
+              "For the first time since my diagnosis I talked to someone who actually gets it. Not a doctor. Not a counsellor. Someone my age, on a campus, living the same life.",
+              "Pour la première fois depuis mon diagnostic, j'ai parlé à quelqu'un qui comprend vraiment. Pas un médecin. Pas un conseiller. Quelqu'un de mon âge, sur un campus, vivant la même vie."
+            ),
+            tr(
+              "I did not even know I had rights as an HIV positive student. The Peer Circle changed that.",
+              "Je ne savais même pas que j'avais des droits en tant qu'étudiant séropositif. Le Cercle des Pairs a changé cela."
+            ),
           ].map((quote, i) => (
             <div
               key={i}
@@ -2691,7 +2854,10 @@ export const CirclePage = ({ t }) => {
                   textTransform: "uppercase",
                 }}
               >
-                LUMA Peer Circle Member · Nigerian University Student · Anonymous
+                {tr(
+                  "LUMA Peer Circle Member · Nigerian University Student · Anonymous",
+                  "Membre du Cercle des Pairs LUMA · Étudiant universitaire nigérian · Anonyme"
+                )}
               </p>
             </div>
           ))}
@@ -2701,7 +2867,7 @@ export const CirclePage = ({ t }) => {
       {/* APPLY TO JOIN */}
       <section style={{ background: t.primary, padding: "80px 32px" }}>
         <div style={{ maxWidth: 600, margin: "0 auto" }}>
-          <SectionLabel t={t}>Apply to Join</SectionLabel>
+          <SectionLabel t={t}>{tr("Apply to Join", "Postuler pour rejoindre")}</SectionLabel>
           <h2
             style={{
               fontFamily: "'Space Grotesk',sans-serif",
@@ -2711,7 +2877,7 @@ export const CirclePage = ({ t }) => {
               marginBottom: 12,
             }}
           >
-            Ready to join The Peer Circle?
+            {tr("Ready to join The Peer Circle?", "Prêt à rejoindre le Cercle des Pairs ?")}
           </h2>
           <p
             style={{
@@ -2727,8 +2893,10 @@ export const CirclePage = ({ t }) => {
               borderRadius: "0 8px 8px 0",
             }}
           >
-            Your identity will never be shared. No real name required. This form is seen only by the
-            LUMA team.
+            {tr(
+              "Your identity will never be shared. No real name required. This form is seen only by the LUMA team.",
+              "Votre identité ne sera jamais partagée. Aucun vrai nom requis. Ce formulaire n'est vu que par l'équipe LUMA."
+            )}
           </p>
           {submitted ? (
             <div
@@ -2747,7 +2915,7 @@ export const CirclePage = ({ t }) => {
                   fontWeight: 600,
                 }}
               >
-                Application received.
+                {tr("Application received.", "Candidature reçue.")}
               </p>
               <p
                 style={{
@@ -2758,19 +2926,21 @@ export const CirclePage = ({ t }) => {
                   lineHeight: 1.6,
                 }}
               >
-                We will be in touch within 48 hours. Welcome to LUMA.
+                {tr("We will be in touch within 48 hours. Welcome to LUMA.", "Nous vous contacterons sous 48 heures. Bienvenue chez LUMA.")}
               </p>
             </div>
           ) : (
             <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
               <div>
                 <label style={s.darkLabel}>
-                  1. What name would you like to go by in the Peer Circle? (Display name — not your
-                  real name.)
+                  {tr(
+                    "1. What name would you like to go by in the Peer Circle? (Display name — not your real name.)",
+                    "1. Quel nom souhaitez-vous utiliser dans le Cercle des Pairs ? (Nom d'affichage — pas votre vrai nom.)"
+                  )}
                 </label>
                 <Input
                   t={t}
-                  placeholder="Your chosen display name"
+                  placeholder={tr("Your chosen display name", "Le nom d'affichage de votre choix")}
                   value={form.displayName}
                   onChange={(e) => setForm({ ...form, displayName: e.target.value })}
                   style={s.darkInput}
@@ -2778,7 +2948,10 @@ export const CirclePage = ({ t }) => {
               </div>
               <div>
                 <label style={s.darkLabel}>
-                  2. Your email address (For account access only. Never shown to other members.)
+                  {tr(
+                    "2. Your email address (For account access only. Never shown to other members.)",
+                    "2. Votre adresse e-mail (Uniquement pour l'accès au compte. Jamais montrée aux autres membres.)"
+                  )}
                 </label>
                 <Input
                   t={t}
@@ -2790,17 +2963,17 @@ export const CirclePage = ({ t }) => {
                 />
               </div>
               <div>
-                <label style={s.darkLabel}>3. Which university are you currently attending?</label>
+                <label style={s.darkLabel}>{tr("3. Which university are you currently attending?", "3. Quelle université fréquentez-vous actuellement ?")}</label>
                 <Input
                   t={t}
-                  placeholder="Name of your university"
+                  placeholder={tr("Name of your university", "Nom de votre université")}
                   value={form.university}
                   onChange={(e) => setForm({ ...form, university: e.target.value })}
                   style={s.darkInput}
                 />
               </div>
               <div>
-                <label style={s.darkLabel}>4. What year are you in?</label>
+                <label style={s.darkLabel}>{tr("4. What year are you in?", "4. En quelle année êtes-vous ?")}</label>
                 <select
                   value={form.year}
                   onChange={(e) => setForm({ ...form, year: e.target.value })}
@@ -2819,7 +2992,7 @@ export const CirclePage = ({ t }) => {
                   }}
                 >
                   <option value="" style={{ color: "#222" }}>
-                    Select your year...
+                    {tr("Select your year...", "Sélectionnez votre année...")}
                   </option>
                   {YEAR_OPTIONS.map((y) => (
                     <option key={y} value={y} style={{ color: "#222" }}>
@@ -2830,10 +3003,13 @@ export const CirclePage = ({ t }) => {
               </div>
               <div>
                 <label style={s.darkLabel}>
-                  5. Is there anything you would like us to know before you join? (Optional.)
+                  {tr(
+                    "5. Is there anything you would like us to know before you join? (Optional.)",
+                    "5. Y a-t-il quelque chose que vous aimeriez nous dire avant de rejoindre ? (Facultatif.)"
+                  )}
                 </label>
                 <textarea
-                  placeholder="Share as much or as little as you want."
+                  placeholder={tr("Share as much or as little as you want.", "Partagez autant ou aussi peu que vous le souhaitez.")}
                   value={form.notes}
                   onChange={(e) => setForm({ ...form, notes: e.target.value })}
                   rows={4}
@@ -2858,7 +3034,7 @@ export const CirclePage = ({ t }) => {
                 onClick={handleSubmit}
                 style={{ width: "100%", textAlign: "center", opacity: sending ? 0.6 : 1 }}
               >
-                {sending ? "Sending..." : "Apply to Join"}
+                {sending ? tr("Sending...", "Envoi...") : tr("Apply to Join", "Postuler pour rejoindre")}
               </Btn>
             </div>
           )}
@@ -2868,7 +3044,7 @@ export const CirclePage = ({ t }) => {
       {/* VOICES FROM CAMPUS — STORY SUBMISSION */}
       <section style={{ background: t.bg, padding: "80px 32px" }}>
         <div style={{ maxWidth: 700, margin: "0 auto" }}>
-          <SectionLabel t={t}>Voices From Campus</SectionLabel>
+          <SectionLabel t={t}>{tr("Voices From Campus", "Voix du Campus")}</SectionLabel>
           <h2
             style={{
               fontFamily: "'Space Grotesk',sans-serif",
@@ -2878,7 +3054,7 @@ export const CirclePage = ({ t }) => {
               marginBottom: 12,
             }}
           >
-            Share your story
+            {tr("Share your story", "Partagez votre histoire")}
           </h2>
           <p
             style={{
@@ -2889,14 +3065,18 @@ export const CirclePage = ({ t }) => {
               marginBottom: 28,
             }}
           >
-            Your story belongs to you. We will never publish it without sending it back to you
-            first. You can share anonymously or with your name. You can share as much or as little
-            as you want. There is no wrong way to do this.
+            {tr(
+              "Your story belongs to you. We will never publish it without sending it back to you first. You can share anonymously or with your name. You can share as much or as little as you want. There is no wrong way to do this.",
+              "Votre histoire vous appartient. Nous ne la publierons jamais sans vous l'avoir renvoyée au préalable. Vous pouvez la partager anonymement ou avec votre nom. Vous pouvez en partager autant ou aussi peu que vous le souhaitez. Il n'y a pas de mauvaise façon de faire cela."
+            )}
           </p>
           {storySent ? (
             <FormSuccess
               t={t}
-              message="Story received. Thank you for trusting LUMA with this. We will read it carefully and send you a review copy before anything is published. You will have the final say on everything."
+              message={tr(
+                "Story received. Thank you for trusting LUMA with this. We will read it carefully and send you a review copy before anything is published. You will have the final say on everything.",
+                "Histoire reçue. Merci d'avoir fait confiance à LUMA. Nous la lirons attentivement et vous enverrons une copie de relecture avant toute publication. Vous aurez le dernier mot sur tout."
+              )}
             />
           ) : (
             <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
@@ -2911,13 +3091,31 @@ export const CirclePage = ({ t }) => {
                     fontWeight: 600,
                   }}
                 >
-                  How would you like to be identified?
+                  {tr("How would you like to be identified?", "Comment souhaitez-vous être identifié ?")}
                 </label>
                 {[
-                  "Anonymous — my name will not appear anywhere on the story",
-                  "Use a chosen name — I will pick a name that is not my real name",
-                  "Use my real name — I am happy for my name to appear on the story",
-                ].map((opt) => (
+                  [
+                    "Anonymous — my name will not appear anywhere on the story",
+                    tr(
+                      "Anonymous — my name will not appear anywhere on the story",
+                      "Anonyme — mon nom n'apparaîtra nulle part dans l'histoire"
+                    ),
+                  ],
+                  [
+                    "Use a chosen name — I will pick a name that is not my real name",
+                    tr(
+                      "Use a chosen name — I will pick a name that is not my real name",
+                      "Utiliser un nom choisi — je choisirai un nom qui n'est pas mon vrai nom"
+                    ),
+                  ],
+                  [
+                    "Use my real name — I am happy for my name to appear on the story",
+                    tr(
+                      "Use my real name — I am happy for my name to appear on the story",
+                      "Utiliser mon vrai nom — je suis d'accord pour que mon nom apparaisse dans l'histoire"
+                    ),
+                  ],
+                ].map(([opt, label]) => (
                   <label
                     key={opt}
                     style={{
@@ -2943,14 +3141,14 @@ export const CirclePage = ({ t }) => {
                       onChange={() => setStory({ ...story, identification: opt })}
                       style={{ marginTop: 3 }}
                     />
-                    <span>{opt}</span>
+                    <span>{label}</span>
                   </label>
                 ))}
               </div>
               {story.identification.startsWith("Use") && (
                 <Input
                   t={t}
-                  placeholder="The name you want to appear on your story"
+                  placeholder={tr("The name you want to appear on your story", "Le nom que vous voulez voir apparaître dans votre histoire")}
                   value={story.chosenName}
                   onChange={(e) => setStory({ ...story, chosenName: e.target.value })}
                 />
@@ -2958,26 +3156,32 @@ export const CirclePage = ({ t }) => {
               <Input
                 t={t}
                 type="email"
-                placeholder="your@email.com (so we can send the review copy)"
+                placeholder={tr("your@email.com (so we can send the review copy)", "votre@email.com (pour vous envoyer la copie de relecture)")}
                 value={story.email}
                 onChange={(e) => setStory({ ...story, email: e.target.value })}
               />
               <Input
                 t={t}
-                placeholder="Your university (optional)"
+                placeholder={tr("Your university (optional)", "Votre université (facultatif)")}
                 value={story.university}
                 onChange={(e) => setStory({ ...story, university: e.target.value })}
               />
               <Textarea
                 t={t}
-                placeholder="Write as much or as little as you want. There is no minimum or maximum."
+                placeholder={tr(
+                  "Write as much or as little as you want. There is no minimum or maximum.",
+                  "Écrivez autant ou aussi peu que vous le souhaitez. Il n'y a pas de minimum ni de maximum."
+                )}
                 value={story.story}
                 onChange={(e) => setStory({ ...story, story: e.target.value })}
                 rows={8}
               />
               <Textarea
                 t={t}
-                placeholder="Any instructions or requests you have for the LUMA team... (optional)"
+                placeholder={tr(
+                  "Any instructions or requests you have for the LUMA team... (optional)",
+                  "Toute instruction ou demande pour l'équipe LUMA... (facultatif)"
+                )}
                 value={story.instructions}
                 onChange={(e) => setStory({ ...story, instructions: e.target.value })}
                 rows={3}
@@ -2988,7 +3192,7 @@ export const CirclePage = ({ t }) => {
                 onClick={handleStory}
                 style={{ opacity: storySending ? 0.6 : 1 }}
               >
-                {storySending ? "Sending..." : "Submit My Story"}
+                {storySending ? tr("Sending...", "Envoi...") : tr("Submit My Story", "Envoyer mon histoire")}
               </Btn>
             </div>
           )}
@@ -5064,145 +5268,230 @@ export const ContactPage = ({ t, preSubject = "" }) => {
 const MYTH_CARDS = [
   {
     statement: "You can get HIV from sharing a classroom with someone who is HIV positive.",
+    statementFr: "On peut contracter le VIH en partageant une salle de classe avec une personne séropositive.",
     answer: false,
     explanation:
       "HIV is not transmitted through the air or casual contact. You cannot get HIV from sitting in the same room, sharing desks, or breathing the same air as someone who is HIV positive.",
+    explanationFr:
+      "Le VIH ne se transmet pas par l'air ou le contact occasionnel. On ne peut pas contracter le VIH en étant assis dans la même pièce, en partageant un bureau, ou en respirant le même air qu'une personne séropositive.",
   },
   {
     statement:
       "A person on HIV treatment with an undetectable viral load cannot transmit HIV sexually.",
+    statementFr:
+      "Une personne sous traitement contre le VIH avec une charge virale indétectable ne peut pas transmettre le VIH par voie sexuelle.",
     answer: true,
     explanation:
       "This is U=U: Undetectable equals Untransmittable. Settled science endorsed by the WHO. When treatment keeps viral load undetectable, sexual transmission cannot occur.",
+    explanationFr:
+      "C'est le principe I=I : Indétectable égale Intransmissible. Une science établie, reconnue par l'OMS. Quand le traitement maintient la charge virale indétectable, la transmission sexuelle ne peut pas se produire.",
   },
   {
     statement: "HIV can be transmitted through mosquito bites.",
+    statementFr: "Le VIH peut se transmettre par les piqûres de moustique.",
     answer: false,
     explanation:
       "Mosquitoes cannot transmit HIV. The virus does not survive or replicate inside mosquitoes, and they do not inject blood when biting.",
+    explanationFr:
+      "Les moustiques ne peuvent pas transmettre le VIH. Le virus ne survit pas ni ne se réplique à l'intérieur des moustiques, et ils n'injectent pas de sang en piquant.",
   },
   {
     statement:
       "PrEP reduces the risk of getting HIV from sex by up to 99% when taken consistently.",
+    statementFr:
+      "La PrEP réduit le risque de contracter le VIH par voie sexuelle jusqu'à 99 % lorsqu'elle est prise régulièrement.",
     answer: true,
     explanation:
       "PrEP is a daily medication that is extremely effective at preventing HIV when taken as prescribed. It is available in Nigeria through public health facilities.",
+    explanationFr:
+      "La PrEP est un médicament quotidien extrêmement efficace pour prévenir le VIH lorsqu'il est pris comme prescrit. Elle est disponible au Nigéria via les établissements de santé publique.",
   },
   {
     statement: "HIV positive students can be legally expelled from Nigerian universities.",
+    statementFr: "Les étudiants séropositifs peuvent être légalement exclus des universités nigérianes.",
     answer: false,
     explanation:
       "Nigeria's HIV and AIDS Anti-Discrimination Act 2014 prohibits denial of education based on HIV status. Any such expulsion is unlawful.",
+    explanationFr:
+      "La loi nigériane de 2014 sur l'anti-discrimination liée au VIH et au sida interdit le refus d'éducation en raison du statut sérologique. Une telle exclusion est illégale.",
   },
   {
     statement: "You can get HIV from sharing food, water, or eating utensils.",
+    statementFr: "On peut contracter le VIH en partageant de la nourriture, de l'eau ou des couverts.",
     answer: false,
     explanation:
       "HIV is not present in saliva in amounts that can cause infection. Sharing food, drinks, or utensils with someone living with HIV carries absolutely no transmission risk.",
+    explanationFr:
+      "Le VIH n'est pas présent dans la salive en quantités suffisantes pour causer une infection. Partager de la nourriture, des boissons ou des couverts avec une personne vivant avec le VIH ne présente absolument aucun risque de transmission.",
   },
   {
     statement:
       "HIV stigma directly damages the mental health of students living with HIV on campus.",
+    statementFr:
+      "La stigmatisation du VIH nuit directement à la santé mentale des étudiants séropositifs sur le campus.",
     answer: true,
     explanation:
       "Research consistently links HIV stigma to higher rates of depression, anxiety, social withdrawal, and poorer treatment adherence among young people living with HIV.",
+    explanationFr:
+      "La recherche établit systématiquement un lien entre la stigmatisation du VIH et des taux plus élevés de dépression, d'anxiété, de retrait social et une moins bonne observance du traitement chez les jeunes vivant avec le VIH.",
   },
   {
     statement:
       "Having a high HIV knowledge score means you will not stigmatise people living with HIV.",
+    statementFr:
+      "Avoir un score de connaissance élevé sur le VIH signifie qu'on ne stigmatisera pas les personnes séropositives.",
     answer: false,
     explanation:
       "The knowledge-attitude paradox: 96.85% of students may have high HIV knowledge yet only 55.5% hold non-stigmatising attitudes. Knowledge alone is not enough.",
+    explanationFr:
+      "Le paradoxe connaissance-attitude : 96,85 % des étudiants peuvent avoir une connaissance élevée du VIH, mais seulement 55,5 % ont des attitudes non stigmatisantes. La connaissance seule ne suffit pas.",
   },
   {
     statement: "PrEP is available in Nigeria.",
+    statementFr: "La PrEP est disponible au Nigéria.",
     answer: true,
     explanation:
       "PrEP has been available in Nigeria since 2017 through public health facilities, often at low or no cost. You can walk into a nearby public health facility and ask.",
+    explanationFr:
+      "La PrEP est disponible au Nigéria depuis 2017 via les établissements de santé publique, souvent à faible coût ou gratuitement. Vous pouvez vous rendre dans un établissement de santé publique à proximité et la demander.",
   },
   {
     statement: "You can always tell someone is HIV positive from their appearance.",
+    statementFr: "On peut toujours savoir qu'une personne est séropositive rien qu'à son apparence.",
     answer: false,
     explanation:
       "HIV has no visible symptoms for years in many people, especially those on treatment. You cannot tell anyone's HIV status from how they look.",
+    explanationFr:
+      "Le VIH n'entraîne aucun symptôme visible pendant des années chez de nombreuses personnes, en particulier celles sous traitement. On ne peut pas déduire le statut sérologique de quelqu'un à partir de son apparence.",
   },
 ];
 
 const QUIZ_QUESTIONS = [
   {
     question: "What does U=U stand for in HIV science?",
+    questionFr: "Que signifie I=I dans la science du VIH ?",
     options: [
       "Unique equals Universal",
       "Undetectable equals Untransmittable",
       "Untreated equals Unsafe",
       "Undisclosed equals Unprotected",
     ],
+    optionsFr: [
+      "Unique égale Universel",
+      "Indétectable égale Intransmissible",
+      "Non traité égale Dangereux",
+      "Non divulgué égale Non protégé",
+    ],
     correct: 1,
   },
   {
     question: "What is Nigeria's national HIV prevalence according to UNAIDS 2025?",
+    questionFr: "Quelle est la prévalence nationale du VIH au Nigéria selon l'ONUSIDA 2025 ?",
     options: ["0.5%", "3.2%", "1.4%", "5.1%"],
+    optionsFr: ["0,5 %", "3,2 %", "1,4 %", "5,1 %"],
     correct: 2,
   },
   {
     question: "What is PrEP used for?",
+    questionFr: "À quoi sert la PrEP ?",
     options: [
       "Treating HIV in positive people",
       "Preventing HIV in HIV negative people at risk",
       "Curing HIV completely",
       "Boosting the immune system",
     ],
+    optionsFr: [
+      "Traiter le VIH chez les personnes séropositives",
+      "Prévenir le VIH chez les personnes séronégatives à risque",
+      "Guérir complètement le VIH",
+      "Renforcer le système immunitaire",
+    ],
     correct: 1,
   },
   {
     question: "Which law protects HIV positive students from being expelled in Nigeria?",
+    questionFr: "Quelle loi protège les étudiants séropositifs contre l'exclusion au Nigéria ?",
     options: [
       "National Health Act 2010",
       "HIV and AIDS Anti-Discrimination Act 2014",
       "Student Welfare Act 2018",
       "Public Health Protection Law 2020",
     ],
+    optionsFr: [
+      "Loi nationale sur la santé de 2010",
+      "Loi anti-discrimination sur le VIH et le sida de 2014",
+      "Loi sur le bien-être étudiant de 2018",
+      "Loi sur la protection de la santé publique de 2020",
+    ],
     correct: 1,
   },
   {
     question: "HIV can be transmitted through which of the following?",
+    questionFr: "Le VIH peut se transmettre par lequel des éléments suivants ?",
     options: [
       "Sharing a classroom",
       "Mosquito bites",
       "Blood transfusion",
       "Sharing food or utensils",
     ],
+    optionsFr: [
+      "Partager une salle de classe",
+      "Piqûres de moustique",
+      "Transfusion sanguine",
+      "Partager de la nourriture ou des couverts",
+    ],
     correct: 2,
   },
   {
     question:
       "What percentage of university students hold stigmatising attitudes despite knowing HIV facts?",
+    questionFr:
+      "Quel pourcentage d'étudiants universitaires ont des attitudes stigmatisantes malgré la connaissance des faits sur le VIH ?",
     options: ["About 10%", "About 25%", "About 45%", "About 80%"],
+    optionsFr: ["Environ 10 %", "Environ 25 %", "Environ 45 %", "Environ 80 %"],
     correct: 2,
   },
   {
     question: "How effective is PrEP at preventing HIV when taken consistently?",
+    questionFr: "Quelle est l'efficacité de la PrEP pour prévenir le VIH lorsqu'elle est prise régulièrement ?",
     options: ["About 50%", "About 70%", "About 85%", "Up to 99%"],
+    optionsFr: ["Environ 50 %", "Environ 70 %", "Environ 85 %", "Jusqu'à 99 %"],
     correct: 3,
   },
   {
     question: "What does the status neutral approach mean?",
+    questionFr: "Que signifie l'approche « statut neutre » ?",
     options: [
       "Keeping HIV status secret",
       "Treating everyone the same regardless of HIV status",
       "Only serving HIV negative people",
       "Separating positive and negative services",
     ],
+    optionsFr: [
+      "Garder le statut sérologique secret",
+      "Traiter tout le monde de la même façon, quel que soit le statut sérologique",
+      "Ne servir que les personnes séronégatives",
+      "Séparer les services pour séropositifs et séronégatifs",
+    ],
     correct: 1,
   },
   {
     question: "How long does it typically take to reach an undetectable viral load on ART?",
+    questionFr: "Combien de temps faut-il généralement pour atteindre une charge virale indétectable sous ARV ?",
     options: ["1 to 2 weeks", "3 to 6 months", "2 to 3 years", "It is immediate"],
+    optionsFr: ["1 à 2 semaines", "3 à 6 mois", "2 à 3 ans", "C'est immédiat"],
     correct: 1,
   },
   {
     question: "What does LUMA stand for?",
+    questionFr: "Que signifie LUMA ?",
     options: [
+      "Lifting Up Marginalised Africans",
+      "Learning, Understanding, Movement, Action",
+      "Luminating Africa",
+      "Leading Universal Medical Advocacy",
+    ],
+    optionsFr: [
       "Lifting Up Marginalised Africans",
       "Learning, Understanding, Movement, Action",
       "Luminating Africa",
@@ -5216,66 +5505,115 @@ const SCENARIOS = [
   {
     situation:
       "Your roommate just disclosed that they are living with HIV. They ask if you are okay sharing the hostel room.",
+    situationFr:
+      "Votre camarade de chambre vient de vous révéler qu'il/elle vit avec le VIH. Il/elle vous demande si vous êtes d'accord pour continuer à partager la chambre d'internat.",
     choices: [
       "Tell them you need to move rooms immediately",
       "Say nothing and start avoiding them",
       "Reassure them, ask how they are doing, and keep sharing the room",
       "Tell other floor mates so they know",
     ],
+    choicesFr: [
+      "Lui dire que vous devez changer de chambre immédiatement",
+      "Ne rien dire et commencer à l'éviter",
+      "Le/la rassurer, lui demander comment il/elle va, et continuer à partager la chambre",
+      "Le dire aux autres résidents de l'étage",
+    ],
     correct: 2,
     explanation:
       "HIV is not transmitted through casual contact or shared living spaces. Reassuring your roommate and continuing to share is the right response. Your support means everything.",
+    explanationFr:
+      "Le VIH ne se transmet pas par contact occasionnel ou par le partage d'un espace de vie. Rassurer votre camarade de chambre et continuer à partager l'espace est la bonne réponse. Votre soutien compte plus que tout.",
   },
   {
     situation:
       "A classmate is spreading rumours that another student is HIV positive and telling people to avoid them.",
+    situationFr:
+      "Un camarade de classe répand des rumeurs selon lesquelles un autre étudiant est séropositif et dit aux gens de l'éviter.",
     choices: [
       "Join in to avoid being ostracised",
       "Stay silent, it is not your business",
       "Confront the classmate privately and tell them this is harmful and potentially illegal",
       "Laugh along but feel bad later",
     ],
+    choicesFr: [
+      "Participer pour éviter d'être mis à l'écart",
+      "Rester silencieux, ce n'est pas votre problème",
+      "Confronter le camarade en privé et lui dire que c'est nuisible et potentiellement illégal",
+      "Rire avec les autres mais se sentir mal après",
+    ],
     correct: 2,
     explanation:
       "Disclosing someone's HIV status without consent violates their rights. Confronting the classmate directly is the right thing. Silence makes you complicit.",
+    explanationFr:
+      "Divulguer le statut sérologique de quelqu'un sans son consentement viole ses droits. Confronter directement le camarade est la bonne chose à faire. Le silence vous rend complice.",
   },
   {
     situation:
       "You want to get tested for HIV but fear people at the campus health centre will find out your results.",
+    situationFr:
+      "Vous voulez faire un test de dépistage du VIH mais craignez que le personnel du centre de santé du campus ne découvre vos résultats.",
     choices: [
       "Never get tested and hope for the best",
       "Go ahead. Your health records are confidential by law.",
       "Ask a friend to get tested for you",
       "Only get tested if you feel unwell",
     ],
+    choicesFr: [
+      "Ne jamais faire de test et espérer que tout aille bien",
+      "Faites-le. Vos dossiers médicaux sont confidentiels par la loi.",
+      "Demander à un ami de se faire tester à votre place",
+      "Ne se faire tester qu'en cas de malaise",
+    ],
     correct: 1,
     explanation:
       "Your medical records at the health centre are legally protected. Staff cannot disclose your HIV status without your consent. Getting tested is always the right decision.",
+    explanationFr:
+      "Vos dossiers médicaux au centre de santé sont légalement protégés. Le personnel ne peut pas divulguer votre statut sérologique sans votre consentement. Se faire tester est toujours la bonne décision.",
   },
   {
     situation: "A lecturer comments in class that HIV is a disease of immoral people.",
+    situationFr: "Un enseignant affirme en cours que le VIH est une maladie de personnes immorales.",
     choices: [
       "Agree loudly to fit in",
       "Stay quiet and move on",
       "Report the comment to the student union or department head as discriminatory",
       "Post about it anonymously and leave it",
     ],
+    choicesFr: [
+      "Être d'accord bruyamment pour s'intégrer",
+      "Rester silencieux et passer à autre chose",
+      "Signaler le commentaire comme discriminatoire au syndicat étudiant ou au chef de département",
+      "En parler anonymement en ligne et en rester là",
+    ],
     correct: 2,
     explanation:
       "HIV is a public health issue, not a moral failing. Discriminatory comments from authority figures should be formally reported. This is how campus culture changes.",
+    explanationFr:
+      "Le VIH est un problème de santé publique, pas une faute morale. Les propos discriminatoires venant de figures d'autorité doivent être signalés formellement. C'est ainsi que la culture du campus change.",
   },
   {
     situation:
       "Your friend just tested positive for HIV and calls you in tears. What do you say first?",
+    situationFr:
+      "Votre ami vient de recevoir un résultat positif au VIH et vous appelle en larmes. Que dites-vous en premier ?",
     choices: [
       "Tell them it is their own fault",
       "Hang up because you do not know what to say",
       "Tell them you are there for them and ask what they need right now",
       "Immediately list every resource you know",
     ],
+    choicesFr: [
+      "Lui dire que c'est de sa faute",
+      "Raccrocher parce que vous ne savez pas quoi dire",
+      "Lui dire que vous êtes là pour lui/elle et lui demander de quoi il/elle a besoin maintenant",
+      "Énumérer immédiatement toutes les ressources que vous connaissez",
+    ],
     correct: 2,
     explanation:
       "When someone has just received a diagnosis, they need to feel heard first. Ask what they need. Be present. Resources come after. Presence comes first.",
+    explanationFr:
+      "Quand quelqu'un vient de recevoir un diagnostic, il a d'abord besoin de se sentir écouté. Demandez de quoi il a besoin. Soyez présent. Les ressources viennent après. La présence vient d'abord.",
   },
 ];
 
@@ -5304,6 +5642,7 @@ const ProgressBar = ({ t, value, max }) => (
 );
 
 const MythBusterGame = ({ t }) => {
+  const { tr, lang } = useLang();
   const [cards] = useState([...MYTH_CARDS].sort(() => Math.random() - 0.5));
   const [idx, setIdx] = useState(0);
   const [revealed, setRevealed] = useState(false);
@@ -5356,10 +5695,10 @@ const MythBusterGame = ({ t }) => {
           }}
         >
           {score >= 8
-            ? "Outstanding. You know your HIV facts."
+            ? tr("Outstanding. You know your HIV facts.", "Exceptionnel. Vous maîtrisez les faits sur le VIH.")
             : score >= 6
-              ? "Great work. A few myths still to bust."
-              : "Keep learning. Every truth matters."}
+              ? tr("Great work. A few myths still to bust.", "Bon travail. Quelques mythes restent à démystifier.")
+              : tr("Keep learning. Every truth matters.", "Continuez à apprendre. Chaque vérité compte.")}
         </p>
         <p
           style={{
@@ -5370,10 +5709,10 @@ const MythBusterGame = ({ t }) => {
             marginBottom: 32,
           }}
         >
-          Read the Campus Truth Series to fill any gaps.
+          {tr("Read the Campus Truth Series to fill any gaps.", "Lisez la série Vérité Campus pour combler vos lacunes.")}
         </p>
         <Btn t={t} variant="primary" onClick={reset}>
-          Play Again
+          {tr("Play Again", "Rejouer")}
         </Btn>
       </div>
     );
@@ -5397,7 +5736,7 @@ const MythBusterGame = ({ t }) => {
             color: t.textMuted,
           }}
         >
-          Card {idx + 1} of {cards.length}
+          {tr(`Card ${idx + 1} of ${cards.length}`, `Carte ${idx + 1} sur ${cards.length}`)}
         </span>
         <span
           style={{
@@ -5407,7 +5746,7 @@ const MythBusterGame = ({ t }) => {
             color: t.accent,
           }}
         >
-          Score: {score}
+          {tr(`Score: ${score}`, `Score : ${score}`)}
         </span>
       </div>
       <ProgressBar t={t} value={idx} max={cards.length} />
@@ -5433,7 +5772,7 @@ const MythBusterGame = ({ t }) => {
             lineHeight: 1.5,
           }}
         >
-          {card.statement}
+          {lang === "fr" && card.statementFr ? card.statementFr : card.statement}
         </p>
       </div>
       {!revealed ? (
@@ -5452,7 +5791,7 @@ const MythBusterGame = ({ t }) => {
               cursor: "pointer",
             }}
           >
-            ✓ TRUE
+            ✓ {tr("TRUE", "VRAI")}
           </button>
           <button
             onClick={() => answer(false)}
@@ -5468,7 +5807,7 @@ const MythBusterGame = ({ t }) => {
               cursor: "pointer",
             }}
           >
-            ✗ FALSE
+            ✗ {tr("FALSE", "FAUX")}
           </button>
         </div>
       ) : (
@@ -5491,7 +5830,7 @@ const MythBusterGame = ({ t }) => {
                 marginBottom: 8,
               }}
             >
-              {answers[answers.length - 1] ? "✓ Correct!" : "✗ Not quite."}
+              {answers[answers.length - 1] ? tr("✓ Correct!", "✓ Correct !") : tr("✗ Not quite.", "✗ Pas tout à fait.")}
             </p>
             <p
               style={{
@@ -5501,7 +5840,7 @@ const MythBusterGame = ({ t }) => {
                 lineHeight: 1.7,
               }}
             >
-              {card.explanation}
+              {lang === "fr" && card.explanationFr ? card.explanationFr : card.explanation}
             </p>
           </div>
           <Btn
@@ -5510,7 +5849,7 @@ const MythBusterGame = ({ t }) => {
             onClick={next}
             style={{ width: "100%", textAlign: "center" }}
           >
-            {idx + 1 >= cards.length ? "See Results" : "Next Card →"}
+            {idx + 1 >= cards.length ? tr("See Results", "Voir les résultats") : tr("Next Card →", "Carte suivante →")}
           </Btn>
         </div>
       )}
@@ -5519,6 +5858,7 @@ const MythBusterGame = ({ t }) => {
 };
 
 const QuizGame = ({ t }) => {
+  const { tr, lang } = useLang();
   const [idx, setIdx] = useState(0);
   const [selected, setSelected] = useState(null);
   const [score, setScore] = useState(0);
@@ -5580,20 +5920,21 @@ const QuizGame = ({ t }) => {
           }}
         >
           {score >= 9
-            ? "LUMA Champion. You know this inside out."
+            ? tr("LUMA Champion. You know this inside out.", "Champion LUMA. Vous maîtrisez le sujet à fond.")
             : score >= 7
-              ? "Solid knowledge. Keep reading Campus Truth."
-              : "Great effort. The Campus Truth Series has everything."}
+              ? tr("Solid knowledge. Keep reading Campus Truth.", "Bonnes connaissances. Continuez à lire Vérité Campus.")
+              : tr("Great effort. The Campus Truth Series has everything.", "Bel effort. La série Vérité Campus a tout ce qu'il vous faut.")}
         </p>
         <div style={{ marginTop: 32 }}>
           <Btn t={t} variant="primary" onClick={reset}>
-            Try Again
+            {tr("Try Again", "Réessayer")}
           </Btn>
         </div>
       </div>
     );
 
   const q = QUIZ_QUESTIONS[idx];
+  const qOptions = lang === "fr" && q.optionsFr ? q.optionsFr : q.options;
   const timerColor = timeLeft <= 5 ? "#E53" : t.accent;
   return (
     <div>
@@ -5613,7 +5954,7 @@ const QuizGame = ({ t }) => {
             color: t.textMuted,
           }}
         >
-          Q{idx + 1} of {QUIZ_QUESTIONS.length}
+          {tr(`Q${idx + 1} of ${QUIZ_QUESTIONS.length}`, `Q${idx + 1} sur ${QUIZ_QUESTIONS.length}`)}
         </span>
         <span
           style={{
@@ -5644,11 +5985,11 @@ const QuizGame = ({ t }) => {
             lineHeight: 1.5,
           }}
         >
-          {q.question}
+          {lang === "fr" && q.questionFr ? q.questionFr : q.question}
         </p>
       </div>
       <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-        {q.options.map((opt, i) => {
+        {qOptions.map((opt, i) => {
           let bg = t.card,
             border = t.borderColor,
             color = t.text;
@@ -5703,7 +6044,7 @@ const QuizGame = ({ t }) => {
             onClick={next}
             style={{ width: "100%", textAlign: "center" }}
           >
-            {idx + 1 >= QUIZ_QUESTIONS.length ? "See Final Score" : "Next Question →"}
+            {idx + 1 >= QUIZ_QUESTIONS.length ? tr("See Final Score", "Voir le score final") : tr("Next Question →", "Question suivante →")}
           </Btn>
         </div>
       )}
@@ -5712,6 +6053,7 @@ const QuizGame = ({ t }) => {
 };
 
 const ScenarioGame = ({ t }) => {
+  const { tr, lang } = useLang();
   const [idx, setIdx] = useState(0);
   const [chosen, setChosen] = useState(null);
   const [score, setScore] = useState(0);
@@ -5760,10 +6102,10 @@ const ScenarioGame = ({ t }) => {
           }}
         >
           {score >= 4
-            ? "Excellent. You would be a real ally on any campus."
+            ? tr("Excellent. You would be a real ally on any campus.", "Excellent. Vous seriez un véritable allié sur n'importe quel campus.")
             : score >= 3
-              ? "Good instincts. Keep building your empathy."
-              : "Keep learning. Every scenario teaches you something."}
+              ? tr("Good instincts. Keep building your empathy.", "Bons instincts. Continuez à cultiver votre empathie.")
+              : tr("Keep learning. Every scenario teaches you something.", "Continuez à apprendre. Chaque scénario vous apprend quelque chose.")}
         </p>
         <p
           style={{
@@ -5774,15 +6116,16 @@ const ScenarioGame = ({ t }) => {
             marginBottom: 32,
           }}
         >
-          Campus allyship starts with decisions exactly like these.
+          {tr("Campus allyship starts with decisions exactly like these.", "La solidarité sur le campus commence par des décisions exactement comme celles-ci.")}
         </p>
         <Btn t={t} variant="primary" onClick={reset}>
-          Play Again
+          {tr("Play Again", "Rejouer")}
         </Btn>
       </div>
     );
 
   const sc = SCENARIOS[idx];
+  const scChoices = lang === "fr" && sc.choicesFr ? sc.choicesFr : sc.choices;
   return (
     <div>
       <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 8 }}>
@@ -5794,7 +6137,7 @@ const ScenarioGame = ({ t }) => {
             color: t.textMuted,
           }}
         >
-          Scenario {idx + 1} of {SCENARIOS.length}
+          {tr(`Scenario ${idx + 1} of ${SCENARIOS.length}`, `Scénario ${idx + 1} sur ${SCENARIOS.length}`)}
         </span>
         <span
           style={{
@@ -5804,7 +6147,7 @@ const ScenarioGame = ({ t }) => {
             color: t.accent,
           }}
         >
-          Score: {score}
+          {tr(`Score: ${score}`, `Score : ${score}`)}
         </span>
       </div>
       <ProgressBar t={t} value={idx} max={SCENARIOS.length} />
@@ -5822,7 +6165,7 @@ const ScenarioGame = ({ t }) => {
             marginBottom: 10,
           }}
         >
-          The Situation
+          {tr("The Situation", "La situation")}
         </p>
         <p
           style={{
@@ -5832,7 +6175,7 @@ const ScenarioGame = ({ t }) => {
             lineHeight: 1.7,
           }}
         >
-          {sc.situation}
+          {lang === "fr" && sc.situationFr ? sc.situationFr : sc.situation}
         </p>
       </div>
       <p
@@ -5844,10 +6187,10 @@ const ScenarioGame = ({ t }) => {
           marginBottom: 10,
         }}
       >
-        What do you do?
+        {tr("What do you do?", "Que faites-vous ?")}
       </p>
       <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-        {sc.choices.map((choice, i) => {
+        {scChoices.map((choice, i) => {
           let bg = t.card,
             border = t.borderColor,
             color = t.text;
@@ -5905,7 +6248,7 @@ const ScenarioGame = ({ t }) => {
                 marginBottom: 8,
               }}
             >
-              {chosen === sc.correct ? "✓ Well done." : "✗ Think again."}
+              {chosen === sc.correct ? tr("✓ Well done.", "✓ Bien joué.") : tr("✗ Think again.", "✗ Réfléchissez encore.")}
             </p>
             <p
               style={{
@@ -5915,7 +6258,7 @@ const ScenarioGame = ({ t }) => {
                 lineHeight: 1.7,
               }}
             >
-              {sc.explanation}
+              {lang === "fr" && sc.explanationFr ? sc.explanationFr : sc.explanation}
             </p>
           </div>
           <Btn
@@ -5924,7 +6267,7 @@ const ScenarioGame = ({ t }) => {
             onClick={next}
             style={{ width: "100%", textAlign: "center" }}
           >
-            {idx + 1 >= SCENARIOS.length ? "See Your Result" : "Next Scenario →"}
+            {idx + 1 >= SCENARIOS.length ? tr("See Your Result", "Voir votre résultat") : tr("Next Scenario →", "Scénario suivant →")}
           </Btn>
         </div>
       )}
@@ -5938,23 +6281,43 @@ const SCRAMBLE_WORDS = [
   {
     word: "PREP",
     clue: "Pre-Exposure ____. Reduces HIV risk by up to 99% when taken consistently.",
+    clueFr: "Prophylaxie pré-exposition (____). Réduit le risque de VIH jusqu'à 99 % lorsqu'elle est prise régulièrement.",
   },
-  { word: "STIGMA", clue: "The social judgement LUMA is built to dismantle." },
+  {
+    word: "STIGMA",
+    clue: "The social judgement LUMA is built to dismantle.",
+    clueFr: "Le jugement social que LUMA a été créée pour démanteler.",
+  },
   {
     word: "STATUS",
     clue: "In LUMA's status neutral approach, this word describes what does not determine your care.",
+    clueFr: "Dans l'approche « statut neutre » de LUMA, ce mot décrit ce qui ne détermine pas vos soins.",
   },
   {
     word: "TESTING",
     clue: "The first step toward knowing your HIV status. Free and confidential in Nigeria.",
+    clueFr: "La première étape pour connaître votre statut sérologique. Gratuit et confidentiel au Nigéria.",
   },
-  { word: "ADHERENCE", clue: "Taking treatment consistently. Key to reaching undetectable." },
+  {
+    word: "ADHERENCE",
+    clue: "Taking treatment consistently. Key to reaching undetectable.",
+    clueFr: "Prendre son traitement de façon régulière. Essentiel pour atteindre l'indétectabilité.",
+  },
   {
     word: "UNDETECTABLE",
     clue: "The viral load level at which HIV cannot be transmitted sexually.",
+    clueFr: "Le niveau de charge virale à partir duquel le VIH ne peut plus se transmettre sexuellement.",
   },
-  { word: "CAMPUS", clue: "Where LUMA does its work — Nigerian universities." },
-  { word: "ADVOCACY", clue: "Turning knowledge into policy change. One of LUMA's three pillars." },
+  {
+    word: "CAMPUS",
+    clue: "Where LUMA does its work — Nigerian universities.",
+    clueFr: "Là où LUMA mène son action — les universités nigérianes.",
+  },
+  {
+    word: "ADVOCACY",
+    clue: "Turning knowledge into policy change. One of LUMA's three pillars.",
+    clueFr: "Transformer la connaissance en changement de politique. L'un des trois piliers de LUMA.",
+  },
 ];
 
 const shuffleStr = (w) => {
@@ -5968,6 +6331,7 @@ const shuffleStr = (w) => {
 };
 
 const WordScrambleGame = ({ t }) => {
+  const { tr, lang } = useLang();
   const [idx, setIdx] = useState(0);
   const [scrambled, setScrambled] = useState(() => shuffleStr(SCRAMBLE_WORDS[0].word));
   const [guess, setGuess] = useState("");
@@ -6025,14 +6389,14 @@ const WordScrambleGame = ({ t }) => {
           }}
         >
           {correct >= 6
-            ? "Sharp. You speak the language of HIV response."
+            ? tr("Sharp. You speak the language of HIV response.", "Impressionnant. Vous parlez le langage de la riposte au VIH.")
             : correct >= 4
-              ? "Nice work. Read the Guides to lock in the rest."
-              : "Every word matters. The vocabulary is the foundation."}
+              ? tr("Nice work. Read the Guides to lock in the rest.", "Bon travail. Lisez les Guides pour consolider le reste.")
+              : tr("Every word matters. The vocabulary is the foundation.", "Chaque mot compte. Le vocabulaire est la base.")}
         </p>
         <div style={{ marginTop: 32 }}>
           <Btn t={t} variant="primary" onClick={reset}>
-            Play Again
+            {tr("Play Again", "Rejouer")}
           </Btn>
         </div>
       </div>
@@ -6056,7 +6420,7 @@ const WordScrambleGame = ({ t }) => {
             color: t.textMuted,
           }}
         >
-          Word {idx + 1} of {SCRAMBLE_WORDS.length}
+          {tr(`Word ${idx + 1} of ${SCRAMBLE_WORDS.length}`, `Mot ${idx + 1} sur ${SCRAMBLE_WORDS.length}`)}
         </span>
         <span
           style={{
@@ -6066,7 +6430,7 @@ const WordScrambleGame = ({ t }) => {
             color: t.accent,
           }}
         >
-          Correct: {correct}
+          {tr(`Correct: ${correct}`, `Correct : ${correct}`)}
         </span>
       </div>
       <ProgressBar t={t} value={idx} max={SCRAMBLE_WORDS.length} />
@@ -6089,7 +6453,7 @@ const WordScrambleGame = ({ t }) => {
             marginBottom: 12,
           }}
         >
-          LETTERS
+          {tr("LETTERS", "LETTRES")}
         </p>
         <p
           style={{
@@ -6112,7 +6476,7 @@ const WordScrambleGame = ({ t }) => {
           marginBottom: 14,
         }}
       >
-        {current.clue}
+        {lang === "fr" && current.clueFr ? current.clueFr : current.clue}
       </p>
       <input
         value={guess}
@@ -6121,7 +6485,7 @@ const WordScrambleGame = ({ t }) => {
           if (e.key === "Enter" && status === null) check();
         }}
         disabled={status !== null}
-        placeholder="Your answer"
+        placeholder={tr("Your answer", "Votre réponse")}
         style={{
           width: "100%",
           padding: "14px 16px",
@@ -6137,7 +6501,7 @@ const WordScrambleGame = ({ t }) => {
       />
       {status === null ? (
         <Btn t={t} variant="primary" onClick={check} style={{ width: "100%", textAlign: "center" }}>
-          Check
+          {tr("Check", "Vérifier")}
         </Btn>
       ) : (
         <div>
@@ -6159,7 +6523,7 @@ const WordScrambleGame = ({ t }) => {
                 marginBottom: 6,
               }}
             >
-              {status === "right" ? "✓ Correct!" : `✗ The word was ${current.word}.`}
+              {status === "right" ? tr("✓ Correct!", "✓ Correct !") : tr(`✗ The word was ${current.word}.`, `✗ Le mot était ${current.word}.`)}
             </p>
             <p
               style={{
@@ -6169,7 +6533,7 @@ const WordScrambleGame = ({ t }) => {
                 lineHeight: 1.6,
               }}
             >
-              {current.clue}
+              {lang === "fr" && current.clueFr ? current.clueFr : current.clue}
             </p>
           </div>
           <Btn
@@ -6178,7 +6542,7 @@ const WordScrambleGame = ({ t }) => {
             onClick={next}
             style={{ width: "100%", textAlign: "center" }}
           >
-            {idx + 1 >= SCRAMBLE_WORDS.length ? "See Results" : "Next Word →"}
+            {idx + 1 >= SCRAMBLE_WORDS.length ? tr("See Results", "Voir les résultats") : tr("Next Word →", "Mot suivant →")}
           </Btn>
         </div>
       )}
@@ -6191,21 +6555,49 @@ const WordScrambleGame = ({ t }) => {
 const MEMORY_PAIRS = [
   {
     a: "Right to education regardless of HIV status",
+    aFr: "Droit à l'éducation quel que soit le statut sérologique",
     b: "HIV and AIDS Anti-Discrimination Act 2014",
+    bFr: "Loi anti-discrimination sur le VIH et le sida de 2014",
   },
-  { a: "Confidential HIV test results", b: "National Health Act 2014, Section 26" },
-  { a: "Free ART and PrEP at public clinics", b: "2026 National Health Guidelines" },
-  { a: "No forced HIV disclosure to universities", b: "Anti-Discrimination Act, Section 5" },
-  { a: "Right to work with HIV", b: "Nigerian Labour Act — non-discrimination clause" },
-  { a: "Freedom from stigma-based expulsion", b: "Anti-Discrimination Act, Section 4" },
+  {
+    a: "Confidential HIV test results",
+    aFr: "Résultats du test VIH confidentiels",
+    b: "National Health Act 2014, Section 26",
+    bFr: "Loi nationale sur la santé de 2014, Section 26",
+  },
+  {
+    a: "Free ART and PrEP at public clinics",
+    aFr: "ARV et PrEP gratuits dans les cliniques publiques",
+    b: "2026 National Health Guidelines",
+    bFr: "Directives nationales de santé 2026",
+  },
+  {
+    a: "No forced HIV disclosure to universities",
+    aFr: "Aucune divulgation forcée du VIH aux universités",
+    b: "Anti-Discrimination Act, Section 5",
+    bFr: "Loi anti-discrimination, Section 5",
+  },
+  {
+    a: "Right to work with HIV",
+    aFr: "Droit de travailler en vivant avec le VIH",
+    b: "Nigerian Labour Act — non-discrimination clause",
+    bFr: "Loi nigériane du travail — clause de non-discrimination",
+  },
+  {
+    a: "Freedom from stigma-based expulsion",
+    aFr: "Protection contre l'exclusion fondée sur la stigmatisation",
+    b: "Anti-Discrimination Act, Section 4",
+    bFr: "Loi anti-discrimination, Section 4",
+  },
 ];
 
 const MemoryMatchGame = ({ t }) => {
+  const { tr, lang } = useLang();
   const build = () => {
     const cards = [];
     MEMORY_PAIRS.forEach((p, i) => {
-      cards.push({ id: `${i}a`, pair: i, text: p.a, side: "a" });
-      cards.push({ id: `${i}b`, pair: i, text: p.b, side: "b" });
+      cards.push({ id: `${i}a`, pair: i, text: lang === "fr" && p.aFr ? p.aFr : p.a, side: "a" });
+      cards.push({ id: `${i}b`, pair: i, text: lang === "fr" && p.bFr ? p.bFr : p.b, side: "b" });
     });
     for (let i = cards.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -6264,7 +6656,7 @@ const MemoryMatchGame = ({ t }) => {
             color: t.textMuted,
           }}
         >
-          Moves: {moves}
+          {tr(`Moves: ${moves}`, `Coups : ${moves}`)}
         </span>
         <button
           onClick={restart}
@@ -6280,7 +6672,7 @@ const MemoryMatchGame = ({ t }) => {
             fontWeight: 600,
           }}
         >
-          Restart
+          {tr("Restart", "Recommencer")}
         </button>
       </div>
       {done && (
@@ -6302,7 +6694,7 @@ const MemoryMatchGame = ({ t }) => {
               color: t.primary,
             }}
           >
-            All matched in {moves} moves.
+            {tr(`All matched in ${moves} moves.`, `Toutes les paires trouvées en ${moves} coups.`)}
           </p>
           <p
             style={{
@@ -6312,7 +6704,7 @@ const MemoryMatchGame = ({ t }) => {
               marginTop: 4,
             }}
           >
-            Every right paired with the law that protects it.
+            {tr("Every right paired with the law that protects it.", "Chaque droit associé à la loi qui le protège.")}
           </p>
         </div>
       )}
@@ -6359,120 +6751,186 @@ const MemoryMatchGame = ({ t }) => {
 const BINGO_PHRASES = [
   {
     phrase: "Keep your children away.",
+    phraseFr: "Éloignez vos enfants.",
     rebuttal:
       "HIV is not transmitted through casual contact. Children of parents living with HIV are safe with any classmate.",
+    rebuttalFr:
+      "Le VIH ne se transmet pas par contact occasionnel. Les enfants de parents vivant avec le VIH ne présentent aucun danger pour leurs camarades.",
   },
   {
     phrase: "I could never date someone like that.",
+    phraseFr: "Je ne pourrais jamais sortir avec quelqu'un comme ça.",
     rebuttal:
       "With treatment, U=U — undetectable equals untransmittable. A partner living with HIV on treatment cannot transmit the virus sexually.",
+    rebuttalFr:
+      "Avec le traitement, I=I — indétectable égale intransmissible. Un partenaire vivant avec le VIH sous traitement ne peut pas transmettre le virus par voie sexuelle.",
   },
   {
     phrase: "Who did they get it from?",
+    phraseFr: "Qui le lui a transmis ?",
     rebuttal: "Someone's route of transmission is not your business. Curiosity is not concern.",
+    rebuttalFr: "La façon dont quelqu'un a été infecté ne vous regarde pas. La curiosité n'est pas de l'inquiétude.",
   },
   {
     phrase: "Just avoid them, to be safe.",
+    phraseFr: "Évitez-les simplement, par précaution.",
     rebuttal:
       "There is no danger to avoid. Casual contact does not transmit HIV. Avoidance is stigma, not safety.",
+    rebuttalFr:
+      "Il n'y a aucun danger à éviter. Le contact occasionnel ne transmet pas le VIH. L'évitement, c'est de la stigmatisation, pas de la sécurité.",
   },
   {
     phrase: "Don't hug them.",
+    phraseFr: "Ne les prenez pas dans vos bras.",
     rebuttal:
       "Hugs, handshakes, and touch never transmit HIV. Withholding touch is one of the most damaging forms of stigma.",
+    rebuttalFr:
+      "Les accolades, les poignées de main et le contact physique ne transmettent jamais le VIH. Refuser le contact est l'une des formes de stigmatisation les plus nuisibles.",
   },
   {
     phrase: "They must have been careless.",
+    phraseFr: "Ils ont dû être imprudents.",
     rebuttal:
       "HIV is a virus, not a verdict on character. Blame belongs to stigma, not the person living with the diagnosis.",
+    rebuttalFr:
+      "Le VIH est un virus, pas un jugement de caractère. Le blâme revient à la stigmatisation, pas à la personne vivant avec le diagnostic.",
   },
   {
     phrase: "HIV people can't have kids.",
+    phraseFr: "Les personnes séropositives ne peuvent pas avoir d'enfants.",
     rebuttal:
       "People living with HIV have HIV-negative children every day. Treatment during pregnancy makes vertical transmission preventable.",
+    rebuttalFr:
+      "Des personnes vivant avec le VIH ont chaque jour des enfants séronégatifs. Le traitement pendant la grossesse permet de prévenir la transmission verticale.",
   },
   {
     phrase: "God is punishing them.",
+    phraseFr: "Dieu les punit.",
     rebuttal:
       "HIV is a virus. Framing it as punishment is theology weaponised against public health.",
+    rebuttalFr:
+      "Le VIH est un virus. Le présenter comme une punition, c'est instrumentaliser la théologie contre la santé publique.",
   },
   {
     phrase: "Are you sure it's not AIDS?",
+    phraseFr: "Vous êtes sûr que ce n'est pas le sida ?",
     rebuttal:
       "HIV and AIDS are different. Most people living with HIV on treatment never develop AIDS.",
+    rebuttalFr:
+      "Le VIH et le sida sont différents. La plupart des personnes vivant avec le VIH sous traitement ne développent jamais le sida.",
   },
   {
     phrase: "Their family must be ashamed.",
+    phraseFr: "Leur famille doit avoir honte.",
     rebuttal: "Families of people living with HIV are not the source of shame. Stigma is.",
+    rebuttalFr: "Les familles des personnes vivant avec le VIH ne sont pas la source de la honte. La stigmatisation l'est.",
   },
   {
     phrase: "It's a lifestyle problem.",
+    phraseFr: "C'est un problème de mode de vie.",
     rebuttal:
       "HIV is a public health issue. Framing it as a lifestyle failure is stigma dressed as concern.",
+    rebuttalFr:
+      "Le VIH est un problème de santé publique. Le présenter comme un échec de mode de vie, c'est de la stigmatisation déguisée en inquiétude.",
   },
   {
     phrase: "They can't work here.",
+    phraseFr: "Ils ne peuvent pas travailler ici.",
     rebuttal:
       "Nigerian labour law prohibits HIV-based discrimination in employment. This is not opinion — it is law.",
+    rebuttalFr:
+      "Le droit du travail nigérian interdit la discrimination fondée sur le VIH en matière d'emploi. Ce n'est pas une opinion, c'est la loi.",
   },
   {
     phrase: "They shouldn't be allowed to marry.",
+    phraseFr: "Ils ne devraient pas avoir le droit de se marier.",
     rebuttal:
       "People living with HIV marry, love, and build families. There is no legal or medical basis to deny them.",
+    rebuttalFr:
+      "Les personnes vivant avec le VIH se marient, aiment et fondent des familles. Il n'existe aucune base légale ou médicale pour le leur refuser.",
   },
   {
     phrase: "They deserve it.",
+    phraseFr: "Ils l'ont mérité.",
     rebuttal: "No one deserves a virus. This sentence is stigma at its rawest.",
+    rebuttalFr: "Personne ne mérite un virus. Cette phrase est la stigmatisation à l'état brut.",
   },
   {
     phrase: "Only certain kinds of people get it.",
+    phraseFr: "Seuls certains types de personnes l'attrapent.",
     rebuttal:
       "HIV does not discriminate. Anyone sexually active without protection is at some level of risk.",
+    rebuttalFr:
+      "Le VIH ne fait pas de discrimination. Toute personne sexuellement active sans protection présente un certain niveau de risque.",
   },
   {
     phrase: "Don't share cups with them.",
+    phraseFr: "Ne partagez pas de verres avec eux.",
     rebuttal:
       "HIV is not transmitted through saliva or shared utensils. This myth has damaged lives for four decades.",
+    rebuttalFr:
+      "Le VIH ne se transmet pas par la salive ou des ustensiles partagés. Ce mythe a détruit des vies pendant quatre décennies.",
   },
   {
     phrase: "Don't touch their things.",
+    phraseFr: "Ne touchez pas à leurs affaires.",
     rebuttal: "HIV cannot survive on surfaces long enough to transmit. Objects do not carry HIV.",
+    rebuttalFr: "Le VIH ne survit pas assez longtemps sur les surfaces pour se transmettre. Les objets ne transportent pas le VIH.",
   },
   {
     phrase: "They shouldn't be in this class.",
+    phraseFr: "Ils ne devraient pas être dans cette classe.",
     rebuttal:
       "Nigeria's HIV Anti-Discrimination Act 2014 makes exclusion from education illegal. Full stop.",
+    rebuttalFr:
+      "La loi nigériane anti-discrimination sur le VIH de 2014 rend l'exclusion de l'éducation illégale. Point final.",
   },
   {
     phrase: "They should keep it a secret.",
+    phraseFr: "Ils devraient garder ça secret.",
     rebuttal:
       "Disclosure is a personal decision, not an obligation to secrecy. Silence protects stigma, not people.",
+    rebuttalFr:
+      "La divulgation est une décision personnelle, pas une obligation de secret. Le silence protège la stigmatisation, pas les personnes.",
   },
   {
     phrase: "Testing is only for 'those' people.",
+    phraseFr: "Le dépistage n'est que pour « ces gens-là ».",
     rebuttal:
       "HIV testing is a normal, routine part of sexual health for everyone. There are no 'those people'.",
+    rebuttalFr:
+      "Le dépistage du VIH fait partie de la santé sexuelle normale et routinière de tout le monde. Il n'existe pas de « ces gens-là ».",
   },
   {
     phrase: "It's a punishment.",
+    phraseFr: "C'est une punition.",
     rebuttal: "See: God is punishing them. Same distortion, same harm.",
+    rebuttalFr: "Voir : Dieu les punit. Même distorsion, même dommage.",
   },
   {
     phrase: "You can catch it from a toilet seat.",
+    phraseFr: "On peut l'attraper sur une lunette de toilettes.",
     rebuttal: "You cannot. HIV is not transmitted through surfaces, toilets, or bathrooms.",
+    rebuttalFr: "C'est impossible. Le VIH ne se transmet pas par les surfaces, les toilettes ou les salles de bains.",
   },
   {
     phrase: "HIV = death sentence.",
+    phraseFr: "VIH = condamnation à mort.",
     rebuttal:
       "With treatment, people living with HIV live full lifespans. This equation was outdated 20 years ago.",
+    rebuttalFr:
+      "Avec le traitement, les personnes vivant avec le VIH ont une espérance de vie normale. Cette équation était déjà dépassée il y a 20 ans.",
   },
   {
     phrase: "They brought it on themselves.",
+    phraseFr: "Ils se le sont infligé eux-mêmes.",
     rebuttal: "Blame is stigma with a smile. HIV is a virus, not a moral outcome.",
+    rebuttalFr: "Le blâme, c'est de la stigmatisation avec le sourire. Le VIH est un virus, pas un jugement moral.",
   },
 ];
 
 const StigmaBingoGame = ({ t }) => {
+  const { tr, lang } = useLang();
   // 5x5 grid with FREE in centre
   const build = () => {
     const shuffled = [...BINGO_PHRASES].sort(() => Math.random() - 0.5).slice(0, 24);
@@ -6482,11 +6940,20 @@ const StigmaBingoGame = ({ t }) => {
       if (i === 12)
         grid.push({
           free: true,
-          phrase: "FREE — Stigma Ends Here",
-          rebuttal: "This square is yours. It marks the moment you decided to call stigma out.",
+          phrase: tr("FREE — Stigma Ends Here", "LIBRE — La stigmatisation s'arrête ici"),
+          rebuttal: tr(
+            "This square is yours. It marks the moment you decided to call stigma out.",
+            "Cette case est la vôtre. Elle marque le moment où vous avez décidé de dénoncer la stigmatisation."
+          ),
         });
       else {
-        grid.push({ ...shuffled[k], free: false });
+        const p = shuffled[k];
+        grid.push({
+          ...p,
+          phrase: lang === "fr" && p.phraseFr ? p.phraseFr : p.phrase,
+          rebuttal: lang === "fr" && p.rebuttalFr ? p.rebuttalFr : p.rebuttal,
+          free: false,
+        });
         k++;
       }
     }
@@ -6533,7 +7000,7 @@ const StigmaBingoGame = ({ t }) => {
             color: t.textMuted,
           }}
         >
-          Tapped: {marked.length - 1}/24
+          {tr(`Tapped: ${marked.length - 1}/24`, `Touchées : ${marked.length - 1}/24`)}
         </span>
         <button
           onClick={restart}
@@ -6549,7 +7016,7 @@ const StigmaBingoGame = ({ t }) => {
             fontWeight: 600,
           }}
         >
-          Restart board
+          {tr("Restart board", "Recommencer la grille")}
         </button>
       </div>
       {bingo && (
@@ -6570,7 +7037,7 @@ const StigmaBingoGame = ({ t }) => {
               color: t.primary,
             }}
           >
-            BINGO — five in a row. Every one of those was a lie you have heard.
+            {tr("BINGO — five in a row. Every one of those was a lie you have heard.", "BINGO — cinq alignées. Chacune de ces phrases est un mensonge que vous avez déjà entendu.")}
           </p>
         </div>
       )}
@@ -6622,7 +7089,7 @@ const StigmaBingoGame = ({ t }) => {
               marginBottom: 6,
             }}
           >
-            THE REBUTTAL
+            {tr("THE REBUTTAL", "LA RÉPONSE")}
           </p>
           <p
             style={{
@@ -6656,115 +7123,159 @@ const StigmaBingoGame = ({ t }) => {
 const PREP_STEPS = [
   {
     prompt: "You've decided to look into PrEP. Where do you start?",
+    promptFr: "Vous avez décidé de vous renseigner sur la PrEP. Par où commencer ?",
     label: "Your first move:",
+    labelFr: "Votre premier geste :",
     choices: [
       {
         text: "Search 'PrEP Nigeria' and read from the Federal Ministry of Health and NACA.",
+        textFr: "Rechercher « PrEP Nigéria » et lire les sources du Ministère fédéral de la Santé et de la NACA.",
         delta: 15,
         note: "Grounding in verified sources. Best possible start.",
+        noteFr: "S'appuyer sur des sources vérifiées. Le meilleur départ possible.",
       },
       {
         text: "Ask in a group chat and take the first answer.",
+        textFr: "Demander dans un groupe de discussion et prendre la première réponse.",
         delta: -10,
         note: "Group chats spread misinformation faster than facts. Verify before you decide.",
+        noteFr: "Les groupes de discussion propagent la désinformation plus vite que les faits. Vérifiez avant de décider.",
       },
       {
         text: "Assume PrEP isn't available in Nigeria.",
+        textFr: "Supposer que la PrEP n'est pas disponible au Nigéria.",
         delta: -20,
         note: "PrEP has been in Nigeria since 2017. Assumption is the first barrier to access.",
+        noteFr: "La PrEP est présente au Nigéria depuis 2017. La supposition est le premier obstacle à l'accès.",
       },
     ],
   },
   {
     prompt:
       "You call your campus health centre and ask about PrEP. They say they don't offer it. What next?",
+    promptFr:
+      "Vous appelez le centre de santé de votre campus pour parler de la PrEP. On vous dit qu'ils ne la proposent pas. Que faites-vous ensuite ?",
     label: "Your next move:",
+    labelFr: "Votre prochain geste :",
     choices: [
       {
         text: "Ask for a referral to the nearest public HIV treatment centre or PEPFAR-supported clinic.",
+        textFr: "Demander une orientation vers le centre de traitement VIH public le plus proche ou une clinique soutenue par le PEPFAR.",
         delta: 20,
         note: "Referrals are a right. Campus clinics must connect you to a facility that does provide PrEP.",
+        noteFr: "L'orientation est un droit. Les centres de santé du campus doivent vous mettre en relation avec un établissement qui propose la PrEP.",
       },
       {
         text: "Give up and hope for the best.",
+        textFr: "Abandonner et espérer que tout s'arrange.",
         delta: -20,
         note: "PrEP is worth an extra call. Hope is not a prevention strategy.",
+        noteFr: "La PrEP mérite un appel supplémentaire. L'espoir n'est pas une stratégie de prévention.",
       },
       {
         text: "Buy 'HIV prevention pills' online from an unknown seller.",
+        textFr: "Acheter des « pilules de prévention du VIH » en ligne auprès d'un vendeur inconnu.",
         delta: -25,
         note: "Unverified drugs can be fake, expired, or harmful. Only take PrEP from a licensed provider.",
+        noteFr: "Les médicaments non vérifiés peuvent être faux, périmés ou dangereux. Ne prenez la PrEP que d'un fournisseur agréé.",
       },
     ],
   },
   {
     prompt:
       "You reach a public health facility. Before starting PrEP, they need to do a rapid HIV test. How do you feel?",
+    promptFr:
+      "Vous arrivez dans un établissement de santé publique. Avant de commencer la PrEP, ils doivent faire un test de dépistage rapide du VIH. Que ressentez-vous ?",
     label: "Your response:",
+    labelFr: "Votre réponse :",
     choices: [
       {
         text: "Take the test. It is required, confidential, and free.",
+        textFr: "Faire le test. Il est obligatoire, confidentiel et gratuit.",
         delta: 15,
         note: "PrEP is only for people who are HIV negative. Testing first is standard, safe, and legally protected.",
+        noteFr: "La PrEP est uniquement pour les personnes séronégatives. Le test préalable est standard, sûr et légalement protégé.",
       },
       {
         text: "Refuse the test and ask for the pills anyway.",
+        textFr: "Refuser le test et demander les comprimés quand même.",
         delta: -15,
         note: "No responsible clinic will prescribe PrEP without an HIV test. This step protects you.",
+        noteFr: "Aucune clinique responsable ne prescrira la PrEP sans test de dépistage. Cette étape vous protège.",
       },
       {
         text: "Panic about who might see the results.",
+        textFr: "Paniquer à l'idée que quelqu'un puisse voir les résultats.",
         delta: -5,
         note: "Understandable — but your results are legally protected by the National Health Act. Take the test.",
+        noteFr: "Compréhensible — mais vos résultats sont légalement protégés par la loi nationale sur la santé. Faites le test.",
       },
     ],
   },
   {
     prompt:
       "You test negative and get your first PrEP prescription. The nurse explains you need to take it daily. What do you do?",
+    promptFr:
+      "Votre test est négatif et vous recevez votre première prescription de PrEP. L'infirmier vous explique que vous devez la prendre tous les jours. Que faites-vous ?",
     label: "Your plan:",
+    labelFr: "Votre plan :",
     choices: [
       {
         text: "Set a phone alarm and take it at the same time each day.",
+        textFr: "Programmer une alarme sur votre téléphone et la prendre à la même heure chaque jour.",
         delta: 20,
         note: "Adherence is everything. Consistent daily dosing gives you up to 99% protection.",
+        noteFr: "L'observance est essentielle. Une prise quotidienne régulière offre jusqu'à 99 % de protection.",
       },
       {
         text: "Take it when you remember, mostly.",
+        textFr: "La prendre quand vous vous en souvenez, la plupart du temps.",
         delta: -10,
         note: "Missed doses reduce PrEP's effectiveness. Consistency is what makes it work.",
+        noteFr: "Les prises manquées réduisent l'efficacité de la PrEP. C'est la régularité qui la rend efficace.",
       },
       {
         text: "Only take it when you think you might be at risk.",
+        textFr: "Ne la prendre que lorsque vous pensez être à risque.",
         delta: -15,
         note: "Daily PrEP is not on-demand. Skipping doses leaves gaps in protection.",
+        noteFr: "La PrEP quotidienne n'est pas à la demande. Sauter des prises laisse des failles dans la protection.",
       },
     ],
   },
   {
     prompt: "It's been three months. Time for your PrEP follow-up. What do you do?",
+    promptFr: "Trois mois ont passé. C'est l'heure de votre suivi PrEP. Que faites-vous ?",
     label: "Your follow-up:",
+    labelFr: "Votre suivi :",
     choices: [
       {
         text: "Return to the clinic for the free follow-up HIV test and prescription refill.",
+        textFr: "Retourner à la clinique pour le test de suivi gratuit et le renouvellement de la prescription.",
         delta: 20,
         note: "Three-month reviews confirm you are still HIV negative and refill your PrEP. This is how the system works.",
+        noteFr: "Les bilans trimestriels confirment que vous êtes toujours séronégatif et renouvellent votre PrEP. C'est ainsi que le système fonctionne.",
       },
       {
         text: "Skip the follow-up and keep taking whatever pills are left.",
+        textFr: "Sauter le suivi et continuer à prendre les comprimés restants.",
         delta: -15,
         note: "Follow-ups are non-negotiable. Missing them means running out and losing protection.",
+        noteFr: "Les suivis ne sont pas négociables. Les manquer signifie être à court et perdre la protection.",
       },
       {
         text: "Stop taking PrEP because 'you feel fine'.",
+        textFr: "Arrêter de prendre la PrEP parce que « vous vous sentez bien ».",
         delta: -10,
         note: "PrEP works only while you take it. Stopping ends the protection.",
+        noteFr: "La PrEP ne fonctionne que tant que vous la prenez. L'arrêter met fin à la protection.",
       },
     ],
   },
 ];
 
 const PrEPNavigatorGame = ({ t }) => {
+  const { tr, lang } = useLang();
   const [idx, setIdx] = useState(0);
   const [access, setAccess] = useState(50);
   const [chosen, setChosen] = useState<number | null>(null);
@@ -6794,12 +7305,12 @@ const PrEPNavigatorGame = ({ t }) => {
   if (done) {
     const verdict =
       access >= 90
-        ? "You navigated the system. You are actually on PrEP."
+        ? tr("You navigated the system. You are actually on PrEP.", "Vous avez réussi à naviguer le système. Vous êtes bel et bien sous PrEP.")
         : access >= 70
-          ? "You are close. A couple of choices cost you time, not access."
+          ? tr("You are close. A couple of choices cost you time, not access.", "Vous y êtes presque. Quelques choix vous ont coûté du temps, pas l'accès.")
           : access >= 40
-            ? "You started but stalled. The barriers here are structural, not personal."
-            : "The system won this round. Try again — this time you know where it breaks.";
+            ? tr("You started but stalled. The barriers here are structural, not personal.", "Vous avez commencé mais avez stagné. Les obstacles ici sont structurels, pas personnels.")
+            : tr("The system won this round. Try again — this time you know where it breaks.", "Le système a gagné cette manche. Réessayez — cette fois, vous savez où il flanche.");
     return (
       <div style={{ textAlign: "center", padding: "40px 0" }}>
         <div
@@ -6822,7 +7333,7 @@ const PrEPNavigatorGame = ({ t }) => {
             textTransform: "uppercase",
           }}
         >
-          Final Access Score
+          {tr("Final Access Score", "Score d'accès final")}
         </p>
         <p
           style={{
@@ -6839,7 +7350,7 @@ const PrEPNavigatorGame = ({ t }) => {
         </p>
         <div style={{ marginTop: 32 }}>
           <Btn t={t} variant="primary" onClick={reset}>
-            Play Again
+            {tr("Play Again", "Rejouer")}
           </Btn>
         </div>
       </div>
@@ -6864,7 +7375,7 @@ const PrEPNavigatorGame = ({ t }) => {
             color: t.textMuted,
           }}
         >
-          Step {idx + 1} of {PREP_STEPS.length}
+          {tr(`Step ${idx + 1} of ${PREP_STEPS.length}`, `Étape ${idx + 1} sur ${PREP_STEPS.length}`)}
         </span>
         <span
           style={{
@@ -6874,7 +7385,7 @@ const PrEPNavigatorGame = ({ t }) => {
             color: t.accent,
           }}
         >
-          Access: {access}%
+          {tr(`Access: ${access}%`, `Accès : ${access} %`)}
         </span>
       </div>
       <ProgressBar t={t} value={access} max={100} />
@@ -6892,7 +7403,7 @@ const PrEPNavigatorGame = ({ t }) => {
             marginBottom: 10,
           }}
         >
-          The Situation
+          {tr("The Situation", "La situation")}
         </p>
         <p
           style={{
@@ -6902,7 +7413,7 @@ const PrEPNavigatorGame = ({ t }) => {
             lineHeight: 1.7,
           }}
         >
-          {step.prompt}
+          {lang === "fr" && step.promptFr ? step.promptFr : step.prompt}
         </p>
       </div>
       <p
@@ -6914,7 +7425,7 @@ const PrEPNavigatorGame = ({ t }) => {
           marginBottom: 10,
         }}
       >
-        {step.label}
+        {lang === "fr" && step.labelFr ? step.labelFr : step.label}
       </p>
       <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
         {step.choices.map((c, i) => {
@@ -6946,7 +7457,7 @@ const PrEPNavigatorGame = ({ t }) => {
                 lineHeight: 1.5,
               }}
             >
-              {c.text}
+              {lang === "fr" && c.textFr ? c.textFr : c.text}
             </button>
           );
         })}
@@ -6972,8 +7483,8 @@ const PrEPNavigatorGame = ({ t }) => {
               }}
             >
               {step.choices[chosen].delta > 0
-                ? `+${step.choices[chosen].delta}% access`
-                : `${step.choices[chosen].delta}% access`}
+                ? tr(`+${step.choices[chosen].delta}% access`, `+${step.choices[chosen].delta} % d'accès`)
+                : tr(`${step.choices[chosen].delta}% access`, `${step.choices[chosen].delta} % d'accès`)}
             </p>
             <p
               style={{
@@ -6983,7 +7494,7 @@ const PrEPNavigatorGame = ({ t }) => {
                 lineHeight: 1.65,
               }}
             >
-              {step.choices[chosen].note}
+              {lang === "fr" && step.choices[chosen].noteFr ? step.choices[chosen].noteFr : step.choices[chosen].note}
             </p>
           </div>
           <Btn
@@ -6992,7 +7503,7 @@ const PrEPNavigatorGame = ({ t }) => {
             onClick={next}
             style={{ width: "100%", textAlign: "center" }}
           >
-            {idx + 1 >= PREP_STEPS.length ? "See Final Score" : "Next Step →"}
+            {idx + 1 >= PREP_STEPS.length ? tr("See Final Score", "Voir le score final") : tr("Next Step →", "Étape suivante →")}
           </Btn>
         </div>
       )}
@@ -7005,31 +7516,44 @@ const PrEPNavigatorGame = ({ t }) => {
 const CHECKIN_QUESTIONS = [
   {
     q: "How rested do you feel today?",
+    qFr: "À quel point vous sentez-vous reposé aujourd'hui ?",
     labels: ["Running on empty", "Getting by", "Okay", "Rested", "Fully charged"],
+    labelsFr: ["À bout de forces", "Je fais aller", "Ça va", "Reposé", "Pleinement rechargé"],
   },
   {
     q: "How connected do you feel to the people around you?",
+    qFr: "À quel point vous sentez-vous connecté aux personnes qui vous entourent ?",
     labels: ["Isolated", "Distant", "Somewhat", "Connected", "Deeply held"],
+    labelsFr: ["Isolé", "Distant", "Un peu", "Connecté", "Profondément entouré"],
   },
   {
     q: "How heavy has your mind felt this week?",
+    qFr: "À quel point votre esprit s'est-il senti lourd cette semaine ?",
     labels: ["Very heavy", "Heavy", "Mixed", "Light", "Very light"],
+    labelsFr: ["Très lourd", "Lourd", "Mitigé", "Léger", "Très léger"],
   },
   {
     q: "How safe do you feel being yourself on campus right now?",
+    qFr: "À quel point vous sentez-vous en sécurité d'être vous-même sur le campus en ce moment ?",
     labels: ["Not safe", "Cautious", "Mixed", "Mostly safe", "Fully safe"],
+    labelsFr: ["Pas en sécurité", "Prudent", "Mitigé", "Plutôt en sécurité", "Pleinement en sécurité"],
   },
   {
     q: "How supported do you feel in what you are carrying?",
+    qFr: "À quel point vous sentez-vous soutenu dans ce que vous portez ?",
     labels: ["Alone", "Barely", "Some support", "Supported", "Deeply supported"],
+    labelsFr: ["Seul", "À peine", "Un peu de soutien", "Soutenu", "Profondément soutenu"],
   },
   {
     q: "How hopeful do you feel about this week?",
+    qFr: "À quel point vous sentez-vous plein d'espoir pour cette semaine ?",
     labels: ["Not at all", "A little", "Neutral", "Hopeful", "Very hopeful"],
+    labelsFr: ["Pas du tout", "Un peu", "Neutre", "Plein d'espoir", "Très plein d'espoir"],
   },
 ];
 
 const MentalHealthCheckIn = ({ t }) => {
+  const { tr, lang } = useLang();
   const [answers, setAnswers] = useState<(number | null)[]>(
     Array(CHECKIN_QUESTIONS.length).fill(null),
   );
@@ -7040,22 +7564,34 @@ const MentalHealthCheckIn = ({ t }) => {
     const avg = answers.reduce<number>((s, v) => s + (v ?? 0), 0) / answers.length;
     if (avg <= 1.5)
       return {
-        title: "You are carrying a lot right now.",
-        body: "This week has been heavy. That is real. Please consider reaching out to someone you trust, a campus counsellor, or a peer circle. You do not have to carry this alone. Text 'HELP' to a friend today — one message.",
+        title: tr("You are carrying a lot right now.", "Vous portez beaucoup de choses en ce moment."),
+        body: tr(
+          "This week has been heavy. That is real. Please consider reaching out to someone you trust, a campus counsellor, or a peer circle. You do not have to carry this alone. Text 'HELP' to a friend today — one message.",
+          "Cette semaine a été lourde. C'est réel. Envisagez de contacter une personne de confiance, un conseiller du campus, ou un cercle de pairs. Vous n'avez pas à porter cela seul. Envoyez « AIDE » à un ami aujourd'hui — un seul message."
+        ),
       };
     if (avg <= 2.5)
       return {
-        title: "You are holding on, but the edges are showing.",
-        body: "You are managing, and managing is not nothing. Notice what one small kindness could look like for you this week — an early night, a phone call, ten minutes outside. Small acts refill quietly.",
+        title: tr("You are holding on, but the edges are showing.", "Vous tenez bon, mais les fissures se voient."),
+        body: tr(
+          "You are managing, and managing is not nothing. Notice what one small kindness could look like for you this week — an early night, a phone call, ten minutes outside. Small acts refill quietly.",
+          "Vous gérez, et gérer n'est pas rien. Remarquez à quoi pourrait ressembler une petite bienveillance pour vous cette semaine — une nuit plus tôt, un appel téléphonique, dix minutes dehors. Les petits gestes rechargent en silence."
+        ),
       };
     if (avg <= 3.5)
       return {
-        title: "You are steady. Not soaring, not sinking.",
-        body: "This is a real place to be. Steady is a foundation. If there is one dimension pulling low, gently name it. You do not have to fix it today — just see it.",
+        title: tr("You are steady. Not soaring, not sinking.", "Vous êtes stable. Ni en plein essor, ni en train de sombrer."),
+        body: tr(
+          "This is a real place to be. Steady is a foundation. If there is one dimension pulling low, gently name it. You do not have to fix it today — just see it.",
+          "C'est un endroit réel où être. La stabilité est une fondation. S'il y a une dimension qui tire vers le bas, nommez-la doucement. Vous n'avez pas à la résoudre aujourd'hui — juste à la voir."
+        ),
       };
     return {
-      title: "You are in a full week.",
-      body: "Rested, connected, hopeful. Hold this. Notice what has made it feel this way, because that is knowledge your future self will need on a harder week.",
+      title: tr("You are in a full week.", "Vous vivez une semaine pleine."),
+      body: tr(
+        "Rested, connected, hopeful. Hold this. Notice what has made it feel this way, because that is knowledge your future self will need on a harder week.",
+        "Reposé, connecté, plein d'espoir. Retenez cela. Remarquez ce qui a rendu cette semaine ainsi, car c'est une connaissance dont votre futur vous aura besoin lors d'une semaine plus difficile."
+      ),
     };
   };
 
@@ -7074,7 +7610,7 @@ const MentalHealthCheckIn = ({ t }) => {
             marginBottom: 12,
           }}
         >
-          Your Reflection
+          {tr("Your Reflection", "Votre réflexion")}
         </p>
         <h3
           style={{
@@ -7116,8 +7652,10 @@ const MentalHealthCheckIn = ({ t }) => {
               lineHeight: 1.7,
             }}
           >
-            These answers never leave your browser. There is no score. This was only ever meant as a
-            quiet moment to notice where you actually are.
+            {tr(
+              "These answers never leave your browser. There is no score. This was only ever meant as a quiet moment to notice where you actually are.",
+              "Ces réponses ne quittent jamais votre navigateur. Il n'y a pas de score. Ceci n'a jamais été qu'un moment calme pour observer où vous en êtes réellement."
+            )}
           </p>
         </div>
         <Btn
@@ -7128,7 +7666,7 @@ const MentalHealthCheckIn = ({ t }) => {
             setDone(false);
           }}
         >
-          Check in again
+          {tr("Check in again", "Refaire le point")}
         </Btn>
       </div>
     );
@@ -7145,7 +7683,7 @@ const MentalHealthCheckIn = ({ t }) => {
           marginBottom: 28,
         }}
       >
-        Six quiet questions. No score. No judgement. Your answers never leave your browser.
+        {tr("Six quiet questions. No score. No judgement. Your answers never leave your browser.", "Six questions tranquilles. Aucun score. Aucun jugement. Vos réponses ne quittent jamais votre navigateur.")}
       </p>
       {CHECKIN_QUESTIONS.map((cq, qi) => (
         <div key={qi} style={{ marginBottom: 28 }}>
@@ -7158,10 +7696,10 @@ const MentalHealthCheckIn = ({ t }) => {
               marginBottom: 12,
             }}
           >
-            {cq.q}
+            {lang === "fr" && cq.qFr ? cq.qFr : cq.q}
           </p>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 6 }}>
-            {cq.labels.map((lbl, li) => {
+            {(lang === "fr" && cq.labelsFr ? cq.labelsFr : cq.labels).map((lbl, li) => {
               const active = answers[qi] === li;
               return (
                 <button
@@ -7194,7 +7732,7 @@ const MentalHealthCheckIn = ({ t }) => {
         onClick={() => complete && setDone(true)}
         style={{ width: "100%", textAlign: "center", opacity: complete ? 1 : 0.5 }}
       >
-        {complete ? "See my reflection" : "Answer all six to continue."}
+        {complete ? tr("See my reflection", "Voir ma réflexion") : tr("Answer all six to continue.", "Répondez aux six questions pour continuer.")}
       </Btn>
     </div>
   );
@@ -7203,86 +7741,103 @@ const MentalHealthCheckIn = ({ t }) => {
 // ─── GAMES PAGE ───────────────────────────────────────────────────────────────
 
 export const GamesPage = ({ t, setPage }) => {
+  const { tr } = useLang();
   const [activeGame, setActiveGame] = useState(null);
   const games = [
     {
       id: "myth",
-      title: "Myth Buster",
-      tag: "HIV EDUCATION",
-      description:
+      title: tr("Myth Buster", "Démystificateur"),
+      tag: tr("HIV EDUCATION", "ÉDUCATION AU VIH"),
+      description: tr(
         "10 cards. Each one is a statement about HIV. You decide: Myth or Fact. The truth might surprise you.",
-      time: "5 min",
-      difficulty: "Beginner friendly",
+        "10 cartes. Chacune est une affirmation sur le VIH. À vous de décider : mythe ou fait. La vérité pourrait vous surprendre."
+      ),
+      time: tr("5 min", "5 min"),
+      difficulty: tr("Beginner friendly", "Accessible aux débutants"),
       component: <MythBusterGame t={t} />,
     },
     {
       id: "quiz",
-      title: "LUMA Challenge",
-      tag: "KNOWLEDGE QUIZ",
-      description:
+      title: tr("LUMA Challenge", "Défi LUMA"),
+      tag: tr("KNOWLEDGE QUIZ", "QUIZ DE CONNAISSANCES"),
+      description: tr(
         "10 questions. 20 seconds each. How well do you really know HIV, PrEP, campus rights, and the status neutral approach?",
-      time: "4 min",
-      difficulty: "Intermediate",
+        "10 questions. 20 secondes chacune. Connaissez-vous vraiment le VIH, la PrEP, les droits sur le campus et l'approche « statut neutre » ?"
+      ),
+      time: tr("4 min", "4 min"),
+      difficulty: tr("Intermediate", "Intermédiaire"),
       component: <QuizGame t={t} />,
     },
     {
       id: "scenario",
-      title: "Campus Quest",
-      tag: "SCENARIO GAME",
-      description:
+      title: tr("Campus Quest", "Quête du Campus"),
+      tag: tr("SCENARIO GAME", "JEU DE SCÉNARIOS"),
+      description: tr(
         "5 real campus scenarios involving HIV, stigma, and allyship. What would you actually do? Your choices reveal your instincts.",
-      time: "6 min",
-      difficulty: "Reflective",
+        "5 scénarios de campus réels impliquant le VIH, la stigmatisation et la solidarité. Que feriez-vous réellement ? Vos choix révèlent vos instincts."
+      ),
+      time: tr("6 min", "6 min"),
+      difficulty: tr("Reflective", "Réflexif"),
       component: <ScenarioGame t={t} />,
     },
     {
       id: "scramble",
-      title: "Word Scramble",
-      tag: "HIV TERMS",
-      description:
+      title: tr("Word Scramble", "Mots mélangés"),
+      tag: tr("HIV TERMS", "TERMES DU VIH"),
+      description: tr(
         "Eight scrambled words from the HIV response vocabulary. Unscramble each one with a clue.",
-      time: "3 min",
-      difficulty: "All levels",
+        "Huit mots mélangés du vocabulaire de la riposte au VIH. Démêlez chacun d'eux à l'aide d'un indice."
+      ),
+      time: tr("3 min", "3 min"),
+      difficulty: tr("All levels", "Tous niveaux"),
       component: <WordScrambleGame t={t} />,
     },
     {
       id: "memory",
-      title: "Memory Match",
-      tag: "CAMPUS RIGHTS",
-      description:
+      title: tr("Memory Match", "Jeu de mémoire"),
+      tag: tr("CAMPUS RIGHTS", "DROITS SUR LE CAMPUS"),
+      description: tr(
         "Flip two cards. Match each student right with the law or framework that protects it.",
-      time: "4 min",
-      difficulty: "All levels",
+        "Retournez deux cartes. Associez chaque droit étudiant à la loi ou au cadre qui le protège."
+      ),
+      time: tr("4 min", "4 min"),
+      difficulty: tr("All levels", "Tous niveaux"),
       component: <MemoryMatchGame t={t} />,
     },
     {
       id: "bingo",
-      title: "Stigma Bingo",
-      tag: "CALL IT OUT",
-      description:
+      title: tr("Stigma Bingo", "Bingo de la stigmatisation"),
+      tag: tr("CALL IT OUT", "DÉNONCEZ-LE"),
+      description: tr(
         "A 5x5 board of real stigmatising phrases heard on Nigerian campuses. Tap every one you've heard. Get five in a row to win — and read the rebuttal.",
-      time: "5 min",
-      difficulty: "All levels",
+        "Une grille 5x5 de vraies phrases stigmatisantes entendues sur les campus nigérians. Cochez chacune que vous avez entendue. Alignez-en cinq pour gagner — et lisez la réponse."
+      ),
+      time: tr("5 min", "5 min"),
+      difficulty: tr("All levels", "Tous niveaux"),
       component: <StigmaBingoGame t={t} />,
     },
     {
       id: "prep",
-      title: "PrEP Access Navigator",
-      tag: "PRACTICAL",
-      description:
+      title: tr("PrEP Access Navigator", "Navigateur d'accès à la PrEP"),
+      tag: tr("PRACTICAL", "PRATIQUE"),
+      description: tr(
         "Walk the real journey from curiosity to prescription. Every choice moves your access score up or down.",
-      time: "6 min",
-      difficulty: "Practical",
+        "Parcourez le véritable chemin de la curiosité à la prescription. Chaque choix fait monter ou descendre votre score d'accès."
+      ),
+      time: tr("6 min", "6 min"),
+      difficulty: tr("Practical", "Pratique"),
       component: <PrEPNavigatorGame t={t} />,
     },
     {
       id: "wellbeing",
-      title: "Mental Health Check-In",
-      tag: "WELLBEING",
-      description:
+      title: tr("Mental Health Check-In", "Bilan de santé mentale"),
+      tag: tr("WELLBEING", "BIEN-ÊTRE"),
+      description: tr(
         "Six quiet questions. No score, no judgement — a private moment to notice where you actually are this week.",
-      time: "4 min",
-      difficulty: "Reflective",
+        "Six questions tranquilles. Aucun score, aucun jugement — un moment privé pour observer où vous en êtes réellement cette semaine."
+      ),
+      time: tr("4 min", "4 min"),
+      difficulty: tr("Reflective", "Réflexif"),
       component: <MentalHealthCheckIn t={t} />,
     },
   ];
@@ -7310,7 +7865,7 @@ export const GamesPage = ({ t, setPage }) => {
                 marginBottom: 32,
               }}
             >
-              <ArrowLeft color="rgba(247,243,236,0.7)" size={14} /> Back to Games
+              <ArrowLeft color="rgba(247,243,236,0.7)" size={14} /> {tr("Back to Games", "Retour aux jeux")}
             </button>
             <Tag t={t} light>
               {game.tag}
@@ -7341,7 +7896,7 @@ export const GamesPage = ({ t, setPage }) => {
       <div style={{ background: t.primary, padding: "120px 32px 80px" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
           <Tag t={t} light>
-            LUMA Games
+            {tr("LUMA Games", "Jeux LUMA")}
           </Tag>
           <h1
             style={{
@@ -7353,7 +7908,7 @@ export const GamesPage = ({ t, setPage }) => {
               marginTop: 16,
             }}
           >
-            Learn through play.
+            {tr("Learn through play.", "Apprendre en jouant.")}
           </h1>
           <p
             style={{
@@ -7365,7 +7920,10 @@ export const GamesPage = ({ t, setPage }) => {
               marginTop: 16,
             }}
           >
-            Games that do not just test what you know. They change what you do with what you know.
+            {tr(
+              "Games that do not just test what you know. They change what you do with what you know.",
+              "Des jeux qui ne se contentent pas de tester ce que vous savez. Ils changent ce que vous faites de ce que vous savez."
+            )}
           </p>
         </div>
       </div>
@@ -7452,7 +8010,7 @@ export const GamesPage = ({ t, setPage }) => {
                     textAlign: "center",
                   }}
                 >
-                  Play Now →
+                  {tr("Play Now →", "Jouer maintenant →")}
                 </div>
               </Card>
             ))}
@@ -7466,7 +8024,7 @@ export const GamesPage = ({ t, setPage }) => {
               textAlign: "center",
             }}
           >
-            <SectionLabel t={t}>Eight games. One bridge.</SectionLabel>
+            <SectionLabel t={t}>{tr("Eight games. One bridge.", "Huit jeux. Un seul pont.")}</SectionLabel>
             <h2
               style={{
                 fontFamily: "'Space Grotesk',sans-serif",
@@ -7477,7 +8035,7 @@ export const GamesPage = ({ t, setPage }) => {
                 marginBottom: 10,
               }}
             >
-              From what you know to what you do.
+              {tr("From what you know to what you do.", "De ce que vous savez à ce que vous faites.")}
             </h2>
             <p
               style={{
@@ -7489,8 +8047,10 @@ export const GamesPage = ({ t, setPage }) => {
                 marginInline: "auto",
               }}
             >
-              Every game above closes a different corner of the Information-to-Action gap — myths,
-              vocabulary, rights, stigma, PrEP access, and mental health.
+              {tr(
+                "Every game above closes a different corner of the Information-to-Action gap — myths, vocabulary, rights, stigma, PrEP access, and mental health.",
+                "Chaque jeu ci-dessus comble un aspect différent de l'écart entre l'information et l'action — mythes, vocabulaire, droits, stigmatisation, accès à la PrEP et santé mentale."
+              )}
             </p>
           </div>
         </div>
