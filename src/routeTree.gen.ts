@@ -20,7 +20,7 @@ import { Route as AdvocacyRouteImport } from './routes/advocacy'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as TruthStoryIdRouteImport } from './routes/truth_.$storyId'
-import { Route as ResourcesGuideIdRouteImport } from './routes/resources.$guideId'
+import { Route as ResourcesGuideIdRouteImport } from './routes/resources_.$guideId'
 import { Route as ApplyVolunteerRouteImport } from './routes/apply.volunteer'
 import { Route as ApplyPartnerRouteImport } from './routes/apply.partner'
 import { Route as ApplyAmbassadorRouteImport } from './routes/apply.ambassador'
@@ -81,9 +81,9 @@ const TruthStoryIdRoute = TruthStoryIdRouteImport.update({
   getParentRoute: () => rootRouteImport,
 } as any)
 const ResourcesGuideIdRoute = ResourcesGuideIdRouteImport.update({
-  id: '/$guideId',
-  path: '/$guideId',
-  getParentRoute: () => ResourcesRoute,
+  id: '/resources_/$guideId',
+  path: '/resources/$guideId',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const ApplyVolunteerRoute = ApplyVolunteerRouteImport.update({
   id: '/apply/volunteer',
@@ -109,7 +109,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/games': typeof GamesRoute
   '/involve': typeof InvolveRoute
-  '/resources': typeof ResourcesRouteWithChildren
+  '/resources': typeof ResourcesRoute
   '/truth': typeof TruthRoute
   '/work': typeof WorkRoute
   '/apply/ambassador': typeof ApplyAmbassadorRoute
@@ -126,7 +126,7 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/games': typeof GamesRoute
   '/involve': typeof InvolveRoute
-  '/resources': typeof ResourcesRouteWithChildren
+  '/resources': typeof ResourcesRoute
   '/truth': typeof TruthRoute
   '/work': typeof WorkRoute
   '/apply/ambassador': typeof ApplyAmbassadorRoute
@@ -144,13 +144,13 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/games': typeof GamesRoute
   '/involve': typeof InvolveRoute
-  '/resources': typeof ResourcesRouteWithChildren
+  '/resources': typeof ResourcesRoute
   '/truth': typeof TruthRoute
   '/work': typeof WorkRoute
   '/apply/ambassador': typeof ApplyAmbassadorRoute
   '/apply/partner': typeof ApplyPartnerRoute
   '/apply/volunteer': typeof ApplyVolunteerRoute
-  '/resources/$guideId': typeof ResourcesGuideIdRoute
+  '/resources_/$guideId': typeof ResourcesGuideIdRoute
   '/truth_/$storyId': typeof TruthStoryIdRoute
 }
 export interface FileRouteTypes {
@@ -203,7 +203,7 @@ export interface FileRouteTypes {
     | '/apply/ambassador'
     | '/apply/partner'
     | '/apply/volunteer'
-    | '/resources/$guideId'
+    | '/resources_/$guideId'
     | '/truth_/$storyId'
   fileRoutesById: FileRoutesById
 }
@@ -215,12 +215,13 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   GamesRoute: typeof GamesRoute
   InvolveRoute: typeof InvolveRoute
-  ResourcesRoute: typeof ResourcesRouteWithChildren
+  ResourcesRoute: typeof ResourcesRoute
   TruthRoute: typeof TruthRoute
   WorkRoute: typeof WorkRoute
   ApplyAmbassadorRoute: typeof ApplyAmbassadorRoute
   ApplyPartnerRoute: typeof ApplyPartnerRoute
   ApplyVolunteerRoute: typeof ApplyVolunteerRoute
+  ResourcesGuideIdRoute: typeof ResourcesGuideIdRoute
   TruthStoryIdRoute: typeof TruthStoryIdRoute
 }
 
@@ -303,12 +304,12 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TruthStoryIdRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/resources/$guideId': {
-      id: '/resources/$guideId'
-      path: '/$guideId'
+    '/resources_/$guideId': {
+      id: '/resources_/$guideId'
+      path: '/resources/$guideId'
       fullPath: '/resources/$guideId'
       preLoaderRoute: typeof ResourcesGuideIdRouteImport
-      parentRoute: typeof ResourcesRoute
+      parentRoute: typeof rootRouteImport
     }
     '/apply/volunteer': {
       id: '/apply/volunteer'
@@ -334,18 +335,6 @@ declare module '@tanstack/react-router' {
   }
 }
 
-interface ResourcesRouteChildren {
-  ResourcesGuideIdRoute: typeof ResourcesGuideIdRoute
-}
-
-const ResourcesRouteChildren: ResourcesRouteChildren = {
-  ResourcesGuideIdRoute: ResourcesGuideIdRoute,
-}
-
-const ResourcesRouteWithChildren = ResourcesRoute._addFileChildren(
-  ResourcesRouteChildren,
-)
-
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
@@ -354,12 +343,13 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   GamesRoute: GamesRoute,
   InvolveRoute: InvolveRoute,
-  ResourcesRoute: ResourcesRouteWithChildren,
+  ResourcesRoute: ResourcesRoute,
   TruthRoute: TruthRoute,
   WorkRoute: WorkRoute,
   ApplyAmbassadorRoute: ApplyAmbassadorRoute,
   ApplyPartnerRoute: ApplyPartnerRoute,
   ApplyVolunteerRoute: ApplyVolunteerRoute,
+  ResourcesGuideIdRoute: ResourcesGuideIdRoute,
   TruthStoryIdRoute: TruthStoryIdRoute,
 }
 export const routeTree = rootRouteImport

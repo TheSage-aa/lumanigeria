@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { GuidePage, useLumaTheme, useNavToPage } from "@/components/LumaApp";
 
-export const Route = createFileRoute("/resources/$guideId")({
+export const Route = createFileRoute("/resources_/$guideId")({
   head: ({ params }) => ({
     meta: [
       { title: `LUMA Guide — ${params.guideId}` },
