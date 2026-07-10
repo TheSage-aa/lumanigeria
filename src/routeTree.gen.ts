@@ -28,6 +28,7 @@ import { Route as ApplyVolunteerRouteImport } from './routes/apply.volunteer'
 import { Route as ApplyPartnerRouteImport } from './routes/apply.partner'
 import { Route as ApplyAmbassadorRouteImport } from './routes/apply.ambassador'
 import { Route as ApiSubmitRouteImport } from './routes/api/submit'
+import { Route as ApiStoriesRouteImport } from './routes/api/stories'
 import { Route as ApiAdminSubmissionsRouteImport } from './routes/api/admin/submissions'
 import { Route as ApiAdminLogoutRouteImport } from './routes/api/admin/logout'
 import { Route as ApiAdminLoginRouteImport } from './routes/api/admin/login'
@@ -127,6 +128,11 @@ const ApiSubmitRoute = ApiSubmitRouteImport.update({
   path: '/api/submit',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiStoriesRoute = ApiStoriesRouteImport.update({
+  id: '/api/stories',
+  path: '/api/stories',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiAdminSubmissionsRoute = ApiAdminSubmissionsRouteImport.update({
   id: '/api/admin/submissions',
   path: '/api/admin/submissions',
@@ -157,6 +163,7 @@ export interface FileRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/truth': typeof TruthRoute
   '/work': typeof WorkRoute
+  '/api/stories': typeof ApiStoriesRoute
   '/api/submit': typeof ApiSubmitRoute
   '/apply/ambassador': typeof ApplyAmbassadorRoute
   '/apply/partner': typeof ApplyPartnerRoute
@@ -181,6 +188,7 @@ export interface FileRoutesByTo {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/truth': typeof TruthRoute
   '/work': typeof WorkRoute
+  '/api/stories': typeof ApiStoriesRoute
   '/api/submit': typeof ApiSubmitRoute
   '/apply/ambassador': typeof ApplyAmbassadorRoute
   '/apply/partner': typeof ApplyPartnerRoute
@@ -206,6 +214,7 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/truth': typeof TruthRoute
   '/work': typeof WorkRoute
+  '/api/stories': typeof ApiStoriesRoute
   '/api/submit': typeof ApiSubmitRoute
   '/apply/ambassador': typeof ApplyAmbassadorRoute
   '/apply/partner': typeof ApplyPartnerRoute
@@ -232,6 +241,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/truth'
     | '/work'
+    | '/api/stories'
     | '/api/submit'
     | '/apply/ambassador'
     | '/apply/partner'
@@ -256,6 +266,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/truth'
     | '/work'
+    | '/api/stories'
     | '/api/submit'
     | '/apply/ambassador'
     | '/apply/partner'
@@ -280,6 +291,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/truth'
     | '/work'
+    | '/api/stories'
     | '/api/submit'
     | '/apply/ambassador'
     | '/apply/partner'
@@ -305,6 +317,7 @@ export interface RootRouteChildren {
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TruthRoute: typeof TruthRoute
   WorkRoute: typeof WorkRoute
+  ApiStoriesRoute: typeof ApiStoriesRoute
   ApiSubmitRoute: typeof ApiSubmitRoute
   ApplyAmbassadorRoute: typeof ApplyAmbassadorRoute
   ApplyPartnerRoute: typeof ApplyPartnerRoute
@@ -451,6 +464,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiSubmitRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/stories': {
+      id: '/api/stories'
+      path: '/api/stories'
+      fullPath: '/api/stories'
+      preLoaderRoute: typeof ApiStoriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/admin/submissions': {
       id: '/api/admin/submissions'
       path: '/api/admin/submissions'
@@ -489,6 +509,7 @@ const rootRouteChildren: RootRouteChildren = {
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TruthRoute: TruthRoute,
   WorkRoute: WorkRoute,
+  ApiStoriesRoute: ApiStoriesRoute,
   ApiSubmitRoute: ApiSubmitRoute,
   ApplyAmbassadorRoute: ApplyAmbassadorRoute,
   ApplyPartnerRoute: ApplyPartnerRoute,

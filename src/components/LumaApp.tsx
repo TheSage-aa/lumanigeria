@@ -1465,6 +1465,7 @@ export const StoryPage = ({ t, story, setPage, setStoryId }) => {
             }}
           >
             {story.date} · {story.readTime}
+            {story.author ? ` · ${tr("Shared by", "Partagé par")} ${story.author}` : ""}
           </p>
         </div>
       </div>
@@ -1532,6 +1533,7 @@ export const StoryPage = ({ t, story, setPage, setStoryId }) => {
         </div>
       </section>
 
+      {related.length > 0 && (
       <section style={s.relatedSection}>
         <div style={s.wide}>
           <SectionLabel t={t}>{tr("Continue Reading", "Continuer la lecture")}</SectionLabel>
@@ -1599,6 +1601,7 @@ export const StoryPage = ({ t, story, setPage, setStoryId }) => {
           </div>
         </div>
       </section>
+      )}
     </div>
   );
 };
@@ -2444,6 +2447,20 @@ export const AboutPage = ({ t }) => {
 
 export const TruthPage = ({ t, setPage, setStoryId }) => {
   const { tr, lang } = useLang();
+  const [communityStories, setCommunityStories] = useState([]);
+  useEffect(() => {
+    let cancelled = false;
+    fetch("/api/stories")
+      .then((res) => res.json())
+      .then((json) => {
+        if (!cancelled && json.ok) setCommunityStories(json.stories);
+      })
+      .catch(() => {});
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+  const allStories = [...STORIES, ...communityStories];
   return (
     <div>
       <div style={{ background: t.primary, padding: "120px 32px 80px" }}>
@@ -2489,7 +2506,7 @@ export const TruthPage = ({ t, setPage, setStoryId }) => {
               gap: 24,
             }}
           >
-            {STORIES.map((story) => (
+            {allStories.map((story) => (
               <Card
                 key={story.id}
                 t={t}

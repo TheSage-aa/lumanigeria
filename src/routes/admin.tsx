@@ -14,10 +14,13 @@ type Submission = {
   formType: string;
   data: Record<string, string>;
   status: string;
+  publishTitle: string | null;
+  publishExcerpt: string | null;
   createdAt: string;
 };
 
 const STATUSES = ["pending", "reviewed", "accepted", "rejected", "published"];
+const STORY_FORM_TYPE = "Voices From Campus — Story Submission";
 
 function AdminPage() {
   const [authed, setAuthed] = useState<boolean | null>(null);
@@ -26,6 +29,7 @@ function AdminPage() {
   const [submissions, setSubmissions] = useState<Submission[]>([]);
   const [filter, setFilter] = useState("all");
   const [loading, setLoading] = useState(false);
+  const [drafts, setDrafts] = useState<Record<number, { title: string; excerpt: string }>>({});
 
   const loadSubmissions = async () => {
     setLoading(true);
@@ -38,6 +42,15 @@ function AdminPage() {
     const json = await res.json();
     if (json.ok) {
       setSubmissions(json.submissions);
+      setDrafts((prev) => {
+        const next = { ...prev };
+        for (const s of json.submissions as Submission[]) {
+          if (!next[s.id]) {
+            next[s.id] = { title: s.publishTitle || "", excerpt: s.publishExcerpt || "" };
+          }
+        }
+        return next;
+      });
       setAuthed(true);
     }
     setLoading(false);
@@ -72,11 +85,28 @@ function AdminPage() {
   };
 
   const updateStatus = async (id: number, status: string) => {
-    setSubmissions((prev) => prev.map((s) => (s.id === id ? { ...s, status } : s)));
+    const draft = drafts[id];
+    setSubmissions((prev) =>
+      prev.map((s) =>
+        s.id === id
+          ? {
+              ...s,
+              status,
+              publishTitle: draft?.title || s.publishTitle,
+              publishExcerpt: draft?.excerpt || s.publishExcerpt,
+            }
+          : s,
+      ),
+    );
     await fetch("/api/admin/submissions", {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ id, status }),
+      body: JSON.stringify({
+        id,
+        status,
+        publishTitle: draft?.title || undefined,
+        publishExcerpt: draft?.excerpt || undefined,
+      }),
     });
   };
 
@@ -227,6 +257,43 @@ function AdminPage() {
                 ))}
               </tbody>
             </table>
+            {s.formType === STORY_FORM_TYPE && (
+              <div
+                style={{
+                  marginTop: 16,
+                  paddingTop: 16,
+                  borderTop: "1px dashed rgba(26,51,41,0.2)",
+                }}
+              >
+                <p style={{ fontSize: 12, fontWeight: 700, color: "#666", marginBottom: 8 }}>
+                  Publish to Campus Truth Series (title/excerpt shown to visitors — set these
+                  before switching status to "published")
+                </p>
+                <input
+                  placeholder="Story title"
+                  value={drafts[s.id]?.title ?? ""}
+                  onChange={(e) =>
+                    setDrafts((prev) => ({
+                      ...prev,
+                      [s.id]: { title: e.target.value, excerpt: prev[s.id]?.excerpt ?? "" },
+                    }))
+                  }
+                  style={{ ...styles.input, width: "100%", marginBottom: 8 }}
+                />
+                <textarea
+                  placeholder="Short excerpt for the story card"
+                  value={drafts[s.id]?.excerpt ?? ""}
+                  onChange={(e) =>
+                    setDrafts((prev) => ({
+                      ...prev,
+                      [s.id]: { title: prev[s.id]?.title ?? "", excerpt: e.target.value },
+                    }))
+                  }
+                  rows={2}
+                  style={{ ...styles.input, width: "100%", resize: "vertical" }}
+                />
+              </div>
+            )}
           </div>
         ))}
       </div>

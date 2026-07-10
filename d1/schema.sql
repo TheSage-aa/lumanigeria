@@ -3,6 +3,8 @@ CREATE TABLE IF NOT EXISTS submissions (
   form_type TEXT NOT NULL,
   data TEXT NOT NULL,
   status TEXT NOT NULL DEFAULT 'pending',
+  publish_title TEXT,
+  publish_excerpt TEXT,
   created_at TEXT NOT NULL DEFAULT (datetime('now'))
 );
 
