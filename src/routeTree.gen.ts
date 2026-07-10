@@ -19,6 +19,7 @@ import { Route as GamesRouteImport } from './routes/games'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CircleRouteImport } from './routes/circle'
 import { Route as AdvocacyRouteImport } from './routes/advocacy'
+import { Route as AdminRouteImport } from './routes/admin'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as TruthStoryIdRouteImport } from './routes/truth_.$storyId'
@@ -26,6 +27,10 @@ import { Route as ResourcesGuideIdRouteImport } from './routes/resources_.$guide
 import { Route as ApplyVolunteerRouteImport } from './routes/apply.volunteer'
 import { Route as ApplyPartnerRouteImport } from './routes/apply.partner'
 import { Route as ApplyAmbassadorRouteImport } from './routes/apply.ambassador'
+import { Route as ApiSubmitRouteImport } from './routes/api/submit'
+import { Route as ApiAdminSubmissionsRouteImport } from './routes/api/admin/submissions'
+import { Route as ApiAdminLogoutRouteImport } from './routes/api/admin/logout'
+import { Route as ApiAdminLoginRouteImport } from './routes/api/admin/login'
 
 const WorkRoute = WorkRouteImport.update({
   id: '/work',
@@ -77,6 +82,11 @@ const AdvocacyRoute = AdvocacyRouteImport.update({
   path: '/advocacy',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
@@ -112,10 +122,31 @@ const ApplyAmbassadorRoute = ApplyAmbassadorRouteImport.update({
   path: '/apply/ambassador',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiSubmitRoute = ApiSubmitRouteImport.update({
+  id: '/api/submit',
+  path: '/api/submit',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAdminSubmissionsRoute = ApiAdminSubmissionsRouteImport.update({
+  id: '/api/admin/submissions',
+  path: '/api/admin/submissions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAdminLogoutRoute = ApiAdminLogoutRouteImport.update({
+  id: '/api/admin/logout',
+  path: '/api/admin/logout',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAdminLoginRoute = ApiAdminLoginRouteImport.update({
+  id: '/api/admin/login',
+  path: '/api/admin/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/admin': typeof AdminRoute
   '/advocacy': typeof AdvocacyRoute
   '/circle': typeof CircleRoute
   '/contact': typeof ContactRoute
@@ -126,15 +157,20 @@ export interface FileRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/truth': typeof TruthRoute
   '/work': typeof WorkRoute
+  '/api/submit': typeof ApiSubmitRoute
   '/apply/ambassador': typeof ApplyAmbassadorRoute
   '/apply/partner': typeof ApplyPartnerRoute
   '/apply/volunteer': typeof ApplyVolunteerRoute
   '/resources/$guideId': typeof ResourcesGuideIdRoute
   '/truth/$storyId': typeof TruthStoryIdRoute
+  '/api/admin/login': typeof ApiAdminLoginRoute
+  '/api/admin/logout': typeof ApiAdminLogoutRoute
+  '/api/admin/submissions': typeof ApiAdminSubmissionsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/admin': typeof AdminRoute
   '/advocacy': typeof AdvocacyRoute
   '/circle': typeof CircleRoute
   '/contact': typeof ContactRoute
@@ -145,16 +181,21 @@ export interface FileRoutesByTo {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/truth': typeof TruthRoute
   '/work': typeof WorkRoute
+  '/api/submit': typeof ApiSubmitRoute
   '/apply/ambassador': typeof ApplyAmbassadorRoute
   '/apply/partner': typeof ApplyPartnerRoute
   '/apply/volunteer': typeof ApplyVolunteerRoute
   '/resources/$guideId': typeof ResourcesGuideIdRoute
   '/truth/$storyId': typeof TruthStoryIdRoute
+  '/api/admin/login': typeof ApiAdminLoginRoute
+  '/api/admin/logout': typeof ApiAdminLogoutRoute
+  '/api/admin/submissions': typeof ApiAdminSubmissionsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/admin': typeof AdminRoute
   '/advocacy': typeof AdvocacyRoute
   '/circle': typeof CircleRoute
   '/contact': typeof ContactRoute
@@ -165,17 +206,22 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/truth': typeof TruthRoute
   '/work': typeof WorkRoute
+  '/api/submit': typeof ApiSubmitRoute
   '/apply/ambassador': typeof ApplyAmbassadorRoute
   '/apply/partner': typeof ApplyPartnerRoute
   '/apply/volunteer': typeof ApplyVolunteerRoute
   '/resources_/$guideId': typeof ResourcesGuideIdRoute
   '/truth_/$storyId': typeof TruthStoryIdRoute
+  '/api/admin/login': typeof ApiAdminLoginRoute
+  '/api/admin/logout': typeof ApiAdminLogoutRoute
+  '/api/admin/submissions': typeof ApiAdminSubmissionsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/about'
+    | '/admin'
     | '/advocacy'
     | '/circle'
     | '/contact'
@@ -186,15 +232,20 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/truth'
     | '/work'
+    | '/api/submit'
     | '/apply/ambassador'
     | '/apply/partner'
     | '/apply/volunteer'
     | '/resources/$guideId'
     | '/truth/$storyId'
+    | '/api/admin/login'
+    | '/api/admin/logout'
+    | '/api/admin/submissions'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
+    | '/admin'
     | '/advocacy'
     | '/circle'
     | '/contact'
@@ -205,15 +256,20 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/truth'
     | '/work'
+    | '/api/submit'
     | '/apply/ambassador'
     | '/apply/partner'
     | '/apply/volunteer'
     | '/resources/$guideId'
     | '/truth/$storyId'
+    | '/api/admin/login'
+    | '/api/admin/logout'
+    | '/api/admin/submissions'
   id:
     | '__root__'
     | '/'
     | '/about'
+    | '/admin'
     | '/advocacy'
     | '/circle'
     | '/contact'
@@ -224,16 +280,21 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/truth'
     | '/work'
+    | '/api/submit'
     | '/apply/ambassador'
     | '/apply/partner'
     | '/apply/volunteer'
     | '/resources_/$guideId'
     | '/truth_/$storyId'
+    | '/api/admin/login'
+    | '/api/admin/logout'
+    | '/api/admin/submissions'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  AdminRoute: typeof AdminRoute
   AdvocacyRoute: typeof AdvocacyRoute
   CircleRoute: typeof CircleRoute
   ContactRoute: typeof ContactRoute
@@ -244,11 +305,15 @@ export interface RootRouteChildren {
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TruthRoute: typeof TruthRoute
   WorkRoute: typeof WorkRoute
+  ApiSubmitRoute: typeof ApiSubmitRoute
   ApplyAmbassadorRoute: typeof ApplyAmbassadorRoute
   ApplyPartnerRoute: typeof ApplyPartnerRoute
   ApplyVolunteerRoute: typeof ApplyVolunteerRoute
   ResourcesGuideIdRoute: typeof ResourcesGuideIdRoute
   TruthStoryIdRoute: typeof TruthStoryIdRoute
+  ApiAdminLoginRoute: typeof ApiAdminLoginRoute
+  ApiAdminLogoutRoute: typeof ApiAdminLogoutRoute
+  ApiAdminSubmissionsRoute: typeof ApiAdminSubmissionsRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -323,6 +388,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdvocacyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about': {
       id: '/about'
       path: '/about'
@@ -372,12 +444,41 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApplyAmbassadorRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/submit': {
+      id: '/api/submit'
+      path: '/api/submit'
+      fullPath: '/api/submit'
+      preLoaderRoute: typeof ApiSubmitRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/admin/submissions': {
+      id: '/api/admin/submissions'
+      path: '/api/admin/submissions'
+      fullPath: '/api/admin/submissions'
+      preLoaderRoute: typeof ApiAdminSubmissionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/admin/logout': {
+      id: '/api/admin/logout'
+      path: '/api/admin/logout'
+      fullPath: '/api/admin/logout'
+      preLoaderRoute: typeof ApiAdminLogoutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/admin/login': {
+      id: '/api/admin/login'
+      path: '/api/admin/login'
+      fullPath: '/api/admin/login'
+      preLoaderRoute: typeof ApiAdminLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  AdminRoute: AdminRoute,
   AdvocacyRoute: AdvocacyRoute,
   CircleRoute: CircleRoute,
   ContactRoute: ContactRoute,
@@ -388,11 +489,15 @@ const rootRouteChildren: RootRouteChildren = {
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TruthRoute: TruthRoute,
   WorkRoute: WorkRoute,
+  ApiSubmitRoute: ApiSubmitRoute,
   ApplyAmbassadorRoute: ApplyAmbassadorRoute,
   ApplyPartnerRoute: ApplyPartnerRoute,
   ApplyVolunteerRoute: ApplyVolunteerRoute,
   ResourcesGuideIdRoute: ResourcesGuideIdRoute,
   TruthStoryIdRoute: TruthStoryIdRoute,
+  ApiAdminLoginRoute: ApiAdminLoginRoute,
+  ApiAdminLogoutRoute: ApiAdminLogoutRoute,
+  ApiAdminSubmissionsRoute: ApiAdminSubmissionsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

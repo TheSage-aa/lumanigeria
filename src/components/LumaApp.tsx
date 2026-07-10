@@ -74,6 +74,13 @@ export const GUIDES = {
 export const LUMA_EMAIL = "luma.nigeria@gmail.com";
 
 export const submitToEmail = async (formType, data) => {
+  // Store in the site's own database too, independent of the email path below.
+  fetch("/api/submit", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ formType, data }),
+  }).catch((e) => console.error("LUMA submission storage failed", e));
+
   try {
     const payload = {
       _subject: `[LUMA Website] ${formType}`,
@@ -1470,6 +1477,7 @@ export const StoryPage = ({ t, story, setPage, setStoryId }) => {
 // ─── HOME PAGE ────────────────────────────────────────────────────────────────
 
 export const HomePage = ({ t, setPage, setStoryId }) => {
+  const { tr } = useLang();
   const s = {
     hero: {
       background: t.primary,
@@ -1559,20 +1567,29 @@ export const HomePage = ({ t, setPage, setStoryId }) => {
   const pillars = [
     {
       num: "01",
-      title: "Inform",
-      body: "We do not just deliver HIV information. Nigerian students already have it. We make that information actionable, contextual, and impossible to ignore. Every Campus Truth Series article moves students from knowing to doing.",
+      title: tr("Inform", "Informer"),
+      body: tr(
+        "We do not just deliver HIV information. Nigerian students already have it. We make that information actionable, contextual, and impossible to ignore. Every Campus Truth Series article moves students from knowing to doing.",
+        "Nous ne nous contentons pas de transmettre de l'information sur le VIH. Les étudiants nigérians l'ont déjà. Nous rendons cette information actionnable, contextuelle, et impossible à ignorer. Chaque article de la Campus Truth Series fait passer les étudiants du savoir à l'agir.",
+      ),
       page: "truth",
     },
     {
       num: "02",
-      title: "Advocate",
-      body: "Knowing your rights and exercising your rights are two completely different things. LUMA equips students with the tools, language, and confidence to turn legal knowledge into real protection on their campuses.",
+      title: tr("Advocate", "Défendre"),
+      body: tr(
+        "Knowing your rights and exercising your rights are two completely different things. LUMA equips students with the tools, language, and confidence to turn legal knowledge into real protection on their campuses.",
+        "Connaître ses droits et les exercer sont deux choses complètement différentes. LUMA équipe les étudiants des outils, du langage et de la confiance nécessaires pour transformer la connaissance juridique en protection réelle sur leurs campus.",
+      ),
       page: "advocacy",
     },
     {
       num: "03",
-      title: "Belong",
-      body: "Community is where information becomes knowledge. In the Peer Circle, what students know in theory becomes something they can live with, talk about, and act on together.",
+      title: tr("Belong", "Appartenir"),
+      body: tr(
+        "Community is where information becomes knowledge. In the Peer Circle, what students know in theory becomes something they can live with, talk about, and act on together.",
+        "C'est dans la communauté que l'information devient connaissance. Dans le Cercle de pairs, ce que les étudiants savent en théorie devient quelque chose qu'ils peuvent vivre, dont ils peuvent parler et sur lequel ils peuvent agir ensemble.",
+      ),
       page: "circle",
     },
   ];
@@ -1603,23 +1620,29 @@ export const HomePage = ({ t, setPage, setStoryId }) => {
         </svg>
         <div style={{ maxWidth: 640, position: "relative", zIndex: 2 }}>
           <Tag t={t} light>
-            From Information to Knowledge. From Knowledge to Action.
+            {tr(
+              "From Information to Knowledge. From Knowledge to Action.",
+              "De l'information à la connaissance. De la connaissance à l'action.",
+            )}
           </Tag>
           <h1 style={s.h1}>
-            Most Nigerian university students already know the HIV facts. LUMA makes those facts
-            matter.
+            {tr(
+              "Most Nigerian university students already know the HIV facts. LUMA makes those facts matter.",
+              "La plupart des étudiants universitaires nigérians connaissent déjà les faits sur le VIH. LUMA fait en sorte que ces faits comptent.",
+            )}
           </h1>
           <p style={s.heroSub}>
-            Knowing that HIV is not transmitted through casual contact does not stop stigma. Knowing
-            your legal rights does not mean you will use them. Knowing PrEP exists does not mean you
-            will access it. LUMA closes the gap between what you know and what you do.
+            {tr(
+              "Knowing that HIV is not transmitted through casual contact does not stop stigma. Knowing your legal rights does not mean you will use them. Knowing PrEP exists does not mean you will access it. LUMA closes the gap between what you know and what you do.",
+              "Savoir que le VIH ne se transmet pas par contact occasionnel n'arrête pas la stigmatisation. Connaître ses droits légaux ne signifie pas qu'on les utilisera. Savoir que la PrEP existe ne signifie pas qu'on y accédera. LUMA comble l'écart entre ce que vous savez et ce que vous faites.",
+            )}
           </p>
           <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
             <Btn t={t} variant="light" onClick={() => setPage("about")}>
-              Learn About LUMA
+              {tr("Learn About LUMA", "En savoir plus sur LUMA")}
             </Btn>
             <Btn t={t} variant="ghost" onClick={() => setPage("work")}>
-              See Our Work
+              {tr("See Our Work", "Voir notre travail")}
             </Btn>
           </div>
         </div>
@@ -1644,18 +1667,27 @@ export const HomePage = ({ t, setPage, setStoryId }) => {
           {[
             [
               "96.85%",
-              "of Nigerian university students already have high HIV knowledge",
-              "Campus research, 2024",
+              tr(
+                "of Nigerian university students already have high HIV knowledge",
+                "des étudiants universitaires nigérians ont déjà une haute connaissance du VIH",
+              ),
+              tr("Campus research, 2024", "Recherche sur campus, 2024"),
             ],
             [
               "55.5%",
-              "still hold stigmatising attitudes toward PLHIV despite that knowledge",
-              "The gap LUMA closes",
+              tr(
+                "still hold stigmatising attitudes toward PLHIV despite that knowledge",
+                "ont encore des attitudes stigmatisantes envers les PVVIH malgré cette connaissance",
+              ),
+              tr("The gap LUMA closes", "L'écart que LUMA comble"),
             ],
             [
               "0",
-              "organisations closing the Information-to-Action gap for Nigerian university students before LUMA",
-              "As of June 2026",
+              tr(
+                "organisations closing the Information-to-Action gap for Nigerian university students before LUMA",
+                "organisations comblant l'écart Information-Action pour les étudiants universitaires nigérians avant LUMA",
+              ),
+              tr("As of June 2026", "En date de juin 2026"),
             ],
           ].map(([num, label, src], i) => (
             <div
@@ -1707,11 +1739,11 @@ export const HomePage = ({ t, setPage, setStoryId }) => {
 
       <section style={s.section}>
         <div style={s.inner}>
-          <SectionLabel t={t}>What LUMA Does</SectionLabel>
+          <SectionLabel t={t}>{tr("What LUMA Does", "Ce que fait LUMA")}</SectionLabel>
           <h2 style={s.h2}>
-            Three promises.
+            {tr("Three promises.", "Trois promesses.")}
             <br />
-            One organisation.
+            {tr("One organisation.", "Une seule organisation.")}
           </h2>
           <div style={s.grid3}>
             {pillars.map((p) => (
@@ -1730,7 +1762,7 @@ export const HomePage = ({ t, setPage, setStoryId }) => {
                 </h3>
                 <p style={{ ...s.body, marginBottom: 20 }}>{p.body}</p>
                 <span style={s.linkText} onClick={() => setPage(p.page)}>
-                  Explore {p.title} <ArrowRight color={t.accent} size={13} />
+                  {tr("Explore", "Découvrir")} {p.title} <ArrowRight color={t.accent} size={13} />
                 </span>
               </Card>
             ))}
@@ -1740,7 +1772,9 @@ export const HomePage = ({ t, setPage, setStoryId }) => {
 
       <section style={s.sectionDark}>
         <div style={{ ...s.inner, textAlign: "center" }}>
-          <SectionLabel t={t}>Status Neutral by Design</SectionLabel>
+          <SectionLabel t={t}>
+            {tr("Status Neutral by Design", "Statut neutre par conception")}
+          </SectionLabel>
           <p
             style={{
               fontFamily: "'Space Grotesk',sans-serif",
@@ -1752,19 +1786,25 @@ export const HomePage = ({ t, setPage, setStoryId }) => {
               margin: "24px auto",
             }}
           >
-            The Information-to-Action gap affects every student, regardless of HIV status.
+            {tr(
+              "The Information-to-Action gap affects every student, regardless of HIV status.",
+              "L'écart Information-Action affecte chaque étudiant, quel que soit son statut sérologique.",
+            )}
           </p>
           <p style={{ ...s.bodyLight, maxWidth: 640, margin: "0 auto 16px" }}>
-            LUMA is status neutral because the Information-to-Action gap affects every student
-            regardless of HIV status. HIV positive students who know their rights but cannot
-            exercise them. HIV negative students who know about PrEP but have never accessed it.
-            Allies who know stigma is wrong but stay silent anyway.
+            {tr(
+              "LUMA is status neutral because the Information-to-Action gap affects every student regardless of HIV status. HIV positive students who know their rights but cannot exercise them. HIV negative students who know about PrEP but have never accessed it. Allies who know stigma is wrong but stay silent anyway.",
+              "LUMA est à statut neutre parce que l'écart Information-Action affecte chaque étudiant, quel que soit son statut VIH. Des étudiants séropositifs qui connaissent leurs droits mais ne peuvent pas les exercer. Des étudiants séronégatifs qui connaissent la PrEP mais n'y ont jamais accédé. Des alliés qui savent que la stigmatisation est injuste mais restent silencieux.",
+            )}
           </p>
           <p style={{ ...s.bodyLight, maxWidth: 640, margin: "0 auto 40px" }}>
-            LUMA closes the gap for all of them.
+            {tr(
+              "LUMA closes the gap for all of them.",
+              "LUMA comble cet écart pour chacun d'entre eux.",
+            )}
           </p>
           <Btn t={t} variant="ghost" onClick={() => setPage("about")}>
-            Read More About Our Approach
+            {tr("Read More About Our Approach", "En savoir plus sur notre approche")}
           </Btn>
         </div>
       </section>
@@ -1960,6 +2000,7 @@ export const HomePage = ({ t, setPage, setStoryId }) => {
 // ─── ABOUT PAGE ───────────────────────────────────────────────────────────────
 
 export const AboutPage = ({ t }) => {
+  const { tr } = useLang();
   const s = {
     hero: { background: t.primary, padding: "120px 32px 80px" },
     inner: { maxWidth: 1100, margin: "0 auto" },
@@ -2010,12 +2051,12 @@ export const AboutPage = ({ t }) => {
       <div style={s.hero}>
         <div style={s.inner}>
           <Tag t={t} light>
-            Our Story
+            {tr("Our Story", "Notre histoire")}
           </Tag>
           <h1 style={s.h1}>
-            From Information to Knowledge.
+            {tr("From Information to Knowledge.", "De l'information à la connaissance.")}
             <br />
-            From Knowledge to Action.
+            {tr("From Knowledge to Action.", "De la connaissance à l'action.")}
           </h1>
           <p
             style={{
@@ -2027,9 +2068,10 @@ export const AboutPage = ({ t }) => {
               marginTop: 20,
             }}
           >
-            LUMA exists to transform HIV information into HIV knowledge among Nigerian university
-            students. We take what students already know and make it something they can use, act on,
-            and live by.
+            {tr(
+              "LUMA exists to transform HIV information into HIV knowledge among Nigerian university students. We take what students already know and make it something they can use, act on, and live by.",
+              "LUMA existe pour transformer l'information sur le VIH en connaissance chez les étudiants universitaires nigérians. Nous prenons ce que les étudiants savent déjà et en faisons quelque chose qu'ils peuvent utiliser, sur lequel ils peuvent agir et qu'ils peuvent vivre au quotidien.",
+            )}
           </p>
         </div>
       </div>
@@ -2045,20 +2087,28 @@ export const AboutPage = ({ t }) => {
             }}
           >
             <div>
-              <SectionLabel t={t}>The Problem Nobody Named</SectionLabel>
-              <h2 style={s.h2}>The gap LUMA fills</h2>
+              <SectionLabel t={t}>
+                {tr("The Problem Nobody Named", "Le problème que personne ne nommait")}
+              </SectionLabel>
+              <h2 style={s.h2}>{tr("The gap LUMA fills", "Le vide que LUMA comble")}</h2>
               <p style={s.body}>
-                Nigeria has over 1.9 million people living with HIV. University campuses have no
-                dedicated HIV support, no anti-discrimination policies, and no peer community for
-                students navigating a positive status.
+                {tr(
+                  "Nigeria has over 1.9 million people living with HIV. University campuses have no dedicated HIV support, no anti-discrimination policies, and no peer community for students navigating a positive status.",
+                  "Le Nigéria compte plus de 1,9 million de personnes vivant avec le VIH. Les campus universitaires n'ont aucun soutien dédié au VIH, aucune politique anti-discrimination, et aucune communauté de pairs pour les étudiants séropositifs.",
+                )}
               </p>
               <p style={s.body}>
-                But the deeper problem is not a lack of information. Research shows 96.85% of
-                students already have high HIV knowledge. The problem is that information is not
-                translating into action. Students are not accessing PrEP. Not exercising their
-                rights. Not challenging stigma even when they know it is wrong.
+                {tr(
+                  "But the deeper problem is not a lack of information. Research shows 96.85% of students already have high HIV knowledge. The problem is that information is not translating into action. Students are not accessing PrEP. Not exercising their rights. Not challenging stigma even when they know it is wrong.",
+                  "Mais le problème le plus profond n'est pas un manque d'information. Les recherches montrent que 96,85 % des étudiants ont déjà un haut niveau de connaissance sur le VIH. Le problème, c'est que cette information ne se traduit pas en action. Les étudiants n'accèdent pas à la PrEP. Ils n'exercent pas leurs droits. Ils ne remettent pas en question la stigmatisation, même quand ils savent qu'elle est injuste.",
+                )}
               </p>
-              <p style={s.body}>LUMA is the organisation that closes that gap.</p>
+              <p style={s.body}>
+                {tr(
+                  "LUMA is the organisation that closes that gap.",
+                  "LUMA est l'organisation qui comble ce vide.",
+                )}
+              </p>
             </div>
             <div
               style={{
@@ -2088,7 +2138,10 @@ export const AboutPage = ({ t }) => {
                   marginTop: 12,
                 }}
               >
-                Dedicated HIV platforms for Nigerian university students before LUMA
+                {tr(
+                  "Dedicated HIV platforms for Nigerian university students before LUMA",
+                  "Plateformes dédiées au VIH pour les étudiants universitaires nigérians avant LUMA",
+                )}
               </p>
               <p
                 style={{
@@ -2100,7 +2153,7 @@ export const AboutPage = ({ t }) => {
                   letterSpacing: "1px",
                 }}
               >
-                AS OF JUNE 2026
+                {tr("AS OF JUNE 2026", "EN DATE DE JUIN 2026")}
               </p>
             </div>
           </div>
@@ -2109,31 +2162,36 @@ export const AboutPage = ({ t }) => {
 
       <section style={s.sectionAlt}>
         <div style={s.inner}>
-          <SectionLabel t={t}>How We Think About HIV</SectionLabel>
-          <h2 style={s.h2}>The status neutral foundation</h2>
+          <SectionLabel t={t}>{tr("How We Think About HIV", "Notre approche du VIH")}</SectionLabel>
+          <h2 style={s.h2}>
+            {tr("The status neutral foundation", "Le fondement du statut neutre")}
+          </h2>
           <p style={s.body}>
-            LUMA is built on the status neutral approach, a modern HIV framework that puts the
-            person ahead of their HIV status. It means we do not run separate programs for positive
-            and negative students. We build one space, one curriculum, one community.
+            {tr(
+              "LUMA is built on the status neutral approach, a modern HIV framework that puts the person ahead of their HIV status. It means we do not run separate programs for positive and negative students. We build one space, one curriculum, one community.",
+              "LUMA repose sur l'approche du statut neutre, un cadre moderne face au VIH qui place la personne avant son statut sérologique. Cela signifie que nous ne gérons pas de programmes séparés pour les étudiants séropositifs et séronégatifs. Nous construisons un seul espace, un seul programme, une seule communauté.",
+            )}
           </p>
           <p style={s.body}>
-            Because the divide between positive and negative is exactly where stigma lives, and LUMA
-            refuses to replicate it.
+            {tr(
+              "Because the divide between positive and negative is exactly where stigma lives, and LUMA refuses to replicate it.",
+              "Car c'est précisément dans cette division entre séropositifs et séronégatifs que vit la stigmatisation, et LUMA refuse de la reproduire.",
+            )}
           </p>
         </div>
       </section>
 
       <section style={s.sectionDark}>
         <div style={s.inner}>
-          <SectionLabel t={t}>The Founder</SectionLabel>
+          <SectionLabel t={t}>{tr("The Founder", "Le fondateur")}</SectionLabel>
           <h2 style={s.h2Light}>Adebare Hammed</h2>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 24 }}>
             {[
-              "Youth Advocate",
-              "Peer Mentor",
-              "CS Undergraduate",
-              "HIV Activist",
-              "Researcher",
+              tr("Youth Advocate", "Défenseur de la jeunesse"),
+              tr("Peer Mentor", "Mentor pair"),
+              tr("CS Undergraduate", "Étudiant en informatique"),
+              tr("HIV Activist", "Militant VIH"),
+              tr("Researcher", "Chercheur"),
             ].map((r) => (
               <span
                 key={r}
@@ -2152,20 +2210,22 @@ export const AboutPage = ({ t }) => {
             ))}
           </div>
           <p style={s.bodyLight}>
-            Adebare Hammed is completing a Computer Science degree at Kwara State University in July
-            2026. He is a Youth Advocate, Peer Mentor, and researcher whose work sits at the
-            intersection of HIV advocacy, campus health policy, and youth rights in Nigeria.
+            {tr(
+              "Adebare Hammed is completing a Computer Science degree at Kwara State University in July 2026. He is a Youth Advocate, Peer Mentor, and researcher whose work sits at the intersection of HIV advocacy, campus health policy, and youth rights in Nigeria.",
+              "Adebare Hammed termine une licence en informatique à la Kwara State University en juillet 2026. Il est défenseur de la jeunesse, mentor pair, et chercheur, avec un travail à la croisée du plaidoyer VIH, de la politique de santé sur les campus et des droits des jeunes au Nigéria.",
+            )}
           </p>
           <p style={s.bodyLight}>
-            He founded LUMA after years of observing a gap no organisation was addressing: Nigerian
-            university students have HIV information but lack the tools, community, and confidence
-            to act on it.
+            {tr(
+              "He founded LUMA after years of observing a gap no organisation was addressing: Nigerian university students have HIV information but lack the tools, community, and confidence to act on it.",
+              "Il a fondé LUMA après des années à observer un vide qu'aucune organisation ne comblait : les étudiants universitaires nigérians ont l'information sur le VIH, mais leur manquent les outils, la communauté et la confiance pour agir en conséquence.",
+            )}
           </p>
           <p style={s.bodyLight}>
-            His research spans PrEP awareness at KWASU and HIV stigma and mental health across
-            Nigerian youth HIV networks. He has facilitated sessions at the Adolescent Girls Summit
-            2026 in Yamoussoukro and participated in the African Regional Convening organised by
-            Sonke Gender Justice in Nairobi.
+            {tr(
+              "His research spans PrEP awareness at KWASU and HIV stigma and mental health across Nigerian youth HIV networks. He has facilitated sessions at the Adolescent Girls Summit 2026 in Yamoussoukro and participated in the African Regional Convening organised by Sonke Gender Justice in Nairobi.",
+              "Ses recherches portent sur la sensibilisation à la PrEP à la KWASU ainsi que sur la stigmatisation liée au VIH et la santé mentale au sein des réseaux VIH de jeunes nigérians. Il a animé des sessions au Sommet des filles adolescentes 2026 à Yamoussoukro et a participé à la Convention régionale africaine organisée par Sonke Gender Justice à Nairobi.",
+            )}
           </p>
           <p
             style={{
@@ -2183,8 +2243,10 @@ export const AboutPage = ({ t }) => {
 
       <section style={s.section}>
         <div style={s.inner}>
-          <SectionLabel t={t}>Our Evidence Base</SectionLabel>
-          <h2 style={s.h2}>Our research</h2>
+          <SectionLabel t={t}>
+            {tr("Our Evidence Base", "Notre base de données probantes")}
+          </SectionLabel>
+          <h2 style={s.h2}>{tr("Our research", "Nos recherches")}</h2>
           <div
             style={{
               display: "grid",
@@ -2195,16 +2257,28 @@ export const AboutPage = ({ t }) => {
           >
             {[
               {
-                title: "PrEP Awareness at Kwara State University",
-                body: "Examining PrEP knowledge, barriers to access, and the role of campus health services in PrEP education among KWASU students.",
+                title: tr(
+                  "PrEP Awareness at Kwara State University",
+                  "Sensibilisation à la PrEP à la Kwara State University",
+                ),
+                body: tr(
+                  "Examining PrEP knowledge, barriers to access, and the role of campus health services in PrEP education among KWASU students.",
+                  "Une étude sur la connaissance de la PrEP, les obstacles à son accès, et le rôle des services de santé du campus dans l'éducation à la PrEP chez les étudiants de la KWASU.",
+                ),
               },
               {
-                title: "HIV Stigma and Mental Health Across APYIN Branches",
-                body: "A multi-site study on the relationship between HIV-related stigma and mental health outcomes among young people living with HIV across Nigeria.",
+                title: tr(
+                  "HIV Stigma and Mental Health Across APYIN Branches",
+                  "Stigmatisation du VIH et santé mentale au sein des antennes APYIN",
+                ),
+                body: tr(
+                  "A multi-site study on the relationship between HIV-related stigma and mental health outcomes among young people living with HIV across Nigeria.",
+                  "Une étude multi-sites sur le lien entre la stigmatisation liée au VIH et la santé mentale chez les jeunes vivant avec le VIH à travers le Nigéria.",
+                ),
               },
             ].map((study, i) => (
               <Card key={i} t={t}>
-                <Tag t={t}>Ongoing Research</Tag>
+                <Tag t={t}>{tr("Ongoing Research", "Recherche en cours")}</Tag>
                 <h3
                   style={{
                     fontFamily: "'Space Grotesk',sans-serif",
@@ -2927,35 +3001,57 @@ export const CirclePage = ({ t }) => {
 // ─── OUR WORK PAGE ────────────────────────────────────────────────────────────
 
 export const WorkPage = ({ t, setPage }) => {
+  const { tr } = useLang();
   const pillars = [
     {
       num: "01",
-      label: "Inform",
-      title: "Because ignorance is not neutral.",
-      body: "We do not just deliver HIV information. Nigerian students already have it. We make that information actionable, contextual, and impossible to ignore. Every Campus Truth Series article moves students from knowing to doing.",
-      programs: ["Campus Truth Series", "The Status Neutral Campus Guide"],
+      label: tr("Inform", "Informer"),
+      title: tr("Because ignorance is not neutral.", "Parce que l'ignorance n'est pas neutre."),
+      body: tr(
+        "We do not just deliver HIV information. Nigerian students already have it. We make that information actionable, contextual, and impossible to ignore. Every Campus Truth Series article moves students from knowing to doing.",
+        "Nous ne nous contentons pas de transmettre de l'information sur le VIH. Les étudiants nigérians l'ont déjà. Nous rendons cette information actionnable, contextuelle, et impossible à ignorer. Chaque article de la Campus Truth Series fait passer les étudiants du savoir à l'agir.",
+      ),
+      programs: [
+        tr("Campus Truth Series", "Campus Truth Series"),
+        tr("The Status Neutral Campus Guide", "Le Guide du campus au statut neutre"),
+      ],
       page: "truth",
       dark: false,
     },
     {
       num: "02",
-      label: "Advocate",
-      title: "Policy does not change by itself.",
-      body: "Knowing your rights and exercising your rights are two completely different things. LUMA equips students with the tools, language, and confidence to turn legal knowledge into real protection on their campuses.",
+      label: tr("Advocate", "Défendre"),
+      title: tr(
+        "Policy does not change by itself.",
+        "Les politiques ne changent pas d'elles-mêmes.",
+      ),
+      body: tr(
+        "Knowing your rights and exercising your rights are two completely different things. LUMA equips students with the tools, language, and confidence to turn legal knowledge into real protection on their campuses.",
+        "Connaître ses droits et les exercer sont deux choses complètement différentes. LUMA équipe les étudiants des outils, du langage et de la confiance nécessaires pour transformer la connaissance juridique en protection réelle sur leurs campus.",
+      ),
       programs: [
-        "Campus Policy Push",
-        "National Prevention Plan Engagement",
-        "Research to Advocacy Pipeline",
+        tr("Campus Policy Push", "Mobilisation pour la politique de campus"),
+        tr("National Prevention Plan Engagement", "Engagement dans le Plan national de prévention"),
+        tr("Research to Advocacy Pipeline", "De la recherche au plaidoyer"),
       ],
       page: "advocacy",
       dark: true,
     },
     {
       num: "03",
-      label: "Belong",
-      title: "You should not have to be alone in this.",
-      body: "Community is where information becomes knowledge. In the Peer Circle, what students know in theory becomes something they can live with, talk about, and act on together.",
-      programs: ["The Peer Circle", "Voices From Campus"],
+      label: tr("Belong", "Appartenir"),
+      title: tr(
+        "You should not have to be alone in this.",
+        "Vous ne devriez pas avoir à traverser cela seul.",
+      ),
+      body: tr(
+        "Community is where information becomes knowledge. In the Peer Circle, what students know in theory becomes something they can live with, talk about, and act on together.",
+        "C'est dans la communauté que l'information devient connaissance. Dans le Cercle de pairs, ce que les étudiants savent en théorie devient quelque chose qu'ils peuvent vivre, dont ils peuvent parler et sur lequel ils peuvent agir ensemble.",
+      ),
+      programs: [
+        tr("The Peer Circle", "Le Cercle de pairs"),
+        tr("Voices From Campus", "Voix du campus"),
+      ],
       page: "circle",
       dark: false,
     },
@@ -2968,7 +3064,7 @@ export const WorkPage = ({ t, setPage }) => {
       <div style={{ background: t.primary, padding: "120px 32px 80px" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
           <Tag t={t} light>
-            Our Work
+            {tr("Our Work", "Notre travail")}
           </Tag>
           <h1
             style={{
@@ -2980,9 +3076,9 @@ export const WorkPage = ({ t, setPage }) => {
               marginTop: 16,
             }}
           >
-            Three pillars.
+            {tr("Three pillars.", "Trois piliers.")}
             <br />
-            One direction.
+            {tr("One direction.", "Une seule direction.")}
           </h1>
         </div>
       </div>
@@ -3047,7 +3143,7 @@ export const WorkPage = ({ t, setPage }) => {
               ))}
             </div>
             <Btn t={t} variant={p.dark ? "ghost" : "primary"} onClick={() => setPage(p.page)}>
-              Explore {p.label}
+              {tr("Explore", "Découvrir")} {p.label}
             </Btn>
           </div>
         </section>
@@ -3058,159 +3154,182 @@ export const WorkPage = ({ t, setPage }) => {
 
 // ─── ADVOCACY PAGE ───────────────────────────────────────────────────────────
 
-export const AdvocacyPage = ({ t }) => (
-  <div>
-    <div style={{ background: t.primary, padding: "120px 32px 80px" }}>
-      <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-        <Tag t={t} light>
-          The Advocate Pillar
-        </Tag>
-        <h1
-          style={{
-            fontFamily: "'Space Grotesk',sans-serif",
-            fontSize: "clamp(36px,5vw,64px)",
-            fontWeight: 800,
-            color: t.ivory,
-            lineHeight: 1.1,
-            marginTop: 16,
-          }}
-        >
-          Policy does not change by itself. We push.
-        </h1>
-        <p
-          style={{
-            fontFamily: "'DM Sans',sans-serif",
-            fontSize: 18,
-            color: "rgba(247,243,236,0.7)",
-            lineHeight: 1.7,
-            maxWidth: 580,
-            marginTop: 16,
-          }}
-        >
-          LUMA advocates for anti-discrimination policies at Nigerian universities and for youth
-          voices in national HIV prevention frameworks.
-        </p>
-      </div>
-    </div>
-    <section style={{ padding: "80px 32px", background: t.bg }}>
-      <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))",
-            gap: 24,
-          }}
-        >
-          {[
-            {
-              level: "On Campus",
-              body: "Pushing individual universities to adopt formal anti-discrimination policies for HIV positive students and to train campus health staff on status neutral care.",
-            },
-            {
-              level: "Nationally",
-              body: "Feeding university-specific data and youth voices into Nigeria's 2026 to 2030 National HIV Prevention Plan through submissions, partnerships, and evidence briefs.",
-            },
-            {
-              level: "Globally",
-              body: "Using platforms including AIDS 2026, One Young World, and the Y+ LEAP Academy to amplify Nigerian campus HIV realities on the world stage.",
-            },
-          ].map((a, i) => (
-            <Card key={i} t={t}>
-              <Tag t={t}>{a.level}</Tag>
-              <p
-                style={{
-                  fontFamily: "'DM Sans',sans-serif",
-                  fontSize: 16,
-                  color: t.textMuted,
-                  lineHeight: 1.75,
-                  marginTop: 16,
-                }}
-              >
-                {a.body}
-              </p>
-            </Card>
-          ))}
-        </div>
-        <div style={{ marginTop: 64 }}>
-          <SectionLabel t={t}>We Advocate With Data</SectionLabel>
-          <h2
+export const AdvocacyPage = ({ t }) => {
+  const { tr } = useLang();
+  return (
+    <div>
+      <div style={{ background: t.primary, padding: "120px 32px 80px" }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+          <Tag t={t} light>
+            {tr("The Advocate Pillar", "Le pilier Défendre")}
+          </Tag>
+          <h1
             style={{
               fontFamily: "'Space Grotesk',sans-serif",
-              fontSize: "clamp(26px,3.5vw,42px)",
+              fontSize: "clamp(36px,5vw,64px)",
               fontWeight: 800,
-              color: t.text,
-              marginBottom: 20,
+              color: t.ivory,
+              lineHeight: 1.1,
+              marginTop: 16,
             }}
           >
-            Our evidence base
-          </h2>
+            {tr(
+              "Policy does not change by itself. We push.",
+              "Les politiques ne changent pas d'elles-mêmes. Nous poussons.",
+            )}
+          </h1>
           <p
             style={{
               fontFamily: "'DM Sans',sans-serif",
-              fontSize: 17,
-              color: t.textMuted,
-              lineHeight: 1.8,
-              maxWidth: 680,
+              fontSize: 18,
+              color: "rgba(247,243,236,0.7)",
+              lineHeight: 1.7,
+              maxWidth: 580,
+              marginTop: 16,
             }}
           >
-            LUMA's advocacy is grounded in two ongoing research studies. Our research has found a
-            critical knowledge-attitude paradox: 96.85% of university students demonstrate high HIV
-            knowledge, yet only 55.5% hold positive attitudes toward people living with HIV.
-            Knowledge alone is not enough. Policy change is required.
+            {tr(
+              "LUMA advocates for anti-discrimination policies at Nigerian universities and for youth voices in national HIV prevention frameworks.",
+              "LUMA milite pour des politiques anti-discrimination dans les universités nigérianes et pour la voix des jeunes dans les cadres nationaux de prévention du VIH.",
+            )}
           </p>
         </div>
-        <div
-          style={{
-            marginTop: 48,
-            background: t.isDark ? t.card : t.accentLight,
-            border: `1px solid ${t.borderColor}`,
-            borderRadius: 16,
-            padding: 32,
-          }}
-        >
+      </div>
+      <section style={{ padding: "80px 32px", background: t.bg }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
           <div
             style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "flex-start",
-              flexWrap: "wrap",
-              gap: 16,
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))",
+              gap: 24,
             }}
           >
-            <div>
-              <Tag t={t}>Active Campaign</Tag>
-              <h3
-                style={{
-                  fontFamily: "'Space Grotesk',sans-serif",
-                  fontSize: 22,
-                  fontWeight: 700,
-                  color: t.text,
-                  marginTop: 12,
-                  marginBottom: 8,
-                }}
-              >
-                The Status Neutral Campus Initiative
-              </h3>
-              <p
-                style={{
-                  fontFamily: "'DM Sans',sans-serif",
-                  fontSize: 15,
-                  color: t.textMuted,
-                  lineHeight: 1.7,
-                  maxWidth: 560,
-                }}
-              >
-                A push for Nigerian universities to adopt status neutral HIV service frameworks in
-                their campus health centres, beginning with Kwara State University as a pilot
-                institution.
-              </p>
+            {[
+              {
+                level: tr("On Campus", "Sur le campus"),
+                body: tr(
+                  "Pushing individual universities to adopt formal anti-discrimination policies for HIV positive students and to train campus health staff on status neutral care.",
+                  "Encourager chaque université à adopter des politiques anti-discrimination formelles pour les étudiants séropositifs et à former le personnel de santé du campus aux soins à statut neutre.",
+                ),
+              },
+              {
+                level: tr("Nationally", "Au niveau national"),
+                body: tr(
+                  "Feeding university-specific data and youth voices into Nigeria's 2026 to 2030 National HIV Prevention Plan through submissions, partnerships, and evidence briefs.",
+                  "Alimenter le Plan national de prévention du VIH 2026-2030 du Nigéria avec des données spécifiques aux universités et la voix des jeunes, via des soumissions, des partenariats et des notes factuelles.",
+                ),
+              },
+              {
+                level: tr("Globally", "Au niveau mondial"),
+                body: tr(
+                  "Using platforms including AIDS 2026, One Young World, and the Y+ LEAP Academy to amplify Nigerian campus HIV realities on the world stage.",
+                  "Utiliser des plateformes telles qu'AIDS 2026, One Young World et la Y+ LEAP Academy pour porter les réalités du VIH sur les campus nigérians à l'échelle mondiale.",
+                ),
+              },
+            ].map((a, i) => (
+              <Card key={i} t={t}>
+                <Tag t={t}>{a.level}</Tag>
+                <p
+                  style={{
+                    fontFamily: "'DM Sans',sans-serif",
+                    fontSize: 16,
+                    color: t.textMuted,
+                    lineHeight: 1.75,
+                    marginTop: 16,
+                  }}
+                >
+                  {a.body}
+                </p>
+              </Card>
+            ))}
+          </div>
+          <div style={{ marginTop: 64 }}>
+            <SectionLabel t={t}>
+              {tr("We Advocate With Data", "Nous militons avec des données")}
+            </SectionLabel>
+            <h2
+              style={{
+                fontFamily: "'Space Grotesk',sans-serif",
+                fontSize: "clamp(26px,3.5vw,42px)",
+                fontWeight: 800,
+                color: t.text,
+                marginBottom: 20,
+              }}
+            >
+              {tr("Our evidence base", "Notre base de données probantes")}
+            </h2>
+            <p
+              style={{
+                fontFamily: "'DM Sans',sans-serif",
+                fontSize: 17,
+                color: t.textMuted,
+                lineHeight: 1.8,
+                maxWidth: 680,
+              }}
+            >
+              {tr(
+                "LUMA's advocacy is grounded in two ongoing research studies. Our research has found a critical knowledge-attitude paradox: 96.85% of university students demonstrate high HIV knowledge, yet only 55.5% hold positive attitudes toward people living with HIV. Knowledge alone is not enough. Policy change is required.",
+                "Le plaidoyer de LUMA s'appuie sur deux études de recherche en cours. Nos recherches ont mis en évidence un paradoxe critique entre connaissance et attitude : 96,85 % des étudiants universitaires font preuve d'une haute connaissance du VIH, mais seulement 55,5 % ont des attitudes positives envers les personnes vivant avec le VIH. La connaissance seule ne suffit pas. Un changement de politique est nécessaire.",
+              )}
+            </p>
+          </div>
+          <div
+            style={{
+              marginTop: 48,
+              background: t.isDark ? t.card : t.accentLight,
+              border: `1px solid ${t.borderColor}`,
+              borderRadius: 16,
+              padding: 32,
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "flex-start",
+                flexWrap: "wrap",
+                gap: 16,
+              }}
+            >
+              <div>
+                <Tag t={t}>{tr("Active Campaign", "Campagne active")}</Tag>
+                <h3
+                  style={{
+                    fontFamily: "'Space Grotesk',sans-serif",
+                    fontSize: 22,
+                    fontWeight: 700,
+                    color: t.text,
+                    marginTop: 12,
+                    marginBottom: 8,
+                  }}
+                >
+                  {tr(
+                    "The Status Neutral Campus Initiative",
+                    "L'Initiative Campus au statut neutre",
+                  )}
+                </h3>
+                <p
+                  style={{
+                    fontFamily: "'DM Sans',sans-serif",
+                    fontSize: 15,
+                    color: t.textMuted,
+                    lineHeight: 1.7,
+                    maxWidth: 560,
+                  }}
+                >
+                  {tr(
+                    "A push for Nigerian universities to adopt status neutral HIV service frameworks in their campus health centres, beginning with Kwara State University as a pilot institution.",
+                    "Une initiative pour que les universités nigérianes adoptent des cadres de services VIH à statut neutre dans leurs centres de santé de campus, en commençant par la Kwara State University comme établissement pilote.",
+                  )}
+                </p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-  </div>
-);
+      </section>
+    </div>
+  );
+};
 
 // ─── RESOURCES PAGE ───────────────────────────────────────────────────────────
 
@@ -4653,23 +4772,24 @@ export const GuidePage = ({ t, guideId, setPage }) => {
 // ─── CONTACT PAGE ────────────────────────────────────────────────────────────
 
 export const ContactPage = ({ t, preSubject = "" }) => {
+  const { tr } = useLang();
   const subjects = [
-    "General Enquiry",
-    "Partnership Enquiry",
-    "Submit a Myth",
-    "Campus Ambassador Application",
-    "Media and Press",
-    "Research Collaboration",
-    "Donor or Funding Enquiry",
-    "Other",
+    tr("General Enquiry", "Demande générale"),
+    tr("Partnership Enquiry", "Demande de partenariat"),
+    tr("Submit a Myth", "Soumettre un mythe"),
+    tr("Campus Ambassador Application", "Candidature Ambassadeur de campus"),
+    tr("Media and Press", "Médias et presse"),
+    tr("Research Collaboration", "Collaboration de recherche"),
+    tr("Donor or Funding Enquiry", "Demande de don ou de financement"),
+    tr("Other", "Autre"),
   ];
   const anonSubjects = [
-    "General Question",
-    "Submit a Myth",
-    "Peer Circle Enquiry",
-    "Campus Situation",
-    "Research or Data",
-    "Other",
+    tr("General Question", "Question générale"),
+    tr("Submit a Myth", "Soumettre un mythe"),
+    tr("Peer Circle Enquiry", "Demande sur le Cercle de pairs"),
+    tr("Campus Situation", "Situation sur le campus"),
+    tr("Research or Data", "Recherche ou données"),
+    tr("Other", "Autre"),
   ];
 
   const [form, setForm] = useState({
@@ -4713,7 +4833,7 @@ export const ContactPage = ({ t, preSubject = "" }) => {
       <div style={{ background: t.primary, padding: "120px 32px 80px" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
           <Tag t={t} light>
-            Contact
+            {tr("Contact", "Contact")}
           </Tag>
           <h1
             style={{
@@ -4725,7 +4845,7 @@ export const ContactPage = ({ t, preSubject = "" }) => {
               marginTop: 16,
             }}
           >
-            We are here. Talk to us.
+            {tr("We are here. Talk to us.", "Nous sommes là. Parlez-nous.")}
           </h1>
           <p
             style={{
@@ -4737,9 +4857,10 @@ export const ContactPage = ({ t, preSubject = "" }) => {
               marginTop: 16,
             }}
           >
-            Whether you have a question, a collaboration idea, a myth to submit, or just need to
-            reach someone who gets it, we want to hear from you. We read every message and respond
-            to everything. Give us up to 48 hours.
+            {tr(
+              "Whether you have a question, a collaboration idea, a myth to submit, or just need to reach someone who gets it, we want to hear from you. We read every message and respond to everything. Give us up to 48 hours.",
+              "Que vous ayez une question, une idée de collaboration, un mythe à soumettre, ou que vous ayez simplement besoin de parler à quelqu'un qui comprend, nous voulons vous entendre. Nous lisons chaque message et répondons à tout. Laissez-nous jusqu'à 48 heures.",
+            )}
           </p>
         </div>
       </div>
@@ -4754,7 +4875,7 @@ export const ContactPage = ({ t, preSubject = "" }) => {
           }}
         >
           <div>
-            <SectionLabel t={t}>Send a Message</SectionLabel>
+            <SectionLabel t={t}>{tr("Send a Message", "Envoyer un message")}</SectionLabel>
             <h2
               style={{
                 fontFamily: "'Space Grotesk',sans-serif",
@@ -4764,18 +4885,21 @@ export const ContactPage = ({ t, preSubject = "" }) => {
                 marginBottom: 28,
               }}
             >
-              General contact
+              {tr("General contact", "Contact général")}
             </h2>
             {sent ? (
               <FormSuccess
                 t={t}
-                message="Message sent. We read everything and we will be in touch within 48 hours. Thank you for reaching out to LUMA."
+                message={tr(
+                  "Message sent. We read everything and we will be in touch within 48 hours. Thank you for reaching out to LUMA.",
+                  "Message envoyé. Nous lisons tout et vous répondrons sous 48 heures. Merci d'avoir contacté LUMA.",
+                )}
               />
             ) : (
               <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
                 <Input
                   t={t}
-                  placeholder="Your name (optional)"
+                  placeholder={tr("Your name (optional)", "Votre nom (facultatif)")}
                   value={form.name}
                   onChange={(e) => setForm({ ...form, name: e.target.value })}
                 />
@@ -4799,7 +4923,10 @@ export const ContactPage = ({ t, preSubject = "" }) => {
                 </Select>
                 <Textarea
                   t={t}
-                  placeholder="Tell us what is on your mind... (minimum 20 characters)"
+                  placeholder={tr(
+                    "Tell us what is on your mind... (minimum 20 characters)",
+                    "Dites-nous ce que vous avez en tête... (20 caractères minimum)",
+                  )}
                   value={form.message}
                   onChange={(e) => setForm({ ...form, message: e.target.value })}
                 />
@@ -4809,13 +4936,15 @@ export const ContactPage = ({ t, preSubject = "" }) => {
                   onClick={handleSend}
                   style={{ opacity: sending ? 0.6 : 1 }}
                 >
-                  {sending ? "Sending..." : "Send Message"}
+                  {sending
+                    ? tr("Sending...", "Envoi en cours...")
+                    : tr("Send Message", "Envoyer le message")}
                 </Btn>
               </div>
             )}
           </div>
           <div>
-            <SectionLabel t={t}>Stay Anonymous</SectionLabel>
+            <SectionLabel t={t}>{tr("Stay Anonymous", "Rester anonyme")}</SectionLabel>
             <h2
               style={{
                 fontFamily: "'Space Grotesk',sans-serif",
@@ -4825,7 +4954,7 @@ export const ContactPage = ({ t, preSubject = "" }) => {
                 marginBottom: 16,
               }}
             >
-              Anonymous message
+              {tr("Anonymous message", "Message anonyme")}
             </h2>
             <p
               style={{
@@ -4836,13 +4965,18 @@ export const ContactPage = ({ t, preSubject = "" }) => {
                 marginBottom: 24,
               }}
             >
-              Your identity will not be recorded. Use this form if you need to reach us without
-              identifying yourself. No name. No email. Just your message.
+              {tr(
+                "Your identity will not be recorded. Use this form if you need to reach us without identifying yourself. No name. No email. Just your message.",
+                "Votre identité ne sera pas enregistrée. Utilisez ce formulaire si vous devez nous contacter sans vous identifier. Pas de nom. Pas d'e-mail. Juste votre message.",
+              )}
             </p>
             {anonSent ? (
               <FormSuccess
                 t={t}
-                message="Anonymous message received. Thank you for trusting us with this. We will read it carefully."
+                message={tr(
+                  "Anonymous message received. Thank you for trusting us with this. We will read it carefully.",
+                  "Message anonyme reçu. Merci de nous faire confiance. Nous le lirons attentivement.",
+                )}
               />
             ) : (
               <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
@@ -4859,7 +4993,10 @@ export const ContactPage = ({ t, preSubject = "" }) => {
                 </Select>
                 <Textarea
                   t={t}
-                  placeholder="Type your message here. You do not need to identify yourself. (minimum 10 characters)"
+                  placeholder={tr(
+                    "Type your message here. You do not need to identify yourself. (minimum 10 characters)",
+                    "Écrivez votre message ici. Vous n'avez pas besoin de vous identifier. (10 caractères minimum)",
+                  )}
                   value={anonForm.message}
                   onChange={(e) => setAnonForm({ ...anonForm, message: e.target.value })}
                 />
@@ -4869,7 +5006,9 @@ export const ContactPage = ({ t, preSubject = "" }) => {
                   onClick={handleAnon}
                   style={{ opacity: anonSending ? 0.6 : 1 }}
                 >
-                  {anonSending ? "Sending..." : "Send Anonymously"}
+                  {anonSending
+                    ? tr("Sending...", "Envoi en cours...")
+                    : tr("Send Anonymously", "Envoyer anonymement")}
                 </Btn>
               </div>
             )}
@@ -4885,7 +5024,7 @@ export const ContactPage = ({ t, preSubject = "" }) => {
                   marginBottom: 12,
                 }}
               >
-                Direct Contact
+                {tr("Direct Contact", "Contact direct")}
               </p>
               <a
                 href={`mailto:${LUMA_EMAIL}`}
@@ -4907,7 +5046,10 @@ export const ContactPage = ({ t, preSubject = "" }) => {
                   lineHeight: 1.7,
                 }}
               >
-                We read every message and respond to everything. Give us up to 48 hours.
+                {tr(
+                  "We read every message and respond to everything. Give us up to 48 hours.",
+                  "Nous lisons chaque message et répondons à tout. Laissez-nous jusqu'à 48 heures.",
+                )}
               </p>
             </div>
           </div>
