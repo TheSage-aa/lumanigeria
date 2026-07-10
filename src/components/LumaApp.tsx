@@ -1,19 +1,19 @@
 // @ts-nocheck
 import { useState, useEffect } from "react";
 import { Link } from "@tanstack/react-router";
-import lumaLogoColor from "@/assets/luma-logo-color.png.asset.json";
-import lumaLogoLight from "@/assets/luma-logo-light.png.asset.json";
+import lumaLogo from "@/assets/luma-logo-light.png";
 import { useLang } from "@/lib/i18n";
-import guide1 from "@/assets/guides/LUMA_Guide1_HIV_Basics.pdf.asset.json";
-import guide2 from "@/assets/guides/LUMA_Guide2_PrEP_and_Prevention.pdf.asset.json";
-import guide3 from "@/assets/guides/LUMA_Guide3_Testing_and_Treatment.pdf.asset.json";
-import guide4 from "@/assets/guides/LUMA_Guide4_Your_Rights_on_Campus.pdf.asset.json";
-import guide5 from "@/assets/guides/LUMA_Guide5_Mental_Health_and_HIV.pdf.asset.json";
-import guide6 from "@/assets/guides/LUMA_Guide6_For_Allies.pdf.asset.json";
+import guide1 from "@/assets/guides/LUMA_Guide1_HIV_Basics.pdf";
+import guide2 from "@/assets/guides/LUMA_Guide2_PrEP_and_Prevention.pdf";
+import guide3 from "@/assets/guides/LUMA_Guide3_Testing_and_Treatment.pdf";
+import guide4 from "@/assets/guides/LUMA_Guide4_Your_Rights_on_Campus.pdf";
+import guide5 from "@/assets/guides/LUMA_Guide5_Mental_Health_and_HIV.pdf";
+import guide6 from "@/assets/guides/LUMA_Guide6_For_Allies.pdf";
 
 export const GUIDES = {
   "hiv-basics": {
     asset: guide1,
+    filename: "LUMA_Guide1_HIV_Basics.pdf",
     title: "HIV Basics",
     titleFr: "Bases du VIH",
     body: "What HIV is, how it works, and what it absolutely does not do. Plain language, no jargon.",
@@ -22,6 +22,7 @@ export const GUIDES = {
   },
   "prep-prevention": {
     asset: guide2,
+    filename: "LUMA_Guide2_PrEP_and_Prevention.pdf",
     title: "PrEP and Prevention",
     titleFr: "PrEP et Prévention",
     body: "What PrEP is, how to access it in Nigeria, and why every student should know about it.",
@@ -30,6 +31,7 @@ export const GUIDES = {
   },
   "testing-treatment": {
     asset: guide3,
+    filename: "LUMA_Guide3_Testing_and_Treatment.pdf",
     title: "Testing and Treatment",
     titleFr: "Dépistage et Traitement",
     body: "Where to get tested, what treatment looks like, and what undetectable means for your life.",
@@ -38,6 +40,7 @@ export const GUIDES = {
   },
   "your-rights": {
     asset: guide4,
+    filename: "LUMA_Guide4_Your_Rights_on_Campus.pdf",
     title: "Your Rights on Campus",
     titleFr: "Vos droits sur le campus",
     body: "Anti-discrimination law, medical confidentiality, and what your university legally owes you.",
@@ -46,6 +49,7 @@ export const GUIDES = {
   },
   "mental-health": {
     asset: guide5,
+    filename: "LUMA_Guide5_Mental_Health_and_HIV.pdf",
     title: "Mental Health and HIV",
     titleFr: "Santé mentale et VIH",
     body: "Resources for students navigating the emotional weight of an HIV diagnosis on campus.",
@@ -54,6 +58,7 @@ export const GUIDES = {
   },
   "for-allies": {
     asset: guide6,
+    filename: "LUMA_Guide6_For_Allies.pdf",
     title: "For Allies",
     titleFr: "Pour les alliés",
     body: "How non-positive students can actively support, advocate, and break stigma on their campuses.",
@@ -457,7 +462,7 @@ const Logo = ({
   variant?: "color" | "light";
 }) => (
   <img
-    src={variant === "light" ? lumaLogoLight.url : lumaLogoColor.url}
+    src={lumaLogo}
     alt="LUMA — Luminating Africa"
     height={size}
     style={{ height: size, width: "auto", display: "block" }}
@@ -3313,8 +3318,8 @@ export const ResourcesPage = ({ t }) => {
                     {tr("Read Guide", "Lire le Guide")} <ArrowRight color={t.accent} size={12} />
                   </span>
                   <a
-                    href={g.asset.url}
-                    download={g.asset.original_filename}
+                    href={g.asset}
+                    download={g.filename}
                     onClick={(e) => e.stopPropagation()}
                     style={{
                       fontFamily: "'Space Grotesk',sans-serif",
@@ -4456,7 +4461,7 @@ export const GuidePage = ({ t, guideId, setPage }) => {
   }
   const title = lang === "fr" ? guide.titleFr : guide.title;
   const body = lang === "fr" ? guide.bodyFr : guide.body;
-  const url = guide.asset.url;
+  const url = guide.asset;
   const others = Object.entries(GUIDES)
     .filter(([id]) => id !== guideId)
     .slice(0, 3);
@@ -4514,7 +4519,7 @@ export const GuidePage = ({ t, guideId, setPage }) => {
           <div style={{ display: "flex", gap: 12, marginTop: 28, flexWrap: "wrap" }}>
             <a
               href={url}
-              download={guide.asset.original_filename}
+              download={guide.filename}
               style={{
                 background: t.ivory,
                 color: t.primary,
