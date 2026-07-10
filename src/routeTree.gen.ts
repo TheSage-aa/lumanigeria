@@ -11,6 +11,8 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as WorkRouteImport } from './routes/work'
 import { Route as TruthRouteImport } from './routes/truth'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
 import { Route as ResourcesRouteImport } from './routes/resources'
 import { Route as InvolveRouteImport } from './routes/involve'
 import { Route as GamesRouteImport } from './routes/games'
@@ -33,6 +35,16 @@ const WorkRoute = WorkRouteImport.update({
 const TruthRoute = TruthRouteImport.update({
   id: '/truth',
   path: '/truth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RobotsDottxtRoute = RobotsDottxtRouteImport.update({
+  id: '/robots.txt',
+  path: '/robots.txt',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ResourcesRoute = ResourcesRouteImport.update({
@@ -110,6 +122,8 @@ export interface FileRoutesByFullPath {
   '/games': typeof GamesRoute
   '/involve': typeof InvolveRoute
   '/resources': typeof ResourcesRoute
+  '/robots.txt': typeof RobotsDottxtRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/truth': typeof TruthRoute
   '/work': typeof WorkRoute
   '/apply/ambassador': typeof ApplyAmbassadorRoute
@@ -127,6 +141,8 @@ export interface FileRoutesByTo {
   '/games': typeof GamesRoute
   '/involve': typeof InvolveRoute
   '/resources': typeof ResourcesRoute
+  '/robots.txt': typeof RobotsDottxtRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/truth': typeof TruthRoute
   '/work': typeof WorkRoute
   '/apply/ambassador': typeof ApplyAmbassadorRoute
@@ -145,6 +161,8 @@ export interface FileRoutesById {
   '/games': typeof GamesRoute
   '/involve': typeof InvolveRoute
   '/resources': typeof ResourcesRoute
+  '/robots.txt': typeof RobotsDottxtRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/truth': typeof TruthRoute
   '/work': typeof WorkRoute
   '/apply/ambassador': typeof ApplyAmbassadorRoute
@@ -164,6 +182,8 @@ export interface FileRouteTypes {
     | '/games'
     | '/involve'
     | '/resources'
+    | '/robots.txt'
+    | '/sitemap.xml'
     | '/truth'
     | '/work'
     | '/apply/ambassador'
@@ -181,6 +201,8 @@ export interface FileRouteTypes {
     | '/games'
     | '/involve'
     | '/resources'
+    | '/robots.txt'
+    | '/sitemap.xml'
     | '/truth'
     | '/work'
     | '/apply/ambassador'
@@ -198,6 +220,8 @@ export interface FileRouteTypes {
     | '/games'
     | '/involve'
     | '/resources'
+    | '/robots.txt'
+    | '/sitemap.xml'
     | '/truth'
     | '/work'
     | '/apply/ambassador'
@@ -216,6 +240,8 @@ export interface RootRouteChildren {
   GamesRoute: typeof GamesRoute
   InvolveRoute: typeof InvolveRoute
   ResourcesRoute: typeof ResourcesRoute
+  RobotsDottxtRoute: typeof RobotsDottxtRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TruthRoute: typeof TruthRoute
   WorkRoute: typeof WorkRoute
   ApplyAmbassadorRoute: typeof ApplyAmbassadorRoute
@@ -239,6 +265,20 @@ declare module '@tanstack/react-router' {
       path: '/truth'
       fullPath: '/truth'
       preLoaderRoute: typeof TruthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/robots.txt': {
+      id: '/robots.txt'
+      path: '/robots.txt'
+      fullPath: '/robots.txt'
+      preLoaderRoute: typeof RobotsDottxtRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/resources': {
@@ -344,6 +384,8 @@ const rootRouteChildren: RootRouteChildren = {
   GamesRoute: GamesRoute,
   InvolveRoute: InvolveRoute,
   ResourcesRoute: ResourcesRoute,
+  RobotsDottxtRoute: RobotsDottxtRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   TruthRoute: TruthRoute,
   WorkRoute: WorkRoute,
   ApplyAmbassadorRoute: ApplyAmbassadorRoute,
