@@ -2490,8 +2490,8 @@ export const AboutPage = ({ t }) => {
           </div>
           <p style={s.bodyLight}>
             {tr(
-              "Adebare Hammed is completing a Computer Science degree at Kwara State University in July 2026. He is a Youth Advocate, Peer Mentor, and researcher whose work sits at the intersection of HIV advocacy, campus health policy, and youth rights in Nigeria.",
-              "Adebare Hammed termine une licence en informatique à la Kwara State University en juillet 2026. Il est défenseur de la jeunesse, mentor pair, et chercheur, avec un travail à la croisée du plaidoyer VIH, de la politique de santé sur les campus et des droits des jeunes au Nigéria.",
+              "Adebare Hammed is a Youth Advocate, Peer Mentor, and researcher whose work sits at the intersection of HIV advocacy, campus health policy, and youth rights in Nigeria.",
+              "Adebare Hammed est défenseur de la jeunesse, mentor pair, et chercheur, avec un travail à la croisée du plaidoyer VIH, de la politique de santé sur les campus et des droits des jeunes au Nigéria.",
             )}
           </p>
           <p style={s.bodyLight}>
@@ -2502,8 +2502,8 @@ export const AboutPage = ({ t }) => {
           </p>
           <p style={s.bodyLight}>
             {tr(
-              "His research spans PrEP awareness at KWASU and HIV stigma and mental health across Nigerian youth HIV networks. He has facilitated sessions at the Adolescent Girls Summit 2026 in Yamoussoukro and participated in the African Regional Convening organised by Sonke Gender Justice in Nairobi.",
-              "Ses recherches portent sur la sensibilisation à la PrEP à la KWASU ainsi que sur la stigmatisation liée au VIH et la santé mentale au sein des réseaux VIH de jeunes nigérians. Il a animé des sessions au Sommet des filles adolescentes 2026 à Yamoussoukro et a participé à la Convention régionale africaine organisée par Sonke Gender Justice à Nairobi.",
+              "His research spans PrEP awareness at KWASU and HIV stigma and mental health across Nigerian youth HIV networks.",
+              "Ses recherches portent sur la sensibilisation à la PrEP à la KWASU ainsi que sur la stigmatisation liée au VIH et la santé mentale au sein des réseaux VIH de jeunes nigérians.",
             )}
           </p>
           <p
