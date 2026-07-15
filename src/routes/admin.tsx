@@ -19,6 +19,13 @@ type Submission = {
   createdAt: string;
 };
 
+type Subscriber = {
+  id: number;
+  email: string;
+  status: string;
+  createdAt: string;
+};
+
 const STATUSES = ["pending", "reviewed", "accepted", "rejected", "published"];
 const STORY_FORM_TYPE = "Voices From Campus — Story Submission";
 
@@ -27,9 +34,12 @@ function AdminPage() {
   const [password, setPassword] = useState("");
   const [loginError, setLoginError] = useState("");
   const [submissions, setSubmissions] = useState<Submission[]>([]);
+  const [subscribers, setSubscribers] = useState<Subscriber[]>([]);
+  const [view, setView] = useState<"submissions" | "newsletter">("submissions");
   const [filter, setFilter] = useState("all");
   const [loading, setLoading] = useState(false);
   const [drafts, setDrafts] = useState<Record<number, { title: string; excerpt: string }>>({});
+  const [copyLabel, setCopyLabel] = useState("Copy all emails");
 
   const loadSubmissions = async () => {
     setLoading(true);
@@ -54,12 +64,30 @@ function AdminPage() {
       setAuthed(true);
     }
     setLoading(false);
+
+    const newsRes = await fetch("/api/admin/newsletter");
+    const newsJson = await newsRes.json().catch(() => ({ ok: false }));
+    if (newsJson.ok) setSubscribers(newsJson.subscribers);
   };
 
   useEffect(() => {
     loadSubmissions();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const copyAllEmails = async () => {
+    const emails = subscribers
+      .filter((s) => s.status === "subscribed")
+      .map((s) => s.email)
+      .join(", ");
+    try {
+      await navigator.clipboard.writeText(emails);
+      setCopyLabel("Copied!");
+      setTimeout(() => setCopyLabel("Copy all emails"), 1500);
+    } catch {
+      setCopyLabel("Copy failed — select manually");
+    }
+  };
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -195,7 +223,7 @@ function AdminPage() {
           alignItems: "center",
         }}
       >
-        <h1 style={styles.title}>LUMA Admin — {submissions.length} submissions</h1>
+        <h1 style={styles.title}>LUMA Admin</h1>
         <button
           onClick={handleLogout}
           style={{ ...styles.button, background: "transparent", border: "1px solid #F7F3EC" }}
@@ -204,6 +232,70 @@ function AdminPage() {
         </button>
       </div>
       <div style={styles.body}>
+        <div style={{ display: "flex", gap: 10, marginBottom: 24 }}>
+          <button
+            onClick={() => setView("submissions")}
+            style={{
+              ...styles.button,
+              background: view === "submissions" ? "#1A3329" : "transparent",
+              color: view === "submissions" ? "#F7F3EC" : "#1A3329",
+              border: "1px solid #1A3329",
+            }}
+          >
+            Submissions ({submissions.length})
+          </button>
+          <button
+            onClick={() => setView("newsletter")}
+            style={{
+              ...styles.button,
+              background: view === "newsletter" ? "#1A3329" : "transparent",
+              color: view === "newsletter" ? "#F7F3EC" : "#1A3329",
+              border: "1px solid #1A3329",
+            }}
+          >
+            Newsletter ({subscribers.length})
+          </button>
+        </div>
+        {view === "newsletter" ? (
+          <div>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                marginBottom: 16,
+              }}
+            >
+              <p style={{ margin: 0, fontSize: 14, color: "#555" }}>
+                {subscribers.filter((s) => s.status === "subscribed").length} subscribed
+              </p>
+              {subscribers.length > 0 && (
+                <button onClick={copyAllEmails} style={styles.button}>
+                  {copyLabel}
+                </button>
+              )}
+            </div>
+            {subscribers.length === 0 && <p>No subscribers yet.</p>}
+            {subscribers.map((sub) => (
+              <div
+                key={sub.id}
+                style={{
+                  ...styles.card,
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  padding: "12px 20px",
+                }}
+              >
+                <span>{sub.email}</span>
+                <span style={{ fontSize: 12, color: "#666" }}>
+                  {sub.status} · {sub.createdAt}
+                </span>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <>
         <div style={{ marginBottom: 20 }}>
           <select value={filter} onChange={(e) => setFilter(e.target.value)} style={styles.select}>
             <option value="all">All types ({submissions.length})</option>
@@ -296,6 +388,8 @@ function AdminPage() {
             )}
           </div>
         ))}
+        </>
+        )}
       </div>
     </div>
   );

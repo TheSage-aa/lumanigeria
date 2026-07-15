@@ -29,7 +29,9 @@ import { Route as ApplyPartnerRouteImport } from './routes/apply.partner'
 import { Route as ApplyAmbassadorRouteImport } from './routes/apply.ambassador'
 import { Route as ApiSubmitRouteImport } from './routes/api/submit'
 import { Route as ApiStoriesRouteImport } from './routes/api/stories'
+import { Route as ApiNewsletterSubscribeRouteImport } from './routes/api/newsletter/subscribe'
 import { Route as ApiAdminSubmissionsRouteImport } from './routes/api/admin/submissions'
+import { Route as ApiAdminNewsletterRouteImport } from './routes/api/admin/newsletter'
 import { Route as ApiAdminLogoutRouteImport } from './routes/api/admin/logout'
 import { Route as ApiAdminLoginRouteImport } from './routes/api/admin/login'
 
@@ -133,9 +135,19 @@ const ApiStoriesRoute = ApiStoriesRouteImport.update({
   path: '/api/stories',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiNewsletterSubscribeRoute = ApiNewsletterSubscribeRouteImport.update({
+  id: '/api/newsletter/subscribe',
+  path: '/api/newsletter/subscribe',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiAdminSubmissionsRoute = ApiAdminSubmissionsRouteImport.update({
   id: '/api/admin/submissions',
   path: '/api/admin/submissions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAdminNewsletterRoute = ApiAdminNewsletterRouteImport.update({
+  id: '/api/admin/newsletter',
+  path: '/api/admin/newsletter',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiAdminLogoutRoute = ApiAdminLogoutRouteImport.update({
@@ -172,7 +184,9 @@ export interface FileRoutesByFullPath {
   '/truth/$storyId': typeof TruthStoryIdRoute
   '/api/admin/login': typeof ApiAdminLoginRoute
   '/api/admin/logout': typeof ApiAdminLogoutRoute
+  '/api/admin/newsletter': typeof ApiAdminNewsletterRoute
   '/api/admin/submissions': typeof ApiAdminSubmissionsRoute
+  '/api/newsletter/subscribe': typeof ApiNewsletterSubscribeRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -197,7 +211,9 @@ export interface FileRoutesByTo {
   '/truth/$storyId': typeof TruthStoryIdRoute
   '/api/admin/login': typeof ApiAdminLoginRoute
   '/api/admin/logout': typeof ApiAdminLogoutRoute
+  '/api/admin/newsletter': typeof ApiAdminNewsletterRoute
   '/api/admin/submissions': typeof ApiAdminSubmissionsRoute
+  '/api/newsletter/subscribe': typeof ApiNewsletterSubscribeRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -223,7 +239,9 @@ export interface FileRoutesById {
   '/truth_/$storyId': typeof TruthStoryIdRoute
   '/api/admin/login': typeof ApiAdminLoginRoute
   '/api/admin/logout': typeof ApiAdminLogoutRoute
+  '/api/admin/newsletter': typeof ApiAdminNewsletterRoute
   '/api/admin/submissions': typeof ApiAdminSubmissionsRoute
+  '/api/newsletter/subscribe': typeof ApiNewsletterSubscribeRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -250,7 +268,9 @@ export interface FileRouteTypes {
     | '/truth/$storyId'
     | '/api/admin/login'
     | '/api/admin/logout'
+    | '/api/admin/newsletter'
     | '/api/admin/submissions'
+    | '/api/newsletter/subscribe'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -275,7 +295,9 @@ export interface FileRouteTypes {
     | '/truth/$storyId'
     | '/api/admin/login'
     | '/api/admin/logout'
+    | '/api/admin/newsletter'
     | '/api/admin/submissions'
+    | '/api/newsletter/subscribe'
   id:
     | '__root__'
     | '/'
@@ -300,7 +322,9 @@ export interface FileRouteTypes {
     | '/truth_/$storyId'
     | '/api/admin/login'
     | '/api/admin/logout'
+    | '/api/admin/newsletter'
     | '/api/admin/submissions'
+    | '/api/newsletter/subscribe'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -326,7 +350,9 @@ export interface RootRouteChildren {
   TruthStoryIdRoute: typeof TruthStoryIdRoute
   ApiAdminLoginRoute: typeof ApiAdminLoginRoute
   ApiAdminLogoutRoute: typeof ApiAdminLogoutRoute
+  ApiAdminNewsletterRoute: typeof ApiAdminNewsletterRoute
   ApiAdminSubmissionsRoute: typeof ApiAdminSubmissionsRoute
+  ApiNewsletterSubscribeRoute: typeof ApiNewsletterSubscribeRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -471,11 +497,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiStoriesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/newsletter/subscribe': {
+      id: '/api/newsletter/subscribe'
+      path: '/api/newsletter/subscribe'
+      fullPath: '/api/newsletter/subscribe'
+      preLoaderRoute: typeof ApiNewsletterSubscribeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/admin/submissions': {
       id: '/api/admin/submissions'
       path: '/api/admin/submissions'
       fullPath: '/api/admin/submissions'
       preLoaderRoute: typeof ApiAdminSubmissionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/admin/newsletter': {
+      id: '/api/admin/newsletter'
+      path: '/api/admin/newsletter'
+      fullPath: '/api/admin/newsletter'
+      preLoaderRoute: typeof ApiAdminNewsletterRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/admin/logout': {
@@ -518,7 +558,9 @@ const rootRouteChildren: RootRouteChildren = {
   TruthStoryIdRoute: TruthStoryIdRoute,
   ApiAdminLoginRoute: ApiAdminLoginRoute,
   ApiAdminLogoutRoute: ApiAdminLogoutRoute,
+  ApiAdminNewsletterRoute: ApiAdminNewsletterRoute,
   ApiAdminSubmissionsRoute: ApiAdminSubmissionsRoute,
+  ApiNewsletterSubscribeRoute: ApiNewsletterSubscribeRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

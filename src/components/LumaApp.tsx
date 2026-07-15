@@ -1236,6 +1236,27 @@ export const Nav = ({ t, colorId, setColorId, isDark, setIsDark, page, setPage }
 
 export const Footer = ({ t, setPage }) => {
   const { tr } = useLang();
+  const [newsletterEmail, setNewsletterEmail] = useState("");
+  const [newsletterStatus, setNewsletterStatus] = useState("idle"); // idle | sending | success | error
+
+  const handleNewsletterSubscribe = async (e) => {
+    e.preventDefault();
+    if (!newsletterEmail.trim() || newsletterStatus === "sending") return;
+    setNewsletterStatus("sending");
+    try {
+      const res = await fetch("/api/newsletter/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: newsletterEmail.trim() }),
+      });
+      if (!res.ok) throw new Error("subscribe failed");
+      setNewsletterStatus("success");
+      setNewsletterEmail("");
+    } catch {
+      setNewsletterStatus("error");
+    }
+  };
+
   const col = (heading, links) => (
     <div>
       <p
@@ -1280,6 +1301,125 @@ export const Footer = ({ t, setPage }) => {
   return (
     <footer style={{ background: t.footerBg, padding: "64px 32px 32px" }}>
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+        <div
+          style={{
+            borderBottom: "1px solid rgba(247,243,236,0.1)",
+            paddingBottom: 40,
+            marginBottom: 40,
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "space-between",
+            alignItems: "flex-start",
+            gap: 24,
+          }}
+        >
+          <div style={{ maxWidth: 380 }}>
+            <p
+              style={{
+                fontFamily: "'Space Grotesk',sans-serif",
+                fontSize: 18,
+                fontWeight: 700,
+                color: t.ivory,
+                marginBottom: 6,
+              }}
+            >
+              {tr("Get the LUMA newsletter", "Recevez la newsletter LUMA")}
+            </p>
+            <p
+              style={{
+                color: "rgba(247,243,236,0.6)",
+                fontSize: 14,
+                fontFamily: "'DM Sans',sans-serif",
+                lineHeight: 1.6,
+              }}
+            >
+              {tr(
+                "New Campus Truth Series posts, advocacy updates, and Peer Circle news — straight to your inbox. No spam.",
+                "Les nouveaux articles de la série Vérité Campus, les actualités de plaidoyer et les nouvelles du Cercle des Pairs — directement dans votre boîte mail. Sans spam."
+              )}
+            </p>
+          </div>
+          <div style={{ minWidth: 280 }}>
+            {newsletterStatus === "success" ? (
+              <p
+                style={{
+                  fontFamily: "'Space Grotesk',sans-serif",
+                  fontSize: 14,
+                  fontWeight: 700,
+                  color: t.ivory,
+                  background: "rgba(247,243,236,0.12)",
+                  border: "1px solid rgba(247,243,236,0.25)",
+                  borderRadius: 10,
+                  padding: "12px 16px",
+                }}
+              >
+                {tr("Subscribed. Welcome to LUMA.", "Inscription réussie. Bienvenue chez LUMA.")}
+              </p>
+            ) : (
+              <form
+                onSubmit={handleNewsletterSubscribe}
+                style={{ display: "flex", gap: 10, flexWrap: "wrap" }}
+              >
+                <input
+                  type="email"
+                  required
+                  value={newsletterEmail}
+                  onChange={(e) => {
+                    setNewsletterEmail(e.target.value);
+                    if (newsletterStatus === "error") setNewsletterStatus("idle");
+                  }}
+                  placeholder={tr("your@email.com", "votre@email.com")}
+                  style={{
+                    flex: "1 1 200px",
+                    padding: "12px 16px",
+                    borderRadius: 100,
+                    border: "1.5px solid rgba(247,243,236,0.25)",
+                    background: "rgba(255,255,255,0.08)",
+                    color: t.ivory,
+                    fontFamily: "'DM Sans',sans-serif",
+                    fontSize: 14,
+                    outline: "none",
+                  }}
+                />
+                <button
+                  type="submit"
+                  disabled={newsletterStatus === "sending"}
+                  style={{
+                    background: t.ivory,
+                    color: t.primary,
+                    border: "none",
+                    borderRadius: 100,
+                    padding: "12px 22px",
+                    fontFamily: "'Space Grotesk',sans-serif",
+                    fontSize: 14,
+                    fontWeight: 700,
+                    cursor: newsletterStatus === "sending" ? "default" : "pointer",
+                    opacity: newsletterStatus === "sending" ? 0.6 : 1,
+                  }}
+                >
+                  {newsletterStatus === "sending"
+                    ? tr("Subscribing...", "Inscription...")
+                    : tr("Subscribe", "S'inscrire")}
+                </button>
+              </form>
+            )}
+            {newsletterStatus === "error" && (
+              <p
+                style={{
+                  fontFamily: "'DM Sans',sans-serif",
+                  fontSize: 13,
+                  color: "#FFB4B4",
+                  marginTop: 8,
+                }}
+              >
+                {tr(
+                  "Something went wrong. Please try again.",
+                  "Une erreur est survenue. Veuillez réessayer."
+                )}
+              </p>
+            )}
+          </div>
+        </div>
         <div
           style={{
             display: "grid",
