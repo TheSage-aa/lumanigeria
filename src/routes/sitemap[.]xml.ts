@@ -1,8 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { GUIDES, STORIES } from "@/components/LumaApp";
 
-// Update this when a custom domain is attached to the Cloudflare Worker.
-const SITE_URL = "https://lumanigeria.versatilelopez.workers.dev";
+const SITE_URL = "https://lumanigeria.org";
 
 const STATIC_PATHS = [
   "/",

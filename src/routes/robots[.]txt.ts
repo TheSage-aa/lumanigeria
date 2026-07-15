@@ -1,7 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-// Update this when a custom domain is attached to the Cloudflare Worker.
-const SITE_URL = "https://lumanigeria.versatilelopez.workers.dev";
+const SITE_URL = "https://lumanigeria.org";
 
 export const Route = createFileRoute("/robots.txt")({
   server: {
