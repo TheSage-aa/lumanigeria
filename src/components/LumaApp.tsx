@@ -2468,7 +2468,6 @@ export const AboutPage = ({ t }) => {
             {[
               tr("Youth Advocate", "Défenseur de la jeunesse"),
               tr("Peer Mentor", "Mentor pair"),
-              tr("CS Undergraduate", "Étudiant en informatique"),
               tr("HIV Activist", "Militant VIH"),
               tr("Researcher", "Chercheur"),
             ].map((r) => (
