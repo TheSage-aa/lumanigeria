@@ -18,6 +18,7 @@ import { Route as InvolveRouteImport } from './routes/involve'
 import { Route as GamesRouteImport } from './routes/games'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CircleRouteImport } from './routes/circle'
+import { Route as BlogRouteImport } from './routes/blog'
 import { Route as AdvocacyRouteImport } from './routes/advocacy'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as AboutRouteImport } from './routes/about'
@@ -78,6 +79,11 @@ const ContactRoute = ContactRouteImport.update({
 const CircleRoute = CircleRouteImport.update({
   id: '/circle',
   path: '/circle',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogRoute = BlogRouteImport.update({
+  id: '/blog',
+  path: '/blog',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AdvocacyRoute = AdvocacyRouteImport.update({
@@ -166,6 +172,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/admin': typeof AdminRoute
   '/advocacy': typeof AdvocacyRoute
+  '/blog': typeof BlogRoute
   '/circle': typeof CircleRoute
   '/contact': typeof ContactRoute
   '/games': typeof GamesRoute
@@ -193,6 +200,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/admin': typeof AdminRoute
   '/advocacy': typeof AdvocacyRoute
+  '/blog': typeof BlogRoute
   '/circle': typeof CircleRoute
   '/contact': typeof ContactRoute
   '/games': typeof GamesRoute
@@ -221,6 +229,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/admin': typeof AdminRoute
   '/advocacy': typeof AdvocacyRoute
+  '/blog': typeof BlogRoute
   '/circle': typeof CircleRoute
   '/contact': typeof ContactRoute
   '/games': typeof GamesRoute
@@ -250,6 +259,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/admin'
     | '/advocacy'
+    | '/blog'
     | '/circle'
     | '/contact'
     | '/games'
@@ -277,6 +287,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/admin'
     | '/advocacy'
+    | '/blog'
     | '/circle'
     | '/contact'
     | '/games'
@@ -304,6 +315,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/admin'
     | '/advocacy'
+    | '/blog'
     | '/circle'
     | '/contact'
     | '/games'
@@ -332,6 +344,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   AdminRoute: typeof AdminRoute
   AdvocacyRoute: typeof AdvocacyRoute
+  BlogRoute: typeof BlogRoute
   CircleRoute: typeof CircleRoute
   ContactRoute: typeof ContactRoute
   GamesRoute: typeof GamesRoute
@@ -418,6 +431,13 @@ declare module '@tanstack/react-router' {
       path: '/circle'
       fullPath: '/circle'
       preLoaderRoute: typeof CircleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog': {
+      id: '/blog'
+      path: '/blog'
+      fullPath: '/blog'
+      preLoaderRoute: typeof BlogRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/advocacy': {
@@ -540,6 +560,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   AdminRoute: AdminRoute,
   AdvocacyRoute: AdvocacyRoute,
+  BlogRoute: BlogRoute,
   CircleRoute: CircleRoute,
   ContactRoute: ContactRoute,
   GamesRoute: GamesRoute,

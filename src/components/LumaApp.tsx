@@ -133,6 +133,7 @@ export const submitToEmail = async (formType, data) => {
 export const STORIES = [
   {
     id: "classroom-myth",
+    category: "truth",
     tag: "MYTH vs FACT",
     tagFr: "MYTHE vs RÉALITÉ",
     title: "You cannot get HIV from sharing a classroom. Here is what the research says.",
@@ -205,6 +206,7 @@ export const STORIES = [
   },
   {
     id: "prep-explained",
+    category: "truth",
     tag: "RESEARCH",
     tagFr: "RECHERCHE",
     title: "What is PrEP and why does no one at your campus health centre mention it?",
@@ -280,6 +282,7 @@ export const STORIES = [
   },
   {
     id: "stigma-data",
+    category: "truth",
     tag: "DATA",
     tagFr: "DONNÉES",
     title: "HIV stigma at Nigerian universities: what our data found and why it matters.",
@@ -348,6 +351,7 @@ export const STORIES = [
   },
   {
     id: "your-rights",
+    category: "truth",
     tag: "RIGHTS",
     tagFr: "DROITS",
     title: "As an HIV positive student, you have rights on campus. Here is what they are.",
@@ -415,6 +419,7 @@ export const STORIES = [
   },
   {
     id: "first-year-diagnosis",
+    category: "truth",
     tag: "MENTAL HEALTH",
     tagFr: "SANTÉ MENTALE",
     title: "Navigating a new HIV diagnosis in your first year of university.",
@@ -482,6 +487,7 @@ export const STORIES = [
   },
   {
     id: "uequals-u",
+    category: "truth",
     tag: "PREVENTION",
     tagFr: "PRÉVENTION",
     title: "U=U: What Undetectable equals Untransmittable means for you and your campus.",
@@ -543,6 +549,7 @@ export const STORIES = [
   },
   {
     id: "aids2026-recap",
+    category: "blog",
     tag: "GLOBAL HIV RESPONSE",
     tagFr: "RIPOSTE MONDIALE AU VIH",
     title: "AIDS 2026: What the world's biggest HIV conference actually told us.",
@@ -1257,6 +1264,8 @@ export const Nav = ({ t, colorId, setColorId, isDark, setIsDark, page, setPage }
   const links = [
     [tr("About", "À propos"), "about"],
     [tr("Our Work", "Notre Travail"), "work"],
+    [tr("Truth Series", "Série Vérité"), "truth"],
+    [tr("Blog", "Blog"), "blog"],
     [tr("Resources", "Ressources"), "resources"],
     [tr("Get Involved", "S'impliquer"), "involve"],
     [tr("Games", "Jeux"), "games"],
@@ -1351,6 +1360,41 @@ export const Nav = ({ t, colorId, setColorId, isDark, setIsDark, page, setPage }
             className="desktop-theme-controls"
             style={{ display: "flex", alignItems: "center", gap: 14 }}
           >
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 2,
+                paddingRight: 14,
+                borderRight: "1px solid rgba(255,255,255,0.12)",
+              }}
+            >
+              {["en", "fr"].map((code) => (
+                <button
+                  key={code}
+                  type="button"
+                  onClick={() => setLang(code)}
+                  aria-pressed={lang === code}
+                  aria-label={code === "en" ? "English" : "Français"}
+                  title={code === "en" ? "English" : "Français"}
+                  style={{
+                    background: lang === code ? "rgba(255,255,255,0.16)" : "transparent",
+                    color: lang === code ? t.ivory : "rgba(247,243,236,0.6)",
+                    border: "none",
+                    borderRadius: 100,
+                    padding: "5px 10px",
+                    fontFamily: "'Space Grotesk',sans-serif",
+                    fontSize: 12,
+                    fontWeight: 700,
+                    letterSpacing: "0.5px",
+                    textTransform: "uppercase",
+                    cursor: "pointer",
+                  }}
+                >
+                  {code}
+                </button>
+              ))}
+            </div>
             <div
               style={{
                 display: "flex",
@@ -1957,8 +2001,11 @@ export const StoryPage = ({ t, story, setPage, setStoryId }) => {
     <div>
       <div style={s.hero}>
         <div style={s.inner}>
-          <button style={s.back} onClick={() => setPage("truth")}>
-            <ArrowLeft color="rgba(247,243,236,0.7)" size={14} /> {tr("Back to Campus Truth Series", "Retour à la série Vérité Campus")}
+          <button style={s.back} onClick={() => setPage(story.category === "blog" ? "blog" : "truth")}>
+            <ArrowLeft color="rgba(247,243,236,0.7)" size={14} />{" "}
+            {story.category === "blog"
+              ? tr("Back to Blog", "Retour au blog")
+              : tr("Back to Campus Truth Series", "Retour à la série Vérité Campus")}
           </button>
           <Tag t={t} light>
             {lang === "fr" && story.tagFr ? story.tagFr : story.tag}
@@ -2147,8 +2194,10 @@ export const StoryPage = ({ t, story, setPage, setStoryId }) => {
             ))}
           </div>
           <div style={{ marginTop: 32 }}>
-            <Btn t={t} variant="primary" onClick={() => setPage("truth")}>
-              {tr("All Campus Truth Posts", "Tous les articles Vérité Campus")}
+            <Btn t={t} variant="primary" onClick={() => setPage(story.category === "blog" ? "blog" : "truth")}>
+              {story.category === "blog"
+                ? tr("All Blog Posts", "Tous les articles du blog")
+                : tr("All Campus Truth Posts", "Tous les articles Vérité Campus")}
             </Btn>
           </div>
         </div>
@@ -2161,7 +2210,7 @@ export const StoryPage = ({ t, story, setPage, setStoryId }) => {
 // ─── HOME PAGE ────────────────────────────────────────────────────────────────
 
 export const HomePage = ({ t, setPage, setStoryId }) => {
-  const { tr } = useLang();
+  const { tr, lang } = useLang();
   const s = {
     hero: {
       background: t.primary,
@@ -2530,60 +2579,63 @@ export const HomePage = ({ t, setPage, setStoryId }) => {
 
       <section style={s.sectionAlt}>
         <div style={s.inner}>
-          <SectionLabel t={t}>From the Campus Truth Series</SectionLabel>
+          <SectionLabel t={t}>{tr("From the Campus Truth Series", "De la série Vérité Campus")}</SectionLabel>
           <h2 style={s.h2}>
-            What students get wrong
+            {tr("What students get wrong", "Ce que les étudiants comprennent mal")}
             <br />
-            about HIV
+            {tr("about HIV", "à propos du VIH")}
           </h2>
           <div style={s.grid3}>
-            {STORIES.slice(0, 3).map((story) => (
-              <Card
-                key={story.id}
-                t={t}
-                style={{ display: "flex", flexDirection: "column", gap: 12 }}
-              >
-                <Tag t={t}>{story.tag}</Tag>
-                <h3
-                  style={{
-                    fontFamily: "'Space Grotesk',sans-serif",
-                    fontSize: 17,
-                    fontWeight: 700,
-                    color: t.text,
-                    lineHeight: 1.4,
-                  }}
+            {STORIES.slice(0, 3).map((story) => {
+              const excerpt = lang === "fr" && story.excerptFr ? story.excerptFr : story.excerpt;
+              return (
+                <Card
+                  key={story.id}
+                  t={t}
+                  style={{ display: "flex", flexDirection: "column", gap: 12 }}
                 >
-                  {story.title}
-                </h3>
-                <p
-                  style={{
-                    fontFamily: "'DM Sans',sans-serif",
-                    fontSize: 14,
-                    color: t.textMuted,
-                    lineHeight: 1.6,
-                  }}
-                >
-                  {story.excerpt.slice(0, 100)}...
-                </p>
-                <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 12, color: t.textMuted }}>
-                  {story.date} · {story.readTime}
-                </p>
-                <span
-                  style={s.linkText}
-                  onClick={() => {
-                    setStoryId(story.id);
-                    setPage("story");
-                    window.scrollTo(0, 0);
-                  }}
-                >
-                  Read More <ArrowRight color={t.accent} size={12} />
-                </span>
-              </Card>
-            ))}
+                  <Tag t={t}>{lang === "fr" && story.tagFr ? story.tagFr : story.tag}</Tag>
+                  <h3
+                    style={{
+                      fontFamily: "'Space Grotesk',sans-serif",
+                      fontSize: 17,
+                      fontWeight: 700,
+                      color: t.text,
+                      lineHeight: 1.4,
+                    }}
+                  >
+                    {lang === "fr" && story.titleFr ? story.titleFr : story.title}
+                  </h3>
+                  <p
+                    style={{
+                      fontFamily: "'DM Sans',sans-serif",
+                      fontSize: 14,
+                      color: t.textMuted,
+                      lineHeight: 1.6,
+                    }}
+                  >
+                    {excerpt.slice(0, 100)}...
+                  </p>
+                  <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 12, color: t.textMuted }}>
+                    {story.date} · {story.readTime}
+                  </p>
+                  <span
+                    style={s.linkText}
+                    onClick={() => {
+                      setStoryId(story.id);
+                      setPage("story");
+                      window.scrollTo(0, 0);
+                    }}
+                  >
+                    {tr("Read More", "Lire la suite")} <ArrowRight color={t.accent} size={12} />
+                  </span>
+                </Card>
+              );
+            })}
           </div>
           <div style={{ marginTop: 40 }}>
             <Btn t={t} variant="primary" onClick={() => setPage("truth")}>
-              See All Campus Truth Posts
+              {tr("See All Campus Truth Posts", "Voir tous les articles Vérité Campus")}
             </Btn>
           </div>
         </div>
@@ -2996,7 +3048,7 @@ export const AboutPage = ({ t }) => {
 
 // ─── CAMPUS TRUTH PAGE ────────────────────────────────────────────────────────
 
-export const TruthPage = ({ t, setPage, setStoryId }) => {
+export const TruthPage = ({ t, setPage, setStoryId, category = "truth" }) => {
   const { tr, lang } = useLang();
   const [communityStories, setCommunityStories] = useState([]);
   useEffect(() => {
@@ -3011,13 +3063,18 @@ export const TruthPage = ({ t, setPage, setStoryId }) => {
       cancelled = true;
     };
   }, []);
-  const allStories = [...STORIES, ...communityStories];
+  const allStories = [...STORIES, ...communityStories].filter(
+    (story) => (story.category || "truth") === category,
+  );
+  const isBlog = category === "blog";
   return (
     <div>
       <div style={{ background: t.primary, padding: "120px 32px 80px" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
           <Tag t={t} light>
-            {tr("From the Inform Pillar", "Du pilier Informer")}
+            {isBlog
+              ? tr("Global HIV Response", "Riposte mondiale au VIH")
+              : tr("From the Inform Pillar", "Du pilier Informer")}
           </Tag>
           <h1
             style={{
@@ -3029,7 +3086,7 @@ export const TruthPage = ({ t, setPage, setStoryId }) => {
               marginTop: 16,
             }}
           >
-            {tr("The Campus Truth Series", "La série Vérité Campus")}
+            {isBlog ? tr("The LUMA Blog", "Le blog LUMA") : tr("The Campus Truth Series", "La série Vérité Campus")}
           </h1>
           <p
             style={{
@@ -3041,15 +3098,25 @@ export const TruthPage = ({ t, setPage, setStoryId }) => {
               marginTop: 16,
             }}
           >
-            {tr(
-              "The Campus Truth Series does not just tell students what is true. It shows them what to do with the truth. Every article ends with action, not just information.",
-              "La série Vérité Campus ne se contente pas de dire aux étudiants ce qui est vrai. Elle leur montre quoi faire de cette vérité. Chaque article se termine par une action, pas seulement une information."
-            )}
+            {isBlog
+              ? tr(
+                  "News, research, and conference coverage from the global HIV response, broken down for Nigerian students.",
+                  "Actualités, recherches et couverture de conférences issues de la riposte mondiale au VIH, expliquées pour les étudiants nigérians."
+                )
+              : tr(
+                  "The Campus Truth Series does not just tell students what is true. It shows them what to do with the truth. Every article ends with action, not just information.",
+                  "La série Vérité Campus ne se contente pas de dire aux étudiants ce qui est vrai. Elle leur montre quoi faire de cette vérité. Chaque article se termine par une action, pas seulement une information."
+                )}
           </p>
         </div>
       </div>
       <section style={{ padding: "80px 32px", background: t.bg }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+          {allStories.length === 0 && (
+            <p style={{ fontFamily: "'DM Sans',sans-serif", color: t.textMuted, textAlign: "center" }}>
+              {tr("No posts yet. Check back soon.", "Aucun article pour le moment. Revenez bientôt.")}
+            </p>
+          )}
           <div
             style={{
               display: "grid",
@@ -3143,10 +3210,12 @@ export const TruthPage = ({ t, setPage, setStoryId }) => {
               marginBottom: 16,
             }}
           >
-            {tr(
-              "Heard something about HIV you are not sure about?",
-              "Vous avez entendu quelque chose sur le VIH dont vous n'êtes pas sûr ?"
-            )}
+            {isBlog
+              ? tr("Want us to cover something?", "Vous voulez qu'on couvre un sujet ?")
+              : tr(
+                  "Heard something about HIV you are not sure about?",
+                  "Vous avez entendu quelque chose sur le VIH dont vous n'êtes pas sûr ?"
+                )}
           </h2>
           <p
             style={{
@@ -3156,13 +3225,18 @@ export const TruthPage = ({ t, setPage, setStoryId }) => {
               marginBottom: 32,
             }}
           >
-            {tr(
-              "Send it to us. If it is a myth circulating on your campus, we will research it and publish the truth.",
-              "Envoyez-le-nous. S'il s'agit d'une rumeur qui circule sur votre campus, nous ferons des recherches et publierons la vérité."
-            )}
+            {isBlog
+              ? tr(
+                  "Tell us about HIV research, policy, or a conference you think Nigerian students should know about.",
+                  "Parlez-nous d'une recherche, d'une politique ou d'une conférence sur le VIH dont les étudiants nigérians devraient avoir connaissance."
+                )
+              : tr(
+                  "Send it to us. If it is a myth circulating on your campus, we will research it and publish the truth.",
+                  "Envoyez-le-nous. S'il s'agit d'une rumeur qui circule sur votre campus, nous ferons des recherches et publierons la vérité."
+                )}
           </p>
           <Btn t={t} variant="light" onClick={() => setPage("contact")}>
-            {tr("Submit a Myth", "Signaler une rumeur")}
+            {isBlog ? tr("Get in Touch", "Nous contacter") : tr("Submit a Myth", "Signaler une rumeur")}
           </Btn>
         </div>
       </section>
@@ -8653,6 +8727,7 @@ const PAGE_TO_ROUTE = {
   about: "/about",
   work: "/work",
   truth: "/truth",
+  blog: "/blog",
   circle: "/circle",
   advocacy: "/advocacy",
   resources: "/resources",
