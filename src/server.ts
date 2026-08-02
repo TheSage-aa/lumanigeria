@@ -37,8 +37,16 @@ async function normalizeCatastrophicSsrResponse(response: Response): Promise<Res
   });
 }
 
+const CANONICAL_HOST = "lumanigeria.org";
+const REDIRECT_FROM_HOSTS = new Set(["www.lumanigeria.org"]);
+
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
+    const url = new URL(request.url);
+    if (REDIRECT_FROM_HOSTS.has(url.hostname)) {
+      url.hostname = CANONICAL_HOST;
+      return Response.redirect(url.toString(), 301);
+    }
     try {
       const handler = await getServerEntry();
       const response = await handler.fetch(request, env, ctx);
