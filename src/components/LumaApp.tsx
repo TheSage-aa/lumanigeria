@@ -9,6 +9,12 @@ import guide3 from "@/assets/guides/LUMA_Guide3_Testing_and_Treatment.pdf";
 import guide4 from "@/assets/guides/LUMA_Guide4_Your_Rights_on_Campus.pdf";
 import guide5 from "@/assets/guides/LUMA_Guide5_Mental_Health_and_HIV.pdf";
 import guide6 from "@/assets/guides/LUMA_Guide6_For_Allies.pdf";
+import aids2026FundingCliff from "@/assets/stories/aids2026-funding-cliff.png";
+import aids2026FundingCliffFr from "@/assets/stories/aids2026-funding-cliff-fr.png";
+import aids2026PreventionOptions from "@/assets/stories/aids2026-prevention-options.png";
+import aids2026PreventionOptionsFr from "@/assets/stories/aids2026-prevention-options-fr.png";
+import aids2026CommunitiesLead from "@/assets/stories/aids2026-communities-lead.png";
+import aids2026CommunitiesLeadFr from "@/assets/stories/aids2026-communities-lead-fr.png";
 
 export const GUIDES = {
   "hiv-basics": {
@@ -534,6 +540,361 @@ export const STORIES = [
       },
     ],
     related: ["classroom-myth", "prep-explained", "first-year-diagnosis"],
+  },
+  {
+    id: "aids2026-recap",
+    tag: "GLOBAL HIV RESPONSE",
+    tagFr: "RIPOSTE MONDIALE AU VIH",
+    title: "AIDS 2026: What the world's biggest HIV conference actually told us.",
+    titleFr: "AIDS 2026 : ce que la plus grande conférence mondiale sur le VIH nous a réellement appris.",
+    excerpt:
+      "A LUMA breakdown of AIDS 2026, sourced from the International AIDS Society: the funding cuts, the prevention breakthroughs, and why community leadership keeps winning.",
+    excerptFr:
+      "Un résumé LUMA de la conférence AIDS 2026, sourcé auprès de la Société internationale du sida : les coupes de financement, les avancées en prévention, et pourquoi le leadership communautaire continue de gagner.",
+    date: "August 2026",
+    readTime: "12 min read",
+    heroImage: aids2026FundingCliff,
+    heroImageFr: aids2026FundingCliffFr,
+    content: [
+      {
+        type: "lead",
+        text: "Every two years, the people actually working on the HIV response — researchers, clinicians, community leaders, people living with HIV — gather for six days to compare notes on what's working, what's failing, and what's coming next. This year's conference, AIDS 2026, ran across more than 150 sessions and 2,400 research posters, against what the IAS itself described as a \"tumultuous funding and geopolitical backdrop\" that has reshaped the global HIV response.",
+        textFr:
+          "Tous les deux ans, les personnes qui travaillent réellement sur la riposte au VIH — chercheurs, cliniciens, leaders communautaires, personnes vivant avec le VIH — se réunissent pendant six jours pour comparer ce qui fonctionne, ce qui échoue, et ce qui s'en vient. La conférence de cette année, AIDS 2026, s'est déroulée sur plus de 150 sessions et 2 400 affiches de recherche, dans ce que l'IAS elle-même a décrit comme un « contexte de financement et géopolitique tumultueux » qui a redessiné la riposte mondiale au VIH.",
+      },
+      {
+        type: "body",
+        text: "We went through the key findings so you don't have to wade through 150 sessions yourself. Here's what actually matters, especially if you're reading this in Nigeria.",
+        textFr:
+          "Nous avons passé en revue les principaux résultats pour vous éviter d'éplucher 150 sessions vous-même. Voici ce qui compte réellement, surtout si vous lisez ceci depuis le Nigéria.",
+      },
+      {
+        type: "heading",
+        text: "The funding cuts are not an abstraction anymore",
+        textFr: "Les coupes de financement ne sont plus une abstraction",
+      },
+      {
+        type: "body",
+        text: "Eighteen months after US aid funding and policy changes disrupted the global HIV response, the data presented at AIDS 2026 confirmed what many organisations on the ground already knew: the damage is real and measurable.",
+        textFr:
+          "Dix-huit mois après que les changements de financement et de politique de l'aide américaine ont perturbé la riposte mondiale au VIH, les données présentées à AIDS 2026 ont confirmé ce que de nombreuses organisations de terrain savaient déjà : les dégâts sont réels et mesurables.",
+      },
+      {
+        type: "body",
+        text: "Across 46 countries, more than 1,700 HIV clinics and service delivery sites have closed, most heavily concentrated in eastern and southern Africa, and disproportionately affecting key populations who already faced the steepest barriers to care. Tens of thousands of health workers have lost their jobs or face losing them across the countries studied.",
+        textFr:
+          "Dans 46 pays, plus de 1 700 cliniques et sites de prestation de services liés au VIH ont fermé, une fermeture surtout concentrée en Afrique de l'Est et australe, et touchant de manière disproportionnée les populations clés qui faisaient déjà face aux plus grands obstacles d'accès aux soins. Des dizaines de milliers de travailleurs de la santé ont perdu leur emploi ou risquent de le perdre dans les pays étudiés.",
+      },
+      {
+        type: "body",
+        text: "The numbers coming out of Nigeria specifically are stark. Between the first and second quarter of 2025 alone, prevention services reached over 50% fewer people in key populations, HIV self-testing dropped by more than 70%, and PrEP initiation among key populations fell by 83%.",
+        textFr:
+          "Les chiffres venant du Nigéria en particulier sont frappants. Entre le premier et le deuxième trimestre 2025 seulement, les services de prévention ont touché plus de 50 % de personnes en moins parmi les populations clés, l'autodépistage du VIH a chuté de plus de 70 %, et l'initiation à la PrEP chez les populations clés a chuté de 83 %.",
+      },
+      {
+        type: "body",
+        text: "Donor government funding for HIV fell by roughly a quarter in a single year, according to a joint report from KFF and UNAIDS presented at the conference. At the same time, domestic financing — money African and other governments are putting into their own HIV responses — rose, and now makes up close to 60% of total global HIV funding. UNAIDS Executive Director Winnie Byanyima put it plainly at the conference: \"The era of relying on international aid is over.\"",
+        textFr:
+          "Le financement des gouvernements donateurs pour le VIH a chuté d'environ un quart en une seule année, selon un rapport conjoint de KFF et de l'ONUSIDA présenté à la conférence. Dans le même temps, le financement national — l'argent que les gouvernements africains et d'autres investissent dans leur propre riposte au VIH — a augmenté, et représente désormais près de 60 % du financement mondial total pour le VIH. La directrice exécutive de l'ONUSIDA, Winnie Byanyima, l'a dit sans détour à la conférence : « L'ère de la dépendance à l'aide internationale est révolue. »",
+      },
+      {
+        type: "heading",
+        text: "A new model of leadership and partnership",
+        textFr: "Un nouveau modèle de leadership et de partenariat",
+      },
+      {
+        type: "body",
+        text: "The funding crisis exposed something the HIV response had quietly depended on for years: a governance structure built around one dominant donor. AIDS 2026 heard growing consensus that recovery depends on spreading that dependence out, not replacing it with another single source.",
+        textFr:
+          "La crise du financement a exposé quelque chose dont la riposte au VIH dépendait silencieusement depuis des années : une structure de gouvernance construite autour d'un donateur dominant. AIDS 2026 a entendu un consensus grandissant : le redressement dépend de la répartition de cette dépendance, pas de son remplacement par une autre source unique.",
+      },
+      {
+        type: "body",
+        text: "Researchers presented six alternative paths forward, including coalitions of donors from the Global South, solidarity taxes, and folding HIV services directly into national health systems rather than running them as separate, donor-dependent programmes. Cutting costs through telemedicine and local production of generics came up repeatedly as part of what sustainability actually looks like after 2026.",
+        textFr:
+          "Des chercheurs ont présenté six voies alternatives, y compris des coalitions de donateurs du Sud global, des taxes de solidarité, et l'intégration des services VIH directement dans les systèmes de santé nationaux plutôt que de les gérer comme des programmes séparés dépendants des donateurs. La réduction des coûts par la télémédecine et la production locale de génériques est revenue à plusieurs reprises comme un élément concret de ce à quoi ressemble la durabilité après 2026.",
+      },
+      {
+        type: "body",
+        text: "A cross-regional review found that weak transition planning and shrinking space for civil society to operate were consistently the biggest threats to keeping people on treatment during funding shifts. The clearest recommendation to come out of this research: build the leadership of people actually living with HIV directly into national sustainability planning, not as an afterthought.",
+        textFr:
+          "Une revue interrégionale a révélé qu'une planification de transition faible et un espace rétréci pour la société civile étaient systématiquement les plus grandes menaces au maintien des personnes sous traitement pendant les changements de financement. La recommandation la plus claire issue de cette recherche : intégrer le leadership des personnes vivant réellement avec le VIH directement dans la planification nationale de la durabilité, et non comme une réflexion après coup.",
+      },
+      {
+        type: "body",
+        text: "Funders are also shifting toward what's being called \"catalytic capital\", using smaller amounts of funding to unlock larger pools of public and private money, rather than trying to fund everything directly. But delegates were clear that no single partnership model works everywhere. What works depends on culturally relevant communication and genuine community engagement, not a template applied uniformly.",
+        textFr:
+          "Les bailleurs de fonds évoluent aussi vers ce qu'on appelle le « capital catalytique », utilisant de plus petites sommes pour débloquer de plus grandes réserves d'argent public et privé, plutôt que d'essayer de tout financer directement. Mais les délégués ont été clairs : aucun modèle de partenariat unique ne fonctionne partout. Ce qui fonctionne dépend d'une communication culturellement pertinente et d'un engagement communautaire authentique, pas d'un modèle appliqué uniformément.",
+      },
+      {
+        type: "heading",
+        text: "Prevention is becoming something people actually want to stay on",
+        textFr: "La prévention devient quelque chose que les gens veulent vraiment poursuivre",
+      },
+      {
+        type: "body",
+        text: "One of the clearest wins to come out of AIDS 2026 was long-acting prevention. Twice-yearly injectable PrEP (lenacapavir) showed remarkable real-world uptake — in trials spanning eight countries, 95% of participants chose to continue with it rather than switch back to daily pills. Participants cited convenience and a real reduction in the stigma and daily burden that comes with taking a visible pill every day.",
+        textFr:
+          "L'une des victoires les plus claires d'AIDS 2026 a été la prévention à action prolongée. La PrEP injectable semestrielle (lénacapavir) a montré une adoption remarquable dans la vraie vie — dans des essais menés dans huit pays, 95 % des participants ont choisi de la poursuivre plutôt que de revenir aux comprimés quotidiens. Les participants ont cité la commodité et une réelle réduction de la stigmatisation et du fardeau quotidien liés à la prise visible d'un comprimé chaque jour.",
+      },
+      {
+        type: "body",
+        text: "Choice is expanding on multiple fronts. Modelling presented at the conference suggested a once-monthly oral option (Merck's MK-8527) could potentially be mass-produced for around $15 per person per year if scaled. A dapivirine vaginal ring, controlled entirely by the user, offers another monthly option, particularly relevant for women who want prevention without needing a partner's involvement or awareness.",
+        textFr:
+          "Le choix s'élargit sur plusieurs fronts. Une modélisation présentée à la conférence suggère qu'une option orale mensuelle (le MK-8527 de Merck) pourrait potentiellement être produite en masse pour environ 15 $ par personne et par an si elle était mise à l'échelle. Un anneau vaginal au dapivirine, entièrement contrôlé par l'utilisatrice, offre une autre option mensuelle, particulièrement pertinente pour les femmes qui veulent une prévention sans nécessiter l'implication ou la connaissance d'un partenaire.",
+      },
+      {
+        type: "body",
+        text: "Early rollout data from Zambia and Eswatini showed lenacapavir successfully reaching PrEP-naive clients, adolescent girls, and key populations — exactly the groups prevention programmes most often struggle to reach. In Uganda's Nakivale refugee settlement, the first humanitarian study of the drug's acceptability described it as life-changing for displaced people dealing with conflict and constant movement.",
+        textFr:
+          "Les premières données de déploiement en Zambie et en Eswatini ont montré que le lénacapavir atteignait avec succès des personnes n'ayant jamais utilisé la PrEP, des adolescentes, et des populations clés — exactement les groupes que les programmes de prévention peinent le plus souvent à atteindre. Dans le camp de réfugiés de Nakivale en Ouganda, la première étude humanitaire sur l'acceptabilité du médicament l'a décrit comme transformateur pour des personnes déplacées confrontées au conflit et aux déplacements constants.",
+      },
+      {
+        type: "body",
+        text: "But access remains deeply uneven. Brazil's Minister of Health noted that even though Brazil hosted part of the clinical trials for these drugs, the country still faces real questions about affordable access to them. His comment on this captured the tension well: innovation that never reaches the people it was tested on isn't really innovation.",
+        textFr:
+          "Mais l'accès reste profondément inégal. Le ministre de la Santé du Brésil a noté que même si le Brésil a accueilli une partie des essais cliniques de ces médicaments, le pays fait encore face à de vraies questions sur leur accès abordable. Son commentaire à ce sujet a bien saisi la tension : une innovation qui n'atteint jamais les personnes sur qui elle a été testée n'est pas vraiment une innovation.",
+      },
+      {
+        type: "image",
+        src: aids2026PreventionOptions,
+        srcFr: aids2026PreventionOptionsFr,
+        alt: "Three new HIV prevention options: 95% continuation on injectable PrEP, potential $15/year monthly pill, the dapivirine ring",
+        altFr:
+          "Trois nouvelles options de prévention du VIH : 95 % de poursuite de la PrEP injectable, comprimé mensuel potentiellement à 15 $/an, l'anneau au dapivirine",
+      },
+      {
+        type: "heading",
+        text: "Treatment is getting simpler too",
+        textFr: "Le traitement se simplifie aussi",
+      },
+      {
+        type: "body",
+        text: "Alongside prevention, treatment itself is moving toward less daily burden. Early results from trials of a combined oral treatment (islatravir/lenacapavir) suggest it could become the first once-weekly oral HIV treatment, tested across more than 1,200 people living with HIV across Asia, Australia, Europe, the Americas, and South Africa. Early data shows it working effectively and being well tolerated in people whose HIV is already suppressed.",
+        textFr:
+          "Parallèlement à la prévention, le traitement lui-même évolue vers un fardeau quotidien réduit. Les premiers résultats d'essais d'un traitement oral combiné (islatravir/lénacapavir) suggèrent qu'il pourrait devenir le premier traitement oral hebdomadaire contre le VIH, testé auprès de plus de 1 200 personnes vivant avec le VIH en Asie, en Australie, en Europe, dans les Amériques et en Afrique du Sud. Les premières données montrent qu'il est efficace et bien toléré chez les personnes dont le VIH est déjà supprimé.",
+      },
+      {
+        type: "heading",
+        text: "Cure research: slow, but not stalled",
+        textFr: "Recherche sur la guérison : lente, mais pas arrêtée",
+      },
+      {
+        type: "body",
+        text: "Two more people were reported in sustained HIV remission at AIDS 2026, bringing the global total to 13 documented cases. Both achieved remission through stem-cell transplants, procedures that were medically necessary for other reasons (typically cancer) and not something available as a general HIV treatment. Still, each case gives researchers a real, if narrow, window into what a broader cure might eventually require.",
+        textFr:
+          "Deux personnes supplémentaires ont été signalées en rémission durable du VIH à AIDS 2026, portant le total mondial à 13 cas documentés. Les deux ont atteint la rémission grâce à des greffes de cellules souches, des procédures médicalement nécessaires pour d'autres raisons (généralement un cancer) et non disponibles comme traitement général contre le VIH. Néanmoins, chaque cas offre aux chercheurs une fenêtre réelle, quoique étroite, sur ce qu'une guérison plus large pourrait éventuellement exiger.",
+      },
+      {
+        type: "body",
+        text: "A long-running South African study following 79 adolescents who acquired HIV at birth and started treatment in infancy found that nearly one in five still showed signs of HIV activity in the central nervous system, despite the virus being suppressed in their blood. That's a meaningful finding for how future cure research gets monitored — blood tests alone may not tell the whole story.",
+        textFr:
+          "Une étude sud-africaine de longue durée suivant 79 adolescents ayant contracté le VIH à la naissance et ayant commencé un traitement dès l'enfance a révélé que près d'un sur cinq montrait encore des signes d'activité du VIH dans le système nerveux central, malgré un virus supprimé dans leur sang. C'est une découverte significative pour la façon dont la future recherche sur la guérison devra être surveillée — les tests sanguins seuls pourraient ne pas raconter toute l'histoire.",
+      },
+      {
+        type: "body",
+        text: "Researchers are also exploring broadly neutralizing antibodies, a different approach that works with the immune system directly rather than suppressing the virus the way standard treatment does, as a possible path toward longer periods of viral control without daily medication.",
+        textFr:
+          "Les chercheurs explorent aussi les anticorps largement neutralisants, une approche différente qui agit directement avec le système immunitaire plutôt que de supprimer le virus comme le fait le traitement standard, comme voie possible vers des périodes plus longues de contrôle viral sans médication quotidienne.",
+      },
+      {
+        type: "heading",
+        text: "Vaccine research is making real, if incremental, progress",
+        textFr: "La recherche vaccinale progresse réellement, quoique par étapes",
+      },
+      {
+        type: "body",
+        text: "HIV vaccine development has always been difficult, largely because the virus is unusually good at directing the immune system toward useless, non-protective responses. Several studies presented at AIDS 2026 showed real progress in getting around this.",
+        textFr:
+          "Le développement d'un vaccin contre le VIH a toujours été difficile, en grande partie parce que le virus est étrangement doué pour orienter le système immunitaire vers des réponses inutiles et non protectrices. Plusieurs études présentées à AIDS 2026 ont montré de réels progrès pour contourner ce problème.",
+      },
+      {
+        type: "body",
+        text: "One study found that antibody-producing cells initially pointed in the wrong direction could actually be redirected mid-course toward a genuinely protective target, through carefully sequenced vaccine doses. Another approach removed a small segment of HIV's outer protein from a vaccine candidate, which shifted the immune response to something calmer and less inflammatory, and cut infection risk in animal trials by more than 80%, enough to move toward the first human trial of that design. A third approach used an mRNA-based first dose to prime the immune system before follow-up doses, similar in concept to the platform behind COVID-19 vaccines, showing strong early immune response in animal testing.",
+        textFr:
+          "Une étude a révélé que des cellules productrices d'anticorps initialement orientées dans la mauvaise direction pouvaient en réalité être redirigées en cours de route vers une cible réellement protectrice, grâce à des doses de vaccin soigneusement séquencées. Une autre approche a retiré un petit segment de la protéine externe du VIH d'un candidat-vaccin, ce qui a orienté la réponse immunitaire vers quelque chose de plus calme et moins inflammatoire, et a réduit le risque d'infection de plus de 80 % lors d'essais sur animaux, suffisamment pour avancer vers le premier essai humain de cette conception. Une troisième approche a utilisé une première dose à base d'ARNm pour amorcer le système immunitaire avant des doses de suivi, un concept similaire à la plateforme derrière les vaccins contre la COVID-19, montrant une forte réponse immunitaire précoce lors des essais sur animaux.",
+      },
+      {
+        type: "body",
+        text: "None of this means a vaccine is imminent. But after years of difficult, often disappointing vaccine research, the direction of travel presented at AIDS 2026 was genuinely encouraging.",
+        textFr:
+          "Rien de tout cela ne signifie qu'un vaccin est imminent. Mais après des années de recherche vaccinale difficile et souvent décevante, la direction présentée à AIDS 2026 était réellement encourageante.",
+      },
+      {
+        type: "heading",
+        text: "AI and digital tools are reaching people conventional systems miss",
+        textFr: "L'IA et les outils numériques atteignent des personnes que les systèmes classiques manquent",
+      },
+      {
+        type: "body",
+        text: "Some of the most interesting innovations presented weren't pharmaceutical at all. In China, where late HIV diagnosis has historically been a major problem, an AI-powered self-testing device that reads results and securely shares them to the cloud is now letting partners of newly diagnosed people test privately while still connecting positive results to care. Piloted across 17 provinces, it measurably caught infections earlier than before.",
+        textFr:
+          "Certaines des innovations les plus intéressantes présentées n'étaient pas du tout pharmaceutiques. En Chine, où le diagnostic tardif du VIH a historiquement été un problème majeur, un dispositif d'autodépistage alimenté par l'IA qui lit les résultats et les partage de façon sécurisée sur le cloud permet désormais aux partenaires de personnes nouvellement diagnostiquées de se tester en privé tout en reliant les résultats positifs à des soins. Testé dans 17 provinces, il a mesurablement permis de détecter les infections plus tôt qu'avant.",
+      },
+      {
+        type: "body",
+        text: "Closer to home, communities in Nigeria's Niger Delta, where getting routine antiretroviral refills to riverine, hard-to-reach areas has always been a major logistical challenge, are now receiving medication and supplies by drone. Early results from the pilot reported a 100% successful delivery and pickup rate among the children and adolescents involved.",
+        textFr:
+          "Plus près de chez nous, des communautés du delta du Niger, au Nigéria, où l'acheminement des réapprovisionnements antirétroviraux de routine vers des zones fluviales difficiles d'accès a toujours été un défi logistique majeur, reçoivent désormais médicaments et fournitures par drone. Les premiers résultats du projet pilote ont rapporté un taux de réussite de livraison et de collecte de 100 % parmi les enfants et adolescents concernés.",
+      },
+      {
+        type: "body",
+        text: "Sessions at the conference also pushed for responsible guardrails around AI use in HIV programmes, a reminder that new tools still need real oversight, not just enthusiasm.",
+        textFr:
+          "Des sessions de la conférence ont aussi plaidé pour des garde-fous responsables autour de l'utilisation de l'IA dans les programmes VIH, un rappel que les nouveaux outils ont encore besoin d'une réelle supervision, pas seulement d'enthousiasme.",
+      },
+      {
+        type: "heading",
+        text: "Children remain the most overlooked group in the response",
+        textFr: "Les enfants restent le groupe le plus négligé de la riposte",
+      },
+      {
+        type: "body",
+        text: "Progress for children living with HIV was mixed. An audit of infants in Uganda who acquired HIV from their mothers found ongoing gaps in retesting and viral load monitoring, gaps that are largely preventable with better follow-up systems.",
+        textFr:
+          "Les progrès pour les enfants vivant avec le VIH ont été mitigés. Un audit de nourrissons en Ouganda ayant contracté le VIH de leur mère a révélé des lacunes persistantes dans le retest et le suivi de la charge virale, des lacunes en grande partie évitables avec de meilleurs systèmes de suivi.",
+      },
+      {
+        type: "body",
+        text: "On the treatment side, there were real advances: a once-daily single-tablet regimen proved safe and effective over five years in children, and a larger trial found that a long-acting injectable given every eight weeks outperformed daily oral treatment in adolescents, and was strongly preferred by the young people taking it.",
+        textFr:
+          "Côté traitement, il y a eu de réelles avancées : un régime à comprimé unique quotidien s'est avéré sûr et efficace sur cinq ans chez les enfants, et un essai plus large a révélé qu'un injectable à action prolongée administré toutes les huit semaines surpassait le traitement oral quotidien chez les adolescents, et était fortement préféré par les jeunes qui le prenaient.",
+      },
+      {
+        type: "body",
+        text: "But funding cuts are already undoing progress here too. PEPFAR-supported data showed over 77,000 fewer children on treatment in a single year, a 14% decline. And as the first generation of children born with HIV and treated from infancy reaches adulthood, a UK-based study found that more than 70% of them now live with a metabolic condition, a signal that long-term, lifelong HIV care needs to include early screening for conditions well beyond the virus itself.",
+        textFr:
+          "Mais les coupes de financement défont déjà les progrès ici aussi. Des données soutenues par le PEPFAR ont montré plus de 77 000 enfants en moins sous traitement en une seule année, soit un déclin de 14 %. Et alors que la première génération d'enfants nés avec le VIH et traités dès la petite enfance atteint l'âge adulte, une étude britannique a révélé que plus de 70 % d'entre eux vivent désormais avec une condition métabolique, un signal que les soins VIH à vie doivent inclure un dépistage précoce de conditions bien au-delà du virus lui-même.",
+      },
+      {
+        type: "heading",
+        text: "Care works better when it isn't delivered in isolation",
+        textFr: "Les soins fonctionnent mieux lorsqu'ils ne sont pas délivrés isolément",
+      },
+      {
+        type: "body",
+        text: "A theme that came up again and again at AIDS 2026: HIV outcomes improve when care is integrated into other health services people are already accessing, rather than treated as a separate system.",
+        textFr:
+          "Un thème est revenu encore et encore à AIDS 2026 : les résultats liés au VIH s'améliorent lorsque les soins sont intégrés à d'autres services de santé déjà utilisés par les gens, plutôt que traités comme un système séparé.",
+      },
+      {
+        type: "body",
+        text: "Studies on tuberculosis, which remains a leading cause of death among people living with HIV, found that treatment interruptions and unsuppressed viral loads significantly raise the risk of developing TB, and that TB relapse after treatment is a strong predictor of death, meaning \"completed treatment\" should really be treated as a checkpoint requiring continued monitoring, not a finish line.",
+        textFr:
+          "Des études sur la tuberculose, qui reste une cause majeure de décès chez les personnes vivant avec le VIH, ont révélé que les interruptions de traitement et les charges virales non supprimées augmentent significativement le risque de développer la tuberculose, et qu'une rechute de tuberculose après traitement est un fort prédicteur de décès, ce qui signifie qu'un « traitement terminé » devrait vraiment être traité comme un point de contrôle nécessitant une surveillance continue, et non une ligne d'arrivée.",
+      },
+      {
+        type: "body",
+        text: "Elsewhere, integration showed clear, practical results. In Mozambique, folding HIV testing into routine cervical cancer screening accounted for over 7% of all new national HIV treatment starts in a single year. In Botswana, integrating hypertension care into HIV clinics improved how much patients trusted their providers. Combined testing models, covering HIV, STIs, cervical cancer, and hepatitis together, consistently improved how many people actually got tested and diagnosed across the African and Asian sites studied.",
+        textFr:
+          "Ailleurs, l'intégration a montré des résultats clairs et concrets. Au Mozambique, intégrer le dépistage du VIH au dépistage de routine du cancer du col de l'utérus a représenté plus de 7 % de tous les nouveaux traitements nationaux contre le VIH en une seule année. Au Botswana, intégrer les soins de l'hypertension dans les cliniques VIH a amélioré la confiance des patients envers leurs prestataires. Des modèles de dépistage combiné, couvrant à la fois le VIH, les IST, le cancer du col de l'utérus et l'hépatite, ont systématiquement amélioré le nombre de personnes réellement testées et diagnostiquées sur les sites africains et asiatiques étudiés.",
+      },
+      {
+        type: "heading",
+        text: "Communities that lead get better results than communities that receive",
+        textFr: "Les communautés qui dirigent obtiennent de meilleurs résultats que celles qui reçoivent",
+      },
+      {
+        type: "body",
+        text: "Across many of the conference's strongest findings, one pattern held: HIV responses led by the communities they serve consistently outperform top-down models, and yet community-led programmes remain some of the most fragile when it comes to funding.",
+        textFr:
+          "Dans plusieurs des résultats les plus solides de la conférence, un même schéma s'est confirmé : les ripostes au VIH dirigées par les communautés qu'elles servent surpassent systématiquement les modèles descendants, et pourtant les programmes communautaires restent parmi les plus fragiles en matière de financement.",
+      },
+      {
+        type: "body",
+        text: "In Brazil, Nigeria, Indonesia, and Lesotho, communities are increasingly shifting from simply receiving services to actively monitoring quality, challenging barriers to medication access, and documenting rights violations — work that improves accountability and measurably reduces stigma. In Lesotho specifically, community-led monitoring across six districts was linked to shorter wait times, fewer medication stock-outs, and reduced stigma.",
+        textFr:
+          "Au Brésil, au Nigéria, en Indonésie et au Lesotho, les communautés passent de plus en plus de simples receveuses de services à un rôle actif de surveillance de la qualité, de remise en question des obstacles à l'accès aux médicaments, et de documentation des violations des droits — un travail qui améliore la redevabilité et réduit mesurablement la stigmatisation. Au Lesotho spécifiquement, un suivi mené par la communauté dans six districts a été associé à des temps d'attente plus courts, moins de ruptures de stock de médicaments, et une stigmatisation réduite.",
+      },
+      {
+        type: "body",
+        text: "Community-led approaches also reached people conventional health systems consistently miss. In Colombia, a peer-led programme for Venezuelan migrants combined testing, peer navigation, and legal support, improving diagnosis and treatment outcomes despite migration status and exclusion from formal health insurance. In Tanzania, a community-led self-testing project for adolescent girls and young women significantly increased uptake of HIV prevention services.",
+        textFr:
+          "Les approches communautaires ont aussi atteint des personnes que les systèmes de santé classiques manquent systématiquement. En Colombie, un programme mené par des pairs pour les migrants vénézuéliens a combiné dépistage, accompagnement par les pairs et soutien juridique, améliorant les résultats de diagnostic et de traitement malgré le statut migratoire et l'exclusion de l'assurance maladie officielle. En Tanzanie, un projet d'autodépistage mené par la communauté pour les adolescentes et jeunes femmes a considérablement augmenté le recours aux services de prévention du VIH.",
+      },
+      {
+        type: "image",
+        src: aids2026CommunitiesLead,
+        srcFr: aids2026CommunitiesLeadFr,
+        alt: "Community-led HIV results from Lesotho, Mozambique, and Tanzania",
+        altFr: "Résultats communautaires liés au VIH au Lesotho, au Mozambique et en Tanzanie",
+      },
+      {
+        type: "heading",
+        text: "Stigma and criminalization are still actively undermining health outcomes",
+        textFr: "La stigmatisation et la criminalisation sapent encore activement les résultats de santé",
+      },
+      {
+        type: "body",
+        text: "In a political climate the conference described as marked by rising conservatism and backlash against rights, stigma and criminalization were presented not as unfortunate side effects, but as structural forces actively working against the HIV response.",
+        textFr:
+          "Dans un climat politique que la conférence a décrit comme marqué par une montée du conservatisme et un recul des droits, la stigmatisation et la criminalisation ont été présentées non pas comme des effets secondaires malheureux, mais comme des forces structurelles agissant activement contre la riposte au VIH.",
+      },
+      {
+        type: "body",
+        text: "The HIV Justice Network presented evidence that criminalizing HIV transmission or exposure deters testing and delays treatment — the opposite of what these laws are typically claimed to achieve. A similar pattern showed up around drug policy in Latin America, where over half of people surveyed reported an arrest that directly interrupted their HIV care, with non-binary and trans people facing the most harassment.",
+        textFr:
+          "Le HIV Justice Network a présenté des preuves que la criminalisation de la transmission ou de l'exposition au VIH dissuade le dépistage et retarde le traitement — l'inverse de ce que ces lois prétendent généralement accomplir. Un schéma similaire est apparu autour des politiques sur les drogues en Amérique latine, où plus de la moitié des personnes interrogées ont signalé une arrestation ayant directement interrompu leurs soins liés au VIH, les personnes non-binaires et trans faisant face au plus de harcèlement.",
+      },
+      {
+        type: "body",
+        text: "These pressures compound. In Uganda, following the 2023 Anti-Homosexuality Act, nearly a third of men who have sex with men screened positive for moderate-to-severe depression. After the 2025 HIV funding freeze added another layer of instability, that number rose to 44%, and reported suicidal ideation rose from 15% to 24%. Legal and financial shocks don't just affect access to medication — they affect mental health at a population level.",
+        textFr:
+          "Ces pressions s'accumulent. En Ouganda, à la suite de la loi anti-homosexualité de 2023, près d'un tiers des hommes ayant des rapports sexuels avec des hommes présentaient un dépistage positif pour une dépression modérée à sévère. Après que le gel du financement du VIH de 2025 a ajouté une nouvelle couche d'instabilité, ce chiffre est passé à 44 %, et les idées suicidaires signalées sont passées de 15 % à 24 %. Les chocs juridiques et financiers n'affectent pas seulement l'accès aux médicaments — ils affectent la santé mentale à l'échelle d'une population.",
+      },
+      {
+        type: "heading",
+        text: "Conflict changes everything, and resilience has to be built in advance",
+        textFr: "Le conflit change tout, et la résilience doit être bâtie à l'avance",
+      },
+      {
+        type: "body",
+        text: "Two very different conflict settings offered a clear lesson in preparation. In Sudan, civil war beginning in 2023 caused HIV testing to drop by as much as 78%, with positivity rates rising sharply among those who could still access testing. Treatment coverage collapsed by nearly 60% before partially recovering through redistribution to more stable areas.",
+        textFr:
+          "Deux contextes de conflit très différents ont offert une leçon claire sur la préparation. Au Soudan, la guerre civile débutée en 2023 a fait chuter le dépistage du VIH jusqu'à 78 %, avec des taux de positivité en forte hausse chez ceux qui pouvaient encore accéder au dépistage. La couverture de traitement s'est effondrée de près de 60 % avant de se rétablir partiellement grâce à une redistribution vers des zones plus stables.",
+      },
+      {
+        type: "body",
+        text: "Ukraine tells a different story. Well before Russia's full-scale invasion in 2022, Ukraine had already begun shifting its HIV response from donor-funded pilot programmes into permanent national public financing. That groundwork paid off: even during active war, over 97% of people newly enrolled in Ukraine's national HIV programme in 2024 were still on treatment in early 2026.",
+        textFr:
+          "L'Ukraine raconte une histoire différente. Bien avant l'invasion à grande échelle de la Russie en 2022, l'Ukraine avait déjà commencé à faire passer sa riposte au VIH de programmes pilotes financés par des donateurs à un financement public national permanent. Ce travail de fond a porté ses fruits : même en pleine guerre active, plus de 97 % des personnes nouvellement inscrites au programme national VIH de l'Ukraine en 2024 étaient toujours sous traitement début 2026.",
+      },
+      {
+        type: "body",
+        text: "The takeaway researchers kept returning to: decentralised, nationally-owned systems hold up under shock far better than donor-dependent ones. A related session drawing on data from Uganda, Kenya, East Africa, Nigeria, and Fiji reinforced that violence, food insecurity, and funding instability shape HIV outcomes as powerfully as war does — evidence that these outcomes come from overlapping social and economic conditions, not individual behaviour.",
+        textFr:
+          "La conclusion à laquelle les chercheurs revenaient sans cesse : les systèmes décentralisés et appropriés au niveau national tiennent bien mieux sous le choc que ceux dépendants des donateurs. Une session connexe s'appuyant sur des données de l'Ouganda, du Kenya, de l'Afrique de l'Est, du Nigéria et des Fidji a renforcé l'idée que la violence, l'insécurité alimentaire et l'instabilité du financement façonnent les résultats liés au VIH aussi puissamment que la guerre — la preuve que ces résultats découlent de conditions sociales et économiques qui se chevauchent, et non d'un comportement individuel.",
+      },
+      {
+        type: "heading",
+        text: "Why this matters for LUMA",
+        textFr: "Pourquoi cela compte pour LUMA",
+      },
+      {
+        type: "body",
+        text: "Nearly everything AIDS 2026 confirmed is something LUMA has been building toward from the start: that the right information, delivered without shame attached, changes outcomes. That communities who lead their own health response do better than communities who are simply managed. That stigma, not the virus itself, is often the actual barrier standing between a young person and the care they need.",
+        textFr:
+          "Presque tout ce qu'AIDS 2026 a confirmé est quelque chose vers lequel LUMA travaille depuis le début : que la bonne information, délivrée sans honte associée, change les résultats. Que les communautés qui dirigent leur propre riposte de santé font mieux que les communautés simplement gérées. Que la stigmatisation, et non le virus lui-même, est souvent le véritable obstacle entre un jeune et les soins dont il a besoin.",
+      },
+      {
+        type: "body",
+        text: "The science is moving fast — longer-lasting prevention, real cure research, better treatment options. But as more than one speaker at AIDS 2026 pointed out, none of it means anything if the people who need it don't know it exists, or are too afraid of judgment to ask.",
+        textFr:
+          "La science avance vite — une prévention plus durable, une vraie recherche sur la guérison, de meilleures options de traitement. Mais comme plus d'un intervenant à AIDS 2026 l'a souligné, rien de tout cela ne signifie quoi que ce soit si les personnes qui en ont besoin ne savent pas que cela existe, ou ont trop peur du jugement pour demander.",
+      },
+      {
+        type: "callout",
+        text: "That's the gap LUMA exists to close.",
+        textFr: "C'est cet écart que LUMA existe pour combler.",
+      },
+      {
+        type: "body",
+        text: "Source: International AIDS Society (IAS), AIDS 2026 Conference. This article summarises and paraphrases findings presented at the conference; for full session details and original abstracts, visit programme.aids2026.org.",
+        textFr:
+          "Source : Société internationale du sida (IAS), Conférence AIDS 2026. Cet article résume et paraphrase les résultats présentés à la conférence ; pour les détails complets des sessions et les résumés originaux, consultez programme.aids2026.org.",
+      },
+    ],
+    related: ["classroom-myth", "stigma-data", "prep-explained"],
   },
 ];
 
@@ -1616,6 +1977,23 @@ export const StoryPage = ({ t, story, setPage, setStoryId }) => {
           </p>
         </div>
       </div>
+      {story.heroImage && (
+        <div style={{ background: t.bg, padding: "0 32px" }}>
+          <div style={{ maxWidth: 900, margin: "-40px auto 0" }}>
+            <img
+              src={lang === "fr" && story.heroImageFr ? story.heroImageFr : story.heroImage}
+              alt={lang === "fr" && story.titleFr ? story.titleFr : story.title}
+              style={{
+                width: "100%",
+                height: "auto",
+                borderRadius: 16,
+                display: "block",
+                boxShadow: "0 20px 60px rgba(0,0,0,0.25)",
+              }}
+            />
+          </div>
+        </div>
+      )}
 
       <section style={s.section}>
         <div style={s.inner}>
@@ -1645,6 +2023,33 @@ export const StoryPage = ({ t, story, setPage, setStoryId }) => {
                   {text}
                 </div>
               );
+            if (block.type === "image") {
+              const src = lang === "fr" && block.srcFr ? block.srcFr : block.src;
+              const alt = lang === "fr" && block.altFr ? block.altFr : block.alt;
+              const caption = lang === "fr" && block.captionFr ? block.captionFr : block.caption;
+              return (
+                <figure key={i} style={{ margin: "40px 0" }}>
+                  <img
+                    src={src}
+                    alt={alt || ""}
+                    style={{ width: "100%", height: "auto", borderRadius: 14, display: "block" }}
+                  />
+                  {caption && (
+                    <figcaption
+                      style={{
+                        fontFamily: "'DM Sans',sans-serif",
+                        fontSize: 13,
+                        color: t.textMuted,
+                        marginTop: 10,
+                        textAlign: "center",
+                      }}
+                    >
+                      {caption}
+                    </figcaption>
+                  )}
+                </figure>
+              );
+            }
             return null;
           })}
 
@@ -2671,6 +3076,19 @@ export const TruthPage = ({ t, setPage, setStoryId }) => {
                 onMouseEnter={(e) => (e.currentTarget.style.transform = "translateY(-4px)")}
                 onMouseLeave={(e) => (e.currentTarget.style.transform = "translateY(0)")}
               >
+                {story.heroImage && (
+                  <img
+                    src={lang === "fr" && story.heroImageFr ? story.heroImageFr : story.heroImage}
+                    alt=""
+                    style={{
+                      width: "100%",
+                      height: 140,
+                      objectFit: "cover",
+                      borderRadius: 10,
+                      marginBottom: 4,
+                    }}
+                  />
+                )}
                 <Tag t={t}>{lang === "fr" && story.tagFr ? story.tagFr : story.tag}</Tag>
                 <h3
                   style={{
